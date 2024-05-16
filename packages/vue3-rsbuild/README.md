@@ -1,3 +1,3 @@
 # storybook-vue3-rsbuild
 
-Check out [https://github.com/rspack-contrib/storybook-rsbuild] for documentation.
+Check out [rspack-contrib/storybook-rsbuild](https://github.com/rspack-contrib/storybook-rsbuild) for documentation.

@@ -115,8 +115,6 @@ export const start: RsbuildBuilder['start'] = async ({
   )
 
   router.use(rsbuildServer.middlewares)
-
-  // 订阅服务器的 http 升级事件来处理 WebSocket 升级
   storybookServer.on('upgrade', rsbuildServer.onHTTPUpgrade)
 
   return {
