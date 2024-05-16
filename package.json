@@ -5,7 +5,7 @@
   "packageManager": "pnpm@8.15.6",
   "scripts": {
     "prepare": "pnpm run build && simple-git-hooks",
-    "build": "pnpm --parallel --filter \"./packages/**\" run prep --optimized",
+    "build": "pnpm --filter \"./packages/**\" run prep --optimized",
     "dev": "pnpm --parallel --filter \"./packages/**\" run prep --watch",
     "check": "pnpm --parallel --filter \"./packages/**\" run check",
     "test:sandboxes-build": "pnpm --parallel --filter \"./sandboxes/**\" run build:storybook"
