@@ -1,11 +1,22 @@
 {
   "name": "storybook-vue3-rsbuild",
   "version": "0.0.1",
-  "description": "Storybook for Vue3: Develop React Component in isolation with Hot Reloading.",
+  "description": "Storybook for Vue3 and Rsbuild: Develop React Component in isolation with Hot Reloading.",
   "keywords": [
-    "storybook"
+    "storybook",
+    "rsbuild",
+    "rspack",
+    "vue3"
   ],
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rspack-contrib/storybook-rsbuild/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rspack-contrib/storybook-rsbuild",
+    "directory": "packages/vue3-rsbuild"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

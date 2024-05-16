@@ -132,3 +132,4 @@ dist
 # storybook-rsbuild
 dist/
 storybook-static/
+.DS_Store
