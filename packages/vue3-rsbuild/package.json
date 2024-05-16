@@ -1,0 +1,70 @@
+{
+  "name": "storybook-vue3-rsbuild",
+  "version": "0.0.1",
+  "description": "Storybook for Vue3: Develop React Component in isolation with Hot Reloading.",
+  "keywords": [
+    "storybook"
+  ],
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./dist/index.js",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./preset": {
+      "types": "./dist/preset.d.ts",
+      "require": "./dist/preset.js"
+    },
+    "./react-docs": {
+      "types": "./dist/react-docs.d.ts",
+      "require": "./dist/react-docs.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts",
+    "!src/**/*"
+  ],
+  "scripts": {
+    "check": "node --loader ../../scripts/node_modules/esbuild-register/loader.js -r ../../scripts/node_modules/esbuild-register/register.js ../../scripts/prepare/check.ts",
+    "prep": "node --loader ../../scripts/node_modules/esbuild-register/loader.js -r ../../scripts/node_modules/esbuild-register/register.js ../../scripts/prepare/bundle.ts"
+  },
+  "dependencies": {
+    "@rsbuild/core": "0.6.15",
+    "@storybook/vue3": "8.0.10",
+    "@storybook/docs-tools": "8.0.10",
+    "storybook-builder-rsbuild": "workspace:*",
+    "@storybook/types": "8.0.10",
+    "vue-docgen-loader": "^1.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "typescript": "^5.3.2"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bundler": {
+    "entries": [
+      "./src/index.ts",
+      "./src/preset.ts"
+    ],
+    "platform": "node"
+  }
+}

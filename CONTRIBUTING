@@ -1,0 +1,14 @@
+# Preparation
+
+```bash
+corepack enable # if it's not enabled
+pnpm i
+```
+
+## Development
+
+```bash
+pnpm dev # will watch and rebuild all packages in ./packages
+```
+
+Then development with the packages in `./sandboxes`.

@@ -1,0 +1,29 @@
+{
+  "name": "storybook-rsbuild-monorepo",
+  "private": true,
+  "version": "0.0.0",
+  "packageManager": "pnpm@8.15.6",
+  "scripts": {
+    "prepare": "pnpm run build && simple-git-hooks",
+    "build": "pnpm --parallel --filter \"./packages/**\" run prep --optimized",
+    "dev": "pnpm --parallel --filter \"./packages/**\" run prep --watch",
+    "check": "pnpm --parallel --filter \"./packages/**\" run check",
+    "test:sandboxes-build": "pnpm --parallel --filter \"./sandboxes/**\" run build:storybook"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx nano-staged"
+  },
+  "nano-staged": {
+    "*.{md,mdx,json,css,less,scss}": "prettier --write",
+    "*.{js,jsx,ts,tsx,mjs,cjs}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "nano-staged": "^0.8.0",
+    "simple-git-hooks": "^2.11.1",
+    "prettier": "^3.2.5",
+    "vitest": "^1.6.0"
+  }
+}
