@@ -120,26 +120,30 @@ The function should return the updated Rsbuild configuration.
 Because Rspack temporarily does not support the `webpackInclude` magic comment, non-story files may be bundled, which could lead to build failures. These files can be ignored using `rspack.IgnorePlugin`.
 
 ```js
+// .storybook/main.js
 import { mergeRsbuildConfig } from '@rsbuild/core'
 
-module.exports = {
+export default {
   framework: 'storybook-react-rsbuild',
   async rsbuildFinal(config) {
     return mergeRsbuildConfig(config, {
       tools: {
         rspack: (config, { addRules, appendPlugins, rspack, mergeConfig }) => {
-          appendPlugins([
-            new rspack.IgnorePlugin({
-              checkResource: (resource, context) => {
-                const absPathHasExt = extname(resource)
-                if (absPathHasExt === '.md') {
-                  return true
-                }
+          return mergeConfig(config, {
+            plugins: [
+              new rspack.IgnorePlugin({
+                checkResource: (resource, context) => {
+                  // for example, ignore all markdown files
+                  const absPathHasExt = extname(resource)
+                  if (absPathHasExt === '.md') {
+                    return true
+                  }
 
-                return false
-              },
-            }),
-          ])
+                  return false
+                },
+              }),
+            ],
+          })
         },
       },
     })

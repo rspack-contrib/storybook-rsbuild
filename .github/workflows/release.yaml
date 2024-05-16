@@ -31,7 +31,6 @@ jobs:
       - name: Publish to NPM
         run: |
           pnpm changeset publish
-          git push --follow-tags
 
       - name: GitHub Release
         run: pnpx changelogithub
