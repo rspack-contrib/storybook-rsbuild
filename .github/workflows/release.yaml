@@ -1,0 +1,39 @@
+# .github/workflows/release.yml
+
+name: Release
+
+permissions:
+  contents: write
+
+on: workflow_dispatch
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
+
+      - name: Install Pnpm
+        run: corepack enable
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+
+      - name: Install Dependencies and build
+        run: pnpm install
+
+      - name: Publish to NPM
+        run: |
+          pnpm changeset publish
+          git push --follow-tags
+
+      - name: GitHub Release
+        run: pnpx changelogithub
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
