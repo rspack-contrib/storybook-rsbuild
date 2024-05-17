@@ -77,7 +77,23 @@ const defaultHandlers = Object.values(docgenHandlers).map((handler) => handler)
 const defaultResolver = new docgenResolver.FindExportedDefinitionsResolver()
 const handlers = [...defaultHandlers, actualNameHandler]
 
-let tsconfigPathsInitialized = false
+let tsconfigPathsInitializeStatus:
+  | 'uninitialized'
+  | 'initializing'
+  | 'initialized' = 'uninitialized'
+
+let resolveTsconfigPathsInitialingPromise: (
+  value: void | PromiseLike<void>,
+) => void
+let tsconfigPathsInitialingPromise = new Promise<void>((resolve) => {
+  resolveTsconfigPathsInitialingPromise = resolve
+})
+
+let finishInitialization = () => {
+  resolveTsconfigPathsInitialingPromise()
+  tsconfigPathsInitializeStatus = 'initialized'
+}
+
 let matchPath: TsconfigPaths.MatchPath | undefined
 
 export default async function reactDocgenLoader(
@@ -89,7 +105,8 @@ export default async function reactDocgenLoader(
   const options = this.getOptions() || {}
   const { debug = false } = options
 
-  if (!tsconfigPathsInitialized) {
+  if (tsconfigPathsInitializeStatus === 'uninitialized') {
+    tsconfigPathsInitializeStatus = 'initializing'
     const tsconfigPath = await findUp('tsconfig.json', { cwd: process.cwd() })
     const tsconfig = TsconfigPaths.loadConfig(tsconfigPath)
 
@@ -102,7 +119,11 @@ export default async function reactDocgenLoader(
       )
     }
 
-    tsconfigPathsInitialized = true
+    finishInitialization()
+  }
+
+  if (tsconfigPathsInitializeStatus === 'initializing') {
+    await tsconfigPathsInitialingPromise
   }
 
   try {
