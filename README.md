@@ -1,5 +1,7 @@
 # Storybook × Rsbuild
 
+![Storybook Rsbuild](https://github.com/rspack-contrib/storybook-rsbuild/assets/7237365/00165054-9e3e-4a15-8a99-27985989b9d2)
+
 The repository contains the Storybook Rsbuild builder and framework integrations for UI frameworks.
 
 | package                                                 | description                                          |
