@@ -31,7 +31,7 @@ In Storybook v8, you don't need to manually install storybook-builder-rsbuild, i
    const config: StorybookConfig = {
      framework: 'storybook-react-rsbuild',
      rsbuildFinal: (config) => {
-       // Customize the final webpack config here
+       // Customize the final Rsbuild config here
        return config;
      },
    };
@@ -55,7 +55,7 @@ You're all set now. You could also checkout the example in [sandboxes/react-rsbu
    const config: StorybookConfig = {
      framework: 'storybook-vue3-rsbuild',
      rsbuildFinal: (config) => {
-       // Customize the final webpack config here
+       // Customize the final Rsbuild config here
        return config;
      },
    };
