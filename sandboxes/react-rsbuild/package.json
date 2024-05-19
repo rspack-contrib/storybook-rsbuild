@@ -20,16 +20,16 @@
     "@rsbuild/core": "0.6.15",
     "@rsbuild/plugin-react": "^0.6.2",
     "storybook-react-rsbuild": "workspace:*",
-    "@storybook/addon-essentials": "8.0.10",
-    "@storybook/addon-interactions": "8.0.10",
-    "@storybook/addon-links": "8.0.10",
-    "@storybook/addon-onboarding": "8.0.10",
-    "@storybook/blocks": "8.0.10",
-    "@storybook/react": "8.0.10",
-    "@storybook/test": "8.0.10",
+    "@storybook/addon-essentials": "8.1.1",
+    "@storybook/addon-interactions": "8.1.1",
+    "@storybook/addon-links": "8.1.1",
+    "@storybook/addon-onboarding": "8.1.1",
+    "@storybook/blocks": "8.1.1",
+    "@storybook/react": "8.1.1",
+    "@storybook/test": "8.1.1",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "typescript": "^4.8",
-    "storybook": "8.0.10"
+    "storybook": "8.1.1"
   }
 }
