@@ -5,7 +5,7 @@ const getVersionMessage = async (releasePlan) => {
 
   const newVersion = publishableReleases[0].newVersion
 
-  return `release: v${newVersion}`
+  return `v${newVersion}`
 }
 
 module.exports = { getVersionMessage }

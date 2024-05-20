@@ -43,7 +43,7 @@ jobs:
         run: |
           git tag ${{ steps.version_to_release.outputs.result }}
           git push origin ${{ steps.version_to_release.outputs.result }}
-          pnpm -r publish
+          pnpm -r publish --no-git-checks
 
       - name: GitHub Release
         run: pnpx changelogithub
