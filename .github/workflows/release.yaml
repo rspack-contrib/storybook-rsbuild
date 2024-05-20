@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup npmrc
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
@@ -28,9 +30,20 @@ jobs:
       - name: Install Dependencies and build
         run: pnpm install
 
+      - uses: actions/github-script@v7
+        id: version_to_release
+        with:
+          result-encoding: string
+          script: |
+            const fs = require('fs');
+            const packageJson = JSON.parse(fs.readFileSync('./packages/builder-rsbuild/package.json', 'utf8'));
+            return 'v' + packageJson.version;
+
       - name: Publish to NPM
         run: |
-          pnpm changeset publish
+          git tag ${{ steps.version_to_release.outputs.result }}
+          git push origin ${{ steps.version_to_release.outputs.result }}
+          pnpm -r publish
 
       - name: GitHub Release
         run: pnpx changelogithub
