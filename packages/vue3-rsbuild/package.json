@@ -8,7 +8,6 @@
     "rspack",
     "vue3"
   ],
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rspack-contrib/storybook-rsbuild/issues"
   },
@@ -17,6 +16,7 @@
     "url": "https://github.com/rspack-contrib/storybook-rsbuild",
     "directory": "packages/vue3-rsbuild"
   },
+  "license": "MIT",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -50,9 +50,9 @@
   },
   "dependencies": {
     "@rsbuild/core": "0.6.15",
-    "@storybook/vue3": "^8.0.10",
     "@storybook/docs-tools": "^8.0.10",
     "@storybook/types": "^8.0.10",
+    "@storybook/vue3": "^8.0.10",
     "storybook-builder-rsbuild": "workspace:*",
     "vue-docgen-loader": "^1.5.1"
   },

@@ -7,7 +7,6 @@
     "rsbuild",
     "rspack"
   ],
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rspack-contrib/storybook-rsbuild/issues"
   },
@@ -16,6 +15,7 @@
     "url": "https://github.com/rspack-contrib/storybook-rsbuild",
     "directory": "packages/builder-rsbuild"
   },
+  "license": "MIT",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -90,12 +90,12 @@
   },
   "devDependencies": {
     "@rsbuild/core": "0.6.15",
-    "@types/node": "^18.0.0",
     "@types/express": "^4.17.21",
     "@types/fs-extra": "^11.0.4",
+    "@types/node": "^18.0.0",
     "@types/pretty-hrtime": "^1.0.0",
-    "pretty-hrtime": "^1.0.3",
     "add": "^2.0.6",
+    "pretty-hrtime": "^1.0.3",
     "slash": "^5.0.0",
     "typescript": "^5.3.2"
   },
