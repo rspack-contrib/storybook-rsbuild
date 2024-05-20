@@ -8,7 +8,6 @@
     "rspack",
     "react"
   ],
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rspack-contrib/storybook-rsbuild/issues"
   },
@@ -17,6 +16,7 @@
     "url": "https://github.com/rspack-contrib/storybook-rsbuild",
     "directory": "packages/builder-react"
   },
+  "license": "MIT",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -58,13 +58,18 @@
     "@storybook/node-logger": "^8.0.10",
     "@storybook/react": "^8.0.10",
     "@storybook/react-docgen-typescript-plugin": "^1.0.1",
-    "storybook-builder-rsbuild": "workspace:*",
     "@types/node": "^18.0.0",
     "find-up": "^5.0.0",
     "magic-string": "^0.30.10",
     "react-docgen": "^7.0.3",
     "resolve": "^1.22.8",
+    "storybook-builder-rsbuild": "workspace:*",
     "tsconfig-paths": "^4.2.0"
+  },
+  "devDependencies": {
+    "@storybook/types": "^8.0.10",
+    "add": "^2.0.6",
+    "typescript": "^5.3.2"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta",
@@ -89,10 +94,5 @@
       "./src/loaders/react-docgen-loader.ts"
     ],
     "platform": "node"
-  },
-  "devDependencies": {
-    "@storybook/types": "^8.0.10",
-    "add": "^2.0.6",
-    "typescript": "^5.3.2"
   }
 }
