@@ -153,18 +153,25 @@ export default {
 }
 ```
 
-## Rspack support tasks
+## Roadmap
 
+### Features
+
+- [ ] Support TS type check (fork-ts-checker-webpack-plugin)
+- [ ] Support more frameworks
+
+### Rspack support
+
+- [ ] Support `webpackInclude` magic comment 🌟
 - [ ] Support persistent cache
 - [ ] Support lazy compilation
 - [ ] Support virtual modules
 - [ ] Support `module.unknownContextCritical`
-- [ ] Support `webpackInclude` magic comment
-- [ ] Support `compilation.dependencyTemplates.set` for react-docgen-typescript
+- [ ] Support `compilation.dependencyTemplates.set` for react-docgen-typescript 🌟
 
 ## Credits
 
-Some codes are copied or modified from [storybookjs/storybook](https://github.com/storybookjs/storybook).
+Some code is copied or modified from [storybookjs/storybook](https://github.com/storybookjs/storybook).
 
 ## License
 
