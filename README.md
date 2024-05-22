@@ -13,7 +13,7 @@ The repository contains the Storybook Rsbuild builder and framework integrations
 ## Usage
 
 > [!NOTE]  
-> Requirements: `@rsbuild/core >= 0.6.15`.
+> Requirements: `@rsbuild/core >= 0.6.15` and `storybook >= 8.0` (checkout Storybook's [release note](https://storybook.js.org/blog/storybook-8/) for migration)
 
 In Storybook v8, you don't need to manually install storybook-builder-rsbuild, it has been depended by the framework, such as `storybook-react-rsbuild` and `storybook-vue3-rsbuild`.
 
