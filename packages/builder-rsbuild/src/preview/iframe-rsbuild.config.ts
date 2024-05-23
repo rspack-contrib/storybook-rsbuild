@@ -1,4 +1,4 @@
-import { extname, dirname, join, resolve } from 'path'
+import { dirname, join, resolve } from 'path'
 // @ts-expect-error (I removed this on purpose, because it's incorrect)
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 import type { Options } from '@storybook/types'
@@ -15,6 +15,7 @@ import { getVirtualModules } from './virtual-module-mapping'
 import { loadConfig, mergeRsbuildConfig } from '@rsbuild/core'
 import type { RsbuildConfig } from '@rsbuild/core'
 import { webpack as docsWebpack } from '@storybook/addon-docs/dist/preset'
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 
 const getAbsolutePath = <I extends string>(input: I): I =>
   dirname(require.resolve(join(input, 'package.json'))) as any
@@ -56,7 +57,7 @@ export default async (options: Options): Promise<RsbuildConfig> => {
     configType,
     presets,
     previewUrl,
-    // typescriptOptions,
+    typescriptOptions,
     features,
   } = options
 
@@ -100,12 +101,12 @@ export default async (options: Options): Promise<RsbuildConfig> => {
   })
 
   // TODO: not inclined to support fork-ts-checker-webpack-plugin
-  // const builderOptions = await getBuilderOptions<BuilderOptions>(options)
-  // const shouldCheckTs =
-  //   typescriptOptions.check && !typescriptOptions.skipCompiler
-  // const tsCheckOptions = typescriptOptions.checkOptions || {}
+  const shouldCheckTs =
+    typescriptOptions.check && !typescriptOptions.skipCompiler
+  const tsCheckOptions = typescriptOptions.checkOptions || {}
 
   // TODO: Rspack doesn't support persistent cache yet
+  // const builderOptions = await getBuilderOptions<BuilderOptions>(options)
   // const cacheConfig = builderOptions.fsCache
   //   ? { cache: { type: 'filesystem' as const } }
   //   : {}
@@ -257,6 +258,9 @@ export default async (options: Options): Promise<RsbuildConfig> => {
               process: require.resolve('process/browser.js'),
             }),
             new CaseSensitivePathsPlugin(),
+            shouldCheckTs
+              ? new ForkTsCheckerWebpackPlugin(tsCheckOptions)
+              : null,
           ].filter(Boolean),
         )
 

@@ -1,8 +1,12 @@
 import type {
   StorybookConfigRsbuild,
   BuilderOptions,
+  TypescriptOptions as TypescriptOptionsBuilder,
 } from 'storybook-builder-rsbuild'
-import type { StorybookConfig as StorybookConfigBase } from '@storybook/types'
+import type {
+  StorybookConfig as StorybookConfigBase,
+  TypescriptOptions as TypescriptOptionsBase,
+} from '@storybook/types'
 import type { PluginOptions as ReactDocgenTypescriptOptions } from '@storybook/react-docgen-typescript-plugin'
 
 type FrameworkName = 'storybook-react-rsbuild'
@@ -21,24 +25,7 @@ export type FrameworkOptions = {
   legacyRootApi?: boolean
 }
 
-type StorybookConfigFramework = {
-  framework:
-    | FrameworkName
-    | {
-        name: FrameworkName
-        options: FrameworkOptions
-      }
-  core?: StorybookConfigBase['core'] & {
-    builder?:
-      | BuilderName
-      | {
-          name: BuilderName
-          options: BuilderOptions
-        }
-  }
-}
-
-type TypescriptOptions = StorybookConfigBase['typescript'] & {
+type TypescriptOptionsReact = {
   /**
    * Sets the type of Docgen when working with React and TypeScript
    *
@@ -54,6 +41,26 @@ type TypescriptOptions = StorybookConfigBase['typescript'] & {
   reactDocgenTypescriptOptions: ReactDocgenTypescriptOptions
 }
 
+type StorybookConfigFramework = {
+  framework:
+    | FrameworkName
+    | {
+        name: FrameworkName
+        options: FrameworkOptions
+      }
+  core?: StorybookConfigBase['core'] & {
+    builder?:
+      | BuilderName
+      | {
+          name: BuilderName
+          options: BuilderOptions
+        }
+  }
+  typescript?: Partial<
+    TypescriptOptionsBase & TypescriptOptionsBuilder & TypescriptOptionsReact
+  >
+}
+
 /**
  * The interface for Storybook configuration in `main.ts` files.
  */
@@ -62,6 +69,4 @@ export type StorybookConfig = Omit<
   keyof StorybookConfigRsbuild | keyof StorybookConfigFramework
 > &
   StorybookConfigRsbuild &
-  StorybookConfigFramework & {
-    typescript?: Partial<TypescriptOptions>
-  }
+  StorybookConfigFramework
