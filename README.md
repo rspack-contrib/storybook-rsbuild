@@ -117,7 +117,7 @@ The function should return the updated Rsbuild configuration.
 
 ## Troubleshooting
 
-### Error caused by bundling unwanted modules
+### Error caused by bundling unexpected files
 
 Because Rspack temporarily does not support the `webpackInclude` magic comment, non-story files may be bundled, which could lead to build failures. These files can be ignored using `rspack.IgnorePlugin`.
 
@@ -157,8 +157,8 @@ export default {
 
 ### Features
 
-- [ ] Support TS type check (fork-ts-checker-webpack-plugin)
-- [ ] Support more frameworks
+- [x] Support TS type check (fork-ts-checker-webpack-plugin)
+- [ ] Support more frameworks (Preact / Svelte / vanilla html / Lit)
 
 ### Rspack support
 

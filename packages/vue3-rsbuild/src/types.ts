@@ -1,6 +1,10 @@
-import type { StorybookConfig as StorybookConfigBase } from '@storybook/types'
+import type {
+  StorybookConfig as StorybookConfigBase,
+  TypescriptOptions as TypescriptOptionsBaseAndVue,
+} from '@storybook/types'
 import type {
   StorybookConfigRsbuild,
+  TypescriptOptions as TypescriptOptionsBuilder,
   BuilderOptions,
 } from 'storybook-builder-rsbuild'
 
@@ -26,7 +30,7 @@ type StorybookConfigFramework = {
           options: BuilderOptions
         }
   }
-  typescript?: StorybookConfigBase['typescript']
+  typescript?: Partial<TypescriptOptionsBaseAndVue & TypescriptOptionsBuilder>
 }
 
 /**
