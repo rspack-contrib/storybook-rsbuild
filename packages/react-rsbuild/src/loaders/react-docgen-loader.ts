@@ -9,7 +9,7 @@ import {
 import * as TsconfigPaths from 'tsconfig-paths'
 import findUp from 'find-up'
 import MagicString from 'magic-string'
-// @ts-expect-error
+// @ts-expect-error can not reexport `LoaderContext` from @rsbuild/core
 import type { LoaderContext } from 'webpack'
 import type {
   Handler,

@@ -4,7 +4,7 @@ import type {
   Options,
   TypescriptOptions as TypeScriptOptionsBase,
 } from '@storybook/types'
-import type ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
+import type { PluginTypeCheckerOptions } from '@rsbuild/plugin-type-check'
 
 // Storybook's Stats are optional Webpack related property
 type RsbuildStats = {
@@ -16,9 +16,9 @@ type RsbuildStats = {
  */
 export interface TypescriptOptions extends TypeScriptOptionsBase {
   /**
-   * Configures `fork-ts-checker-webpack-plugin`
+   * Configures `@rsbuild/plugin-type-check`, using `fork-ts-checker-webpack-plugin` under the hood.
    */
-  checkOptions?: ConstructorParameters<typeof ForkTsCheckerWebpackPlugin>[0]
+  checkOptions?: PluginTypeCheckerOptions
 }
 
 export type RsbuildBuilder = Builder<RsbuildConfig, RsbuildStats>
