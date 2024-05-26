@@ -9,7 +9,9 @@ import {
   WebpackInvocationError,
 } from '@storybook/core-events/server-errors'
 import type { RsbuildBuilder } from './types'
-import rsbuildConfig from './preview/iframe-rsbuild.config'
+import rsbuildConfig, {
+  type RsbuildBuilderOptions,
+} from './preview/iframe-rsbuild.config'
 
 import prettyTime from 'pretty-hrtime'
 
@@ -39,9 +41,8 @@ export const executor = {
   },
 }
 
-export const rsbuild = async (_: unknown, options: Options) => {
+export const rsbuild = async (_: unknown, options: RsbuildBuilderOptions) => {
   const defaultConfig = await rsbuildConfig(options)
-
   const { presets } = options
   const finalDefaultConfig = await presets.apply(
     'rsbuildFinal',

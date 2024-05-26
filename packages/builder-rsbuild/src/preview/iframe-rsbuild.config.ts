@@ -15,7 +15,8 @@ import { getVirtualModules } from './virtual-module-mapping'
 import { loadConfig, mergeRsbuildConfig } from '@rsbuild/core'
 import type { RsbuildConfig } from '@rsbuild/core'
 import { webpack as docsWebpack } from '@storybook/addon-docs/dist/preset'
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
+import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
+import type { TypescriptOptions } from '../types'
 
 const getAbsolutePath = <I extends string>(input: I): I =>
   dirname(require.resolve(join(input, 'package.json'))) as any
@@ -48,7 +49,13 @@ const storybookPaths: Record<string, string> = {
   ...(themingPath ? { [`@storybook/theming`]: themingPath } : {}),
 }
 
-export default async (options: Options): Promise<RsbuildConfig> => {
+export type RsbuildBuilderOptions = Options & {
+  typescriptOptions: TypescriptOptions
+}
+
+export default async (
+  options: RsbuildBuilderOptions,
+): Promise<RsbuildConfig> => {
   const appliedDocsWebpack = await docsWebpack({}, options)
   const {
     outputDir = join('.', 'public'),
@@ -201,6 +208,9 @@ export default async (options: Options): Promise<RsbuildConfig> => {
         },
       },
     },
+    plugins: [shouldCheckTs ? pluginTypeCheck(tsCheckOptions) : null].filter(
+      Boolean,
+    ),
     tools: {
       rspack: (config, { addRules, appendPlugins, rspack, mergeConfig }) => {
         // TODO: Rspack doesn't support `unknownContextCritical` yet
@@ -258,9 +268,6 @@ export default async (options: Options): Promise<RsbuildConfig> => {
               process: require.resolve('process/browser.js'),
             }),
             new CaseSensitivePathsPlugin(),
-            shouldCheckTs
-              ? new ForkTsCheckerWebpackPlugin(tsCheckOptions)
-              : null,
           ].filter(Boolean),
         )
 

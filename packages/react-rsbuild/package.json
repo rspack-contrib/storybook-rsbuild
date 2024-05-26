@@ -68,6 +68,7 @@
   },
   "devDependencies": {
     "@storybook/types": "^8.0.10",
+    "@types/resolve": "^1.20.6",
     "add": "^2.0.6",
     "typescript": "^5.3.2"
   },
