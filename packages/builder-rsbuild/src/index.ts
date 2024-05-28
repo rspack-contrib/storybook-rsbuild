@@ -4,10 +4,7 @@ import type { Options } from '@storybook/types'
 import { dirname, join, parse } from 'path'
 import express from 'express'
 import fs from 'fs-extra'
-import {
-  NoStatsForViteDevError,
-  WebpackInvocationError,
-} from '@storybook/core-events/server-errors'
+import { WebpackInvocationError } from '@storybook/core-events/server-errors'
 import type { RsbuildBuilder } from './types'
 import rsbuildConfig, {
   type RsbuildBuilderOptions,
@@ -19,6 +16,10 @@ export * from './types'
 export * from './preview/virtual-module-mapping'
 
 type RsbuildDevServer = Awaited<ReturnType<typeof createDevServer>>
+type StatsOrMultiStats = Parameters<rsbuildReal.OnAfterBuildFn>[0]['stats']
+export type Stats = NonNullable<
+  Exclude<StatsOrMultiStats, { stats: unknown[] }>
+>
 
 export const printDuration = (startTime: [number, number]) =>
   prettyTime(process.hrtime(startTime))
@@ -98,6 +99,16 @@ export const start: RsbuildBuilder['start'] = async ({
   })
 
   const rsbuildServer = await rsbuildBuild.createDevServer()
+
+  const waitFirstCompileDone = new Promise<StatsOrMultiStats>((resolve) => {
+    rsbuildBuild.onDevCompileDone(({ stats, isFirstCompile }) => {
+      if (!isFirstCompile) {
+        return
+      }
+      resolve(stats)
+    })
+  })
+
   server = rsbuildServer
 
   if (!rsbuildBuild) {
@@ -117,19 +128,20 @@ export const start: RsbuildBuilder['start'] = async ({
 
   router.use(rsbuildServer.middlewares)
   storybookServer.on('upgrade', rsbuildServer.onHTTPUpgrade)
+  const stats = await waitFirstCompileDone
 
   return {
     bail,
-    stats: {
-      toJson: () => {
-        throw new NoStatsForViteDevError()
-      },
-    },
+    stats,
     totalTime: process.hrtime(startTime),
   }
 }
 
-export const build = async ({ options }: BuilderStartOptions) => {
+// explicit type annotation to bypass TypeScript check
+// see: https://github.com/microsoft/TypeScript/issues/47663#issuecomment-1519138189
+export const build: ({
+  options,
+}: BuilderStartOptions) => Promise<Stats> = async ({ options }) => {
   const { createRsbuild } = await executor.get(options)
   const config = await getConfig(options)
   const rsbuildBuild = await createRsbuild({
@@ -140,6 +152,11 @@ export const build = async ({ options }: BuilderStartOptions) => {
   const previewResolvedDir = getAbsolutePath('@storybook/preview')
   const previewDirOrigin = join(previewResolvedDir, 'dist')
   const previewDirTarget = join(options.outputDir || '', `sb-preview`)
+  let stats: Stats
+
+  rsbuildBuild.onAfterBuild((params) => {
+    stats = params.stats as Stats
+  })
 
   const previewFiles = fs.copy(previewDirOrigin, previewDirTarget, {
     filter: (src) => {
@@ -151,7 +168,12 @@ export const build = async ({ options }: BuilderStartOptions) => {
     },
   })
 
+  rsbuildBuild.onAfterBuild((params) => {
+    stats = params.stats as Stats
+  })
+
   await Promise.all([rsbuildBuild.build(), previewFiles])
+  return stats!
 }
 
 export const corePresets = [join(__dirname, './preview-preset.js')]

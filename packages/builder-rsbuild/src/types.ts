@@ -1,8 +1,10 @@
+import type { Stats } from './index'
 import type { RsbuildConfig } from '@rsbuild/core'
 import type {
   Builder,
   Options,
   TypescriptOptions as TypeScriptOptionsBase,
+  BuilderResult as BuilderResultBase,
 } from '@storybook/types'
 import type { PluginTypeCheckerOptions } from '@rsbuild/plugin-type-check'
 
@@ -37,4 +39,8 @@ export type BuilderOptions = {
    * Path to rsbuild.config file, relative to CWD.
    */
   rsbuildConfigPath?: string
+}
+
+export interface BuilderResult extends BuilderResultBase {
+  stats?: Stats
 }
