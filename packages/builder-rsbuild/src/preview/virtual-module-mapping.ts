@@ -30,7 +30,11 @@ export const getVirtualModules = async (options: Options) => {
     workingDir,
   })
 
-  const realPathRelativeToCwd = path.relative(workingDir, cwd)
+  // normalize to POSIX path separator for Windows compatibility
+  const realPathRelativeToCwd = path
+    .relative(workingDir, cwd)
+    .split(path.sep)
+    .join(path.posix.sep)
 
   const previewAnnotations = [
     ...(
