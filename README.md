@@ -119,10 +119,11 @@ The function should return the updated Rsbuild configuration.
 
 ### Error caused by bundling unexpected files
 
-Because Rspack temporarily does not support the `webpackInclude` magic comment, non-story files may be bundled, which could lead to build failures. These files can be ignored using `rspack.IgnorePlugin`.
+Because Rspack temporarily does not support the `webpackInclude` magic comment, non-story files may be bundled, which could lead to build failures. These files can be ignored using `rspack.IgnorePlugin` (see exmaple https://github.com/rspack-contrib/storybook-rsbuild/issues/19).
 
 ```js
 // .storybook/main.js
+import path from 'path'
 import { mergeRsbuildConfig } from '@rsbuild/core'
 
 export default {
@@ -136,7 +137,7 @@ export default {
               new rspack.IgnorePlugin({
                 checkResource: (resource, context) => {
                   // for example, ignore all markdown files
-                  const absPathHasExt = extname(resource)
+                  const absPathHasExt = path.extname(resource)
                   if (absPathHasExt === '.md') {
                     return true
                   }
