@@ -188,6 +188,9 @@ export default async (
       progressBar: !quiet,
     },
     source: {
+      // TODO: Rspack doesn't support virtual modules yet, use cache dir instead
+      // we needed to explicitly set the module in `node_modules` to be compiled
+      include: [/[\\/]node_modules[\\/].*[\\/]storybook-config-entry\.js/],
       alias: {
         ...storybookPaths,
       },
