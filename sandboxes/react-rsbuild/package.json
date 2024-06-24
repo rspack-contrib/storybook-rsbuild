@@ -4,6 +4,7 @@
   "private": true,
   "description": "",
   "author": "",
+  "type": "module",
   "scripts": {
     "build": "rsbuild build",
     "build:storybook": "storybook build",
