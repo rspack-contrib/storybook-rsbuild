@@ -53,7 +53,6 @@
     "prep": "node --loader ../../scripts/node_modules/esbuild-register/loader.js -r ../../scripts/node_modules/esbuild-register/register.js ../../scripts/prepare/bundle.ts"
   },
   "dependencies": {
-    "@rsbuild/core": "0.6.15",
     "@storybook/docs-tools": "^8.0.10",
     "@storybook/node-logger": "^8.0.10",
     "@storybook/react": "^8.0.10",
@@ -67,12 +66,14 @@
     "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
+    "@rsbuild/core": "0.7.9",
     "@storybook/types": "^8.0.10",
     "@types/resolve": "^1.20.6",
     "add": "^2.0.6",
     "typescript": "^5.3.2"
   },
   "peerDependencies": {
+    "@rsbuild/core": ">= 0.7.0",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta",
     "typescript": ">= 4.2.x"

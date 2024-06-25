@@ -8,12 +8,12 @@ The repository contains the Storybook Rsbuild builder and framework integrations
 | ------------------------------------------------------- | ---------------------------------------------------- |
 | [storybook-builder-rsbuild](./packages/builder-rsbuild) | Rsbuild powered builder for Storybook                |
 | [storybook-react-rsbuild](./packages/react-rsbuild)     | React integration for Storybook with Rsbuild builder |
-| [storybook-vue3-rsbuild](./packages/vue3-rsbuild)       | Vue3 integration for Storybook with Rsbuild builder  |
+| [storybook-vue3-rsbuild](./packages/vue3-rsbuild)       | Vue 3 integration for Storybook with Rsbuild builder |
 
 ## Usage
 
 > [!NOTE]  
-> Requirements: `@rsbuild/core >= 0.6.15` and `storybook >= 8.0` (checkout Storybook's [release note](https://storybook.js.org/blog/storybook-8/) for migration)
+> Requirements: `@rsbuild/core >= 0.7.0` and `storybook >= 8.0` (checkout Storybook's [release note](https://storybook.js.org/blog/storybook-8/) for migration)
 
 In Storybook v8, you don't need to manually install storybook-builder-rsbuild, it has been depended by the framework, such as `storybook-react-rsbuild` and `storybook-vue3-rsbuild`.
 
@@ -41,7 +41,7 @@ In Storybook v8, you don't need to manually install storybook-builder-rsbuild, i
 
 You're all set now. You could also checkout the example in [sandboxes/react-rsbuild](./sandboxes/react-rsbuild).
 
-### Use with Vue3
+### Use with Vue 3
 
 1. Install Vue3 framework integration
    ```bash

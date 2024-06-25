@@ -1,5 +1,4 @@
 import * as rsbuildReal from '@rsbuild/core'
-import type { createDevServer } from '@rsbuild/core/dist/internal'
 import type { Options } from '@storybook/types'
 import { dirname, join, parse } from 'path'
 import express from 'express'
@@ -15,7 +14,9 @@ import prettyTime from 'pretty-hrtime'
 export * from './types'
 export * from './preview/virtual-module-mapping'
 
-type RsbuildDevServer = Awaited<ReturnType<typeof createDevServer>>
+type RsbuildDevServer = Awaited<
+  ReturnType<rsbuildReal.RsbuildInstance['createDevServer']>
+>
 type StatsOrMultiStats = Parameters<rsbuildReal.OnAfterBuildFn>[0]['stats']
 export type Stats = NonNullable<
   Exclude<StatsOrMultiStats, { stats: unknown[] }>
