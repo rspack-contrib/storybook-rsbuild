@@ -17,6 +17,7 @@ import type { RsbuildConfig } from '@rsbuild/core'
 import { webpack as docsWebpack } from '@storybook/addon-docs/dist/preset'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
 import type { TypescriptOptions } from '../types'
+import { pluginHtmlMinifierTerser } from 'rsbuild-plugin-html-minifier-terser'
 
 const getAbsolutePath = <I extends string>(input: I): I =>
   dirname(require.resolve(join(input, 'package.json'))) as any
@@ -211,9 +212,10 @@ export default async (
         },
       },
     },
-    plugins: [shouldCheckTs ? pluginTypeCheck(tsCheckOptions) : null].filter(
-      Boolean,
-    ),
+    plugins: [
+      shouldCheckTs ? pluginTypeCheck(tsCheckOptions) : null,
+      pluginHtmlMinifierTerser(),
+    ].filter(Boolean),
     tools: {
       rspack: (config, { addRules, appendPlugins, rspack, mergeConfig }) => {
         // TODO: Rspack doesn't support `unknownContextCritical` yet
@@ -310,14 +312,16 @@ export default async (
           headHtmlSnippet,
           bodyHtmlSnippet,
         },
-        minify: {
-          collapseWhitespace: true,
-          removeComments: true,
-          removeRedundantAttributes: true,
-          removeScriptTypeAttributes: false,
-          removeStyleLinkTypeAttributes: true,
-          useShortDoctype: true,
-        },
+        // FIXME: rsbuild stop supporting html minimizing since https://github.com/web-infra-dev/rsbuild/commit/848a57c9e213c612a9b196899af10ec40907820f
+        // Track in https://github.com/rspack-contrib/rsbuild-plugin-html-minifier-terser/pull/1
+        // minify: {
+        // collapseWhitespace: true,
+        // removeComments: true,
+        // removeRedundantAttributes: true,
+        // removeScriptTypeAttributes: false,
+        // removeStyleLinkTypeAttributes: true,
+        // useShortDoctype: true,
+        // },
       },
     },
   })

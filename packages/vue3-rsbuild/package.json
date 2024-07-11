@@ -56,12 +56,12 @@
     "vue-docgen-loader": "^1.5.1"
   },
   "devDependencies": {
-    "@rsbuild/core": "0.7.9",
+    "@rsbuild/core": "1.0.0-alpha.9",
     "@types/node": "^18.0.0",
     "typescript": "^5.3.2"
   },
   "peerDependencies": {
-    "@rsbuild/core": ">= 0.7.0"
+    "@rsbuild/core": ">= 1.0.0-alpha.9"
   },
   "peerDependenciesMeta": {
     "typescript": {
