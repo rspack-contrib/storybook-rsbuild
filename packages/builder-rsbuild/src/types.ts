@@ -5,7 +5,7 @@ import type {
   Options,
   TypescriptOptions as TypeScriptOptionsBase,
   BuilderResult as BuilderResultBase,
-} from '@storybook/types'
+} from 'storybook/internal/types'
 import type { PluginTypeCheckerOptions } from '@rsbuild/plugin-type-check'
 
 // Storybook's Stats are optional Webpack related property

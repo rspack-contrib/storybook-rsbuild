@@ -1,13 +1,14 @@
 import * as rsbuildReal from '@rsbuild/core'
-import type { Options } from '@storybook/types'
-import { dirname, join, parse } from 'path'
+import type { Options } from 'storybook/internal/types'
+import { join, parse } from 'path'
 import express from 'express'
 import fs from 'fs-extra'
-import { WebpackInvocationError } from '@storybook/core-events/server-errors'
+import { WebpackInvocationError } from 'storybook/internal/server-errors'
 import type { RsbuildBuilder } from './types'
 import rsbuildConfig, {
   type RsbuildBuilderOptions,
 } from './preview/iframe-rsbuild.config'
+import { corePath } from 'storybook/core-path'
 
 import prettyTime from 'pretty-hrtime'
 
@@ -27,9 +28,6 @@ export const printDuration = (startTime: [number, number]) =>
     .replace(' ms', ' milliseconds')
     .replace(' s', ' seconds')
     .replace(' m', ' minutes')
-
-const getAbsolutePath = <I extends string>(input: I): I =>
-  dirname(require.resolve(join(input, 'package.json'))) as any
 
 type BuilderStartOptions = Parameters<RsbuildBuilder['start']>['0']
 
@@ -119,8 +117,8 @@ export const start: RsbuildBuilder['start'] = async ({
     })
   }
 
-  const previewResolvedDir = getAbsolutePath('@storybook/preview')
-  const previewDirOrigin = join(previewResolvedDir, 'dist')
+  const previewResolvedDir = join(corePath, 'dist/preview')
+  const previewDirOrigin = previewResolvedDir
 
   router.use(
     `/sb-preview`,
@@ -150,8 +148,8 @@ export const build: ({
     rsbuildConfig: config,
   })
 
-  const previewResolvedDir = getAbsolutePath('@storybook/preview')
-  const previewDirOrigin = join(previewResolvedDir, 'dist')
+  const previewResolvedDir = join(corePath, 'dist/preview')
+  const previewDirOrigin = previewResolvedDir
   const previewDirTarget = join(options.outputDir || '', `sb-preview`)
   let stats: Stats
 

@@ -4,14 +4,14 @@ import type {
   NormalizedStoriesSpecifier,
   Options,
   PreviewAnnotation,
-} from '@storybook/types'
+} from 'storybook/internal/types'
 import { join, resolve } from 'path'
 import {
   handlebars,
   loadPreviewOrConfigFile,
   normalizeStories,
   readTemplate,
-} from '@storybook/core-common'
+} from 'storybook/internal/common'
 import slash from 'slash'
 import { webpackIncludeRegexp } from '@storybook/core-webpack'
 import { dedent } from 'ts-dedent'

@@ -17,7 +17,7 @@ import type {
   babelTypes as t,
   Documentation,
 } from 'react-docgen'
-import { logger } from '@storybook/node-logger'
+import { logger } from 'storybook/internal/node-logger'
 
 import {
   RESOLVE_EXTENSIONS,
