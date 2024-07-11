@@ -1,5 +1,5 @@
 import type { StorybookConfig } from './types'
-import { hasDocsOrControls } from '@storybook/docs-tools'
+import { hasDocsOrControls } from 'storybook/internal/docs-tools'
 import { mergeRsbuildConfig } from '@rsbuild/core'
 
 export const rsbuildFinal: StorybookConfig['rsbuildFinal'] = (
