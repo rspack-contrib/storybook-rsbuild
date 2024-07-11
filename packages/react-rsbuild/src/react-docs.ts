@@ -1,4 +1,4 @@
-import { hasDocsOrControls } from '@storybook/docs-tools'
+import { hasDocsOrControls } from 'storybook/internal/docs-tools'
 import { mergeRsbuildConfig } from '@rsbuild/core'
 
 import type { RsbuildConfig } from '@rsbuild/core'

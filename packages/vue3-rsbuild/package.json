@@ -49,19 +49,19 @@
     "prep": "node --loader ../../scripts/node_modules/esbuild-register/loader.js -r ../../scripts/node_modules/esbuild-register/register.js ../../scripts/prepare/bundle.ts"
   },
   "dependencies": {
-    "@storybook/docs-tools": "^8.0.10",
-    "@storybook/types": "^8.0.10",
-    "@storybook/vue3": "^8.0.10",
+    "@storybook/vue3": "^8.2.1",
     "storybook-builder-rsbuild": "workspace:*",
     "vue-docgen-loader": "^1.5.1"
   },
   "devDependencies": {
     "@rsbuild/core": "1.0.0-alpha.9",
     "@types/node": "^18.0.0",
+    "storybook": "^8.2.1",
     "typescript": "^5.3.2"
   },
   "peerDependencies": {
-    "@rsbuild/core": ">= 1.0.0-alpha.9"
+    "@rsbuild/core": ">= 1.0.0-alpha.9",
+    "storybook": "^8.2.1"
   },
   "peerDependenciesMeta": {
     "typescript": {

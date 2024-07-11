@@ -1,15 +1,15 @@
 import { dirname, join, resolve } from 'path'
 // @ts-expect-error (I removed this on purpose, because it's incorrect)
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
-import type { Options } from '@storybook/types'
+import type { Options } from 'storybook/internal/types'
 import type { BuilderOptions } from '../types'
-import { globalsNameReferenceMap } from '@storybook/preview/globals'
+import { globalsNameReferenceMap } from 'storybook/internal/preview/globals'
 import {
   stringifyProcessEnvs,
   normalizeStories,
   getBuilderOptions,
   isPreservingSymlinks,
-} from '@storybook/core-common'
+} from 'storybook/internal/common'
 import { dedent } from 'ts-dedent'
 import { getVirtualModules } from './virtual-module-mapping'
 import { loadConfig, mergeRsbuildConfig } from '@rsbuild/core'

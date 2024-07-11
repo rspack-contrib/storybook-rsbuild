@@ -1,7 +1,7 @@
 import type {
   StorybookConfig as StorybookConfigBase,
   TypescriptOptions as TypescriptOptionsBaseAndVue,
-} from '@storybook/types'
+} from 'storybook/internal/types'
 import type {
   StorybookConfigRsbuild,
   TypescriptOptions as TypescriptOptionsBuilder,

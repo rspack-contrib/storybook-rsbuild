@@ -69,7 +69,7 @@ const run = async ({ cwd, flags }: { cwd: string; flags: string[] }) => {
 
   const outDir = join(process.cwd(), 'dist')
   const externals = [
-    name,
+    name!,
     ...extraExternals,
     ...Object.keys(dependencies || {}),
     ...Object.keys(peerDependencies || {}),

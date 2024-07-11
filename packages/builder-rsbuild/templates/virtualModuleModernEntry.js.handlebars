@@ -1,7 +1,7 @@
 import { global } from '@storybook/global';
 
-import { ClientApi, PreviewWeb, addons, composeConfigs } from '@storybook/preview-api';
-import { createBrowserChannel } from '@storybook/channels';
+import { ClientApi, PreviewWeb, addons, composeConfigs } from 'storybook/internal/preview-api';
+import { createBrowserChannel } from 'storybook/internal/channels';
 
 import { importFn } from './{{storiesFilename}}';
 
