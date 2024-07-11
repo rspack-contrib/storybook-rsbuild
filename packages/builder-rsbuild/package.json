@@ -60,7 +60,7 @@
     "prep": "node --loader ../../scripts/node_modules/esbuild-register/loader.js -r ../../scripts/node_modules/esbuild-register/register.js ../../scripts/prepare/bundle.ts"
   },
   "dependencies": {
-    "@rsbuild/plugin-type-check": "0.7.9",
+    "@rsbuild/plugin-type-check": "1.0.0-alpha.9",
     "@storybook/addon-docs": "^8.0.10",
     "@storybook/channels": "^8.0.10",
     "@storybook/client-logger": "^8.0.10",
@@ -83,6 +83,7 @@
     "magic-string": "^0.30.5",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
+    "rsbuild-plugin-html-minifier-terser": "^1.0.0",
     "style-loader": "^3.3.1",
     "ts-dedent": "^2.2.0",
     "url": "^0.11.0",
@@ -90,7 +91,7 @@
     "util-deprecate": "^1.0.2"
   },
   "devDependencies": {
-    "@rsbuild/core": "0.7.9",
+    "@rsbuild/core": "1.0.0-alpha.9",
     "@types/express": "^4.17.21",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^18.0.0",
@@ -101,7 +102,7 @@
     "typescript": "^5.3.2"
   },
   "peerDependencies": {
-    "@rsbuild/core": ">= 0.7.0"
+    "@rsbuild/core": ">= 1.0.0-alpha.9"
   },
   "peerDependenciesMeta": {
     "typescript": {
