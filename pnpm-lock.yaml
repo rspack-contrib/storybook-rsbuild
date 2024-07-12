@@ -75,8 +75,8 @@ importers:
         specifier: ^0.11.10
         version: 0.11.10
       rsbuild-plugin-html-minifier-terser:
-        specifier: ^1.0.0
-        version: 1.0.0(@rsbuild/core@1.0.0-alpha.9)
+        specifier: ^1.1.0
+        version: 1.1.0(@rsbuild/core@1.0.0-alpha.9)
       style-loader:
         specifier: ^3.3.1
         version: 3.3.4(webpack@5.92.1(esbuild@0.20.2))
@@ -4922,8 +4922,8 @@ packages:
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
 
-  rsbuild-plugin-html-minifier-terser@1.0.0:
-    resolution: {integrity: sha512-qMAlq5OHSlufj7blMRq6UcTVti9dr7kMcHHgnmLa+jy18KaLAfvKRAWQxyv0TkmBSvEtzgjvMvYen6IoluE4qg==}
+  rsbuild-plugin-html-minifier-terser@1.1.0:
+    resolution: {integrity: sha512-HCpRf56k372xYD9F0kiuBO+n/Gxz9iDmTlPa88c6GdjEe6+pzyNbvhJmojJYp3/6tvDw0avWCPchW7uZ64FZwA==}
     peerDependencies:
       '@rsbuild/core': 1.x
     peerDependenciesMeta:
@@ -11331,7 +11331,7 @@ snapshots:
       '@rollup/rollup-win32-x64-msvc': 4.17.2
       fsevents: 2.3.3
 
-  rsbuild-plugin-html-minifier-terser@1.0.0(@rsbuild/core@1.0.0-alpha.9):
+  rsbuild-plugin-html-minifier-terser@1.1.0(@rsbuild/core@1.0.0-alpha.9):
     dependencies:
       '@types/html-minifier-terser': 7.0.2
       html-minifier-terser: 7.2.0

@@ -214,7 +214,14 @@ export default async (
     },
     plugins: [
       shouldCheckTs ? pluginTypeCheck(tsCheckOptions) : null,
-      pluginHtmlMinifierTerser(),
+      pluginHtmlMinifierTerser({
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: false,
+        removeStyleLinkTypeAttributes: true,
+        useShortDoctype: true,
+      }),
     ].filter(Boolean),
     tools: {
       rspack: (config, { addRules, appendPlugins, rspack, mergeConfig }) => {
@@ -320,16 +327,6 @@ export default async (
           headHtmlSnippet,
           bodyHtmlSnippet,
         },
-        // FIXME: rsbuild stop supporting html minimizing since https://github.com/web-infra-dev/rsbuild/commit/848a57c9e213c612a9b196899af10ec40907820f
-        // Track in https://github.com/rspack-contrib/rsbuild-plugin-html-minifier-terser/pull/1
-        // minify: {
-        // collapseWhitespace: true,
-        // removeComments: true,
-        // removeRedundantAttributes: true,
-        // removeScriptTypeAttributes: false,
-        // removeStyleLinkTypeAttributes: true,
-        // useShortDoctype: true,
-        // },
       },
     },
   })
