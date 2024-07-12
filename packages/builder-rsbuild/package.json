@@ -57,7 +57,8 @@
   ],
   "scripts": {
     "check": "node --loader ../../scripts/node_modules/esbuild-register/loader.js -r ../../scripts/node_modules/esbuild-register/register.js ../../scripts/prepare/check.ts",
-    "prep": "node --loader ../../scripts/node_modules/esbuild-register/loader.js -r ../../scripts/node_modules/esbuild-register/register.js ../../scripts/prepare/bundle.ts"
+    "prep": "node --loader ../../scripts/node_modules/esbuild-register/loader.js -r ../../scripts/node_modules/esbuild-register/register.js ../../scripts/prepare/bundle.ts",
+    "prepare": "pnpm run prep --optimized"
   },
   "dependencies": {
     "@rsbuild/plugin-type-check": "1.0.0-alpha.9",

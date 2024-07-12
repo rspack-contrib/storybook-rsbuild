@@ -9,8 +9,10 @@ import rsbuildConfig, {
   type RsbuildBuilderOptions,
 } from './preview/iframe-rsbuild.config'
 import { corePath } from 'storybook/core-path'
+import { applyReactShims } from './react-shims'
 
 import prettyTime from 'pretty-hrtime'
+import { mergeRsbuildConfig } from '@rsbuild/core'
 
 export * from './types'
 export * from './preview/virtual-module-mapping'
@@ -42,15 +44,21 @@ export const executor = {
 }
 
 export const rsbuild = async (_: unknown, options: RsbuildBuilderOptions) => {
-  const defaultConfig = await rsbuildConfig(options)
   const { presets } = options
+  let defaultConfig = await rsbuildConfig(options)
+  const shimsConfig = await applyReactShims(defaultConfig, options)
+  defaultConfig = mergeRsbuildConfig(
+    defaultConfig,
+    shimsConfig,
+  ) as rsbuildReal.RsbuildConfig
+
   const finalDefaultConfig = await presets.apply(
     'rsbuildFinal',
     defaultConfig,
     options,
   )
 
-  return finalDefaultConfig
+  return mergeRsbuildConfig(finalDefaultConfig)
 }
 
 export const getConfig: RsbuildBuilder['getConfig'] = async (options) => {
