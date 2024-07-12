@@ -267,6 +267,14 @@ export default async (
           : isProd
         config.optimization.moduleIds = 'named'
 
+        // If using react-dom-shim with React 16/17, `useId` won't be exported in dependency,
+        // which will cause an HarmonyLinkingError. Set `exportsPresence` to `false` to allow
+        // doing this runtime detection.
+        config.module ??= {}
+        config.module.parser ??= {}
+        config.module.parser.javascript ??= {}
+        config.module.parser.javascript.exportsPresence = false
+
         appendPlugins(
           [
             new rspack.ProvidePlugin({

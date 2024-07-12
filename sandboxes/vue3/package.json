@@ -1,5 +1,5 @@
 {
-  "name": "@sandboxes/vue3-rsbuild",
+  "name": "@sandboxes/vue3",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -14,8 +14,8 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.4.0",
-    "@rsbuild/core": "1.0.0-alpha.6",
-    "@rsbuild/plugin-vue": "1.0.0-alpha.6",
+    "@rsbuild/core": "1.0.0-alpha.9",
+    "@rsbuild/plugin-vue": "1.0.0-alpha.9",
     "@storybook/addon-essentials": "8.2.1",
     "@storybook/addon-interactions": "8.2.1",
     "@storybook/addon-links": "8.2.1",
