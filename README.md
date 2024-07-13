@@ -12,10 +12,10 @@ The repository contains the Storybook Rsbuild builder and framework integrations
 
 ## Usage
 
-> [!NOTE]  
-> Requirements:
+> [!IMPORTANT]  
+> Peer dependencies requirements:
 >
-> - **`@rsbuild/core >= 1.0.0-alpha.9`**: Rsbuild is going to ship 1.0.0 version and the alpha version is reliable for now. (checkout Rsbuild's [1.0.0 breaking changes](https://github.com/web-infra-dev/rsbuild/discussions/2508))
+> - **`@rsbuild/core >= 1.0.0-alpha.9`**: Rsbuild is about to release version 1.0.0, and the current alpha version is already very reliable. (checkout Rsbuild's [1.0.0 breaking changes](https://github.com/web-infra-dev/rsbuild/discussions/2508))
 > - **`storybook >= 8.2.1`**: Storybook made some internal refactor in major version, 8.2.1 is tested out. (checkout Storybook's [release note](https://storybook.js.org/blog/storybook-8/) for migrating from v7)
 
 In Storybook v8, you don't need to manually install storybook-builder-rsbuild, it has been depended by the framework, such as `storybook-react-rsbuild` and `storybook-vue3-rsbuild`.
@@ -122,7 +122,7 @@ The function should return the updated Rsbuild configuration.
 
 ### Error caused by bundling unexpected files
 
-> [!IMPORTANT]
+> [!NOTE]
 > Rspack starts to support `webpackInclude` magic comment, this trouble won't exists since 0.0.7
 
 Because Rspack temporarily does not support the `webpackInclude` magic comment, non-story files may be bundled, which could lead to build failures. These files can be ignored using `rspack.IgnorePlugin` (see exmaple https://github.com/rspack-contrib/storybook-rsbuild/issues/19).
@@ -164,12 +164,12 @@ export default {
 
 ### Features
 
-- [x] Support TS type check (fork-ts-checker-webpack-plugin)
+- [x] Support TS type check (fork-ts-checker-webpack-plugin) _(supported in [0.0.4](https://github.com/rspack-contrib/storybook-rsbuild/releases/tag/v0.0.4))_
 - [ ] Support more frameworks (Preact / Svelte / vanilla html / Lit)
 
 ### Rspack support
 
-- [ ] Support `webpackInclude` magic comment 🌟
+- [x] Support `webpackInclude` magic comment _(supported in [0.0.7](https://github.com/rspack-contrib/storybook-rsbuild/releases/tag/v0.0.7))_
 - [ ] Support persistent cache
 - [ ] Support lazy compilation
 - [ ] Support virtual modules
