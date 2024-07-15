@@ -20,7 +20,11 @@ const config: StorybookConfig = {
   ],
   framework: {
     name: getAbsolutePath('storybook-react-rsbuild'),
-    options: {},
+    options: {
+      builder: {
+        lazyCompilation: true,
+      },
+    },
   },
   docs: {
     autodocs: 'tag',

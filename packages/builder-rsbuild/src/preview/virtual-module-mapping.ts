@@ -11,10 +11,12 @@ import {
   loadPreviewOrConfigFile,
   normalizeStories,
   readTemplate,
+  getBuilderOptions,
 } from 'storybook/internal/common'
 import slash from 'slash'
 import { webpackIncludeRegexp } from '@storybook/core-webpack'
 import { dedent } from 'ts-dedent'
+import { BuilderOptions } from '../types'
 
 export const getVirtualModules = async (options: Options) => {
   const virtualModules: Record<string, string> = {}
@@ -60,10 +62,8 @@ export const getVirtualModules = async (options: Options) => {
   const storiesFilename = 'storybook-stories.js'
   const storiesPath = resolve(join(workingDir, storiesFilename))
 
-  // TODO: Rspack doesn't support lazyCompilation yet
-  // const builderOptions = await getBuilderOptions<BuilderOptions>(options)
-  // const needPipelinedImport = !!builderOptions.lazyCompilation && !isProd
-  const needPipelinedImport = !isProd
+  const builderOptions = await getBuilderOptions<BuilderOptions>(options)
+  const needPipelinedImport = !!builderOptions.lazyCompilation && !isProd
   virtualModules[storiesPath] = toImportFn(stories, realPathRelativeToCwd, {
     needPipelinedImport,
   })
@@ -103,8 +103,6 @@ export const getVirtualModules = async (options: Options) => {
 export function toImportFnPart(specifier: NormalizedStoriesSpecifier) {
   const { directory, importPathMatcher } = specifier
 
-  // TODO: Rspack doesn't support `webpackInclude` magic comments
-  // so the import() here will include all files in the directory
   return dedent`
       async (path) => {
         if (!${importPathMatcher}.exec(path)) {
