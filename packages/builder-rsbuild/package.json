@@ -61,7 +61,7 @@
     "prepare": "pnpm run prep --optimized"
   },
   "dependencies": {
-    "@rsbuild/plugin-type-check": "1.0.0-alpha.9",
+    "@rsbuild/plugin-type-check": "1.0.1-beta.0",
     "@storybook/addon-docs": "^8.2.1",
     "@storybook/core-webpack": "^8.2.1",
     "browser-assert": "^1.2.1",
@@ -83,7 +83,7 @@
     "util-deprecate": "^1.0.2"
   },
   "devDependencies": {
-    "@rsbuild/core": "1.0.0-alpha.9",
+    "@rsbuild/core": "1.0.1-beta.0",
     "@types/express": "^4.17.21",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^18.0.0",

@@ -39,6 +39,10 @@ export type BuilderOptions = {
    * Path to rsbuild.config file, relative to CWD.
    */
   rsbuildConfigPath?: string
+  /**
+   * Enable Rspack's lazy compilation (experimental).
+   */
+  lazyCompilation?: boolean
 }
 
 export interface BuilderResult extends BuilderResultBase {

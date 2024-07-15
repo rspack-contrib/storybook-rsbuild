@@ -108,24 +108,22 @@ export default async (
     workingDir,
   })
 
-  // TODO: not inclined to support fork-ts-checker-webpack-plugin
   const shouldCheckTs =
     typescriptOptions.check && !typescriptOptions.skipCompiler
   const tsCheckOptions = typescriptOptions.checkOptions || {}
 
   // TODO: Rspack doesn't support persistent cache yet
-  // const builderOptions = await getBuilderOptions<BuilderOptions>(options)
+  const builderOptions = await getBuilderOptions<BuilderOptions>(options)
   // const cacheConfig = builderOptions.fsCache
   //   ? { cache: { type: 'filesystem' as const } }
   //   : {}
 
-  // TODO: Rspack doesn't support lazyCompilation yet
-  // const lazyCompilationConfig =
-  //   builderOptions.lazyCompilation && !isProd
-  //     ? {
-  //         lazyCompilation: { entries: false },
-  //       }
-  //     : {}
+  const lazyCompilationConfig =
+    builderOptions.lazyCompilation && !isProd
+      ? {
+          lazyCompilation: { entries: false },
+        }
+      : {}
 
   if (!template) {
     throw new Error(dedent`
@@ -290,6 +288,12 @@ export default async (
             new CaseSensitivePathsPlugin(),
           ].filter(Boolean),
         )
+
+        config.experiments ??= {}
+        config.experiments = {
+          ...config.experiments,
+          ...lazyCompilationConfig,
+        }
 
         // TODO: manually call and apply `webpack` from @storybook/addon-docs
         // as it's a built-in logic for Storybook's official webpack and Vite builder.

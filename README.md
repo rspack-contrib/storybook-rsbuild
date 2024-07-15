@@ -171,7 +171,7 @@ export default {
 
 - [x] Support `webpackInclude` magic comment _(supported in [0.0.7](https://github.com/rspack-contrib/storybook-rsbuild/releases/tag/v0.0.7))_
 - [ ] Support persistent cache
-- [ ] Support lazy compilation
+- [x] Support lazy compilation
 - [ ] Support virtual modules
 - [ ] Support `module.unknownContextCritical`
 - [ ] Support `compilation.dependencyTemplates.set` for react-docgen-typescript 🌟
