@@ -47,4 +47,4 @@ jobs:
 
       - name: Build Test
         run: |
-          pnpm run test:sandboxes-build
+          pnpm run build:sandboxes
