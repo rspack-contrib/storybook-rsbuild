@@ -133,3 +133,4 @@ dist
 dist/
 storybook-static/
 .DS_Store
+.nx

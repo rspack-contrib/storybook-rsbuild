@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "namedInputs": {
+    "default": ["{projectRoot}/packages/src/**/*"],
+    "build": [
+      "default",
+      "!{projectRoot}/**/*.{md,mdx}",
+      "{projectRoot}/tsconfig.json",
+      "{projectRoot}/package.json",
+      "{projectRoot}/scripts/**/*"
+    ],
+    "sandbox": ["{projectRoot}/.storybook/**/*"]
+  },
+  "targetDefaults": {
+    "build": {
+      "cache": true,
+      "inputs": ["build", "^build"],
+      "outputs": ["{projectRoot}/dist"]
+    },
+    "build:storybook": {
+      "cache": true,
+      "dependsOn": ["build"],
+      "inputs": ["build", "sandbox"],
+      "outputs": ["{projectRoot}/storybook-static"]
+    }
+  },
+  "defaultBase": "main"
+}

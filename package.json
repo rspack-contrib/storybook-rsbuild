@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "pnpm --filter \"./packages/**\" run prep --optimized",
+    "build": "cross-env NX_DAEMON=false nx run-many -t build --exclude @sandboxes/* --parallel=10",
+    "build:sandboxes": "cross-env NX_DAEMON=false nx run-many -t build:storybook --projects @sandboxes/* --parallel=10",
     "check": "pnpm --parallel --filter \"./packages/**\" run check",
-    "dev": "pnpm --parallel --filter \"./packages/**\" run prep --watch",
-    "test:sandboxes-build": "pnpm --parallel --filter \"./sandboxes/**\" run build:storybook"
+    "dev": "pnpm --parallel --filter \"./packages/**\" run prep --watch"
   },
   "simple-git-hooks": {
     "pre-commit": "npx nano-staged"
@@ -20,7 +20,9 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
+    "cross-env": "^7.0.3",
     "nano-staged": "^0.8.0",
+    "nx": "^19.4.3",
     "prettier": "^3.2.5",
     "simple-git-hooks": "^2.11.1",
     "sort-package-json": "^2.10.0",
