@@ -1,6 +1,7 @@
 import * as rsbuildReal from '@rsbuild/core'
 import type { Options } from 'storybook/internal/types'
 import { join, parse } from 'path'
+import { AddressInfo, createServer } from 'net'
 import express from 'express'
 import fs from 'fs-extra'
 import { WebpackInvocationError } from 'storybook/internal/server-errors'
@@ -93,10 +94,9 @@ export const start: RsbuildBuilder['start'] = async ({
       ...config,
       server: {
         ...config.server,
-        port: options.port,
-        host: 'localhost',
+        port: await getRandomPort(options.host),
+        host: options.host,
         htmlFallback: false,
-        strictPort: true,
         printUrls: false,
       },
       dev: {
@@ -187,3 +187,17 @@ export const corePresets = [join(__dirname, './preview-preset.js')]
 
 export const previewMainTemplate = () =>
   require.resolve('storybook-builder-rsbuild/templates/preview.ejs')
+
+function getRandomPort(host?: string) {
+  return new Promise<number>((resolve, reject) => {
+    const server = createServer()
+    server.unref()
+    server.on('error', reject)
+    server.listen({ port: 0, host }, () => {
+      const { port } = server.address() as AddressInfo
+      server.close(() => {
+        resolve(port)
+      })
+    })
+  })
+}
