@@ -3,14 +3,14 @@
  * to follow the build process of Storybook to ease migration.
  */
 
-import * as fs from 'fs-extra'
-import path, { dirname, join, relative } from 'path'
-import type { Options } from 'tsup'
-import type { PackageJson } from 'type-fest'
-import { build } from 'tsup'
+import path, { dirname, join, relative } from 'node:path'
 import aliasPlugin from 'esbuild-plugin-alias'
-import dedent from 'ts-dedent'
+import * as fs from 'fs-extra'
 import slash from 'slash'
+import dedent from 'ts-dedent'
+import type { Options } from 'tsup'
+import { build } from 'tsup'
+import type { PackageJson } from 'type-fest'
 import { exec } from '../utils/exec'
 
 /* TYPES */

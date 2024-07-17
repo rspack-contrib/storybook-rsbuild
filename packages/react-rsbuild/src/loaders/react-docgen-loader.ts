@@ -1,23 +1,23 @@
-import {
-  parse,
-  builtinResolvers as docgenResolver,
-  builtinHandlers as docgenHandlers,
-  makeFsImporter,
-  ERROR_CODES,
-  utils,
-} from 'react-docgen'
-import * as TsconfigPaths from 'tsconfig-paths'
 import findUp from 'find-up'
 import MagicString from 'magic-string'
-// @ts-expect-error can not reexport `LoaderContext` from @rsbuild/core
-import type { LoaderContext } from 'webpack'
+import {
+  ERROR_CODES,
+  builtinHandlers as docgenHandlers,
+  builtinResolvers as docgenResolver,
+  makeFsImporter,
+  parse,
+  utils,
+} from 'react-docgen'
 import type {
+  Documentation,
   Handler,
   NodePath,
   babelTypes as t,
-  Documentation,
 } from 'react-docgen'
 import { logger } from 'storybook/internal/node-logger'
+import * as TsconfigPaths from 'tsconfig-paths'
+// @ts-expect-error can not reexport `LoaderContext` from @rsbuild/core
+import type { LoaderContext } from 'webpack'
 
 import {
   RESOLVE_EXTENSIONS,
@@ -86,11 +86,11 @@ let tsconfigPathsInitializeStatus:
 let resolveTsconfigPathsInitialingPromise: (
   value: void | PromiseLike<void>,
 ) => void
-let tsconfigPathsInitialingPromise = new Promise<void>((resolve) => {
+const tsconfigPathsInitialingPromise = new Promise<void>((resolve) => {
   resolveTsconfigPathsInitialingPromise = resolve
 })
 
-let finishInitialization = () => {
+const finishInitialization = () => {
   resolveTsconfigPathsInitialingPromise()
   tsconfigPathsInitializeStatus = 'initialized'
 }
@@ -142,13 +142,13 @@ export default async function reactDocgenLoader(
 
     const magicString = new MagicString(source)
 
-    docgenResults.forEach((info) => {
+    for (const info of docgenResults) {
       const { actualName, definedInFile, ...docgenInfo } = info
       if (actualName && definedInFile === this.resourcePath) {
         const docNode = JSON.stringify(docgenInfo)
         magicString.append(`;${actualName}.__docgenInfo=${docNode}`)
       }
-    })
+    }
 
     callback(
       null,
@@ -188,9 +188,8 @@ export function getReactDocgenImporter(
       if (matchingPath) {
         const match = matchingPath(filename)
         return match || filename
-      } else {
-        return filename
       }
+      return filename
     })()
 
     const result = defaultLookupModule(mappedFilenameByPaths, basedir)

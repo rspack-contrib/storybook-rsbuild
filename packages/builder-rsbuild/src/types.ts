@@ -1,12 +1,12 @@
-import type { Stats } from './index'
 import type { RsbuildConfig } from '@rsbuild/core'
+import type { PluginTypeCheckerOptions } from '@rsbuild/plugin-type-check'
 import type {
   Builder,
+  BuilderResult as BuilderResultBase,
   Options,
   TypescriptOptions as TypeScriptOptionsBase,
-  BuilderResult as BuilderResultBase,
 } from 'storybook/internal/types'
-import type { PluginTypeCheckerOptions } from '@rsbuild/plugin-type-check'
+import type { Stats } from './index'
 
 // Storybook's Stats are optional Webpack related property
 type RsbuildStats = {

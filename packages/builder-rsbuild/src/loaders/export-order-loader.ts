@@ -1,8 +1,8 @@
 import assert from 'node:assert'
-import { parse as parseCjs, init as initCjsParser } from 'cjs-module-lexer'
+import type { Rspack } from '@rsbuild/core'
+import { init as initCjsParser, parse as parseCjs } from 'cjs-module-lexer'
 import { parse as parseEs } from 'es-module-lexer'
 import MagicString from 'magic-string'
-import type { Rspack } from '@rsbuild/core'
 
 export default async function loader(
   this: Rspack.LoaderContext<any>,

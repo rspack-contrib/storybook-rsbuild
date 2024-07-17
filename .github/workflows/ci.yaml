@@ -43,8 +43,12 @@ jobs:
       - name: Install Dependencies
         run: |
           pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: |
+          pnpm lint
           pnpm check
 
-      - name: Build Test
+      - name: Build sandboxes storybooks
         run: |
           pnpm run build:sandboxes

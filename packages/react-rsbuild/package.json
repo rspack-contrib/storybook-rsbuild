@@ -2,12 +2,7 @@
   "name": "storybook-react-rsbuild",
   "version": "0.0.7",
   "description": "Storybook for React and Rsbuild: Develop React components in isolation with Hot Reloading.",
-  "keywords": [
-    "storybook",
-    "rsbuild",
-    "rspack",
-    "react"
-  ],
+  "keywords": ["storybook", "rsbuild", "rspack", "react"],
   "bugs": {
     "url": "https://github.com/rspack-contrib/storybook-rsbuild/issues"
   },
@@ -41,13 +36,7 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist/**/*",
-    "README.md",
-    "*.js",
-    "*.d.ts",
-    "!src/**/*"
-  ],
+  "files": ["dist/**/*", "README.md", "*.js", "*.d.ts", "!src/**/*"],
   "scripts": {
     "build": "pnpm run prep --optimized",
     "check": "node --loader ../../scripts/node_modules/esbuild-register/loader.js -r ../../scripts/node_modules/esbuild-register/register.js ../../scripts/prepare/check.ts",

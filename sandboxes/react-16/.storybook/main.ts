@@ -1,5 +1,5 @@
+import { dirname, join } from 'node:path'
 import type { StorybookConfig } from 'storybook-react-rsbuild'
-import { join, dirname } from 'path'
 
 /**
  * This function is used to resolve the absolute path of a package.
@@ -27,12 +27,15 @@ const config: StorybookConfig = {
     },
   },
   docs: {
-    autodocs: 'tag',
+    defaultName: 'Docs',
+    docsMode: false,
+    autodocs: false,
   },
   typescript: {
     reactDocgen: 'react-docgen',
     check: true,
   },
+  staticDirs: ['../public'],
 }
 
 export default config

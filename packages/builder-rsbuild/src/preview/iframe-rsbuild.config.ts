@@ -1,23 +1,23 @@
-import { dirname, join, resolve } from 'path'
-// @ts-expect-error (I removed this on purpose, because it's incorrect)
-import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
-import type { Options } from 'storybook/internal/types'
-import type { BuilderOptions } from '../types'
-import { globalsNameReferenceMap } from 'storybook/internal/preview/globals'
-import {
-  stringifyProcessEnvs,
-  normalizeStories,
-  getBuilderOptions,
-  isPreservingSymlinks,
-} from 'storybook/internal/common'
-import { dedent } from 'ts-dedent'
-import { getVirtualModules } from './virtual-module-mapping'
+import { dirname, join, resolve } from 'node:path'
 import { loadConfig, mergeRsbuildConfig } from '@rsbuild/core'
 import type { RsbuildConfig } from '@rsbuild/core'
-import { webpack as docsWebpack } from '@storybook/addon-docs/dist/preset'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
-import type { TypescriptOptions } from '../types'
+import { webpack as docsWebpack } from '@storybook/addon-docs/dist/preset'
+// @ts-expect-error (I removed this on purpose, because it's incorrect)
+import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 import { pluginHtmlMinifierTerser } from 'rsbuild-plugin-html-minifier-terser'
+import {
+  getBuilderOptions,
+  isPreservingSymlinks,
+  normalizeStories,
+  stringifyProcessEnvs,
+} from 'storybook/internal/common'
+import { globalsNameReferenceMap } from 'storybook/internal/preview/globals'
+import type { Options } from 'storybook/internal/types'
+import { dedent } from 'ts-dedent'
+import type { BuilderOptions } from '../types'
+import type { TypescriptOptions } from '../types'
+import { getVirtualModules } from './virtual-module-mapping'
 
 const getAbsolutePath = <I extends string>(input: I): I =>
   dirname(require.resolve(join(input, 'package.json'))) as any
@@ -29,11 +29,11 @@ const maybeGetAbsolutePath = <I extends string>(input: I): I | false => {
   }
 }
 
-const managerAPIPath = maybeGetAbsolutePath(`@storybook/manager-api`)
-const componentsPath = maybeGetAbsolutePath(`@storybook/components`)
-const globalPath = maybeGetAbsolutePath(`@storybook/global`)
-const routerPath = maybeGetAbsolutePath(`@storybook/router`)
-const themingPath = maybeGetAbsolutePath(`@storybook/theming`)
+const managerAPIPath = maybeGetAbsolutePath('@storybook/manager-api')
+const componentsPath = maybeGetAbsolutePath('@storybook/components')
+const globalPath = maybeGetAbsolutePath('@storybook/global')
+const routerPath = maybeGetAbsolutePath('@storybook/router')
+const themingPath = maybeGetAbsolutePath('@storybook/theming')
 
 // these packages are not pre-bundled because of react dependencies.
 // these are not dependencies of the builder anymore, thus resolving them can fail.
@@ -41,13 +41,13 @@ const themingPath = maybeGetAbsolutePath(`@storybook/theming`)
 const storybookPaths: Record<string, string> = {
   ...(managerAPIPath
     ? {
-        [`@storybook/manager-api`]: managerAPIPath,
+        '@storybook/manager-api': managerAPIPath,
       }
     : {}),
-  ...(componentsPath ? { [`@storybook/components`]: componentsPath } : {}),
-  ...(globalPath ? { [`@storybook/global`]: globalPath } : {}),
-  ...(routerPath ? { [`@storybook/router`]: routerPath } : {}),
-  ...(themingPath ? { [`@storybook/theming`]: themingPath } : {}),
+  ...(componentsPath ? { '@storybook/components': componentsPath } : {}),
+  ...(globalPath ? { '@storybook/global': globalPath } : {}),
+  ...(routerPath ? { '@storybook/router': routerPath } : {}),
+  ...(themingPath ? { '@storybook/theming': themingPath } : {}),
 }
 
 export type RsbuildBuilderOptions = Options & {
@@ -166,7 +166,7 @@ export default async (
         js: options.build?.test?.disableSourcemaps
           ? false
           : 'cheap-module-source-map',
-        css: options.build?.test?.disableSourcemaps ? false : true,
+        css: !options.build?.test?.disableSourcemaps,
       },
       distPath: {
         root: resolve(process.cwd(), outputDir),
@@ -303,7 +303,7 @@ export default async (
         return mergeConfig(config, appliedDocsWebpack)
       },
       htmlPlugin: {
-        filename: `iframe.html`,
+        filename: 'iframe.html',
         // FIXME: `none` isn't a known option
         chunksSortMode: 'none' as any,
         alwaysWriteToDisk: true,

@@ -1,5 +1,5 @@
+import { dirname, join } from 'node:path'
 import type { PresetProperty } from 'storybook/internal/types'
-import { dirname, join } from 'path'
 
 export { rsbuildFinal } from './framework-preset-vue3-docs'
 

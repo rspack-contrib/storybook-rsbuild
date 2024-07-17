@@ -3,9 +3,9 @@
  * to follow the build process of Storybook to ease migration.
  */
 
+import chalk from 'chalk'
 /* eslint-disable no-await-in-loop, no-restricted-syntax */
 import type { ExecaChildProcess, Options } from 'execa'
-import chalk from 'chalk'
 import { execa } from 'execa'
 
 const logger = console

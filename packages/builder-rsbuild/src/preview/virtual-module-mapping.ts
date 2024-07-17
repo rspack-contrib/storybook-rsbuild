@@ -1,22 +1,22 @@
-import path from 'path'
-import fs from 'fs'
+import fs from 'node:fs'
+import path from 'node:path'
+import { join, resolve } from 'node:path'
+import { webpackIncludeRegexp } from '@storybook/core-webpack'
+import slash from 'slash'
+import {
+  getBuilderOptions,
+  handlebars,
+  loadPreviewOrConfigFile,
+  normalizeStories,
+  readTemplate,
+} from 'storybook/internal/common'
 import type {
   NormalizedStoriesSpecifier,
   Options,
   PreviewAnnotation,
 } from 'storybook/internal/types'
-import { join, resolve } from 'path'
-import {
-  handlebars,
-  loadPreviewOrConfigFile,
-  normalizeStories,
-  readTemplate,
-  getBuilderOptions,
-} from 'storybook/internal/common'
-import slash from 'slash'
-import { webpackIncludeRegexp } from '@storybook/core-webpack'
 import { dedent } from 'ts-dedent'
-import { BuilderOptions } from '../types'
+import type { BuilderOptions } from '../types'
 
 export const getVirtualModules = async (options: Options) => {
   const virtualModules: Record<string, string> = {}
@@ -83,9 +83,9 @@ export const getVirtualModules = async (options: Options) => {
   ).replace(/\\/g, '\\\\')
   entries.push(configEntryPath)
 
-  Object.entries(virtualModules).forEach(([key, value]) => {
+  for (const [key, value] of Object.entries(virtualModules)) {
     fs.writeFileSync(key, value)
-  })
+  }
 
   return {
     virtualModules,
@@ -125,7 +125,7 @@ export function toImportFn(
   relativeOffset: string,
   { needPipelinedImport }: { needPipelinedImport?: boolean } = {},
 ) {
-  let pipelinedImport = `const pipeline = (x) => x();`
+  let pipelinedImport = 'const pipeline = (x) => x();'
   if (needPipelinedImport) {
     pipelinedImport = `
       const importPipeline = ${importPipeline};

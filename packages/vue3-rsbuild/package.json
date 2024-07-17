@@ -2,12 +2,7 @@
   "name": "storybook-vue3-rsbuild",
   "version": "0.0.7",
   "description": "Storybook for Vue3 and Rsbuild: Develop React Component in isolation with Hot Reloading.",
-  "keywords": [
-    "storybook",
-    "rsbuild",
-    "rspack",
-    "vue3"
-  ],
+  "keywords": ["storybook", "rsbuild", "rspack", "vue3"],
   "bugs": {
     "url": "https://github.com/rspack-contrib/storybook-rsbuild/issues"
   },
@@ -37,13 +32,7 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist/**/*",
-    "README.md",
-    "*.js",
-    "*.d.ts",
-    "!src/**/*"
-  ],
+  "files": ["dist/**/*", "README.md", "*.js", "*.d.ts", "!src/**/*"],
   "scripts": {
     "build": "pnpm run prep --optimized",
     "check": "node --loader ../../scripts/node_modules/esbuild-register/loader.js -r ../../scripts/node_modules/esbuild-register/register.js ../../scripts/prepare/check.ts",
@@ -77,10 +66,7 @@
     "access": "public"
   },
   "bundler": {
-    "entries": [
-      "./src/index.ts",
-      "./src/preset.ts"
-    ],
+    "entries": ["./src/index.ts", "./src/preset.ts"],
     "platform": "node"
   }
 }
