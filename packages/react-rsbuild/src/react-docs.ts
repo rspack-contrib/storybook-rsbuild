@@ -1,9 +1,9 @@
-import { hasDocsOrControls } from 'storybook/internal/docs-tools'
 import { mergeRsbuildConfig } from '@rsbuild/core'
+import { hasDocsOrControls } from 'storybook/internal/docs-tools'
 
 import type { RsbuildConfig } from '@rsbuild/core'
-import type { StorybookConfig } from './types'
 import { requirer } from './requirer'
+import type { StorybookConfig } from './types'
 
 export const rsbuildFinalDocs: NonNullable<
   StorybookConfig['rsbuildFinal']

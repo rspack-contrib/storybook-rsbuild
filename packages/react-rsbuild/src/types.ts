@@ -1,13 +1,13 @@
+import type { PluginOptions as ReactDocgenTypescriptOptions } from '@storybook/react-docgen-typescript-plugin'
 import type {
-  StorybookConfigRsbuild,
   BuilderOptions,
+  StorybookConfigRsbuild,
   TypescriptOptions as TypescriptOptionsBuilder,
 } from 'storybook-builder-rsbuild'
 import type {
   StorybookConfig as StorybookConfigBase,
   TypescriptOptions as TypescriptOptionsBase,
 } from 'storybook/internal/types'
-import type { PluginOptions as ReactDocgenTypescriptOptions } from '@storybook/react-docgen-typescript-plugin'
 
 type FrameworkName = 'storybook-react-rsbuild'
 type BuilderName = 'storybook-builder-rsbuild'

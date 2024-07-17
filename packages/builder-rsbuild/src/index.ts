@@ -1,19 +1,18 @@
+import { type AddressInfo, createServer } from 'node:net'
+import { join, parse } from 'node:path'
 import * as rsbuildReal from '@rsbuild/core'
-import type { Options } from 'storybook/internal/types'
-import { join, parse } from 'path'
-import { AddressInfo, createServer } from 'net'
+import { mergeRsbuildConfig } from '@rsbuild/core'
 import express from 'express'
 import fs from 'fs-extra'
+import prettyTime from 'pretty-hrtime'
+import { corePath } from 'storybook/core-path'
 import { WebpackInvocationError } from 'storybook/internal/server-errors'
-import type { RsbuildBuilder } from './types'
+import type { Options } from 'storybook/internal/types'
 import rsbuildConfig, {
   type RsbuildBuilderOptions,
 } from './preview/iframe-rsbuild.config'
-import { corePath } from 'storybook/core-path'
 import { applyReactShims } from './react-shims'
-
-import prettyTime from 'pretty-hrtime'
-import { mergeRsbuildConfig } from '@rsbuild/core'
+import type { RsbuildBuilder } from './types'
 
 export * from './types'
 export * from './preview/virtual-module-mapping'
@@ -121,7 +120,7 @@ export const start: RsbuildBuilder['start'] = async ({
   if (!rsbuildBuild) {
     throw new WebpackInvocationError({
       // eslint-disable-next-line local-rules/no-uncategorized-errors
-      error: new Error(`Missing Rsbuild build instance at runtime!`),
+      error: new Error('Missing Rsbuild build instance at runtime!'),
     })
   }
 
@@ -129,7 +128,7 @@ export const start: RsbuildBuilder['start'] = async ({
   const previewDirOrigin = previewResolvedDir
 
   router.use(
-    `/sb-preview`,
+    '/sb-preview',
     express.static(previewDirOrigin, { immutable: true, maxAge: '5m' }),
   )
 
@@ -146,42 +145,41 @@ export const start: RsbuildBuilder['start'] = async ({
 
 // explicit type annotation to bypass TypeScript check
 // see: https://github.com/microsoft/TypeScript/issues/47663#issuecomment-1519138189
-export const build: ({
-  options,
-}: BuilderStartOptions) => Promise<Stats> = async ({ options }) => {
-  const { createRsbuild } = await executor.get(options)
-  const config = await getConfig(options)
-  const rsbuildBuild = await createRsbuild({
-    cwd: process.cwd(),
-    rsbuildConfig: config,
-  })
+export const build: ({ options }: BuilderStartOptions) => Promise<Stats> =
+  async ({ options }) => {
+    const { createRsbuild } = await executor.get(options)
+    const config = await getConfig(options)
+    const rsbuildBuild = await createRsbuild({
+      cwd: process.cwd(),
+      rsbuildConfig: config,
+    })
 
-  const previewResolvedDir = join(corePath, 'dist/preview')
-  const previewDirOrigin = previewResolvedDir
-  const previewDirTarget = join(options.outputDir || '', `sb-preview`)
-  let stats: Stats
+    const previewResolvedDir = join(corePath, 'dist/preview')
+    const previewDirOrigin = previewResolvedDir
+    const previewDirTarget = join(options.outputDir || '', 'sb-preview')
+    let stats: Stats
 
-  rsbuildBuild.onAfterBuild((params) => {
-    stats = params.stats as Stats
-  })
+    rsbuildBuild.onAfterBuild((params) => {
+      stats = params.stats as Stats
+    })
 
-  const previewFiles = fs.copy(previewDirOrigin, previewDirTarget, {
-    filter: (src) => {
-      const { ext } = parse(src)
-      if (ext) {
-        return ext === '.js'
-      }
-      return true
-    },
-  })
+    const previewFiles = fs.copy(previewDirOrigin, previewDirTarget, {
+      filter: (src) => {
+        const { ext } = parse(src)
+        if (ext) {
+          return ext === '.js'
+        }
+        return true
+      },
+    })
 
-  rsbuildBuild.onAfterBuild((params) => {
-    stats = params.stats as Stats
-  })
+    rsbuildBuild.onAfterBuild((params) => {
+      stats = params.stats as Stats
+    })
 
-  await Promise.all([rsbuildBuild.build(), previewFiles])
-  return stats!
-}
+    await Promise.all([rsbuildBuild.build(), previewFiles])
+    return stats!
+  }
 
 export const corePresets = [join(__dirname, './preview-preset.js')]
 

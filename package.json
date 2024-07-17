@@ -6,24 +6,23 @@
     "build": "cross-env NX_DAEMON=false nx run-many -t build --exclude @sandboxes/* --parallel=10",
     "build:sandboxes": "cross-env NX_DAEMON=false nx run-many -t build:storybook --projects @sandboxes/* --parallel=10",
     "check": "pnpm --parallel --filter \"./packages/**\" run check",
-    "dev": "pnpm --parallel --filter \"./packages/**\" run prep --watch"
+    "dev": "pnpm --parallel --filter \"./packages/**\" run prep --watch",
+    "lint": "biome check"
   },
   "simple-git-hooks": {
     "pre-commit": "npx nano-staged"
   },
   "nano-staged": {
-    "*.{md,mdx,json,css,less,scss}": "prettier --write",
-    "*.{js,jsx,ts,tsx,mjs,cjs}": [
-      "prettier --write"
-    ],
-    "**/package.json": "sort-package-json"
+    "*.{md,mdx,json,css,less,scss}": "biome check --write",
+    "*.{js,jsx,ts,tsx,mjs,cjs}": "biome check --write",
+    "**/package.json": ["sort-package-json", "biome check --write"]
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
     "@changesets/cli": "^2.27.1",
     "cross-env": "^7.0.3",
     "nano-staged": "^0.8.0",
     "nx": "^19.4.3",
-    "prettier": "^3.2.5",
     "simple-git-hooks": "^2.11.1",
     "sort-package-json": "^2.10.0",
     "typescript": "^5.3.2",

@@ -1,6 +1,6 @@
-import type { StorybookConfig } from './types'
-import { hasDocsOrControls } from 'storybook/internal/docs-tools'
 import { mergeRsbuildConfig } from '@rsbuild/core'
+import { hasDocsOrControls } from 'storybook/internal/docs-tools'
+import type { StorybookConfig } from './types'
 
 export const rsbuildFinal: StorybookConfig['rsbuildFinal'] = (
   config,
@@ -10,7 +10,7 @@ export const rsbuildFinal: StorybookConfig['rsbuildFinal'] = (
 
   let vueDocgenOptions = {}
 
-  options.presetsList?.forEach((preset) => {
+  for (const preset of options.presetsList || []) {
     if (preset.name.includes('addon-docs') && preset.options.vueDocgenOptions) {
       const appendableOptions = preset.options.vueDocgenOptions
       vueDocgenOptions = {
@@ -18,7 +18,7 @@ export const rsbuildFinal: StorybookConfig['rsbuildFinal'] = (
         ...appendableOptions,
       }
     }
-  })
+  }
 
   const finalConfig = mergeRsbuildConfig(config, {
     tools: {

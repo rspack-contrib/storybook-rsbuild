@@ -3,7 +3,7 @@
  * to follow the build process of Storybook to ease migration.
  */
 
-import { join } from 'path'
+import { join } from 'node:path'
 import fs from 'fs-extra'
 import ts from 'typescript'
 

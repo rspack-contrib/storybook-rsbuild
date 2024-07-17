@@ -1,4 +1,4 @@
-import { join, dirname } from 'path'
+import { dirname, join } from 'node:path'
 import type { StorybookConfig } from 'storybook-vue3-rsbuild'
 
 /**

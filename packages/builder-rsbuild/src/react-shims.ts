@@ -3,10 +3,10 @@
  * We had to copy this file because there's no rsbuildFinal there.
  */
 
-import type { Options } from 'storybook/internal/types'
-import { join, dirname, isAbsolute } from 'path'
-import { readFile } from 'fs/promises'
+import { readFile } from 'node:fs/promises'
+import { dirname, isAbsolute, join } from 'node:path'
 import type { RsbuildConfig } from '@rsbuild/core'
+import type { Options } from 'storybook/internal/types'
 
 /**
  * Get react-dom version from the resolvedReact preset, which points to either

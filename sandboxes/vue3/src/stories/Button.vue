@@ -30,9 +30,7 @@ const props = withDefaults(
   { primary: false },
 )
 
-const emit = defineEmits<{
-  (e: 'click', id: number): void
-}>()
+const emit = defineEmits<(e: 'click', id: number) => void>()
 
 const classes = computed(() => ({
   'storybook-button': true,
