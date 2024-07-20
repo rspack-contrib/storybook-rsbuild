@@ -152,6 +152,11 @@ export default async (
     path: rsbuildConfigPath,
   })
 
+  // Reset `config.source.entry` field, do not use provided entry
+  // see https://github.com/rspack-contrib/storybook-rsbuild/issues/43
+  content.source ??= {}
+  content.source.entry = {}
+
   const resourceFilename = isProd
     ? 'static/media/[name].[contenthash:8][ext]'
     : 'static/media/[path][name][ext]'
