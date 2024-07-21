@@ -134,3 +134,6 @@ dist/
 storybook-static/
 .DS_Store
 .nx
+
+# rspress
+doc_build
