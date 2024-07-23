@@ -43,6 +43,10 @@ export type BuilderOptions = {
    * Enable Rspack's lazy compilation (experimental).
    */
   lazyCompilation?: boolean
+  /**
+   * Which environment to use from the Rsbuild config.
+   */
+  environment?: string
 }
 
 export interface BuilderResult extends BuilderResultBase {
