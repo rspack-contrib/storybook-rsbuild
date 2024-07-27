@@ -1,6 +1,12 @@
+![Storybook Rsbuild](https://github.com/rspack-contrib/storybook-rsbuild/assets/7237365/00165054-9e3e-4a15-8a99-27985989b9d2)
+
 # Storybook × Rsbuild
 
-![Storybook Rsbuild](https://github.com/rspack-contrib/storybook-rsbuild/assets/7237365/00165054-9e3e-4a15-8a99-27985989b9d2)
+<p>
+ <a href="https://www.npmjs.com/package/storybook-builder-rsbuild"><img src="https://img.shields.io/npm/v/storybook-builder-rsbuild?style=flat-square&color=ff4785" alt="latest version" /></a>
+ <a href="https://npmcharts.com/compare/storybook-builder-rsbuild,storybook-react-rsbuild,storybook-react-vue,storybook-vue-rsbuild,storybook-vue3-rsbuild?interval=7&log=false"><img src="https://img.shields.io/npm/dm/storybook-builder-rsbuild?style=flat-square&color=%23ff4785" alt="NPM downloads per month" /></a>
+ <a href="https://github.com/rspack-contrib/storybook-rsbuild/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/storybook-builder-rsbuild?style=flat-square&color=%23ff4785" alt="license" /></a>
+</p>
 
 The repository contains the Storybook Rsbuild builder and framework integrations for UI frameworks.
 
@@ -20,7 +26,7 @@ The repository contains the Storybook Rsbuild builder and framework integrations
 
 In Storybook v8, you don't need to manually install storybook-builder-rsbuild, it has been depended by the framework, such as `storybook-react-rsbuild` and `storybook-vue3-rsbuild`.
 
-### Use with React
+### Use with React (in a existing Rsbuild project)
 
 1. Install React framework integration
    ```bash
@@ -42,9 +48,9 @@ In Storybook v8, you don't need to manually install storybook-builder-rsbuild, i
    export default config;
    ```
 
-You're all set now. You could also checkout the example in [sandboxes/react-rsbuild](./sandboxes/react-rsbuild).
+You're all set now. You could also checkout the example in [sandboxes/react-rsbuild](./sandboxes/react-rsbuild) and use all other features listed in [Storybook site](https://storybook.js.org/docs).
 
-### Use with Vue 3
+### Use with Vue 3 (in a existing Rsbuild project)
 
 1. Install Vue3 framework integration
    ```bash
@@ -66,14 +72,19 @@ You're all set now. You could also checkout the example in [sandboxes/react-rsbu
    export default config;
    ```
 
-You're all set now. You could also checkout the example in [sandboxes/vue3-rsbuild](./sandboxes/vue3-rsbuild).
+You're all set now. You could also checkout the example in [sandboxes/vue3-rsbuild](./sandboxes/vue3-rsbuild) and use all other features listed in [Storybook site](https://storybook.js.org/docs).
 
-### Customize the Rsbuild config
+### Builder options
 
-The builder _will_ read your `rsbuild.config.js` file, though it may change some of the options in order to work correctly.
+#### `rsbuildConfigPath`
+
+- Type: `string`
+- Default: `undefined`
+
+The builder will automatically load Rsbuild config file (e.g. `rsbuild.config.js`) in the project, though it may change some of the options in order to work correctly.
 It looks for the Rsbuild config in the CWD. If your config is located elsewhere, specify the path using the `rsbuildConfigPath` builder option:
 
-```javascript
+```js
 // .storybook/main.mjs
 
 const config = {
@@ -89,6 +100,56 @@ const config = {
 
 export default config
 ```
+
+#### `lazyCompilation`
+
+- Type: `boolean`
+- Default: `false`
+
+Enables Rspack's experimental [lazy compilation](https://www.rspack.dev/config/experiments#experimentslazycompilation).
+
+```js
+// .storybook/main.mjs
+
+const config = {
+  framework: {
+    name: 'storybook-react-rsbuild',
+    options: {
+      builder: {
+        lazyCompilation: true,
+      },
+    },
+  },
+}
+
+export default config
+```
+
+#### `environment`
+
+- Type: `string`
+- Default: `undefined`
+
+Rsbuild supports build with [environment](https://rsbuild.dev/config/environments) config. When there's not listed environment or only one environment, the builder will the default environment's config. If there're more than one environment, you must specify the environment with `environment` option to tell the builder which environment's config to use.
+
+```js
+// .storybook/main.mjs
+
+const config = {
+  framework: {
+    name: 'storybook-react-rsbuild',
+    options: {
+      builder: {
+        environment: 'web-storybook',
+      },
+    },
+  },
+}
+
+export default config
+```
+
+### Customize builder's Rsbuild config
 
 You can also override the merged Rsbuild config:
 

@@ -13,7 +13,7 @@
     "pre-commit": "npx nano-staged"
   },
   "nano-staged": {
-    "*.{md,mdx,json,css,less,scss}": "biome check --write",
+    "*.{json,css,less,scss}": "biome check --write",
     "*.{js,jsx,ts,tsx,mjs,cjs}": "biome check --write",
     "**/package.json": ["sort-package-json", "biome check --write"]
   },
