@@ -21,8 +21,8 @@ The repository contains the Storybook Rsbuild builder and framework integrations
 > [!IMPORTANT]  
 > Peer dependencies requirements:
 >
-> - **`@rsbuild/core >= 1.0.0-alpha.9`**: Rsbuild is about to release version 1.0.0, and the current alpha version is already very reliable. (checkout Rsbuild's [1.0.0 breaking changes](https://github.com/web-infra-dev/rsbuild/discussions/2508))
-> - **`storybook >= 8.2.1`**: Storybook made some internal refactor in major version, 8.2.1 is tested out. (checkout Storybook's [release note](https://storybook.js.org/blog/storybook-8/) for migrating from v7)
+> - **`@rsbuild/core >= 1.0.0-alpha.9`**: Rsbuild is about to release version 1.0.0, and the current alpha version is already very reliable. (check out Rsbuild's [1.0.0 breaking changes](https://github.com/web-infra-dev/rsbuild/discussions/2508))
+> - **`storybook >= 8.2.1`**: Storybook made some internal refactor in major version, 8.2.1 is tested out. (check out Storybook's [release note](https://storybook.js.org/blog/storybook-8/) for migrating from v7)
 
 In Storybook v8, you don't need to manually install storybook-builder-rsbuild, it has been depended by the framework, such as `storybook-react-rsbuild` and `storybook-vue3-rsbuild`.
 
@@ -48,7 +48,7 @@ In Storybook v8, you don't need to manually install storybook-builder-rsbuild, i
    export default config;
    ```
 
-You're all set now. You could also checkout the example in [sandboxes/react-rsbuild](./sandboxes/react-rsbuild) and use all other features listed in [Storybook site](https://storybook.js.org/docs).
+You're all set now. You could also check out the example in [sandboxes/react-18](./sandboxes/react-18) and use all other features listed in [Storybook site](https://storybook.js.org/docs).
 
 ### Use with Vue 3 (in a existing Rsbuild project)
 
@@ -72,7 +72,7 @@ You're all set now. You could also checkout the example in [sandboxes/react-rsbu
    export default config;
    ```
 
-You're all set now. You could also checkout the example in [sandboxes/vue3-rsbuild](./sandboxes/vue3-rsbuild) and use all other features listed in [Storybook site](https://storybook.js.org/docs).
+You're all set now. You could also check out the example in [sandboxes/vue3-rsbuild](./sandboxes/vue3-rsbuild) and use all other features listed in [Storybook site](https://storybook.js.org/docs).
 
 ### Builder options
 
