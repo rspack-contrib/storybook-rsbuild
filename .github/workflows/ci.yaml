@@ -49,6 +49,10 @@ jobs:
           pnpm lint
           pnpm check
 
+      - name: Test
+        run: |
+          pnpm test
+
       - name: Build sandboxes storybooks
         run: |
           pnpm run build:sandboxes
