@@ -7,7 +7,9 @@
     "build:sandboxes": "cross-env NX_DAEMON=false nx run-many -t build:storybook --projects @sandboxes/* --parallel=10",
     "check": "pnpm --parallel --filter \"./packages/**\" run check",
     "dev": "pnpm --parallel --filter \"./packages/**\" run prep --watch",
-    "lint": "biome check"
+    "lint": "biome check",
+    "test": "cross-env NODE_OPTIONS=--max_old_space_size=4096 vitest run",
+    "test:watch": "cross-env NODE_OPTIONS=--max_old_space_size=4096 vitest watch"
   },
   "simple-git-hooks": {
     "pre-commit": "npx nano-staged"
@@ -20,11 +22,13 @@
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
     "@changesets/cli": "^2.27.1",
+    "@testing-library/jest-dom": "6.4.5",
     "cross-env": "^7.0.3",
     "nano-staged": "^0.8.0",
     "nx": "^19.4.3",
     "simple-git-hooks": "^2.11.1",
     "sort-package-json": "^2.10.0",
+    "ts-dedent": "^2.0.0",
     "typescript": "^5.3.2",
     "vitest": "^1.6.0"
   },
