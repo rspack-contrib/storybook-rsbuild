@@ -138,6 +138,9 @@ importers:
 
   packages/react-rsbuild:
     dependencies:
+      '@rollup/pluginutils':
+        specifier: ^5.1.0
+        version: 5.1.0(rollup@4.17.2)
       '@storybook/react':
         specifier: ^8.2.1
         version: 8.2.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.2.1(@babel/preset-env@7.24.5))(typescript@5.4.5)
@@ -266,7 +269,7 @@ importers:
         version: 8.2.1(@babel/preset-env@7.24.5)
       storybook-react-rsbuild:
         specifier: workspace:*
-        version: file:packages/react-rsbuild(@rsbuild/core@1.0.1-beta.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(storybook@8.2.1(@babel/preset-env@7.24.5))(typescript@5.4.5)(webpack@5.93.0)
+        version: file:packages/react-rsbuild(@rsbuild/core@1.0.1-beta.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(rollup@4.17.2)(storybook@8.2.1(@babel/preset-env@7.24.5))(typescript@5.4.5)(webpack@5.93.0)
       typescript:
         specifier: ^5.3.2
         version: 5.4.5
@@ -1600,6 +1603,15 @@ packages:
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
+
+  '@rollup/pluginutils@5.1.0':
+    resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
 
   '@rollup/rollup-android-arm-eabi@4.17.2':
     resolution: {integrity: sha512-NM0jFxY8bB8QLkoKxIQeObCaDlJKewVlIEkuyYKm5An1tdVZ966w2+MPQ2l8LBZLjR+SgyV+nRkTIunzOYBMLQ==}
@@ -7495,6 +7507,14 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
+  '@rollup/pluginutils@5.1.0(rollup@4.17.2)':
+    dependencies:
+      '@types/estree': 1.0.5
+      estree-walker: 2.0.2
+      picomatch: 2.3.1
+    optionalDependencies:
+      rollup: 4.17.2
+
   '@rollup/rollup-android-arm-eabi@4.17.2':
     optional: true
 
@@ -12135,8 +12155,9 @@ snapshots:
       graceful-fs: 4.2.11
     optional: true
 
-  storybook-react-rsbuild@file:packages/react-rsbuild(@rsbuild/core@1.0.1-beta.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(storybook@8.2.1(@babel/preset-env@7.24.5))(typescript@5.4.5)(webpack@5.93.0):
+  storybook-react-rsbuild@file:packages/react-rsbuild(@rsbuild/core@1.0.1-beta.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(rollup@4.17.2)(storybook@8.2.1(@babel/preset-env@7.24.5))(typescript@5.4.5)(webpack@5.93.0):
     dependencies:
+      '@rollup/pluginutils': 5.1.0(rollup@4.17.2)
       '@rsbuild/core': 1.0.1-beta.0
       '@storybook/react': 8.2.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(storybook@8.2.1(@babel/preset-env@7.24.5))(typescript@5.4.5)
       '@storybook/react-docgen-typescript-plugin': 1.0.1(typescript@5.4.5)(webpack@5.93.0)
@@ -12153,6 +12174,7 @@ snapshots:
     optionalDependencies:
       typescript: 5.4.5
     transitivePeerDependencies:
+      - rollup
       - supports-color
       - webpack
 

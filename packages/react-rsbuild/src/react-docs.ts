@@ -44,10 +44,26 @@ export const rsbuildFinalDocs: NonNullable<
     })
   }
 
-  // TODO: Rspack doesn't support the hooks `react-docgen-typescript`' required
-  throw new Error(
-    "Rspack didn't support the hooks `react-docgen-typescript`' required",
+  const { reactDocgen: reactDocGenPlugin } = await import(
+    './plugins/react-docgen'
   )
+
+  // TODO: Rspack doesn't support the hooks `react-docgen-typescript`' required.
+  // Currently, using `transform` hook to implement the same behavior.
+  return mergeRsbuildConfig(config, {
+    plugins: [
+      await reactDocGenPlugin({
+        include:
+          reactDocgen === 'react-docgen-typescript'
+            ? /\.(mjs|tsx?|jsx?)$/
+            : /\.(mjs|jsx?)$/,
+      }),
+    ],
+  })
+
+  // throw new Error(
+  //   "Rspack didn't support the hooks `react-docgen-typescript`' required",
+  // )
 
   // const { ReactDocgenTypeScriptPlugin } = await import(
   //   '@storybook/react-docgen-typescript-plugin'

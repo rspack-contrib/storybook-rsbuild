@@ -235,7 +235,7 @@ export default {
 - [x] Support lazy compilation
 - [ ] Support virtual modules
 - [ ] Support `module.unknownContextCritical`
-- [ ] Support `compilation.dependencyTemplates.set` for react-docgen-typescript 🌟
+- [x] Support `compilation.dependencyTemplates.set` for react-docgen-typescript (supported in a workaround)
 
 ## Credits
 
