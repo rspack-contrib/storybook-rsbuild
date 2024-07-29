@@ -1,3 +1,7 @@
+/**
+ * Code taken from https://github.com/storybookjs/storybook/tree/next/code/presets/react-webpack/src/loaders
+ */
+
 import findUp from 'find-up'
 import MagicString from 'magic-string'
 import {
