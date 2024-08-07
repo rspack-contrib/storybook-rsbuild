@@ -254,14 +254,14 @@ export default async (
     },
     plugins: [
       shouldCheckTs ? pluginTypeCheck(tsCheckOptions) : null,
-      pluginHtmlMinifierTerser({
+      pluginHtmlMinifierTerser(() => ({
         collapseWhitespace: true,
         removeComments: true,
         removeRedundantAttributes: true,
         removeScriptTypeAttributes: false,
         removeStyleLinkTypeAttributes: true,
         useShortDoctype: true,
-      }),
+      })),
     ].filter(Boolean),
     tools: {
       rspack: (config, { addRules, appendPlugins, rspack, mergeConfig }) => {
