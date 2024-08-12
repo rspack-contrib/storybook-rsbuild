@@ -291,9 +291,6 @@ export default async (
         config.watchOptions = {
           ignored: /node_modules/,
         }
-        config.output = config.output || {}
-        config.output.publicPath = ''
-
         config.ignoreWarnings = [
           ...(config.ignoreWarnings || []),
           /export '\S+' was not found in 'global'/,
