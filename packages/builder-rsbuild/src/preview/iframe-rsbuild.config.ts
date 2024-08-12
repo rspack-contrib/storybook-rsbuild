@@ -224,6 +224,11 @@ export default async (
       assetPrefix: '/',
       externals,
     },
+    server: {
+      // Storybook will handle public directory itself, disable Rsbuild's public dir
+      // feature to prevent overwriting Storybook's public directory.
+      publicDir: false,
+    },
     dev: {
       assetPrefix: '',
       progressBar: !quiet,

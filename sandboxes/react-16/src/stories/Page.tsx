@@ -20,6 +20,11 @@ export const Page: React.FC = () => {
       />
 
       <section className="storybook-page">
+        <img
+          src="/rsbuild-logo.svg"
+          height="30"
+          style={{ marginRight: '10px' }}
+        />
         <h2>Pages in Storybook</h2>
         <p>
           We recommend building UIs with a{' '}
