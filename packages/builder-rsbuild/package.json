@@ -1,6 +1,6 @@
 {
   "name": "storybook-builder-rsbuild",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Rsbuild builder for Storybook",
   "keywords": ["storybook", "rsbuild", "rspack"],
   "bugs": {
