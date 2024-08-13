@@ -201,6 +201,7 @@ export default async (
   const merged = mergeRsbuildConfig(contentFromConfig, {
     output: {
       cleanDistPath: false,
+      assetPrefix: '/',
       dataUriLimit: {
         media: 10000,
       },
@@ -221,7 +222,6 @@ export default async (
         font: resourceFilename,
         media: resourceFilename,
       },
-      assetPrefix: '/',
       externals,
     },
     server: {
@@ -230,7 +230,6 @@ export default async (
       publicDir: false,
     },
     dev: {
-      assetPrefix: '',
       progressBar: !quiet,
     },
     source: {
@@ -291,6 +290,13 @@ export default async (
         config.watchOptions = {
           ignored: /node_modules/,
         }
+
+        if (!isProd) {
+          // Using publicPath here to force drop slash in assetPrefix.
+          config.output = config.output || {}
+          config.output.publicPath = ''
+        }
+
         config.ignoreWarnings = [
           ...(config.ignoreWarnings || []),
           /export '\S+' was not found in 'global'/,
