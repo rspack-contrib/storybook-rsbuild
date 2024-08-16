@@ -133,7 +133,7 @@ export const start: RsbuildBuilder['start'] = async ({
   )
 
   router.use(rsbuildServer.middlewares)
-  storybookServer.on('upgrade', rsbuildServer.onHTTPUpgrade)
+  rsbuildServer.connectWebSocket({ server: storybookServer })
   const stats = await waitFirstCompileDone
 
   return {
