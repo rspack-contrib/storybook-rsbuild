@@ -57,7 +57,9 @@ export type RsbuildBuilderOptions = Options & {
 export default async (
   options: RsbuildBuilderOptions,
 ): Promise<RsbuildConfig> => {
-  const appliedDocsWebpack = await docsWebpack({}, options)
+  const { rsbuildConfigPath, addonDocs } =
+    await getBuilderOptions<BuilderOptions>(options)
+  const appliedDocsWebpack = await docsWebpack({}, { ...options, ...addonDocs })
   const {
     outputDir = join('.', 'public'),
     quiet,
@@ -102,7 +104,6 @@ export default async (
     presets.apply('tags', {}),
   ])
 
-  const { rsbuildConfigPath } = await getBuilderOptions<BuilderOptions>(options)
   const stories = normalizeStories(nonNormalizedStories, {
     configDir: options.configDir,
     workingDir,

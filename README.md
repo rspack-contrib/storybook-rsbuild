@@ -149,6 +149,37 @@ const config = {
 export default config
 ```
 
+#### `addonDocs`
+
+- Type: `object`
+- Default: `undefined`
+
+`@storybook/addon-docs` webpack options. The builder uses `@storybook/addon-docs` internally, and accepts the passing [some options](https://github.com/storybookjs/storybook/tree/next/code/addons/docs#preset-options) via `addonDocs`.
+
+```js
+// .storybook/main.mjs
+import remarkGfm from 'remark-gfm';
+
+const config = {
+  framework: {
+    name: 'storybook-react-rsbuild',
+    options: {
+      builder: {
+        addonDocs: {
+          mdxPluginOptions: {
+            mdxCompileOptions: {
+              remarkPlugins: [remarkGfm],
+            },
+          },
+        },
+      },
+    },
+  },
+}
+
+export default config
+```
+
 ### Customize builder's Rsbuild config
 
 You can also override the merged Rsbuild config:
