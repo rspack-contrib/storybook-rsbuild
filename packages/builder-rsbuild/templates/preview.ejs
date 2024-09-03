@@ -73,13 +73,8 @@
     <% } %>
     <script type="module">
       import './sb-preview/runtime.js';
-
       <% htmlWebpackPlugin.files.js.forEach(file => { %>
-        <% if (file.startsWith('/')) { %>
-          import '.<%= file %>';
-        <% } else { %>
-          import './<%= file %>';
-        <% } %>
+      import '<%= file %>';
       <% }); %>
     </script>    
   </body>
