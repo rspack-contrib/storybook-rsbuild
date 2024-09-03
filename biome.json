@@ -29,6 +29,11 @@
       "semicolons": "asNeeded"
     }
   },
+  "css": {
+    "formatter": {
+      "enabled": true
+    }
+  },
   "linter": {
     "enabled": true,
     "ignore": ["./scripts/"],

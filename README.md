@@ -210,7 +210,24 @@ The `configType` variable will be either `"DEVELOPMENT"` or `"PRODUCTION"`.
 
 The function should return the updated Rsbuild configuration.
 
-## Troubleshooting
+## FAQ
+
+### How to Storybook to a subdirectory / subpath?
+
+The default Vite and webpack builders in Storybook use relative paths for references, whereas Rsbuild does not recommend using relative paths for deployment (See the [tips](https://rsbuild.dev/config/output/asset-prefix#path-types:~:text=on%20file%20location.-,TIP,-It%27s%20not%20recommended)). Therefore, if you want to deploy Storybook on a sub-path such as `https://example.com/sb-path`, you can achieve this by configuring [`output.assetPrefix`](https://rsbuild.dev/config/output/asset-prefix).
+
+```diff
+const config: StorybookConfig = {
+  // --snip--
+  rsbuildFinal: (config) => {
++   config.output ??= {}
++   config.output.assetPrefix = '/sb-path/'
+    return config
+  },
+  // --snip--
+}
+```
+
 
 ### Error caused by bundling unexpected files
 
