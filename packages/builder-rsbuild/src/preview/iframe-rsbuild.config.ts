@@ -288,6 +288,15 @@ export default async (
 
         config.resolve ??= {}
         config.resolve.symlinks = !isPreservingSymlinks()
+        config.resolve.extensions = [
+          '.mjs',
+          '.js',
+          '.jsx',
+          '.ts',
+          '.tsx',
+          '.json',
+          '.cjs',
+        ]
 
         config.watchOptions = {
           ignored: /node_modules/,
@@ -356,7 +365,8 @@ export default async (
         inject: false,
         template,
         templateParameters: {
-          version: packageJson.version,
+          version:
+            packageJson?.version ?? '0.0.0-storybook-rsbuild-unknown-version',
           globals: {
             CONFIG_TYPE: configType,
             LOGLEVEL: logLevel,
