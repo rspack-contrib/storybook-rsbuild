@@ -10,7 +10,7 @@ import type { Stats } from './index'
 
 // Storybook's Stats are optional Webpack related property
 type RsbuildStats = {
-  toJson: () => any
+  toJson: (...args: any[]) => any
 }
 
 /**
