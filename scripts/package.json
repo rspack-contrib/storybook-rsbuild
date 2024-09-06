@@ -41,26 +41,26 @@
     "upload-bench": "node --loader esbuild-register/loader -r esbuild-register ./upload-bench.ts"
   },
   "dependencies": {
-    "@types/fs-extra": "^11.0.1",
-    "chalk": "^4.1.0",
+    "@types/fs-extra": "^11.0.4",
+    "chalk": "^4.1.2",
     "esbuild-plugin-alias": "^0.2.1",
     "esbuild-register": "^3.5.0",
     "execa": "^6.1.0",
-    "fs-extra": "^11.1.0",
+    "fs-extra": "^11.2.0",
     "slash": "^3.0.0",
-    "ts-dedent": "^2.0.0",
+    "ts-dedent": "^2.2.0",
     "tsup": "^6.7.0",
     "type-fest": "~2.19",
     "typescript": "^5.3.2"
   },
   "devDependencies": {
-    "rimraf": "^5.0.5"
+    "rimraf": "^5.0.10"
   },
   "optionalDependencies": {
-    "@verdaccio/types": "^10.2.0",
-    "ts-loader": "^9.4.2",
+    "@verdaccio/types": "^10.8.0",
+    "ts-loader": "^9.5.1",
     "verdaccio": "^5.19.1",
-    "verdaccio-auth-memory": "^10.2.0"
+    "verdaccio-auth-memory": "^10.2.2"
   },
   "packageManager": "yarn@4.0.2",
   "engines": {
