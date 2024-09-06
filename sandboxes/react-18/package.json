@@ -13,8 +13,8 @@
     "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
-    "react": "18",
-    "react-dom": "18"
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.4.0",
@@ -27,8 +27,8 @@
     "@storybook/blocks": "8.3.0-beta.3",
     "@storybook/react": "8.3.0-beta.3",
     "@storybook/test": "8.3.0-beta.3",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
     "storybook": "8.3.0-beta.3",
     "storybook-react-rsbuild": "workspace:*",
     "typescript": "^5.3.2"
