@@ -1,0 +1,50 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"timezone": "Asia/Shanghai",
+	"schedule": ["after 11pm on friday"],
+	"extends": ["config:recommended"],
+	"ignorePaths": ["**/tests/**", "**/node_modules/**"],
+	"packageRules": [
+		// Use chore as semantic commit type for commit messages
+		{
+			"matchPackageNames": ["**"],
+			"semanticCommitType": "chore",
+			// always bump package.json
+			"rangeStrategy": "bump"
+		},
+		{
+			"groupName": "storybook",
+			"matchPackageNames": ["storybook", "@storybook/**"],
+			"groupSlug": "storybook",
+			"respectLatest": false,
+			"rangeStrategy": "pin",
+			"matchDepTypes": ["devDependencies"],
+			"followTag": "next"
+		},
+		{
+			"groupName": "rsbuild",
+			"matchPackageNames": ["@rsbuild/**"],
+			"groupSlug": "rsbuild",
+			"respectLatest": false
+		},
+		{
+			"groupName": "all patch dependencies",
+			"groupSlug": "all-patch",
+			"matchPackageNames": ["**", "!storybook", "!@storybook/**", "!@rsbuild/**"],
+			"matchUpdateTypes": ["patch"]
+		},
+		// manually update peer dependencies
+		{
+			"depTypeList": ["peerDependencies"],
+			"enabled": false
+		}
+	],
+	"ignoreDeps": [
+		// manually update some packages
+		"pnpm",
+		"esbuild",
+		// align Node.js version minimum requirements
+		"@types/node",
+		"node",
+	]
+}
