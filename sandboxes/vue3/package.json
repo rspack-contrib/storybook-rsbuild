@@ -14,8 +14,8 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.4.0",
-    "@rsbuild/core": "1.0.1-rc.2",
-    "@rsbuild/plugin-vue": "1.0.1-rc.2",
+    "@rsbuild/core": "1.0.1-rc.5",
+    "@rsbuild/plugin-vue": "1.0.1-rc.5",
     "@storybook/addon-essentials": "8.3.0-beta.3",
     "@storybook/addon-interactions": "8.3.0-beta.3",
     "@storybook/addon-links": "8.3.0-beta.3",
