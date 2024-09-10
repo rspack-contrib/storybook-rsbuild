@@ -45,8 +45,8 @@ importers:
   packages/builder-rsbuild:
     dependencies:
       '@rsbuild/plugin-type-check':
-        specifier: 1.0.1-rc.5
-        version: 1.0.1-rc.5(@rsbuild/core@1.0.1-rc.5)(esbuild@0.20.2)(typescript@5.4.5)
+        specifier: ^1.0.1
+        version: 1.0.1(@rsbuild/core@1.0.1)(esbuild@0.20.2)(typescript@5.4.5)
       '@storybook/addon-docs':
         specifier: ^8.2.1
         version: 8.2.1(storybook@8.3.0-beta.3)
@@ -88,7 +88,7 @@ importers:
         version: 0.11.10
       rsbuild-plugin-html-minifier-terser:
         specifier: ^1.1.1
-        version: 1.1.1(@rsbuild/core@1.0.1-rc.5)
+        version: 1.1.1(@rsbuild/core@1.0.1)
       style-loader:
         specifier: ^3.3.4
         version: 3.3.4(webpack@5.94.0(esbuild@0.20.2))
@@ -106,8 +106,8 @@ importers:
         version: 1.0.2
     devDependencies:
       '@rsbuild/core':
-        specifier: 1.0.1-rc.5
-        version: 1.0.1-rc.5
+        specifier: 1.0.1
+        version: 1.0.1
       '@types/express':
         specifier: ^4.17.21
         version: 4.17.21
@@ -176,8 +176,8 @@ importers:
         version: 4.2.0
     devDependencies:
       '@rsbuild/core':
-        specifier: 1.0.1-rc.5
-        version: 1.0.1-rc.5
+        specifier: 1.0.1
+        version: 1.0.1
       '@storybook/types':
         specifier: 8.3.0-beta.3
         version: 8.3.0-beta.3(storybook@8.3.0-beta.3)
@@ -207,8 +207,8 @@ importers:
         version: 1.5.1(@babel/preset-env@7.24.5(@babel/core@7.24.5))(vue-docgen-api@4.78.0(vue@3.4.27(typescript@5.4.5)))(webpack@5.94.0)
     devDependencies:
       '@rsbuild/core':
-        specifier: 1.0.1-rc.5
-        version: 1.0.1-rc.5
+        specifier: 1.0.1
+        version: 1.0.1
       '@types/node':
         specifier: ^18.0.0
         version: 18.19.33
@@ -232,11 +232,11 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0(react@16.14.0)
       '@rsbuild/core':
-        specifier: 1.0.1-rc.5
-        version: 1.0.1-rc.5
+        specifier: 1.0.1
+        version: 1.0.1
       '@rsbuild/plugin-react':
-        specifier: 1.0.1-rc.5
-        version: 1.0.1-rc.5(@rsbuild/core@1.0.1-rc.5)
+        specifier: 1.0.1
+        version: 1.0.1(@rsbuild/core@1.0.1)
       '@storybook/addon-essentials':
         specifier: 8.3.0-beta.3
         version: 8.3.0-beta.3(storybook@8.3.0-beta.3)
@@ -269,7 +269,7 @@ importers:
         version: 8.3.0-beta.3
       storybook-react-rsbuild:
         specifier: workspace:*
-        version: file:packages/react-rsbuild(@rsbuild/core@1.0.1-rc.5)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(rollup@4.17.2)(storybook@8.3.0-beta.3)(typescript@5.4.5)(webpack@5.94.0)
+        version: file:packages/react-rsbuild(@rsbuild/core@1.0.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(rollup@4.17.2)(storybook@8.3.0-beta.3)(typescript@5.4.5)(webpack@5.94.0)
       typescript:
         specifier: ^5.3.2
         version: 5.4.5
@@ -290,11 +290,11 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0(react@18.3.1)
       '@rsbuild/core':
-        specifier: 1.0.1-rc.5
-        version: 1.0.1-rc.5
+        specifier: 1.0.1
+        version: 1.0.1
       '@rsbuild/plugin-react':
-        specifier: 1.0.1-rc.5
-        version: 1.0.1-rc.5(@rsbuild/core@1.0.1-rc.5)
+        specifier: 1.0.1
+        version: 1.0.1(@rsbuild/core@1.0.1)
       '@storybook/addon-essentials':
         specifier: 8.3.0-beta.3
         version: 8.3.0-beta.3(storybook@8.3.0-beta.3)
@@ -342,11 +342,11 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0(react@18.3.1)
       '@rsbuild/core':
-        specifier: 1.0.1-rc.5
-        version: 1.0.1-rc.5
+        specifier: 1.0.1
+        version: 1.0.1
       '@rsbuild/plugin-vue':
-        specifier: 1.0.1-rc.5
-        version: 1.0.1-rc.5(@rsbuild/core@1.0.1-rc.5)(vue@3.4.27(typescript@5.4.5))
+        specifier: 1.0.1
+        version: 1.0.1(@rsbuild/core@1.0.1)(vue@3.4.27(typescript@5.4.5))
       '@storybook/addon-essentials':
         specifier: 8.3.0-beta.3
         version: 8.3.0-beta.3(storybook@8.3.0-beta.3)
@@ -1702,25 +1702,28 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@rsbuild/core@1.0.1-rc.5':
-    resolution: {integrity: sha512-0+LiFrzvEEhHsizHRXMnbxtvxVvWyGFl33VfLSlOnBwUwgbblq3ehUc4QYK+mla4Zh3DbWRNr9oCdyJa+Qv2MA==}
+  '@rsbuild/core@1.0.1':
+    resolution: {integrity: sha512-LbvlUxJut/bRgfu3gUsIzlQmJdZbEtEIPBygCwtCSgrjWeGO0zOqkMyO71jFqTyY8A32ygAz2P8NdUqiQbmFbQ==}
     engines: {node: '>=16.7.0'}
     hasBin: true
 
-  '@rsbuild/plugin-react@1.0.1-rc.5':
-    resolution: {integrity: sha512-8W/PK8l//CsGXxfo8psDttyYimdehZ6n5mm8rz5QwNnyKtuxvjUS30P7meQjJxTrZTlZU3LN6yB63tOcD9xtdQ==}
+  '@rsbuild/plugin-react@1.0.1':
+    resolution: {integrity: sha512-JdbuM/Ycwky6XPc0YmXXcDzUYZ4JxIORcio1MB+fJNMOrs3PP1hJF5vUm5NfA7YY391fIMxD9W4oB3GQUI5c6A==}
     peerDependencies:
-      '@rsbuild/core': ^1.0.1-rc.4
+      '@rsbuild/core': 1.x || ^1.0.1-rc.0
 
-  '@rsbuild/plugin-type-check@1.0.1-rc.5':
-    resolution: {integrity: sha512-PRij9+9qMJIi8axsnB0MkIHI15ho4GGJeq8iKr2yQq2mKihy2OgBNMagEgkxt40BbYlFcdewYvoMG3b4czePCA==}
+  '@rsbuild/plugin-type-check@1.0.1':
+    resolution: {integrity: sha512-BahXAJNq4kWtL2dINUlrOL9UCN1t8c/qf5RW8JXx2HSSasfKPJGJ1BVfieMcIaFa/t8/QdafcwoxY1WKPTlSMg==}
     peerDependencies:
-      '@rsbuild/core': ^1.0.1-rc.4
+      '@rsbuild/core': 1.x || ^1.0.1-beta.0
+    peerDependenciesMeta:
+      '@rsbuild/core':
+        optional: true
 
-  '@rsbuild/plugin-vue@1.0.1-rc.5':
-    resolution: {integrity: sha512-pcdirXqxT1IjghfzVIn7UxnQU4mF6gf/jaCxOIToV6LkFOgcL1VNq1vYZrerj7lw+J5dtEO4x4hVhYvgm3zoMQ==}
+  '@rsbuild/plugin-vue@1.0.1':
+    resolution: {integrity: sha512-HmxGkquVbivxaLovYeZhHk2tm8fm/f6h5rKcGtHTce4BlrDDN63gjRpfCa8eLnbIsmBPYen4rPXmOwMLReEBJQ==}
     peerDependencies:
-      '@rsbuild/core': ^1.0.1-rc.4
+      '@rsbuild/core': 1.x || ^1.0.1-rc.0
 
   '@rspack/binding-darwin-arm64@1.0.3':
     resolution: {integrity: sha512-MZlQpDRJkjIJJqmYMiziwz9vLXi1KjORYW6hemC2umDfOzUmlkRPBUF8oEqXaUQ+zYLbjhk4iTSbFdrlqUR+6w==}
@@ -2750,6 +2753,9 @@ packages:
 
   caniuse-lite@1.0.30001655:
     resolution: {integrity: sha512-jRGVy3iSGO5Uutn2owlb5gR6qsGngTw9ZTb4ali9f3glshcNmJ2noam4Mo9zia5P9Dk3jNNydy7vQjuE5dQmfg==}
+
+  caniuse-lite@1.0.30001660:
+    resolution: {integrity: sha512-GacvNTTuATm26qC74pt+ad1fW15mlQ/zuTzzY1ZoIzECTP8HURDfF43kNxPgf7H1jmelCBQTTbBNxdSXOA7Bqg==}
 
   case-sensitive-paths-webpack-plugin@2.4.0:
     resolution: {integrity: sha512-roIFONhcxog0JSSWbvVAh3OocukmSgpqOH6YpMkCvav/ySIV3JKg4Dc8vYtQjYi/UxpNE36r/9v+VqTQqgkYmw==}
@@ -5235,7 +5241,7 @@ packages:
     resolution: {directory: packages/react-rsbuild, type: directory}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      '@rsbuild/core': '>= 1.0.1-beta.14 || 1.x'
+      '@rsbuild/core': ^1.0.1
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta
       storybook: ^8.2.1
@@ -7241,30 +7247,31 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.17.2':
     optional: true
 
-  '@rsbuild/core@1.0.1-rc.5':
+  '@rsbuild/core@1.0.1':
     dependencies:
       '@rspack/core': 1.0.3(@swc/helpers@0.5.13)
       '@rspack/lite-tapable': 1.0.0
       '@swc/helpers': 0.5.13
-      caniuse-lite: 1.0.30001655
+      caniuse-lite: 1.0.30001660
       core-js: 3.38.1
     optionalDependencies:
       fsevents: 2.3.3
 
-  '@rsbuild/plugin-react@1.0.1-rc.5(@rsbuild/core@1.0.1-rc.5)':
+  '@rsbuild/plugin-react@1.0.1(@rsbuild/core@1.0.1)':
     dependencies:
-      '@rsbuild/core': 1.0.1-rc.5
+      '@rsbuild/core': 1.0.1
       '@rspack/plugin-react-refresh': 1.0.0(react-refresh@0.14.2)
       react-refresh: 0.14.2
 
-  '@rsbuild/plugin-type-check@1.0.1-rc.5(@rsbuild/core@1.0.1-rc.5)(esbuild@0.20.2)(typescript@5.4.5)':
+  '@rsbuild/plugin-type-check@1.0.1(@rsbuild/core@1.0.1)(esbuild@0.20.2)(typescript@5.4.5)':
     dependencies:
-      '@rsbuild/core': 1.0.1-rc.5
       deepmerge: 4.3.1
       fork-ts-checker-webpack-plugin: 9.0.2(typescript@5.4.5)(webpack@5.94.0(esbuild@0.20.2))
       json5: 2.2.3
       reduce-configs: 1.0.0
       webpack: 5.94.0(esbuild@0.20.2)
+    optionalDependencies:
+      '@rsbuild/core': 1.0.1
     transitivePeerDependencies:
       - '@swc/core'
       - esbuild
@@ -7272,9 +7279,9 @@ snapshots:
       - uglify-js
       - webpack-cli
 
-  '@rsbuild/plugin-vue@1.0.1-rc.5(@rsbuild/core@1.0.1-rc.5)(vue@3.4.27(typescript@5.4.5))':
+  '@rsbuild/plugin-vue@1.0.1(@rsbuild/core@1.0.1)(vue@3.4.27(typescript@5.4.5))':
     dependencies:
-      '@rsbuild/core': 1.0.1-rc.5
+      '@rsbuild/core': 1.0.1
       vue-loader: 17.4.2(vue@3.4.27(typescript@5.4.5))(webpack@5.94.0)
       webpack: 5.94.0
     transitivePeerDependencies:
@@ -7329,7 +7336,7 @@ snapshots:
       '@module-federation/runtime-tools': 0.5.1
       '@rspack/binding': 1.0.3
       '@rspack/lite-tapable': 1.0.0
-      caniuse-lite: 1.0.30001655
+      caniuse-lite: 1.0.30001660
     optionalDependencies:
       '@swc/helpers': 0.5.13
 
@@ -8773,6 +8780,8 @@ snapshots:
       tslib: 2.6.2
 
   caniuse-lite@1.0.30001655: {}
+
+  caniuse-lite@1.0.30001660: {}
 
   case-sensitive-paths-webpack-plugin@2.4.0: {}
 
@@ -11290,12 +11299,12 @@ snapshots:
       '@rollup/rollup-win32-x64-msvc': 4.17.2
       fsevents: 2.3.3
 
-  rsbuild-plugin-html-minifier-terser@1.1.1(@rsbuild/core@1.0.1-rc.5):
+  rsbuild-plugin-html-minifier-terser@1.1.1(@rsbuild/core@1.0.1):
     dependencies:
       '@types/html-minifier-terser': 7.0.2
       html-minifier-terser: 7.2.0
     optionalDependencies:
-      '@rsbuild/core': 1.0.1-rc.5
+      '@rsbuild/core': 1.0.1
 
   run-parallel@1.2.0:
     dependencies:
@@ -11553,10 +11562,10 @@ snapshots:
       graceful-fs: 4.2.11
     optional: true
 
-  storybook-react-rsbuild@file:packages/react-rsbuild(@rsbuild/core@1.0.1-rc.5)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(rollup@4.17.2)(storybook@8.3.0-beta.3)(typescript@5.4.5)(webpack@5.94.0):
+  storybook-react-rsbuild@file:packages/react-rsbuild(@rsbuild/core@1.0.1)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(rollup@4.17.2)(storybook@8.3.0-beta.3)(typescript@5.4.5)(webpack@5.94.0):
     dependencies:
       '@rollup/pluginutils': 5.1.0(rollup@4.17.2)
-      '@rsbuild/core': 1.0.1-rc.5
+      '@rsbuild/core': 1.0.1
       '@storybook/react': 8.2.8(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(storybook@8.3.0-beta.3)(typescript@5.4.5)
       '@storybook/react-docgen-typescript-plugin': 1.0.1(typescript@5.4.5)(webpack@5.94.0)
       '@types/node': 18.19.33

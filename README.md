@@ -8,7 +8,7 @@
  <a href="https://github.com/rspack-contrib/storybook-rsbuild/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/storybook-builder-rsbuild?style=flat-square&color=%23ff4785" alt="license" /></a>
 </p>
 
-The repository contains the Storybook Rsbuild builder and framework integrations for UI frameworks.
+The repository contains the Storybook Rsbuild builder and UI framework integrations.
 
 | package                                                 | description                                          |
 | ------------------------------------------------------- | ---------------------------------------------------- |
@@ -21,7 +21,7 @@ The repository contains the Storybook Rsbuild builder and framework integrations
 > [!IMPORTANT]  
 > Peer dependencies requirements:
 >
-> - **`@rsbuild/core >= 1.0.1-beta.14`**: Rsbuild is about to release version 1.0.0, and the current alpha version is already very reliable. (check out Rsbuild's [1.0.0 breaking changes](https://github.com/web-infra-dev/rsbuild/discussions/2508))
+> - **`@rsbuild/core >= 1.0.1`**: The builder relies on Rsbuild's 1.0 stable version. Check out Rsbuild's [1.0](https://rsbuild.dev/community/releases/v1-0) announcement for more details.
 > - **`storybook >= 8.2.1`**: Storybook made some internal refactor in major version, 8.2.1 is tested out. (check out Storybook's [release note](https://storybook.js.org/blog/storybook-8/) for migrating from v7)
 
 In Storybook v8, you don't need to manually install storybook-builder-rsbuild, it has been depended by the framework, such as `storybook-react-rsbuild` and `storybook-vue3-rsbuild`.
@@ -41,11 +41,11 @@ In Storybook v8, you don't need to manually install storybook-builder-rsbuild, i
      framework: 'storybook-react-rsbuild',
      rsbuildFinal: (config) => {
        // Customize the final Rsbuild config here
-       return config;
+       return config
      },
-   };
+   }
 
-   export default config;
+   export default config
    ```
 
 You're all set now. You could also check out the example in [sandboxes/react-18](./sandboxes/react-18) and use all other features listed in [Storybook site](https://storybook.js.org/docs).
@@ -65,11 +65,11 @@ You're all set now. You could also check out the example in [sandboxes/react-18]
      framework: 'storybook-vue3-rsbuild',
      rsbuildFinal: (config) => {
        // Customize the final Rsbuild config here
-       return config;
+       return config
      },
-   };
+   }
 
-   export default config;
+   export default config
    ```
 
 You're all set now. You could also check out the example in [sandboxes/vue3-rsbuild](./sandboxes/vue3-rsbuild) and use all other features listed in [Storybook site](https://storybook.js.org/docs).
@@ -158,7 +158,7 @@ export default config
 
 ```js
 // .storybook/main.mjs
-import remarkGfm from 'remark-gfm';
+import remarkGfm from 'remark-gfm'
 
 const config = {
   framework: {
@@ -227,7 +227,6 @@ const config: StorybookConfig = {
   // --snip--
 }
 ```
-
 
 ### Error caused by bundling unexpected files
 
