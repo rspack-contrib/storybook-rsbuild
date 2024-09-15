@@ -399,8 +399,8 @@ importers:
         specifier: ^11.2.0
         version: 11.2.0
       slash:
-        specifier: ^3.0.0
-        version: 3.0.0
+        specifier: ^5.1.0
+        version: 5.1.0
       ts-dedent:
         specifier: ^2.2.0
         version: 2.2.0

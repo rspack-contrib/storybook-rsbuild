@@ -47,7 +47,7 @@
     "esbuild-register": "^3.5.0",
     "execa": "^6.1.0",
     "fs-extra": "^11.2.0",
-    "slash": "^3.0.0",
+    "slash": "^5.1.0",
     "ts-dedent": "^2.2.0",
     "tsup": "^6.7.0",
     "type-fest": "~2.19",
