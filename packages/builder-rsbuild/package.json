@@ -89,7 +89,7 @@
     "pretty-hrtime": "^1.0.3",
     "slash": "^5.1.0",
     "storybook": "8.4.0-alpha.0",
-    "typescript": "^5.3.2"
+    "typescript": "^5.6.2"
   },
   "peerDependencies": {
     "@rsbuild/core": "^1.0.1",
