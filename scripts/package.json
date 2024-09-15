@@ -59,7 +59,7 @@
   "optionalDependencies": {
     "@verdaccio/types": "^10.8.0",
     "ts-loader": "^9.5.1",
-    "verdaccio": "^5.19.1",
+    "verdaccio": "^5.32.2",
     "verdaccio-auth-memory": "^10.2.2"
   },
   "packageManager": "yarn@4.0.2",
