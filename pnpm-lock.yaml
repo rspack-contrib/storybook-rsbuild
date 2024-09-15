@@ -66,8 +66,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       css-loader:
-        specifier: ^6.11.0
-        version: 6.11.0(@rspack/core@1.0.5(@swc/helpers@0.5.13))(webpack@5.94.0(esbuild@0.20.2))
+        specifier: ^7.1.2
+        version: 7.1.2(@rspack/core@1.0.5(@swc/helpers@0.5.13))(webpack@5.94.0(esbuild@0.20.2))
       es-module-lexer:
         specifier: ^1.5.4
         version: 1.5.4
@@ -2960,12 +2960,12 @@ packages:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
 
-  css-loader@6.11.0:
-    resolution: {integrity: sha512-CTJ+AEQJjq5NzLga5pE39qdiSV56F8ywCIsqNIRF0r7BDgWsN25aazToqAFg7ZrtA/U016xudB3ffgweORxX7g==}
-    engines: {node: '>= 12.13.0'}
+  css-loader@7.1.2:
+    resolution: {integrity: sha512-6WvYYn7l/XEGN8Xu2vWFt9nVzrCn39vKyTEFf/ExEyoksJjjSZV/0/35XPlMbpnr6VGhZIUg5yJrL8tGfes/FA==}
+    engines: {node: '>= 18.12.0'}
     peerDependencies:
       '@rspack/core': 0.x || 1.x
-      webpack: ^5.0.0
+      webpack: ^5.27.0
     peerDependenciesMeta:
       '@rspack/core':
         optional: true
@@ -9010,7 +9010,7 @@ snapshots:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  css-loader@6.11.0(@rspack/core@1.0.5(@swc/helpers@0.5.13))(webpack@5.94.0(esbuild@0.20.2)):
+  css-loader@7.1.2(@rspack/core@1.0.5(@swc/helpers@0.5.13))(webpack@5.94.0(esbuild@0.20.2)):
     dependencies:
       icss-utils: 5.1.0(postcss@8.4.47)
       postcss: 8.4.47
