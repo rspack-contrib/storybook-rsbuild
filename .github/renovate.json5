@@ -1,8 +1,7 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
 	"timezone": "Asia/Shanghai",
-	"schedule": ["after 11pm on friday"],
-	"extends": ["config:recommended"],
+	"extends": ["config:recommended", "schedule:weekly"],
 	"ignorePaths": ["**/tests/**", "**/node_modules/**"],
 	"packageRules": [
 		// Use chore as semantic commit type for commit messages
