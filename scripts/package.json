@@ -50,7 +50,7 @@
     "slash": "^3.0.0",
     "ts-dedent": "^2.2.0",
     "tsup": "^6.7.0",
-    "type-fest": "~2.19",
+    "type-fest": "~4.26.1",
     "typescript": "^5.6.2"
   },
   "devDependencies": {
