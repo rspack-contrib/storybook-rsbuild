@@ -20,7 +20,7 @@
     "**/package.json": ["sort-package-json", "biome check --write"]
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.0",
+    "@biomejs/biome": "^1.9.1",
     "@changesets/cli": "^2.27.8",
     "@testing-library/jest-dom": "6.5.0",
     "cross-env": "^7.0.3",
