@@ -219,8 +219,8 @@ importers:
         specifier: 16.14.0
         version: 16.14.0
       react-dom:
-        specifier: '16'
-        version: 16.14.0(react@16.14.0)
+        specifier: '17'
+        version: 17.0.2(react@16.14.0)
     devDependencies:
       '@chromatic-com/storybook':
         specifier: ^1.9.0
@@ -245,10 +245,10 @@ importers:
         version: 8.4.0-alpha.0(react@16.14.0)(storybook@8.4.0-alpha.0)
       '@storybook/blocks':
         specifier: 8.4.0-alpha.0
-        version: 8.4.0-alpha.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)
+        version: 8.4.0-alpha.0(react-dom@17.0.2(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)
       '@storybook/react':
         specifier: 8.4.0-alpha.0
-        version: 8.4.0-alpha.0(@storybook/test@8.4.0-alpha.0(storybook@8.4.0-alpha.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)(typescript@5.6.2)
+        version: 8.4.0-alpha.0(@storybook/test@8.4.0-alpha.0(storybook@8.4.0-alpha.0))(react-dom@17.0.2(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)(typescript@5.6.2)
       '@storybook/test':
         specifier: 8.4.0-alpha.0
         version: 8.4.0-alpha.0(storybook@8.4.0-alpha.0)
@@ -263,7 +263,7 @@ importers:
         version: 8.4.0-alpha.0
       storybook-react-rsbuild:
         specifier: workspace:*
-        version: file:packages/react-rsbuild(@rsbuild/core@1.0.5)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(rollup@4.17.2)(storybook@8.4.0-alpha.0)(typescript@5.6.2)(webpack@5.94.0)
+        version: file:packages/react-rsbuild(@rsbuild/core@1.0.5)(react-dom@17.0.2(react@16.14.0))(react@16.14.0)(rollup@4.17.2)(storybook@8.4.0-alpha.0)(typescript@5.6.2)(webpack@5.94.0)
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
@@ -2322,26 +2322,14 @@ packages:
   '@vue/compiler-core@3.5.5':
     resolution: {integrity: sha512-ZrxcY8JMoV+kgDrmRwlDufz0SjDZ7jfoNZiIBluAACMBmgr55o/jTbxnyrccH6VSJXnFaDI4Ik1UFCiq9r8i7w==}
 
-  '@vue/compiler-core@3.5.6':
-    resolution: {integrity: sha512-r+gNu6K4lrvaQLQGmf+1gc41p3FO2OUJyWmNqaIITaJU6YFiV5PtQSFZt8jfztYyARwqhoCayjprC7KMvT3nRA==}
-
   '@vue/compiler-core@3.5.8':
     resolution: {integrity: sha512-Uzlxp91EPjfbpeO5KtC0KnXPkuTfGsNDeaKQJxQN718uz+RqDYarEf7UhQJGK+ZYloD2taUbHTI2J4WrUaZQNA==}
-
-  '@vue/compiler-dom@3.5.6':
-    resolution: {integrity: sha512-xRXqxDrIqK8v8sSScpistyYH0qYqxakpsIvqMD2e5sV/PXQ1mTwtXp4k42yHK06KXxKSmitop9e45Ui/3BrTEw==}
 
   '@vue/compiler-dom@3.5.8':
     resolution: {integrity: sha512-GUNHWvoDSbSa5ZSHT9SnV5WkStWfzJwwTd6NMGzilOE/HM5j+9EB9zGXdtu/fCNEmctBqMs6C9SvVPpVPuk1Eg==}
 
-  '@vue/compiler-sfc@3.5.6':
-    resolution: {integrity: sha512-pjWJ8Kj9TDHlbF5LywjVso+BIxCY5wVOLhkEXRhuCHDxPFIeX1zaFefKs8RYoHvkSMqRWt93a0f2gNJVJixHwg==}
-
   '@vue/compiler-sfc@3.5.8':
     resolution: {integrity: sha512-taYpngQtSysrvO9GULaOSwcG5q821zCoIQBtQQSx7Uf7DxpR6CIHR90toPr9QfDD2mqHQPCSgoWBvJu0yV9zjg==}
-
-  '@vue/compiler-ssr@3.5.6':
-    resolution: {integrity: sha512-VpWbaZrEOCqnmqjE83xdwegtr5qO/2OPUC6veWgvNqTJ3bYysz6vY3VqMuOijubuUYPRpG3OOKIh9TD0Stxb9A==}
 
   '@vue/compiler-ssr@3.5.8':
     resolution: {integrity: sha512-W96PtryNsNG9u0ZnN5Q5j27Z/feGrFV6zy9q5tzJVyJaLiwYxvC0ek4IXClZygyhjm+XKM7WD9pdKi/wIRVC/Q==}
@@ -2362,9 +2350,6 @@ packages:
 
   '@vue/shared@3.5.5':
     resolution: {integrity: sha512-0KyMXyEgnmFAs6rNUL+6eUHtUCqCaNrVd+AW3MX3LyA0Yry5SA0Km03CDKiOua1x1WWnIr+W9+S0GMFoSDWERQ==}
-
-  '@vue/shared@3.5.6':
-    resolution: {integrity: sha512-eidH0HInnL39z6wAt6SFIwBrvGOpDWsDxlw3rCgo1B+CQ1781WzQUSU3YjxgdkcJo9Q8S6LmXTkvI+cLHGkQfA==}
 
   '@vue/shared@3.5.8':
     resolution: {integrity: sha512-mJleSWbAGySd2RJdX1RBtcrUBX6snyOc0qHpgk3lGi4l9/P/3ny3ELqFWqYdkXIwwNN/kdm8nD9ky8o6l/Lx2A==}
@@ -4733,6 +4718,11 @@ packages:
     peerDependencies:
       react: ^16.14.0
 
+  react-dom@17.0.2:
+    resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
+    peerDependencies:
+      react: 17.0.2
+
   react-dom@18.3.1:
     resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}
     peerDependencies:
@@ -4947,6 +4937,9 @@ packages:
 
   scheduler@0.19.1:
     resolution: {integrity: sha512-n/zwRWRYSUj0/3g/otKDRPMh6qv2SYMWNq85IEa8iZyAv8od9zDYpGSnpBEjNgcMNq6Scbu5KfIPxNF72R/2EA==}
+
+  scheduler@0.20.2:
+    resolution: {integrity: sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ==}
 
   scheduler@0.23.2:
     resolution: {integrity: sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==}
@@ -7308,14 +7301,14 @@ snapshots:
   '@storybook/addon-docs@8.4.0-alpha.0(storybook@8.4.0-alpha.0)':
     dependencies:
       '@mdx-js/react': 3.0.1(@types/react@16.14.61)(react@18.3.1)
-      '@storybook/blocks': 8.4.0-alpha.0(react-dom@16.14.0(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.0)
+      '@storybook/blocks': 8.4.0-alpha.0(react-dom@17.0.2(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.0)
       '@storybook/csf-plugin': 8.4.0-alpha.0(storybook@8.4.0-alpha.0)
       '@storybook/global': 5.0.0
-      '@storybook/react-dom-shim': 8.4.0-alpha.0(react-dom@16.14.0(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.0)
+      '@storybook/react-dom-shim': 8.4.0-alpha.0(react-dom@17.0.2(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.0)
       '@types/react': 16.14.61
       fs-extra: 11.2.0
       react: 18.3.1
-      react-dom: 16.14.0(react@18.3.1)
+      react-dom: 17.0.2(react@18.3.1)
       rehype-external-links: 3.0.0
       rehype-slug: 6.0.0
       storybook: 8.4.0-alpha.0
@@ -7423,11 +7416,11 @@ snapshots:
       react: 18.3.1
       react-dom: 16.14.0(react@18.3.1)
 
-  '@storybook/blocks@8.4.0-alpha.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)':
+  '@storybook/blocks@8.4.0-alpha.0(react-dom@17.0.2(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)':
     dependencies:
       '@storybook/csf': 0.1.11
       '@storybook/global': 5.0.0
-      '@storybook/icons': 1.2.10(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/icons': 1.2.10(react-dom@17.0.2(react@16.14.0))(react@16.14.0)
       '@types/lodash': 4.17.1
       color-convert: 2.0.1
       dequal: 2.0.3
@@ -7435,20 +7428,20 @@ snapshots:
       markdown-to-jsx: 7.4.7(react@16.14.0)
       memoizerific: 1.11.3
       polished: 4.3.1
-      react-colorful: 5.6.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      react-colorful: 5.6.1(react-dom@17.0.2(react@16.14.0))(react@16.14.0)
       storybook: 8.4.0-alpha.0
       telejson: 7.2.0
       ts-dedent: 2.2.0
       util-deprecate: 1.0.2
     optionalDependencies:
       react: 16.14.0
-      react-dom: 16.14.0(react@16.14.0)
+      react-dom: 17.0.2(react@16.14.0)
 
-  '@storybook/blocks@8.4.0-alpha.0(react-dom@16.14.0(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.0)':
+  '@storybook/blocks@8.4.0-alpha.0(react-dom@17.0.2(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.0)':
     dependencies:
       '@storybook/csf': 0.1.11
       '@storybook/global': 5.0.0
-      '@storybook/icons': 1.2.10(react-dom@16.14.0(react@18.3.1))(react@18.3.1)
+      '@storybook/icons': 1.2.10(react-dom@17.0.2(react@18.3.1))(react@18.3.1)
       '@types/lodash': 4.17.1
       color-convert: 2.0.1
       dequal: 2.0.3
@@ -7456,14 +7449,14 @@ snapshots:
       markdown-to-jsx: 7.4.7(react@18.3.1)
       memoizerific: 1.11.3
       polished: 4.3.1
-      react-colorful: 5.6.1(react-dom@16.14.0(react@18.3.1))(react@18.3.1)
+      react-colorful: 5.6.1(react-dom@17.0.2(react@18.3.1))(react@18.3.1)
       storybook: 8.4.0-alpha.0
       telejson: 7.2.0
       ts-dedent: 2.2.0
       util-deprecate: 1.0.2
     optionalDependencies:
       react: 18.3.1
-      react-dom: 16.14.0(react@18.3.1)
+      react-dom: 17.0.2(react@18.3.1)
 
   '@storybook/blocks@8.4.0-alpha.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.0)':
     dependencies:
@@ -7534,15 +7527,20 @@ snapshots:
 
   '@storybook/global@5.0.0': {}
 
-  '@storybook/icons@1.2.10(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
-    dependencies:
-      react: 16.14.0
-      react-dom: 16.14.0(react@16.14.0)
-
   '@storybook/icons@1.2.10(react-dom@16.14.0(react@18.3.1))(react@18.3.1)':
     dependencies:
       react: 18.3.1
       react-dom: 16.14.0(react@18.3.1)
+
+  '@storybook/icons@1.2.10(react-dom@17.0.2(react@16.14.0))(react@16.14.0)':
+    dependencies:
+      react: 16.14.0
+      react-dom: 17.0.2(react@16.14.0)
+
+  '@storybook/icons@1.2.10(react-dom@17.0.2(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
+      react-dom: 17.0.2(react@18.3.1)
 
   '@storybook/icons@1.2.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -7592,28 +7590,28 @@ snapshots:
       react-dom: 16.14.0(react@18.3.1)
       storybook: 8.4.0-alpha.0
 
-  '@storybook/react-dom-shim@8.2.8(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)':
-    dependencies:
-      react: 16.14.0
-      react-dom: 16.14.0(react@16.14.0)
-      storybook: 8.4.0-alpha.0
-
   '@storybook/react-dom-shim@8.2.8(react-dom@16.14.0(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.0)':
     dependencies:
       react: 18.3.1
       react-dom: 16.14.0(react@18.3.1)
       storybook: 8.4.0-alpha.0
 
-  '@storybook/react-dom-shim@8.4.0-alpha.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)':
+  '@storybook/react-dom-shim@8.2.8(react-dom@17.0.2(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)':
     dependencies:
       react: 16.14.0
-      react-dom: 16.14.0(react@16.14.0)
+      react-dom: 17.0.2(react@16.14.0)
       storybook: 8.4.0-alpha.0
 
-  '@storybook/react-dom-shim@8.4.0-alpha.0(react-dom@16.14.0(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.0)':
+  '@storybook/react-dom-shim@8.4.0-alpha.0(react-dom@17.0.2(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)':
+    dependencies:
+      react: 16.14.0
+      react-dom: 17.0.2(react@16.14.0)
+      storybook: 8.4.0-alpha.0
+
+  '@storybook/react-dom-shim@8.4.0-alpha.0(react-dom@17.0.2(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.0)':
     dependencies:
       react: 18.3.1
-      react-dom: 16.14.0(react@18.3.1)
+      react-dom: 17.0.2(react@18.3.1)
       storybook: 8.4.0-alpha.0
 
   '@storybook/react-dom-shim@8.4.0-alpha.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.0)':
@@ -7621,35 +7619,6 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       storybook: 8.4.0-alpha.0
-
-  '@storybook/react@8.2.8(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)(typescript@5.6.2)':
-    dependencies:
-      '@storybook/components': 8.2.8(storybook@8.4.0-alpha.0)
-      '@storybook/global': 5.0.0
-      '@storybook/manager-api': 8.2.8(storybook@8.4.0-alpha.0)
-      '@storybook/preview-api': 8.2.8(storybook@8.4.0-alpha.0)
-      '@storybook/react-dom-shim': 8.2.8(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)
-      '@storybook/theming': 8.2.8(storybook@8.4.0-alpha.0)
-      '@types/escodegen': 0.0.6
-      '@types/estree': 0.0.51
-      '@types/node': 18.19.33
-      acorn: 7.4.1
-      acorn-jsx: 5.3.2(acorn@7.4.1)
-      acorn-walk: 7.2.0
-      escodegen: 2.1.0
-      html-tags: 3.3.1
-      lodash: 4.17.21
-      prop-types: 15.8.1
-      react: 16.14.0
-      react-dom: 16.14.0(react@16.14.0)
-      react-element-to-jsx-string: 15.0.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
-      semver: 7.6.2
-      storybook: 8.4.0-alpha.0
-      ts-dedent: 2.2.0
-      type-fest: 2.19.0
-      util-deprecate: 1.0.2
-    optionalDependencies:
-      typescript: 5.6.2
 
   '@storybook/react@8.2.8(react-dom@16.14.0(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.0)(typescript@5.6.2)':
     dependencies:
@@ -7680,13 +7649,42 @@ snapshots:
     optionalDependencies:
       typescript: 5.6.2
 
-  '@storybook/react@8.4.0-alpha.0(@storybook/test@8.4.0-alpha.0(storybook@8.4.0-alpha.0))(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)(typescript@5.6.2)':
+  '@storybook/react@8.2.8(react-dom@17.0.2(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)(typescript@5.6.2)':
+    dependencies:
+      '@storybook/components': 8.2.8(storybook@8.4.0-alpha.0)
+      '@storybook/global': 5.0.0
+      '@storybook/manager-api': 8.2.8(storybook@8.4.0-alpha.0)
+      '@storybook/preview-api': 8.2.8(storybook@8.4.0-alpha.0)
+      '@storybook/react-dom-shim': 8.2.8(react-dom@17.0.2(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)
+      '@storybook/theming': 8.2.8(storybook@8.4.0-alpha.0)
+      '@types/escodegen': 0.0.6
+      '@types/estree': 0.0.51
+      '@types/node': 18.19.33
+      acorn: 7.4.1
+      acorn-jsx: 5.3.2(acorn@7.4.1)
+      acorn-walk: 7.2.0
+      escodegen: 2.1.0
+      html-tags: 3.3.1
+      lodash: 4.17.21
+      prop-types: 15.8.1
+      react: 16.14.0
+      react-dom: 17.0.2(react@16.14.0)
+      react-element-to-jsx-string: 15.0.0(react-dom@17.0.2(react@16.14.0))(react@16.14.0)
+      semver: 7.6.2
+      storybook: 8.4.0-alpha.0
+      ts-dedent: 2.2.0
+      type-fest: 2.19.0
+      util-deprecate: 1.0.2
+    optionalDependencies:
+      typescript: 5.6.2
+
+  '@storybook/react@8.4.0-alpha.0(@storybook/test@8.4.0-alpha.0(storybook@8.4.0-alpha.0))(react-dom@17.0.2(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)(typescript@5.6.2)':
     dependencies:
       '@storybook/components': 8.4.0-alpha.0(storybook@8.4.0-alpha.0)
       '@storybook/global': 5.0.0
       '@storybook/manager-api': 8.4.0-alpha.0(storybook@8.4.0-alpha.0)
       '@storybook/preview-api': 8.4.0-alpha.0(storybook@8.4.0-alpha.0)
-      '@storybook/react-dom-shim': 8.4.0-alpha.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)
+      '@storybook/react-dom-shim': 8.4.0-alpha.0(react-dom@17.0.2(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)
       '@storybook/theming': 8.4.0-alpha.0(storybook@8.4.0-alpha.0)
       '@types/escodegen': 0.0.6
       '@types/estree': 0.0.51
@@ -7698,8 +7696,8 @@ snapshots:
       html-tags: 3.3.1
       prop-types: 15.8.1
       react: 16.14.0
-      react-dom: 16.14.0(react@16.14.0)
-      react-element-to-jsx-string: 15.0.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      react-dom: 17.0.2(react@16.14.0)
+      react-element-to-jsx-string: 15.0.0(react-dom@17.0.2(react@16.14.0))(react@16.14.0)
       semver: 7.6.2
       storybook: 8.4.0-alpha.0
       ts-dedent: 2.2.0
@@ -8212,14 +8210,6 @@ snapshots:
       estree-walker: 2.0.2
       source-map-js: 1.2.1
 
-  '@vue/compiler-core@3.5.6':
-    dependencies:
-      '@babel/parser': 7.25.6
-      '@vue/shared': 3.5.6
-      entities: 4.5.0
-      estree-walker: 2.0.2
-      source-map-js: 1.2.1
-
   '@vue/compiler-core@3.5.8':
     dependencies:
       '@babel/parser': 7.25.6
@@ -8228,27 +8218,10 @@ snapshots:
       estree-walker: 2.0.2
       source-map-js: 1.2.1
 
-  '@vue/compiler-dom@3.5.6':
-    dependencies:
-      '@vue/compiler-core': 3.5.6
-      '@vue/shared': 3.5.6
-
   '@vue/compiler-dom@3.5.8':
     dependencies:
       '@vue/compiler-core': 3.5.8
       '@vue/shared': 3.5.8
-
-  '@vue/compiler-sfc@3.5.6':
-    dependencies:
-      '@babel/parser': 7.25.6
-      '@vue/compiler-core': 3.5.6
-      '@vue/compiler-dom': 3.5.6
-      '@vue/compiler-ssr': 3.5.6
-      '@vue/shared': 3.5.6
-      estree-walker: 2.0.2
-      magic-string: 0.30.11
-      postcss: 8.4.47
-      source-map-js: 1.2.1
 
   '@vue/compiler-sfc@3.5.8':
     dependencies:
@@ -8261,11 +8234,6 @@ snapshots:
       magic-string: 0.30.11
       postcss: 8.4.47
       source-map-js: 1.2.1
-
-  '@vue/compiler-ssr@3.5.6':
-    dependencies:
-      '@vue/compiler-dom': 3.5.6
-      '@vue/shared': 3.5.6
 
   '@vue/compiler-ssr@3.5.8':
     dependencies:
@@ -8295,8 +8263,6 @@ snapshots:
       vue: 3.5.8(typescript@5.6.2)
 
   '@vue/shared@3.5.5': {}
-
-  '@vue/shared@3.5.6': {}
 
   '@vue/shared@3.5.8': {}
 
@@ -10930,15 +10896,20 @@ snapshots:
       iconv-lite: 0.4.24
       unpipe: 1.0.0
 
-  react-colorful@5.6.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
-    dependencies:
-      react: 16.14.0
-      react-dom: 16.14.0(react@16.14.0)
-
   react-colorful@5.6.1(react-dom@16.14.0(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
       react-dom: 16.14.0(react@18.3.1)
+
+  react-colorful@5.6.1(react-dom@17.0.2(react@16.14.0))(react@16.14.0):
+    dependencies:
+      react: 16.14.0
+      react-dom: 17.0.2(react@16.14.0)
+
+  react-colorful@5.6.1(react-dom@17.0.2(react@18.3.1))(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      react-dom: 17.0.2(react@18.3.1)
 
   react-colorful@5.6.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
@@ -10974,14 +10945,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  react-dom@16.14.0(react@16.14.0):
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
-      prop-types: 15.8.1
-      react: 16.14.0
-      scheduler: 0.19.1
-
   react-dom@16.14.0(react@18.3.1):
     dependencies:
       loose-envify: 1.4.0
@@ -10990,19 +10953,25 @@ snapshots:
       react: 18.3.1
       scheduler: 0.19.1
 
+  react-dom@17.0.2(react@16.14.0):
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      react: 16.14.0
+      scheduler: 0.20.2
+
+  react-dom@17.0.2(react@18.3.1):
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      react: 18.3.1
+      scheduler: 0.20.2
+
   react-dom@18.3.1(react@18.3.1):
     dependencies:
       loose-envify: 1.4.0
       react: 18.3.1
       scheduler: 0.23.2
-
-  react-element-to-jsx-string@15.0.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
-    dependencies:
-      '@base2/pretty-print-object': 1.0.1
-      is-plain-object: 5.0.0
-      react: 16.14.0
-      react-dom: 16.14.0(react@16.14.0)
-      react-is: 18.1.0
 
   react-element-to-jsx-string@15.0.0(react-dom@16.14.0(react@18.3.1))(react@18.3.1):
     dependencies:
@@ -11010,6 +10979,14 @@ snapshots:
       is-plain-object: 5.0.0
       react: 18.3.1
       react-dom: 16.14.0(react@18.3.1)
+      react-is: 18.1.0
+
+  react-element-to-jsx-string@15.0.0(react-dom@17.0.2(react@16.14.0))(react@16.14.0):
+    dependencies:
+      '@base2/pretty-print-object': 1.0.1
+      is-plain-object: 5.0.0
+      react: 16.14.0
+      react-dom: 17.0.2(react@16.14.0)
       react-is: 18.1.0
 
   react-element-to-jsx-string@15.0.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
@@ -11247,6 +11224,11 @@ snapshots:
   safer-buffer@2.1.2: {}
 
   scheduler@0.19.1:
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+
+  scheduler@0.20.2:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
@@ -11513,18 +11495,18 @@ snapshots:
       graceful-fs: 4.2.11
     optional: true
 
-  storybook-react-rsbuild@file:packages/react-rsbuild(@rsbuild/core@1.0.5)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(rollup@4.17.2)(storybook@8.4.0-alpha.0)(typescript@5.6.2)(webpack@5.94.0):
+  storybook-react-rsbuild@file:packages/react-rsbuild(@rsbuild/core@1.0.5)(react-dom@17.0.2(react@16.14.0))(react@16.14.0)(rollup@4.17.2)(storybook@8.4.0-alpha.0)(typescript@5.6.2)(webpack@5.94.0):
     dependencies:
       '@rollup/pluginutils': 5.1.0(rollup@4.17.2)
       '@rsbuild/core': 1.0.5
-      '@storybook/react': 8.2.8(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)(typescript@5.6.2)
+      '@storybook/react': 8.2.8(react-dom@17.0.2(react@16.14.0))(react@16.14.0)(storybook@8.4.0-alpha.0)(typescript@5.6.2)
       '@storybook/react-docgen-typescript-plugin': 1.0.1(typescript@5.6.2)(webpack@5.94.0)
       '@types/node': 18.19.33
       find-up: 5.0.0
       magic-string: 0.30.11
       react: 16.14.0
       react-docgen: 7.0.3
-      react-dom: 16.14.0(react@16.14.0)
+      react-dom: 17.0.2(react@16.14.0)
       resolve: 1.22.8
       storybook: 8.4.0-alpha.0
       storybook-builder-rsbuild: link:packages/builder-rsbuild
@@ -12093,8 +12075,8 @@ snapshots:
     dependencies:
       '@babel/parser': 7.25.6
       '@babel/types': 7.25.6
-      '@vue/compiler-dom': 3.5.6
-      '@vue/compiler-sfc': 3.5.6
+      '@vue/compiler-dom': 3.5.8
+      '@vue/compiler-sfc': 3.5.8
       ast-types: 0.16.1
       esm-resolve: 1.0.11
       hash-sum: 2.0.0

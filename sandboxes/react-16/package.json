@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "react": "16.14.0",
-    "react-dom": "16"
+    "react-dom": "17"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
