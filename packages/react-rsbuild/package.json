@@ -60,6 +60,8 @@
     "@storybook/types": "8.4.0-alpha.0",
     "@types/resolve": "^1.20.6",
     "add": "^2.0.6",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "storybook": "8.4.0-alpha.0",
     "typescript": "^5.6.2"
   },
