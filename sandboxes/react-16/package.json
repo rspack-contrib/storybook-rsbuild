@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "react": "16.14.0",
-    "react-dom": "16"
+    "react-dom": "16.14.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
@@ -27,7 +27,7 @@
     "@storybook/blocks": "8.4.0-alpha.0",
     "@storybook/react": "8.4.0-alpha.0",
     "@storybook/test": "8.4.0-alpha.0",
-    "@types/react": "^16.14.61",
+    "@types/react": "^16.14.62",
     "@types/react-dom": "^16.9.24",
     "storybook": "8.4.0-alpha.0",
     "storybook-react-rsbuild": "workspace:*",

@@ -44,7 +44,7 @@
     "prepare": "pnpm run build"
   },
   "dependencies": {
-    "@rollup/pluginutils": "^5.1.0",
+    "@rollup/pluginutils": "^5.1.2",
     "@storybook/react": "^8.2.1",
     "@storybook/react-docgen-typescript-plugin": "^1.0.1",
     "@types/node": "^18.0.0",
