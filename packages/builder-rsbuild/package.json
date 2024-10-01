@@ -83,7 +83,6 @@
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^18.0.0",
     "@types/pretty-hrtime": "^1.0.3",
-    "add": "^2.0.6",
     "pretty-hrtime": "^1.0.3",
     "slash": "^5.1.0",
     "storybook": "8.4.0-alpha.0",

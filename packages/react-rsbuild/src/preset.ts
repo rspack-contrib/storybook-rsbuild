@@ -16,7 +16,6 @@ export const rsbuildFinal: StorybookConfig['rsbuildFinal'] = async (
 
 export const core: PresetProperty<'core'> = async (config, options) => {
   const framework = await options.presets.apply('framework')
-
   return {
     ...config,
     builder: {
