@@ -210,6 +210,28 @@ The `configType` variable will be either `"DEVELOPMENT"` or `"PRODUCTION"`.
 
 The function should return the updated Rsbuild configuration.
 
+### Using customized addon
+
+Since Rspack is compatible with Webpack 5, storybook-builder-rsbuild can also use Webpack 5 addons. The configuration for ⁠`webpackAddons` is identical to that of Storybook's [addons](https://storybook.js.org/docs/api/main-config/main-config-addons). However, Storybook's addons only support the Vite builder and Webpack 5 builder by default. If you want to use Webpack 5 addons in storybook-builder-rsbuild, please add them to ⁠webpackAddons. For example, using the [`@storybook/addon-coverage`](https://github.com/storybookjs/addon-coverage) addon:
+
+```js
+const config: StorybookConfig = {
+  // --snip--
+  webpackAddons: [
+    {
+      name: '@storybook/addon-coverage',
+      options: {
+        istanbul: {
+          include: ['src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+          exclude: [],
+        },
+      },
+    },
+  ],
+  // --snip--
+}
+```
+
 ## FAQ
 
 ### How to Storybook to a subdirectory / subpath?

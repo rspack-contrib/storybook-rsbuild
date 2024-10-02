@@ -6,8 +6,13 @@ import express from 'express'
 import fs from 'fs-extra'
 import prettyTime from 'pretty-hrtime'
 import { corePath } from 'storybook/core-path'
+import { getPresets, resolveAddonName } from 'storybook/internal/common'
 import { WebpackInvocationError } from 'storybook/internal/server-errors'
-import type { Options } from 'storybook/internal/types'
+import type {
+  Options,
+  Preset,
+  StorybookConfigRaw,
+} from 'storybook/internal/types'
 import rsbuildConfig, {
   type RsbuildBuilderOptions,
 } from './preview/iframe-rsbuild.config'
@@ -43,10 +48,53 @@ export const executor = {
   },
 }
 
-export const rsbuild = async (_: unknown, options: RsbuildBuilderOptions) => {
+const isObject = (val: unknown): val is Record<string, any> =>
+  val != null && typeof val === 'object' && Array.isArray(val) === false
+
+function nonNullables<T>(value: T): value is NonNullable<T> {
+  return value !== undefined
+}
+
+const rsbuild = async (_: unknown, options: RsbuildBuilderOptions) => {
   const { presets } = options
-  let defaultConfig = await rsbuildConfig(options)
+  // #region webpack addons
+  const webpackAddons =
+    await presets.apply<StorybookConfigRaw['addons']>('webpackAddons')
+  const resolvedWebpackAddons = (webpackAddons ?? [])
+    .map((preset: Preset) => {
+      const options = isObject(preset) ? preset.options || undefined : undefined
+      const name = isObject(preset) ? preset.name : preset
+      // Taken fromm https://github.com/storybookjs/storybook/blob/f3b15ce1f28daac195e7698c075be7790f8172f1/code/core/src/common/presets.ts#L198.
+      return resolveAddonName(options.configDir, name, options)
+    })
+    .filter(nonNullables)
+  const { apply } = await getPresets(resolvedWebpackAddons, options)
+  const webpackAddonsConfig: rsbuildReal.Rspack.Configuration = await apply(
+    'webpackFinal',
+    // TODO: using empty webpack config as base for now. It's better to using the composed rspack
+    // config in `iframe-rsbuild.config.ts` as base config. But when `tools.rspack` is an async function,
+    // the following `tools.rspack` raise an ` Promises are not supported` error.
+    {
+      output: {},
+      module: {},
+      plugins: [],
+      resolve: {},
+      devServer: {},
+      optimization: {},
+      performance: {},
+      externals: {},
+      experiments: {},
+      node: {},
+      stats: {},
+      entry: {},
+    },
+    options,
+  )
+  // #endregion
+
+  let defaultConfig = await rsbuildConfig(options, webpackAddonsConfig)
   const shimsConfig = await applyReactShims(defaultConfig, options)
+
   defaultConfig = mergeRsbuildConfig(
     defaultConfig,
     shimsConfig,
@@ -58,13 +106,14 @@ export const rsbuild = async (_: unknown, options: RsbuildBuilderOptions) => {
     options,
   )
 
-  return mergeRsbuildConfig(finalDefaultConfig)
+  return finalDefaultConfig
 }
 
 export const getConfig: RsbuildBuilder['getConfig'] = async (options) => {
   const { presets } = options
   const typescriptOptions = await presets.apply('typescript', {}, options)
   const frameworkOptions = await presets.apply<any>('frameworkOptions')
+
   return rsbuild({}, {
     ...options,
     typescriptOptions,

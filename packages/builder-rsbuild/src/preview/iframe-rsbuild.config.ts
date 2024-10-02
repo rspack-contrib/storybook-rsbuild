@@ -1,6 +1,6 @@
 import { dirname, join, resolve } from 'node:path'
 import { loadConfig, mergeRsbuildConfig } from '@rsbuild/core'
-import type { RsbuildConfig } from '@rsbuild/core'
+import type { RsbuildConfig, Rspack } from '@rsbuild/core'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
 import { webpack as docsWebpack } from '@storybook/addon-docs/dist/preset'
 // @ts-expect-error (I removed this on purpose, because it's incorrect)
@@ -56,6 +56,7 @@ export type RsbuildBuilderOptions = Options & {
 
 export default async (
   options: RsbuildBuilderOptions,
+  extraWebpackConfig?: Rspack.Configuration,
 ): Promise<RsbuildConfig> => {
   const { rsbuildConfigPath, addonDocs } =
     await getBuilderOptions<BuilderOptions>(options)
@@ -199,7 +200,7 @@ export default async (
     ? 'static/media/[name].[contenthash:8][ext]'
     : 'static/media/[path][name][ext]'
 
-  const merged = mergeRsbuildConfig(contentFromConfig, {
+  const rsbuildConfig = mergeRsbuildConfig(contentFromConfig, {
     output: {
       cleanDistPath: false,
       assetPrefix: '/',
@@ -354,8 +355,7 @@ export default async (
         // as it's a built-in logic for Storybook's official webpack and Vite builder.
         // we should remove this once we merge this into Storybook's repository
         // by defining builder plugin in @storybook/addon-docs/preset's source code
-
-        return mergeConfig(config, appliedDocsWebpack)
+        return mergeConfig(config, extraWebpackConfig, appliedDocsWebpack)
       },
       htmlPlugin: {
         filename: 'iframe.html',
@@ -391,5 +391,5 @@ export default async (
     },
   })
 
-  return merged
+  return rsbuildConfig
 }
