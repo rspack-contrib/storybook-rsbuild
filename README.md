@@ -13,9 +13,9 @@ The repository contains the Storybook Rsbuild builder and UI framework integrati
 | package                                                 | description                                                  |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
 | [storybook-builder-rsbuild](./packages/builder-rsbuild) | Rsbuild powered builder for Storybook                        |
-| [storybook-react-rsbuild](./packages/react-rsbuild)     | React integration for Storybook with Rsbuild builder         |
-| [storybook-vue3-rsbuild](./packages/vue3-rsbuild)       | Vue 3 integration for Storybook with Rsbuild builder         |
-| [storybook-html-rsbuild](./packages/html-rsbuild)       | Vanilla JS/TS integration for Storybook with Rsbuild builder |
+| [storybook-react-rsbuild](./packages/framework-react)   | React integration for Storybook with Rsbuild builder         |
+| [storybook-vue3-rsbuild](./packages/framework-vue3)     | Vue 3 integration for Storybook with Rsbuild builder         |
+| [storybook-html-rsbuild](./packages/framework-html)     | Vanilla JS/TS integration for Storybook with Rsbuild builder |
 
 ## Usage
 
