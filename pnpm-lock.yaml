@@ -46,7 +46,7 @@ importers:
     dependencies:
       '@rsbuild/plugin-type-check':
         specifier: ^1.0.1
-        version: 1.0.1(@rsbuild/core@1.0.8)(@swc/core@1.7.26)(esbuild@0.20.2)(typescript@5.6.2)
+        version: 1.0.1(@rsbuild/core@1.0.8)(@swc/core@1.7.26)(typescript@5.6.2)
       '@storybook/addon-docs':
         specifier: ^8.2.1
         version: 8.2.1(storybook@8.4.0-alpha.0)
@@ -120,6 +120,49 @@ importers:
       slash:
         specifier: ^5.1.0
         version: 5.1.0
+      storybook:
+        specifier: 8.4.0-alpha.0
+        version: 8.4.0-alpha.0
+      typescript:
+        specifier: ^5.6.2
+        version: 5.6.2
+
+  packages/html-rsbuild:
+    dependencies:
+      '@rollup/pluginutils':
+        specifier: ^5.1.2
+        version: 5.1.2(rollup@4.17.2)
+      '@storybook/html':
+        specifier: ^8.2.1
+        version: 8.3.4(storybook@8.4.0-alpha.0)
+      '@types/node':
+        specifier: ^18.0.0
+        version: 18.19.33
+      find-up:
+        specifier: ^5.0.0
+        version: 5.0.0
+      magic-string:
+        specifier: ^0.30.11
+        version: 0.30.11
+      resolve:
+        specifier: ^1.22.8
+        version: 1.22.8
+      storybook-builder-rsbuild:
+        specifier: workspace:*
+        version: link:../builder-rsbuild
+      tsconfig-paths:
+        specifier: ^4.2.0
+        version: 4.2.0
+    devDependencies:
+      '@rsbuild/core':
+        specifier: 1.0.8
+        version: 1.0.8
+      '@storybook/types':
+        specifier: 8.4.0-alpha.0
+        version: 8.4.0-alpha.0(storybook@8.4.0-alpha.0)
+      '@types/resolve':
+        specifier: ^1.20.6
+        version: 1.20.6
       storybook:
         specifier: 8.4.0-alpha.0
         version: 8.4.0-alpha.0
@@ -406,6 +449,42 @@ importers:
         version: link:../../packages/react-rsbuild
       typescript:
         specifier: ^5.6.2
+        version: 5.6.2
+
+  sandboxes/vanilla-ts:
+    devDependencies:
+      '@chromatic-com/storybook':
+        specifier: ^1.8.0
+        version: 1.9.0(react@18.3.1)
+      '@rsbuild/core':
+        specifier: ^1.0.1
+        version: 1.0.8
+      '@storybook/addon-essentials':
+        specifier: 8.4.0-alpha.0
+        version: 8.4.0-alpha.0(storybook@8.4.0-alpha.0)
+      '@storybook/addon-interactions':
+        specifier: 8.4.0-alpha.0
+        version: 8.4.0-alpha.0(storybook@8.4.0-alpha.0)
+      '@storybook/addon-links':
+        specifier: 8.4.0-alpha.0
+        version: 8.4.0-alpha.0(react@18.3.1)(storybook@8.4.0-alpha.0)
+      '@storybook/blocks':
+        specifier: 8.4.0-alpha.0
+        version: 8.4.0-alpha.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.0)
+      '@storybook/html':
+        specifier: 8.4.0-alpha.0
+        version: 8.4.0-alpha.0(storybook@8.4.0-alpha.0)
+      '@storybook/test':
+        specifier: 8.4.0-alpha.0
+        version: 8.4.0-alpha.0(storybook@8.4.0-alpha.0)
+      storybook:
+        specifier: 8.4.0-alpha.0
+        version: 8.4.0-alpha.0
+      storybook-html-rsbuild:
+        specifier: workspace:*
+        version: link:../../packages/html-rsbuild
+      typescript:
+        specifier: ^5.5.2
         version: 5.6.2
 
   sandboxes/vue3:
@@ -2142,6 +2221,18 @@ packages:
 
   '@storybook/global@5.0.0':
     resolution: {integrity: sha512-FcOqPAXACP0I3oJ/ws6/rrPT9WGhu915Cg8D02a9YxLo0DE9zI+a9A5gRGvmQ09fiWPukqI8ZAEoQEdWUKMQdQ==}
+
+  '@storybook/html@8.3.4':
+    resolution: {integrity: sha512-C0a9BMrTS8e5GCyizJ40mqbGRlj16M2YP2npP5Hc6CrE/UAMycAZxMAXrMiHMYbPV2nkJHLjAvkUirG879UwGQ==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      storybook: ^8.3.4
+
+  '@storybook/html@8.4.0-alpha.0':
+    resolution: {integrity: sha512-7DiCOm7J8PSkjlw0M9ne8eVsq07XnI7uI5oKMo3MzdPCxjEf/QeeQCg+lLx7hi7s7Imgdi8shWsS8+2HM8qjDw==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      storybook: ^8.4.0-alpha.0
 
   '@storybook/icons@1.2.10':
     resolution: {integrity: sha512-310apKdDcjbbX2VSLWPwhEwAgjxTzVagrwucVZIdGPErwiAppX8KvBuWZgPo+rQLVrtH8S+pw1dbUwjcE6d7og==}
@@ -8493,13 +8584,13 @@ snapshots:
       '@rspack/plugin-react-refresh': 1.0.0(react-refresh@0.14.2)
       react-refresh: 0.14.2
 
-  '@rsbuild/plugin-type-check@1.0.1(@rsbuild/core@1.0.8)(@swc/core@1.7.26)(esbuild@0.20.2)(typescript@5.6.2)':
+  '@rsbuild/plugin-type-check@1.0.1(@rsbuild/core@1.0.8)(@swc/core@1.7.26)(typescript@5.6.2)':
     dependencies:
       deepmerge: 4.3.1
-      fork-ts-checker-webpack-plugin: 9.0.2(typescript@5.6.2)(webpack@5.94.0(@swc/core@1.7.26)(esbuild@0.20.2))
+      fork-ts-checker-webpack-plugin: 9.0.2(typescript@5.6.2)(webpack@5.94.0(@swc/core@1.7.26))
       json5: 2.2.3
       reduce-configs: 1.0.0
-      webpack: 5.94.0(@swc/core@1.7.26)(esbuild@0.20.2)
+      webpack: 5.94.0(@swc/core@1.7.26)
     optionalDependencies:
       '@rsbuild/core': 1.0.8
     transitivePeerDependencies:
@@ -9023,6 +9114,26 @@ snapshots:
       type-fest: 2.19.0
 
   '@storybook/global@5.0.0': {}
+
+  '@storybook/html@8.3.4(storybook@8.4.0-alpha.0)':
+    dependencies:
+      '@storybook/components': 8.3.4(storybook@8.4.0-alpha.0)
+      '@storybook/global': 5.0.0
+      '@storybook/manager-api': 8.3.4(storybook@8.4.0-alpha.0)
+      '@storybook/preview-api': 8.3.4(storybook@8.4.0-alpha.0)
+      '@storybook/theming': 8.3.4(storybook@8.4.0-alpha.0)
+      storybook: 8.4.0-alpha.0
+      ts-dedent: 2.2.0
+
+  '@storybook/html@8.4.0-alpha.0(storybook@8.4.0-alpha.0)':
+    dependencies:
+      '@storybook/components': 8.4.0-alpha.0(storybook@8.4.0-alpha.0)
+      '@storybook/global': 5.0.0
+      '@storybook/manager-api': 8.4.0-alpha.0(storybook@8.4.0-alpha.0)
+      '@storybook/preview-api': 8.4.0-alpha.0(storybook@8.4.0-alpha.0)
+      '@storybook/theming': 8.4.0-alpha.0(storybook@8.4.0-alpha.0)
+      storybook: 8.4.0-alpha.0
+      ts-dedent: 2.2.0
 
   '@storybook/icons@1.2.10(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
@@ -11533,7 +11644,7 @@ snapshots:
   forever-agent@0.6.1:
     optional: true
 
-  fork-ts-checker-webpack-plugin@9.0.2(typescript@5.6.2)(webpack@5.94.0(@swc/core@1.7.26)(esbuild@0.20.2)):
+  fork-ts-checker-webpack-plugin@9.0.2(typescript@5.6.2)(webpack@5.94.0(@swc/core@1.7.26)):
     dependencies:
       '@babel/code-frame': 7.24.2
       chalk: 4.1.2
@@ -11548,7 +11659,7 @@ snapshots:
       semver: 7.6.2
       tapable: 2.2.1
       typescript: 5.6.2
-      webpack: 5.94.0(@swc/core@1.7.26)(esbuild@0.20.2)
+      webpack: 5.94.0(@swc/core@1.7.26)
 
   form-data@2.3.3:
     dependencies:
@@ -14323,18 +14434,6 @@ snapshots:
       esbuild: 0.17.19
     optional: true
 
-  terser-webpack-plugin@5.3.10(@swc/core@1.7.26)(esbuild@0.20.2)(webpack@5.94.0(@swc/core@1.7.26)(esbuild@0.20.2)):
-    dependencies:
-      '@jridgewell/trace-mapping': 0.3.25
-      jest-worker: 27.5.1
-      schema-utils: 3.3.0
-      serialize-javascript: 6.0.2
-      terser: 5.31.0
-      webpack: 5.94.0(@swc/core@1.7.26)(esbuild@0.20.2)
-    optionalDependencies:
-      '@swc/core': 1.7.26(@swc/helpers@0.5.13)
-      esbuild: 0.20.2
-
   terser-webpack-plugin@5.3.10(@swc/core@1.7.26)(webpack@5.94.0(@swc/core@1.7.26)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
@@ -14960,36 +15059,6 @@ snapshots:
       - esbuild
       - uglify-js
     optional: true
-
-  webpack@5.94.0(@swc/core@1.7.26)(esbuild@0.20.2):
-    dependencies:
-      '@types/estree': 1.0.5
-      '@webassemblyjs/ast': 1.12.1
-      '@webassemblyjs/wasm-edit': 1.12.1
-      '@webassemblyjs/wasm-parser': 1.12.1
-      acorn: 8.11.3
-      acorn-import-attributes: 1.9.5(acorn@8.11.3)
-      browserslist: 4.23.1
-      chrome-trace-event: 1.0.3
-      enhanced-resolve: 5.17.1
-      es-module-lexer: 1.5.4
-      eslint-scope: 5.1.1
-      events: 3.3.0
-      glob-to-regexp: 0.4.1
-      graceful-fs: 4.2.11
-      json-parse-even-better-errors: 2.3.1
-      loader-runner: 4.3.0
-      mime-types: 2.1.35
-      neo-async: 2.6.2
-      schema-utils: 3.3.0
-      tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(@swc/core@1.7.26)(esbuild@0.20.2)(webpack@5.94.0(@swc/core@1.7.26)(esbuild@0.20.2))
-      watchpack: 2.4.1
-      webpack-sources: 3.2.3
-    transitivePeerDependencies:
-      - '@swc/core'
-      - esbuild
-      - uglify-js
 
   whatwg-encoding@2.0.0:
     dependencies:

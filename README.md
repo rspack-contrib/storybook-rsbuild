@@ -10,11 +10,12 @@
 
 The repository contains the Storybook Rsbuild builder and UI framework integrations.
 
-| package                                                 | description                                          |
-| ------------------------------------------------------- | ---------------------------------------------------- |
-| [storybook-builder-rsbuild](./packages/builder-rsbuild) | Rsbuild powered builder for Storybook                |
-| [storybook-react-rsbuild](./packages/react-rsbuild)     | React integration for Storybook with Rsbuild builder |
-| [storybook-vue3-rsbuild](./packages/vue3-rsbuild)       | Vue 3 integration for Storybook with Rsbuild builder |
+| package                                                 | description                                                  |
+| ------------------------------------------------------- | ------------------------------------------------------------ |
+| [storybook-builder-rsbuild](./packages/builder-rsbuild) | Rsbuild powered builder for Storybook                        |
+| [storybook-react-rsbuild](./packages/react-rsbuild)     | React integration for Storybook with Rsbuild builder         |
+| [storybook-vue3-rsbuild](./packages/vue3-rsbuild)       | Vue 3 integration for Storybook with Rsbuild builder         |
+| [storybook-html-rsbuild](./packages/html-rsbuild)       | Vanilla JS/TS integration for Storybook with Rsbuild builder |
 
 ## Usage
 
@@ -73,6 +74,30 @@ You're all set now. You could also check out the example in [sandboxes/react-18]
    ```
 
 You're all set now. You could also check out the example in [sandboxes/vue3-rsbuild](./sandboxes/vue3-rsbuild) and use all other features listed in [Storybook site](https://storybook.js.org/docs).
+
+### Use with vanilla JavaScript / TypeScript (in a existing Rsbuild project)
+
+1. Install vanilla JavaScript / TypeScript integration
+   ```bash
+   pnpm i storybook-html-rsbuild -D
+   ```
+2. Change `.storybook/main.js`
+
+   ```js
+   import { StorybookConfig } from 'storybook-html-rsbuild'
+
+   const config: StorybookConfig = {
+     framework: 'storybook-html-rsbuild',
+     rsbuildFinal: (config) => {
+       // Customize the final Rsbuild config here
+       return config
+     },
+   }
+
+   export default config
+   ```
+
+You're all set now. You could also check out the example in [sandboxes/vanilla-ts](./sandboxes/vanilla) and use all other features listed in [Storybook site](https://storybook.js.org/docs).
 
 ### Builder options
 
