@@ -1,15 +1,15 @@
 {
-  "name": "storybook-html-rsbuild",
+  "name": "storybook-vue3-rsbuild",
   "version": "0.1.0",
-  "description": "Storybook for HTML and Rsbuild: View HTML snippets in isolation with Hot Reloading.",
-  "keywords": ["storybook", "rsbuild", "rspack", "vanilla", "html"],
+  "description": "Storybook for Vue3 and Rsbuild: Develop React Component in isolation with Hot Reloading.",
+  "keywords": ["storybook", "rsbuild", "rspack", "vue3"],
   "bugs": {
     "url": "https://github.com/rspack-contrib/storybook-rsbuild/issues"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/rspack-contrib/storybook-rsbuild",
-    "directory": "packages/vanilla-rsbuild"
+    "directory": "packages/framework-vue3"
   },
   "license": "MIT",
   "exports": {
@@ -22,6 +22,10 @@
     "./preset": {
       "types": "./dist/preset.d.ts",
       "require": "./dist/preset.js"
+    },
+    "./react-docs": {
+      "types": "./dist/react-docs.d.ts",
+      "require": "./dist/react-docs.js"
     },
     "./package.json": "./package.json"
   },
@@ -36,26 +40,19 @@
     "prepare": "pnpm run build"
   },
   "dependencies": {
-    "@rollup/pluginutils": "^5.1.2",
-    "@storybook/html": "^8.2.1",
-    "@types/node": "^18.0.0",
-    "find-up": "^5.0.0",
-    "magic-string": "^0.30.11",
-    "resolve": "^1.22.8",
+    "@storybook/vue3": "^8.2.1",
     "storybook-builder-rsbuild": "workspace:*",
-    "tsconfig-paths": "^4.2.0"
+    "vue-docgen-loader": "^1.5.1"
   },
   "devDependencies": {
     "@rsbuild/core": "1.0.8",
-    "@storybook/types": "8.4.0-alpha.0",
-    "@types/resolve": "^1.20.6",
+    "@types/node": "^18.0.0",
     "storybook": "8.4.0-alpha.0",
     "typescript": "^5.6.2"
   },
   "peerDependencies": {
     "@rsbuild/core": "^1.0.1",
-    "storybook": "^8.2.1",
-    "typescript": ">= 4.2.x"
+    "storybook": "^8.2.1"
   },
   "peerDependenciesMeta": {
     "typescript": {

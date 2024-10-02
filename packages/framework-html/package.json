@@ -1,15 +1,15 @@
 {
-  "name": "storybook-react-rsbuild",
+  "name": "storybook-html-rsbuild",
   "version": "0.1.0",
-  "description": "Storybook for React and Rsbuild: Develop React components in isolation with Hot Reloading.",
-  "keywords": ["storybook", "rsbuild", "rspack", "react"],
+  "description": "Storybook for HTML and Rsbuild: View HTML snippets in isolation with Hot Reloading.",
+  "keywords": ["storybook", "rsbuild", "rspack", "vanilla", "html"],
   "bugs": {
     "url": "https://github.com/rspack-contrib/storybook-rsbuild/issues"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/rspack-contrib/storybook-rsbuild",
-    "directory": "packages/react-rsbuild"
+    "directory": "packages/framework-html"
   },
   "license": "MIT",
   "exports": {
@@ -22,14 +22,6 @@
     "./preset": {
       "types": "./dist/preset.d.ts",
       "require": "./dist/preset.js"
-    },
-    "./react-docs": {
-      "types": "./dist/react-docs.d.ts",
-      "require": "./dist/react-docs.js"
-    },
-    "./loaders/react-docgen-loader": {
-      "types": "./dist/loaders/react-docgen-loader.d.ts",
-      "require": "./dist/loaders/react-docgen-loader.js"
     },
     "./package.json": "./package.json"
   },
@@ -45,12 +37,10 @@
   },
   "dependencies": {
     "@rollup/pluginutils": "^5.1.2",
-    "@storybook/react": "^8.2.1",
-    "@storybook/react-docgen-typescript-plugin": "^1.0.1",
+    "@storybook/html": "^8.2.1",
     "@types/node": "^18.0.0",
     "find-up": "^5.0.0",
     "magic-string": "^0.30.11",
-    "react-docgen": "^7.0.3",
     "resolve": "^1.22.8",
     "storybook-builder-rsbuild": "workspace:*",
     "tsconfig-paths": "^4.2.0"
@@ -59,15 +49,11 @@
     "@rsbuild/core": "1.0.8",
     "@storybook/types": "8.4.0-alpha.0",
     "@types/resolve": "^1.20.6",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
     "storybook": "8.4.0-alpha.0",
     "typescript": "^5.6.2"
   },
   "peerDependencies": {
     "@rsbuild/core": "^1.0.1",
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta",
     "storybook": "^8.2.1",
     "typescript": ">= 4.2.x"
   },
@@ -83,11 +69,7 @@
     "access": "public"
   },
   "bundler": {
-    "entries": [
-      "./src/index.ts",
-      "./src/preset.ts",
-      "./src/loaders/react-docgen-loader.ts"
-    ],
+    "entries": ["./src/index.ts", "./src/preset.ts"],
     "platform": "node"
   }
 }
