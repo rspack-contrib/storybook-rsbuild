@@ -315,6 +315,10 @@ export default {
 }
 ```
 
+### Why using `getAbsolutePath` to resolve the framework in sandboxes in this repository?
+
+https://storybook.js.org/docs/faq#how-do-i-fix-module-resolution-in-special-environments
+
 ## Roadmap
 
 ### Features
