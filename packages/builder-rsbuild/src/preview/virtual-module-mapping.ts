@@ -5,7 +5,6 @@ import { webpackIncludeRegexp } from '@storybook/core-webpack'
 import slash from 'slash'
 import {
   getBuilderOptions,
-  handlebars,
   loadPreviewOrConfigFile,
   normalizeStories,
   readTemplate,
@@ -69,18 +68,30 @@ export const getVirtualModules = async (options: Options) => {
   })
 
   const configEntryPath = resolve(join(workingDir, 'storybook-config-entry.js'))
-  virtualModules[configEntryPath] = handlebars(
+  virtualModules[configEntryPath] = (
     await readTemplate(
       require.resolve(
-        'storybook-builder-rsbuild/templates/virtualModuleModernEntry.js.handlebars',
+        'storybook-builder-rsbuild/templates/virtualModuleModernEntry.js',
       ),
-    ),
-    {
-      storiesFilename,
-      previewAnnotations,
-    },
+    )
+  )
+    .replaceAll(`'{{storiesFilename}}'`, `'./${storiesFilename}'`)
+    .replaceAll(
+      `'{{previewAnnotations}}'`,
+      previewAnnotations
+        .filter(Boolean)
+        .map((entry) => `'${entry}'`)
+        .join(','),
+    )
+    .replaceAll(
+      `'{{previewAnnotations_requires}}'`,
+      previewAnnotations
+        .filter(Boolean)
+        .map((entry) => `require('${entry}')`)
+        .join(','),
+    )
     // We need to double escape `\` for webpack. We may have some in windows paths
-  ).replace(/\\/g, '\\\\')
+    .replace(/\\/g, '\\\\')
   entries.push(configEntryPath)
 
   for (const [key, value] of Object.entries(virtualModules)) {
