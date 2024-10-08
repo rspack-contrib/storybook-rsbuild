@@ -20,17 +20,17 @@
     "**/package.json": ["sort-package-json", "biome check --write"]
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.2",
-    "@changesets/cli": "^2.27.8",
+    "@biomejs/biome": "^1.9.3",
+    "@changesets/cli": "^2.27.9",
     "@testing-library/jest-dom": "6.5.0",
     "cross-env": "^7.0.3",
     "nano-staged": "^0.8.0",
-    "nx": "^19.8.2",
+    "nx": "^19.8.4",
     "simple-git-hooks": "^2.11.1",
     "sort-package-json": "^2.10.1",
     "ts-dedent": "^2.2.0",
     "typescript": "^5.6.2",
-    "vitest": "^2.1.1"
+    "vitest": "^2.1.2"
   },
   "packageManager": "pnpm@9.12.0"
 }
