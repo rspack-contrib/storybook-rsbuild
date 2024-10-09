@@ -20,7 +20,18 @@ import type { BuilderOptions } from '../types'
 export const getVirtualModules = async (options: Options) => {
   const virtualModules: Record<string, string> = {}
   const cwd = process.cwd()
-  const workingDir = options.cache?.basePath || process.cwd()
+  const workingDir = options.cache
+    ? path.resolve(
+        process.cwd(),
+        // TODO: This is a hard code cache dir, as Rspack doesn't support virtual modules now.
+        // Remove this when Rspack supports virtual modules.
+        './node_modules/.cache/storybook/storybook-rsbuild-builder',
+      )
+    : process.cwd()
+
+  if (!fs.existsSync(workingDir)) {
+    fs.mkdirSync(workingDir, { recursive: true })
+  }
 
   const isProd = options.configType === 'PRODUCTION'
   const nonNormalizedStories = await options.presets.apply('stories', [])

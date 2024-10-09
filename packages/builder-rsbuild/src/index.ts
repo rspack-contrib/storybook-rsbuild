@@ -2,9 +2,9 @@ import { type AddressInfo, createServer } from 'node:net'
 import { join, parse } from 'node:path'
 import * as rsbuildReal from '@rsbuild/core'
 import { mergeRsbuildConfig } from '@rsbuild/core'
-import express from 'express'
 import fs from 'fs-extra'
 import prettyTime from 'pretty-hrtime'
+import sirv from 'sirv'
 import { corePath } from 'storybook/core-path'
 import { getPresets, resolveAddonName } from 'storybook/internal/common'
 import { WebpackInvocationError } from 'storybook/internal/server-errors'
@@ -178,7 +178,7 @@ export const start: RsbuildBuilder['start'] = async ({
 
   router.use(
     '/sb-preview',
-    express.static(previewDirOrigin, { immutable: true, maxAge: '5m' }),
+    sirv(previewDirOrigin, { maxAge: 300000, dev: true, immutable: true }),
   )
 
   router.use(rsbuildServer.middlewares)
