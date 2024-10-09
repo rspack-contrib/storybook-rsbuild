@@ -86,7 +86,7 @@ export default async (
     docsOptions,
     entries,
     nonNormalizedStories,
-    // modulesCount = 1000,
+    _modulesCount,
     build,
     tagsOptions,
   ] = await Promise.all([
@@ -100,7 +100,7 @@ export default async (
     presets.apply('docs'),
     presets.apply<string[]>('entries', []),
     presets.apply('stories', []),
-    options.cache?.get('modulesCount').catch(() => {}),
+    options.cache?.get('modulesCount', 1000),
     options.presets.apply('build'),
     presets.apply('tags', {}),
   ])
