@@ -40,7 +40,7 @@
     "prepare": "pnpm run build"
   },
   "dependencies": {
-    "@storybook/vue3": "^8.2.1",
+    "@storybook/vue3": "^8.3.5",
     "storybook-builder-rsbuild": "workspace:*",
     "vue-docgen-loader": "^1.5.1"
   },
