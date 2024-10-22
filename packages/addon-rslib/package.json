@@ -1,0 +1,60 @@
+{
+  "name": "storybook-addon-rslib",
+  "version": "0.1.1",
+  "description": "Storybook addon for loading configuration of Rslib",
+  "keywords": ["storybook", "storybook-addons", "rsbuild", "rspack", "rslib"],
+  "bugs": {
+    "url": "https://github.com/rspack-contrib/storybook-rsbuild/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rspack-contrib/storybook-rsbuild",
+    "directory": "packages/addon-rslib"
+  },
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./preset": "./dist/preset.cjs",
+    "./package.json": "./package.json"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist/**/*", "README.md", "*.js", "*.d.ts", "!src/**/*"],
+  "scripts": {
+    "build": "pnpm run prep --optimized",
+    "check": "node --loader ../../scripts/node_modules/esbuild-register/loader.js -r ../../scripts/node_modules/esbuild-register/register.js ../../scripts/prepare/check.ts",
+    "prep": "node --loader ../../scripts/node_modules/esbuild-register/loader.js -r ../../scripts/node_modules/esbuild-register/register.js ../../scripts/prepare/bundle.ts",
+    "prepare": "pnpm run build"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "1.0.15",
+    "@rslib/core": "0.0.13",
+    "@types/node": "^18.0.0",
+    "storybook": "8.4.0-alpha.7",
+    "storybook-builder-rsbuild": "workspace:*",
+    "typescript": "^5.6.2"
+  },
+  "peerDependencies": {
+    "@rsbuild/core": "*",
+    "@rslib/core": "*",
+    "storybook-builder-rsbuild": "*"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bundler": {
+    "entries": ["./src/index.ts", "./src/preset.ts"],
+    "platform": "node"
+  }
+}

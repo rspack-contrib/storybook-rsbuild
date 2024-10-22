@@ -1,7 +1,6 @@
 import { type AddressInfo, createServer } from 'node:net'
 import { join, parse } from 'node:path'
 import * as rsbuildReal from '@rsbuild/core'
-import { mergeRsbuildConfig } from '@rsbuild/core'
 import fs from 'fs-extra'
 import prettyTime from 'pretty-hrtime'
 import sirv from 'sirv'
@@ -95,7 +94,7 @@ const rsbuild = async (_: unknown, options: RsbuildBuilderOptions) => {
   let defaultConfig = await rsbuildConfig(options, webpackAddonsConfig)
   const shimsConfig = await applyReactShims(defaultConfig, options)
 
-  defaultConfig = mergeRsbuildConfig(
+  defaultConfig = rsbuildReal.mergeRsbuildConfig(
     defaultConfig,
     shimsConfig,
   ) as rsbuildReal.RsbuildConfig
