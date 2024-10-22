@@ -27,7 +27,8 @@
     "formatter": {
       "quoteStyle": "single",
       "semicolons": "asNeeded"
-    }
+    },
+    "jsxRuntime": "reactClassic"
   },
   "css": {
     "formatter": {
