@@ -35,7 +35,7 @@
     "@types/node": "^18.0.0",
     "storybook": "8.4.0-alpha.7",
     "storybook-builder-rsbuild": "workspace:*",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.3"
   },
   "peerDependencies": {
     "@rsbuild/core": "*",

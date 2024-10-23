@@ -27,7 +27,7 @@
     "@storybook/blocks": "8.4.0-alpha.7",
     "@storybook/react": "8.4.0-alpha.7",
     "@storybook/test": "8.4.0-alpha.7",
-    "@types/react": "^18.3.11",
+    "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "storybook": "8.4.0-alpha.7",
     "storybook-react-rsbuild": "workspace:*",
