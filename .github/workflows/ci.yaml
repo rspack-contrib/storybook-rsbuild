@@ -44,10 +44,11 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
 
-      - name: Lint
+      - name: Lint / Type Check / Check Dependency Version
         run: |
           pnpm lint
           pnpm check
+          pnpm check-dependency-version
 
       - name: Test
         run: |
