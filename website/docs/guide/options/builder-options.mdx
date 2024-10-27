@@ -1,0 +1,159 @@
+# Builder Options
+
+### Builder options
+
+#### `rsbuildConfigPath`
+
+- Type: `string`
+- Default: `undefined`
+
+The builder will automatically load Rsbuild config file (e.g. `rsbuild.config.js`) in the project, though it may change some of the options in order to work correctly.
+It looks for the Rsbuild config in the CWD. If your config is located elsewhere, specify the path using the `rsbuildConfigPath` builder option:
+
+```js
+// .storybook/main.mjs
+
+const config = {
+  framework: {
+    name: 'storybook-react-rsbuild',
+    options: {
+      builder: {
+        rsbuildConfigPath: '.storybook/customRsbuildConfig.js',
+      },
+    },
+  },
+}
+
+export default config
+```
+
+#### `lazyCompilation`
+
+- Type: `boolean`
+- Default: `false`
+
+Enables Rspack's experimental [lazy compilation](https://www.rspack.dev/config/experiments#experimentslazycompilation).
+
+```js
+// .storybook/main.mjs
+
+const config = {
+  framework: {
+    name: 'storybook-react-rsbuild',
+    options: {
+      builder: {
+        lazyCompilation: true,
+      },
+    },
+  },
+}
+
+export default config
+```
+
+#### `environment`
+
+- Type: `string`
+- Default: `undefined`
+
+Rsbuild supports build with [environment](https://rsbuild.dev/config/environments) config. When there's not listed environment or only one environment, the builder will the default environment's config. If there're more than one environment, you must specify the environment with `environment` option to tell the builder which environment's config to use.
+
+```js
+// .storybook/main.mjs
+
+const config = {
+  framework: {
+    name: 'storybook-react-rsbuild',
+    options: {
+      builder: {
+        environment: 'web-storybook',
+      },
+    },
+  },
+}
+
+export default config
+```
+
+#### `addonDocs`
+
+- Type: `object`
+- Default: `undefined`
+
+`@storybook/addon-docs` webpack options. The builder uses `@storybook/addon-docs` internally, and accepts the passing [some options](https://github.com/storybookjs/storybook/tree/next/code/addons/docs#preset-options) via `addonDocs`.
+
+```js
+// .storybook/main.mjs
+import remarkGfm from 'remark-gfm'
+
+const config = {
+  framework: {
+    name: 'storybook-react-rsbuild',
+    options: {
+      builder: {
+        addonDocs: {
+          mdxPluginOptions: {
+            mdxCompileOptions: {
+              remarkPlugins: [remarkGfm],
+            },
+          },
+        },
+      },
+    },
+  },
+}
+
+export default config
+```
+
+### Customize builder's Rsbuild config
+
+You can also override the merged Rsbuild config:
+
+```javascript
+// use `mergeRsbuildConfig` to recursively merge Rsbuild options
+import { mergeRsbuildConfig } from '@rsbuild/core'
+
+const config = {
+  async rsbuildFinal(config, { configType }) {
+    // Be sure to return the customized config
+    return mergeRsbuildConfig(config, {
+      // Customize the Rsbuild config for Storybook
+      source: {
+        alias: { foo: 'bar' },
+      },
+    })
+  },
+}
+
+export default config
+```
+
+The `rsbuildFinal` function will give you `config` which is the combination of your project's Rsbuild config and the builder's own Rsbuild config.
+You can tweak this as you want, for example to set up aliases, add new plugins etc.
+
+The `configType` variable will be either `"DEVELOPMENT"` or `"PRODUCTION"`.
+
+The function should return the updated Rsbuild configuration.
+
+### Using customized addon
+
+Since Rspack is compatible with Webpack 5, storybook-builder-rsbuild can also use Webpack 5 addons. The configuration for ⁠`webpackAddons` is identical to that of Storybook's [addons](https://storybook.js.org/docs/api/main-config/main-config-addons). However, Storybook's addons only support the Vite builder and Webpack 5 builder by default. If you want to use Webpack 5 addons in storybook-builder-rsbuild, please add them to ⁠webpackAddons. For example, using the [`@storybook/addon-coverage`](https://github.com/storybookjs/addon-coverage) addon:
+
+```js
+const config: StorybookConfig = {
+  // --snip--
+  webpackAddons: [
+    {
+      name: '@storybook/addon-coverage',
+      options: {
+        istanbul: {
+          include: ['src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+          exclude: [],
+        },
+      },
+    },
+  ],
+  // --snip--
+}
+```

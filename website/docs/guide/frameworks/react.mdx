@@ -1,0 +1,41 @@
+import { PackageManagerTabs } from '@theme'
+
+# React
+
+Storybook for React & Rsbuild is a framework that makes it easy to develop and test UI components in isolation for React applications built with Rsbuild.
+
+:::info{title=Requirements}
+
+- React ≥ 16.8
+- @rsbuild/core ≥ 1.0.1
+- Storybook ≥ 8.2.1
+
+:::
+
+## Getting started
+
+Use with React in a existing Rsbuild project.
+
+### Installation
+
+To use React with Storybook, you need to install the `storybook-react-rsbuild` package.
+
+<PackageManagerTabs command="storybook-react-rsbuild -D" />
+
+### Setup `.storybook/main.ts`
+
+```js
+import { StorybookConfig } from 'storybook-react-rsbuild'
+
+const config: StorybookConfig = {
+  framework: 'storybook-react-rsbuild',
+  rsbuildFinal: (config) => {
+    // Customize the final Rsbuild config here
+    return config
+  },
+}
+
+export default config
+```
+
+You're all set now. You could also check out the example in [sandboxes/react-18](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/sandboxes/react-18) and use all other features listed in [Storybook site](https://storybook.js.org/docs).
