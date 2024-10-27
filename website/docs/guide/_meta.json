@@ -1,0 +1,19 @@
+[
+  "index",
+  {
+    "type": "dir",
+    "name": "frameworks",
+    "label": "Frameworks"
+  },
+  {
+    "type": "dir",
+    "name": "options",
+    "label": "Options"
+  },
+  {
+    "type": "dir",
+    "name": "integrations",
+    "label": "Integrations"
+  },
+  "faq"
+]

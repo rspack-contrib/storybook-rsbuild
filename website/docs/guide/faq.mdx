@@ -1,0 +1,61 @@
+# FAQ
+
+## Deploy Storybook to a subdirectory / subpath
+
+The default Vite and webpack builders in Storybook use relative paths for references, whereas Rsbuild does not recommend using relative paths for deployment (See the [tips](https://rsbuild.dev/config/output/asset-prefix#path-types:~:text=on%20file%20location.-,TIP,-It%27s%20not%20recommended)). Therefore, if you want to deploy Storybook on a sub-path such as `https://example.com/sb-path`, you can achieve this by configuring [`output.assetPrefix`](https://rsbuild.dev/config/output/asset-prefix).
+
+```diff
+const config: StorybookConfig = {
+  // --snip--
+  rsbuildFinal: (config) => {
++   config.output ??= {}
++   config.output.assetPrefix = '/sb-path/'
+    return config
+  },
+  // --snip--
+}
+```
+
+## Error caused by bundling unexpected files
+
+> [!NOTE]
+> Rspack starts to support `webpackInclude` magic comment, this trouble won't exists since 0.0.7
+
+Because Rspack temporarily does not support the `webpackInclude` magic comment, non-story files may be bundled, which could lead to build failures. These files can be ignored using `rspack.IgnorePlugin` (see exmaple https://github.com/rspack-contrib/storybook-rsbuild/issues/19).
+
+```js
+// .storybook/main.js
+import path from 'path'
+import { mergeRsbuildConfig } from '@rsbuild/core'
+
+export default {
+  framework: 'storybook-react-rsbuild',
+  async rsbuildFinal(config) {
+    return mergeRsbuildConfig(config, {
+      tools: {
+        rspack: (config, { addRules, appendPlugins, rspack, mergeConfig }) => {
+          return mergeConfig(config, {
+            plugins: [
+              new rspack.IgnorePlugin({
+                checkResource: (resource, context) => {
+                  // for example, ignore all markdown files
+                  const absPathHasExt = path.extname(resource)
+                  if (absPathHasExt === '.md') {
+                    return true
+                  }
+
+                  return false
+                },
+              }),
+            ],
+          })
+        },
+      },
+    })
+  },
+}
+```
+
+## Why using `getAbsolutePath` to resolve the framework in sandboxes in this repository?
+
+Check out https://storybook.js.org/docs/faq#how-do-i-fix-module-resolution-in-special-environments.
