@@ -19,7 +19,8 @@ export async function startMFDevServer(
 async function initMFRsbuild(
   rslibConfig: RslibConfig,
 ): Promise<RsbuildInstance | undefined> {
-  const rsbuildConfigObject = await unstable_composeCreateRsbuildConfig(rslibConfig)
+  const rsbuildConfigObject =
+    await unstable_composeCreateRsbuildConfig(rslibConfig)
   const mfRsbuildConfig = rsbuildConfigObject.find(
     (config) => config.format === 'mf',
   )
