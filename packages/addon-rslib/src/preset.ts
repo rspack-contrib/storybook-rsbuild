@@ -4,6 +4,9 @@ import type {
   RsbuildFinal,
   StorybookConfigRsbuild,
 } from 'storybook-builder-rsbuild'
+
+import { startMFDevServer } from './init';
+
 import type { AddonOptions } from './types'
 
 type BaseOptions = Parameters<RsbuildFinal>[1]
@@ -18,6 +21,7 @@ export const rsbuildFinal: StorybookConfigRsbuild['rsbuildFinal'] = async (
     cwd: cwd,
     path: configPath,
   })
+  await startMFDevServer(rslibConfig);
 
   const libConfig = libIndex === false ? {} : rslibConfig.lib[libIndex]
   if (!libConfig) {
@@ -38,5 +42,5 @@ export const rsbuildFinal: StorybookConfigRsbuild['rsbuildFinal'] = async (
   delete mergedLibConfig.output?.distPath
   delete mergedLibConfig.output?.filename
 
-  return mergeRsbuildConfig(config, mergedLibConfig)
+  return mergeRsbuildConfig(config, mergedLibConfig);
 }

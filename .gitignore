@@ -137,3 +137,7 @@ storybook-static/
 
 # rspress
 doc_build
+
+# mf-types
+**/@mf-types
+**/@mf-types/**
