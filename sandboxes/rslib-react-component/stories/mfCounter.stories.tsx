@@ -1,4 +1,3 @@
-import React from 'react'
 // @ts-ignore
 import { Counter } from 'rslib-module'
 
