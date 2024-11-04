@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 // @ts-ignore
-import { Counter } from 'rslib-module';
+import { Counter } from 'rslib-module'
 
 export default {
   title: 'Example/MFCounter',
@@ -8,4 +8,4 @@ export default {
 }
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary = {};
+export const Primary = {}
