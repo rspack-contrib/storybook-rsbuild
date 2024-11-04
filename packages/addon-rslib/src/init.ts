@@ -1,5 +1,5 @@
 import { createRsbuild, mergeRsbuildConfig } from '@rsbuild/core'
-import { composeCreateRsbuildConfig } from '@rslib/core'
+import { unstable_composeCreateRsbuildConfig } from '@rslib/core'
 
 import type { RsbuildConfig, RsbuildInstance } from '@rsbuild/core'
 import type { RslibConfig } from '@rslib/core'
@@ -19,7 +19,7 @@ export async function startMFDevServer(
 async function initMFRsbuild(
   rslibConfig: RslibConfig,
 ): Promise<RsbuildInstance | undefined> {
-  const rsbuildConfigObject = await composeCreateRsbuildConfig(rslibConfig)
+  const rsbuildConfigObject = await unstable_composeCreateRsbuildConfig(rslibConfig)
   const mfRsbuildConfig = rsbuildConfigObject.find(
     (config) => config.format === 'mf',
   )
