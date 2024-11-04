@@ -2,8 +2,8 @@
   "index",
   {
     "type": "dir",
-    "name": "frameworks",
-    "label": "Frameworks"
+    "name": "framework",
+    "label": "Framework"
   },
   {
     "type": "dir",
