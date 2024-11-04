@@ -3,6 +3,7 @@
   "version": "0.1.2",
   "description": "Storybook for Vue3 and Rsbuild: Develop React Component in isolation with Hot Reloading.",
   "keywords": ["storybook", "rsbuild", "rspack", "vue3"],
+  "homepage": "https://storybook-rsbuild.netlify.app",
   "bugs": {
     "url": "https://github.com/rspack-contrib/storybook-rsbuild/issues"
   },
