@@ -31,7 +31,6 @@
     "prepare": "pnpm run build"
   },
   "devDependencies": {
-    "@module-federation/storybook-addon": "0.0.0-next-20241101074502",
     "@rsbuild/core": "1.0.17",
     "@rslib/core": "0.0.13",
     "@types/node": "^18.0.0",
