@@ -1,6 +1,7 @@
 import React from 'react'
 import { CounterButton } from '../CounterButton/index'
 import { useCounter } from '../hooks/useCounter'
+import './index.scss'
 
 export const Counter: React.FC = () => {
   const { count, increment, decrement } = useCounter()
