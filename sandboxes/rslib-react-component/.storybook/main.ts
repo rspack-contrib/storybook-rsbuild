@@ -42,13 +42,6 @@ const config: StorybookConfig = {
     name: getAbsolutePath('storybook-react-rsbuild'),
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
-  },
-  typescript: {
-    reactDocgen: 'react-docgen-typescript',
-    check: true,
-  },
 }
 
 export default config
