@@ -3,7 +3,6 @@
   "version": "0.1.2",
   "description": "Rsbuild builder for Storybook",
   "keywords": ["storybook", "rsbuild", "rspack"],
-  "homepage": "https://storybook-rsbuild.netlify.app",
   "bugs": {
     "url": "https://github.com/rspack-contrib/storybook-rsbuild/issues"
   },
