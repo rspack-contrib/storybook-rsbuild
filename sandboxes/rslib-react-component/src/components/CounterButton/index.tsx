@@ -11,6 +11,6 @@ export const CounterButton: React.FC<CounterButtonProps> = ({
   label,
 }) => (
   <button type="button" className={styles.button} onClick={onClick}>
-    {label}
+    {label}11
   </button>
 )
