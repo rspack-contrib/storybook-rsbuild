@@ -18,17 +18,17 @@ Check out the [documentation](https://storybook-rsbuild.netlify.app).
 
 ### Features
 
-- [X]  Support TS type check (fork-ts-checker-webpack-plugin) _(supported in [0.0.4](https://github.com/rspack-contrib/storybook-rsbuild/releases/tag/v0.0.4))_
-- [ ]  Support more frameworks (Preact / Svelte / vanilla html / Lit)
+- [x] Support TS type check (fork-ts-checker-webpack-plugin) _(supported in [0.0.4](https://github.com/rspack-contrib/storybook-rsbuild/releases/tag/v0.0.4))_
+- [ ] Support more frameworks (Preact / Svelte / vanilla html / Lit)
 
 ### Rspack support
 
-- [X]  Support `webpackInclude` magic comment _(supported in [0.0.7](https://github.com/rspack-contrib/storybook-rsbuild/releases/tag/v0.0.7))_
-- [ ]  Support persistent cache
-- [X]  Support lazy compilation
-- [ ]  Support virtual modules
-- [ ]  Support `module.unknownContextCritical`
-- [X]  Support `compilation.dependencyTemplates.set` for react-docgen-typescript (supported in a workaround)
+- [x] Support `webpackInclude` magic comment _(supported in [0.0.7](https://github.com/rspack-contrib/storybook-rsbuild/releases/tag/v0.0.7))_
+- [ ] Support persistent cache
+- [x] Support lazy compilation
+- [ ] Support virtual modules
+- [ ] Support `module.unknownContextCritical`
+- [x] Support `compilation.dependencyTemplates.set` for react-docgen-typescript (supported in a workaround)
 
 ## Credits
 
