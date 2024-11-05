@@ -7,6 +7,10 @@ import type { RslibConfig } from '@rslib/core'
 export async function startMFDevServer(
   config: RslibConfig,
 ): Promise<RsbuildInstance | undefined> {
+  if (process.env.NODE_ENV === 'production') {
+    // storybook build should skip this.
+    return
+  }
   const rsbuildInstance = await initMFRsbuild(config)
   if (!rsbuildInstance) {
     // no mf format, return.
