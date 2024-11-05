@@ -28,15 +28,15 @@ const config: StorybookConfig = {
         },
       },
     },
-    // {
-    //   name: '@module-federation/storybook-addon/preset',
-    //   options: {
-    //     remotes: {
-    //       'rslib-module':
-    //         'rslib-module@http://localhost:3001/mf/mf-manifest.json',
-    //     },
-    //   },
-    // },
+    {
+      name: '@module-federation/storybook-addon/preset',
+      options: {
+        remotes: {
+          'rslib-module':
+            'rslib-module@http://localhost:3001/mf/mf-manifest.json',
+        },
+      },
+    },
   ],
   framework: {
     name: getAbsolutePath('storybook-react-rsbuild'),
