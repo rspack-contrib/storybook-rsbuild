@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-ignore skip type check in ci because we set @mf-types into .gitignore
 import { Counter } from 'rslib-module'
 
 export default {

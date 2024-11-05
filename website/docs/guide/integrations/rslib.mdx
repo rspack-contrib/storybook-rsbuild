@@ -6,7 +6,8 @@ import { PackageManagerTabs } from '@theme'
 `storybook-addon-rslib` is not yet available.
 :::
 
-To use Rslib with Storybook, you need to install the `storybook-addon-rslib` package.
+- To use Rslib with Storybook, you need to install the `storybook-addon-rslib` package.
+- This addon can help you quickly develop `mf` format assets.
 
 ## Getting started
 
@@ -36,6 +37,143 @@ export default {
   ],
 }
 ```
+
+## Functions
+
+### Develop `mf` format assets
+1. Install an additional Module Federation addon
+<PackageManagerTabs command="install @module-federation/storybook-addon -D" />
+- `storybook-addon-rslib` will auto start devServer to manage `mf` assets.
+- `@module-federation/storybook-addon` will make storybook simulates Module Federation host app to load remote modules.
+
+2. Add `mf` format in `rslib.config.ts`
+```ts title="rslib.config.ts"
+import { pluginModuleFederation } from '@module-federation/rsbuild-plugin'
+import { pluginReact } from '@rsbuild/plugin-react'
+import { defineConfig } from '@rslib/core'
+
+export default defineConfig({
+  lib: [
+    // ...
+    {
+      format: 'mf',
+      output: {
+        distPath: {
+          root: './dist/mf',
+        },
+        // for production
+        assetPrefix: 'http://localhost:3001/mf',
+      },
+      // for storybook to dev
+      dev: {
+        assetPrefix: 'http://localhost:3001/mf',
+      },
+      // for storybook to dev
+      server: {
+        port: 3001,
+      },
+      plugins: [
+        pluginModuleFederation({
+          name: 'rslib_provider',
+          exposes: {
+            '.': './src/index.tsx',
+          },
+          shared: {
+            react: {
+              singleton: true,
+            },
+            'react-dom': {
+              singleton: true,
+            },
+          },
+        }),
+      ],
+    },
+  ],
+  plugins: [
+    pluginReact(),
+  ],
+})
+```
+
+3. Add Module Federation types and stories into `tsconfig.json`.
+```json title="tsconfig.json"
+{
+  "compilerOptions": {
+    // ...
+    "paths": {
+      "*": ["./@mf-types/*"]
+    }
+  },
+  "include": ["src/**/*", ".storybook/**/*", "stories/**/*"]
+}
+```
+
+4. Use addons
+``` ts title=".storybook/main.ts"
+import { dirname, join } from 'node:path'
+import type { StorybookConfig } from 'storybook-react-rsbuild'
+
+function getAbsolutePath(value: string): any {
+  return dirname(require.resolve(join(value, 'package.json')))
+}
+
+const config: StorybookConfig = {
+  // ...
+  addons: [
+    {
+      name: getAbsolutePath('storybook-addon-rslib'),
+      options: {
+        rslib: {
+          include: ['**/stories/**'],
+        },
+      },
+    },
+    {
+      name: '@module-federation/storybook-addon/preset',
+      options: {
+        // add remotes here for storybook to load remote modules
+        remotes: {
+          'rslib-module':
+            'rslib-module@http://localhost:3001/mf/mf-manifest.json',
+        },
+      },
+    },
+  ],
+  framework: {
+    name: getAbsolutePath('storybook-react-rsbuild'),
+    options: {},
+  },
+}
+
+export default config
+```
+
+
+5. Load remote module
+``` ts title="stories/index.stories.tsx"
+import { Counter } from 'rslib-module'
+
+export default {
+  title: 'Example/MFCounter',
+  component: Counter,
+}
+
+export const Primary = {}
+```
+
+6. Run storybook
+```json title="package.json"
+{
+  "scripts": {
+    "storybook": "storybook dev -p 6006"
+  }
+}
+```
+
+<PackageManagerTabs command="storybook" />
+
+Reference: [Rslib Module Federation Example](https://github.com/rspack-contrib/storybook-rsbuild/tree/main/sandboxes/rslib-react-component)
 
 ## Options
 
