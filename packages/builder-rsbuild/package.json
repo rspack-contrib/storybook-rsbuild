@@ -72,7 +72,7 @@
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
     "rsbuild-plugin-html-minifier-terser": "^1.1.1",
-    "sirv": "^2.0.4",
+    "sirv": "^3.0.0",
     "ts-dedent": "^2.2.0",
     "url": "^0.11.4",
     "util": "^0.12.5",
