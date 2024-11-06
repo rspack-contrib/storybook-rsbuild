@@ -11,12 +11,8 @@ export async function startMFDevServer(
     // storybook build should skip this.
     return
   }
+
   const rsbuildInstance = await initMFRsbuild(config)
-  if (!rsbuildInstance) {
-    // no mf format, return.
-    return
-  }
-  await rsbuildInstance.startDevServer()
   return rsbuildInstance
 }
 
@@ -35,9 +31,11 @@ async function initMFRsbuild(
   }
 
   mfRsbuildConfig.config = changeEnvToDev(mfRsbuildConfig.config)
-  return createRsbuild({
+  const rsbuildInstance = await createRsbuild({
     rsbuildConfig: mfRsbuildConfig.config,
   })
+  await rsbuildInstance.startDevServer();
+  return rsbuildInstance
 }
 
 function changeEnvToDev(rsbuildConfig: RsbuildConfig) {
