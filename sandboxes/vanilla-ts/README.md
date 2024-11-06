@@ -1,4 +1,4 @@
-# Vanilla (Rsbuild | TypeScript)</h1>
+# Vanilla (Rsbuild | TypeScript)
 
 Run Storybook
 

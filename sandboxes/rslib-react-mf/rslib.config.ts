@@ -1,3 +1,4 @@
+import { pluginModuleFederation } from '@module-federation/rsbuild-plugin'
 import { pluginReact } from '@rsbuild/plugin-react'
 import { pluginSass } from '@rsbuild/plugin-sass'
 import { type LibConfig, defineConfig } from '@rslib/core'
@@ -38,6 +39,38 @@ export default defineConfig({
           root: './dist/cjs',
         },
       },
+    },
+    {
+      format: 'mf',
+      output: {
+        distPath: {
+          root: './dist/mf',
+        },
+        assetPrefix: 'http://localhost:3001/mf',
+      },
+      dev: {
+        assetPrefix: 'http://localhost:3001/mf',
+      },
+      // just for dev
+      server: {
+        port: 3001,
+      },
+      plugins: [
+        pluginModuleFederation({
+          name: 'rslib_provider',
+          exposes: {
+            '.': './src/index.tsx',
+          },
+          shared: {
+            react: {
+              singleton: true,
+            },
+            'react-dom': {
+              singleton: true,
+            },
+          },
+        }),
+      ],
     },
   ],
   plugins: [
