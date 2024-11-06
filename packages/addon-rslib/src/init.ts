@@ -34,7 +34,7 @@ async function initMFRsbuild(
   const rsbuildInstance = await createRsbuild({
     rsbuildConfig: mfRsbuildConfig.config,
   })
-  await rsbuildInstance.startDevServer();
+  await rsbuildInstance.startDevServer()
   return rsbuildInstance
 }
 
