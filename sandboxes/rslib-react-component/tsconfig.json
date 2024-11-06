@@ -4,7 +4,10 @@
     "strict": true,
     "resolveJsonModule": true,
     "jsx": "react",
-    "outDir": "dist"
+    "outDir": "dist",
+    "paths": {
+      "*": ["./@mf-types/*"]
+    }
   },
   "include": ["src/**/*", ".storybook/**/*", "stories/**/*"]
 }
