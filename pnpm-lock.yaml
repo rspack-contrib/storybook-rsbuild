@@ -487,6 +487,73 @@ importers:
       '@chromatic-com/storybook':
         specifier: ^3.2.2
         version: 3.2.2(react@18.3.1)(storybook@8.4.0-alpha.7(prettier@2.8.8))
+      '@rsbuild/core':
+        specifier: 1.0.19
+        version: 1.0.19
+      '@rsbuild/plugin-react':
+        specifier: 1.0.5
+        version: 1.0.5(@rsbuild/core@1.0.19)
+      '@rsbuild/plugin-sass':
+        specifier: ^1.0.4
+        version: 1.0.4(@rsbuild/core@1.0.19)
+      '@rslib/core':
+        specifier: ^0.0.16
+        version: 0.0.16(typescript@5.6.3)
+      '@storybook/addon-essentials':
+        specifier: 8.4.0-alpha.7
+        version: 8.4.0-alpha.7(@types/react@18.3.12)(storybook@8.4.0-alpha.7(prettier@2.8.8))
+      '@storybook/addon-interactions':
+        specifier: 8.4.0-alpha.7
+        version: 8.4.0-alpha.7(storybook@8.4.0-alpha.7(prettier@2.8.8))
+      '@storybook/addon-links':
+        specifier: 8.4.0-alpha.7
+        version: 8.4.0-alpha.7(react@18.3.1)(storybook@8.4.0-alpha.7(prettier@2.8.8))
+      '@storybook/addon-onboarding':
+        specifier: 8.4.0-alpha.7
+        version: 8.4.0-alpha.7(react@18.3.1)(storybook@8.4.0-alpha.7(prettier@2.8.8))
+      '@storybook/blocks':
+        specifier: 8.4.0-alpha.7
+        version: 8.4.0-alpha.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.7(prettier@2.8.8))
+      '@storybook/react':
+        specifier: 8.4.0-alpha.7
+        version: 8.4.0-alpha.7(@storybook/test@8.4.0-alpha.7(storybook@8.4.0-alpha.7(prettier@2.8.8)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.7(prettier@2.8.8))(typescript@5.6.3)
+      '@storybook/test':
+        specifier: 8.4.0-alpha.7
+        version: 8.4.0-alpha.7(storybook@8.4.0-alpha.7(prettier@2.8.8))
+      '@types/node':
+        specifier: ^18.0.0
+        version: 18.19.33
+      '@types/react':
+        specifier: ^18.3.12
+        version: 18.3.12
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.1
+      storybook:
+        specifier: 8.4.0-alpha.7
+        version: 8.4.0-alpha.7(prettier@2.8.8)
+      storybook-addon-rslib:
+        specifier: workspace:*
+        version: link:../../packages/addon-rslib
+      storybook-react-rsbuild:
+        specifier: workspace:*
+        version: link:../../packages/framework-react
+      typescript:
+        specifier: ^5.6.3
+        version: 5.6.3
+
+  sandboxes/rslib-react-mf:
+    dependencies:
+      react:
+        specifier: 18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: 18.3.1
+        version: 18.3.1(react@18.3.1)
+    devDependencies:
+      '@chromatic-com/storybook':
+        specifier: ^3.2.2
+        version: 3.2.2(react@18.3.1)(storybook@8.4.0-alpha.7(prettier@2.8.8))
       '@module-federation/rsbuild-plugin':
         specifier: ^0.6.14
         version: 0.6.16(@module-federation/enhanced@0.0.0-next-20241106024856(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)(webpack@5.95.0(@swc/core@1.7.26(@swc/helpers@0.5.13))))(@rsbuild/core@1.0.19)
@@ -11794,15 +11861,10 @@ snapshots:
       '@types/react': 18.3.12
       react: 18.3.1
 
-  '@mdx-js/react@3.0.1(react@18.3.1)':
-    dependencies:
-      '@types/mdx': 2.0.13
-      react: 18.3.1
-
   '@modern-js/utils@2.60.5':
     dependencies:
       '@swc/helpers': 0.5.13
-      caniuse-lite: 1.0.30001664
+      caniuse-lite: 1.0.30001677
       lodash: 4.17.21
       rslog: 1.2.3
 
@@ -12697,7 +12759,7 @@ snapshots:
       '@module-federation/runtime-tools': 0.5.1
       '@rspack/binding': 1.0.14
       '@rspack/lite-tapable': 1.0.1
-      caniuse-lite: 1.0.30001664
+      caniuse-lite: 1.0.30001677
     optionalDependencies:
       '@swc/helpers': 0.5.13
 
@@ -12962,7 +13024,7 @@ snapshots:
 
   '@storybook/addon-docs@8.4.0-alpha.7(storybook@8.4.0-alpha.7(prettier@2.8.8))':
     dependencies:
-      '@mdx-js/react': 3.0.1(react@18.3.1)
+      '@mdx-js/react': 3.0.1(@types/react@18.3.12)(react@18.3.1)
       '@storybook/blocks': 8.4.0-alpha.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.7(prettier@2.8.8))
       '@storybook/csf-plugin': 8.4.0-alpha.7(storybook@8.4.0-alpha.7(prettier@2.8.8))
       '@storybook/react-dom-shim': 8.4.0-alpha.7(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.4.0-alpha.7(prettier@2.8.8))
@@ -13639,7 +13701,7 @@ snapshots:
 
   '@testing-library/dom@10.4.0':
     dependencies:
-      '@babel/code-frame': 7.24.2
+      '@babel/code-frame': 7.26.2
       '@babel/runtime': 7.24.5
       '@types/aria-query': 5.0.4
       aria-query: 5.3.0

@@ -1,5 +1,5 @@
 {
-  "name": "@sandboxes/rslib-react-component",
+  "name": "@sandboxes/rslib-react-component-mf",
   "version": "0.0.0",
   "private": true,
   "main": "./dist/cjs/index.js",
@@ -17,6 +17,8 @@
     "react-dom": "18.3.1"
   },
   "devDependencies": {
+    "@module-federation/rsbuild-plugin": "^0.6.14",
+    "@module-federation/storybook-addon": "0.0.0-next-20241106024856",
     "@rsbuild/core": "1.0.19",
     "@chromatic-com/storybook": "^3.2.2",
     "@rsbuild/plugin-react": "1.0.5",

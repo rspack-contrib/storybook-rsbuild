@@ -1,4 +1,4 @@
-# Vue3 (Rsbuild | TypeScript)</h1>
+# Vue3 (Rsbuild | TypeScript)
 
 Run Storybook
 

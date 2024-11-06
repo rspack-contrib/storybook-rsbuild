@@ -1,4 +1,4 @@
-# React v18 (Rsbuild | TypeScript)</h1>
+# React v18 (Rsbuild | TypeScript)
 
 Run Storybook and Coverage
 
