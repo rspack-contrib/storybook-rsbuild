@@ -555,8 +555,8 @@ importers:
         specifier: ^3.2.2
         version: 3.2.2(react@18.3.1)(storybook@8.5.0-alpha.3(prettier@2.8.8))
       '@module-federation/rsbuild-plugin':
-        specifier: ^0.6.14
-        version: 0.6.16(@module-federation/enhanced@0.0.0-next-20241106024856(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)(webpack@5.95.0(@swc/core@1.7.26(@swc/helpers@0.5.13))))(@rsbuild/core@1.0.19)
+        specifier: ^0.7.2
+        version: 0.7.2(@module-federation/enhanced@0.0.0-next-20241106024856(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)(webpack@5.95.0(@swc/core@1.7.26(@swc/helpers@0.5.13))))(@rsbuild/core@1.0.19)
       '@module-federation/storybook-addon':
         specifier: 0.0.0-next-20241106024856
         version: 0.0.0-next-20241106024856(@module-federation/utilities@0.0.0-next-20241101074502(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(webpack@5.95.0(@swc/core@1.7.26(@swc/helpers@0.5.13))))(@nx/react@17.2.8(@babel/traverse@7.25.9)(@swc/core@1.7.26(@swc/helpers@0.5.13))(@types/node@18.19.33)(js-yaml@4.1.0)(nx@17.2.8(@swc/core@1.7.26(@swc/helpers@0.5.13)))(typescript@5.6.3)(verdaccio@5.31.0(typanion@3.14.0))(webpack@5.95.0(@swc/core@1.7.26(@swc/helpers@0.5.13))))(@nx/webpack@17.2.8(@babel/traverse@7.25.9)(@rspack/core@1.0.14(@swc/helpers@0.5.13))(@swc/core@1.7.26(@swc/helpers@0.5.13))(@types/node@18.19.33)(nx@17.2.8(@swc/core@1.7.26(@swc/helpers@0.5.13)))(sass-embedded@1.80.3)(typescript@5.6.3)(verdaccio@5.31.0(typanion@3.14.0)))(@storybook/core-common@8.3.4(storybook@8.5.0-alpha.3(prettier@2.8.8)))(@storybook/node-logger@7.6.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)(webpack-virtual-modules@0.6.1)(webpack@5.95.0(@swc/core@1.7.26(@swc/helpers@0.5.13)))
@@ -2295,11 +2295,11 @@ packages:
   '@module-federation/manifest@0.0.0-next-20241106024856':
     resolution: {integrity: sha512-LuaHppijJiSJjry7hTTaxYG047Ce3IR0XVudA7Ryv9aDyuA50eqqLRgc4GeayhH4MpaIxYFAP/Z1uL18viAgzw==}
 
-  '@module-federation/rsbuild-plugin@0.6.16':
-    resolution: {integrity: sha512-aOalOpvnHORrj9ZdNoZssYu/tNRpPYKbyUPnNi4Jsr21q5N9ajS6SCt0/XQi0eHqQGtuubsSDCSxqQ5w4pABvg==}
+  '@module-federation/rsbuild-plugin@0.7.2':
+    resolution: {integrity: sha512-8Unz8Xo/9Uu21UGDb7rfUgKRCb9cK80N+aCxBAaMR8Cg8GWiXz/Id7q138BOru/HFih2tJRYX2jyhzquucL8Lg==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      '@module-federation/enhanced': 0.6.16
+      '@module-federation/enhanced': 0.7.2
       '@rsbuild/core': 1.x
 
   '@module-federation/rspack@0.0.0-next-20241106024856':
@@ -2334,8 +2334,8 @@ packages:
   '@module-federation/sdk@0.5.1':
     resolution: {integrity: sha512-exvchtjNURJJkpqjQ3/opdbfeT2wPKvrbnGnyRkrwW5o3FH1LaST1tkiNviT6OXTexGaVc2DahbdniQHVtQ7pA==}
 
-  '@module-federation/sdk@0.6.16':
-    resolution: {integrity: sha512-rzQH/v9bVc032lzV4j1IGYRc5gszwzBevYBBDJf3oNLwkY2kIDUJ99OWvq3aaPJoE0jEWPVe3K5iNc+dZe4tMQ==}
+  '@module-federation/sdk@0.7.2':
+    resolution: {integrity: sha512-Rva1iymMPyhcCNl3B0ZgpD2Cv/4iinbeybdxrxhXyGvW5O+klw9pDy0ut52OyctSPSmxPvDYc2xAQfzQ+acVAQ==}
 
   '@module-federation/storybook-addon@0.0.0-next-20241106024856':
     resolution: {integrity: sha512-3T2qUzBMV5REmRZXw2QdF1p3u09eb1bnsNy9oN7DUGcDBgLZibZL/mckQPTNST5ZXiMa0VpcK/z9SNoZFQb8CA==}
@@ -6419,6 +6419,10 @@ packages:
 
   isomorphic-rslog@0.0.5:
     resolution: {integrity: sha512-pkU3vvajRJ0LKLaMFy8Cj7ElbFUdkQKVhUk+DQsVCYsLW4uulU65C2s3l+Sm5OtiOwprzkYYcAIJa/COwCYHWA==}
+    engines: {node: '>=14.17.6'}
+
+  isomorphic-rslog@0.0.6:
+    resolution: {integrity: sha512-HM0q6XqQ93psDlqvuViNs/Ea3hAyGDkIdVAHlrEocjjAwGrs1fZ+EdQjS9eUPacnYB7Y8SoDdSY3H8p3ce205A==}
     engines: {node: '>=14.17.6'}
 
   isomorphic-ws@5.0.0:
@@ -11976,10 +11980,10 @@ snapshots:
       - utf-8-validate
       - vue-tsc
 
-  '@module-federation/rsbuild-plugin@0.6.16(@module-federation/enhanced@0.0.0-next-20241106024856(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)(webpack@5.95.0(@swc/core@1.7.26(@swc/helpers@0.5.13))))(@rsbuild/core@1.0.19)':
+  '@module-federation/rsbuild-plugin@0.7.2(@module-federation/enhanced@0.0.0-next-20241106024856(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)(webpack@5.95.0(@swc/core@1.7.26(@swc/helpers@0.5.13))))(@rsbuild/core@1.0.19)':
     dependencies:
       '@module-federation/enhanced': 0.0.0-next-20241106024856(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)(webpack@5.95.0(@swc/core@1.7.26(@swc/helpers@0.5.13)))
-      '@module-federation/sdk': 0.6.16
+      '@module-federation/sdk': 0.7.2
       '@rsbuild/core': 1.0.19
 
   '@module-federation/rspack@0.0.0-next-20241106024856(typescript@5.6.3)':
@@ -12027,9 +12031,9 @@ snapshots:
 
   '@module-federation/sdk@0.5.1': {}
 
-  '@module-federation/sdk@0.6.16':
+  '@module-federation/sdk@0.7.2':
     dependencies:
-      isomorphic-rslog: 0.0.5
+      isomorphic-rslog: 0.0.6
 
   '@module-federation/storybook-addon@0.0.0-next-20241106024856(@module-federation/utilities@0.0.0-next-20241101074502(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(webpack@5.95.0(@swc/core@1.7.26(@swc/helpers@0.5.13))))(@nx/react@17.2.8(@babel/traverse@7.25.9)(@swc/core@1.7.26(@swc/helpers@0.5.13))(@types/node@18.19.33)(js-yaml@4.1.0)(nx@17.2.8(@swc/core@1.7.26(@swc/helpers@0.5.13)))(typescript@5.6.3)(verdaccio@5.31.0(typanion@3.14.0))(webpack@5.95.0(@swc/core@1.7.26(@swc/helpers@0.5.13))))(@nx/webpack@17.2.8(@babel/traverse@7.25.9)(@rspack/core@1.0.14(@swc/helpers@0.5.13))(@swc/core@1.7.26(@swc/helpers@0.5.13))(@types/node@18.19.33)(nx@17.2.8(@swc/core@1.7.26(@swc/helpers@0.5.13)))(sass-embedded@1.80.3)(typescript@5.6.3)(verdaccio@5.31.0(typanion@3.14.0)))(@storybook/core-common@8.3.4(storybook@8.5.0-alpha.3(prettier@2.8.8)))(@storybook/node-logger@7.6.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3)(webpack-virtual-modules@0.6.1)(webpack@5.95.0(@swc/core@1.7.26(@swc/helpers@0.5.13)))':
     dependencies:
@@ -17215,6 +17219,8 @@ snapshots:
   isomorphic-rslog@0.0.4: {}
 
   isomorphic-rslog@0.0.5: {}
+
+  isomorphic-rslog@0.0.6: {}
 
   isomorphic-ws@5.0.0(ws@8.18.0):
     dependencies:
