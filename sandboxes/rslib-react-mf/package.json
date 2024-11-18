@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@module-federation/rsbuild-plugin": "^0.7.5",
-    "@module-federation/storybook-addon": "0.0.0-next-20241106024856",
+    "@module-federation/storybook-addon": "0.2.0",
     "@rsbuild/core": "^1.1.3",
     "@chromatic-com/storybook": "^3.2.2",
     "@rsbuild/plugin-react": "1.0.7",
