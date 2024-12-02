@@ -21,7 +21,7 @@
     "@chromatic-com/storybook": "^3.2.2",
     "@rsbuild/plugin-react": "1.0.7",
     "@rsbuild/plugin-sass": "^1.1.1",
-    "@rslib/core": "^0.0.18",
+    "@rslib/core": "^0.1.2",
     "@storybook/addon-essentials": "8.5.0-alpha.6",
     "@storybook/addon-interactions": "8.5.0-alpha.6",
     "@storybook/addon-links": "8.5.0-alpha.6",
