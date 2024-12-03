@@ -41,7 +41,7 @@
     "@storybook/html": "^8.2.1",
     "@types/node": "^18.0.0",
     "find-up": "^5.0.0",
-    "magic-string": "^0.30.12",
+    "magic-string": "^0.30.14",
     "resolve": "^1.22.8",
     "storybook-builder-rsbuild": "workspace:*",
     "tsconfig-paths": "^4.2.0"
