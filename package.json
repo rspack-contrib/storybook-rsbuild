@@ -29,7 +29,7 @@
     "nano-staged": "^0.8.0",
     "nx": "^20.1.4",
     "simple-git-hooks": "^2.11.1",
-    "sort-package-json": "^2.10.1",
+    "sort-package-json": "^2.12.0",
     "ts-dedent": "^2.2.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
