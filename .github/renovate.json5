@@ -19,14 +19,12 @@
 			"rangeStrategy": "pin",
 			"matchDepTypes": ["devDependencies"],
 			"followTag": "next",
-			"extends": ["schedule:daily"]
 		},
 		{
 			"groupName": "rsbuild",
 			"matchPackageNames": ["@rsbuild/**"],
 			"groupSlug": "rsbuild",
 			"respectLatest": false,
-			"extends": ["schedule:daily"]
 		},
 		{
 			"groupName": "all patch dependencies",
