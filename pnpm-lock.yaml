@@ -555,8 +555,8 @@ importers:
         specifier: ^3.2.2
         version: 3.2.2(react@18.3.1)(storybook@8.5.0-alpha.15(prettier@2.8.8))
       '@module-federation/rsbuild-plugin':
-        specifier: ^0.7.5
-        version: 0.7.5(@module-federation/enhanced@0.8.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)(webpack@5.96.1(@swc/core@1.7.26(@swc/helpers@0.5.15))))(@rsbuild/core@1.1.7)
+        specifier: ^0.8.1
+        version: 0.8.1(@module-federation/enhanced@0.8.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)(webpack@5.96.1(@swc/core@1.7.26(@swc/helpers@0.5.15))))(@rsbuild/core@1.1.7)
       '@module-federation/storybook-addon':
         specifier: 3.0.11
         version: 3.0.11(@nx/react@17.2.8(@babel/traverse@7.25.9)(@swc/core@1.7.26(@swc/helpers@0.5.15))(@types/node@18.19.33)(js-yaml@4.1.0)(nx@17.2.8(@swc/core@1.7.26(@swc/helpers@0.5.15)))(typescript@5.7.2)(verdaccio@5.31.0(typanion@3.14.0))(webpack@5.96.1(@swc/core@1.7.26(@swc/helpers@0.5.15))))(@nx/webpack@17.2.8(@babel/traverse@7.25.9)(@rspack/core@1.1.4(@swc/helpers@0.5.15))(@swc/core@1.7.26(@swc/helpers@0.5.15))(@types/node@18.19.33)(nx@17.2.8(@swc/core@1.7.26(@swc/helpers@0.5.15)))(sass-embedded@1.81.0)(typescript@5.7.2)(verdaccio@5.31.0(typanion@3.14.0)))(@rsbuild/core@1.1.7)(@storybook/core-common@8.3.4(storybook@8.5.0-alpha.15(prettier@2.8.8)))(@storybook/node-logger@7.6.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)(webpack-virtual-modules@0.6.1)(webpack@5.96.1(@swc/core@1.7.26(@swc/helpers@0.5.15)))
@@ -2304,11 +2304,11 @@ packages:
   '@module-federation/manifest@0.8.0':
     resolution: {integrity: sha512-FF/uDChCafPB5v/MW4ecajkfuskD3hGX/9vwlJZIX70zOx0g2yaIH0+pvMkahhf+NRLsItGVA9a+fsYdt/GNyw==}
 
-  '@module-federation/rsbuild-plugin@0.7.5':
-    resolution: {integrity: sha512-4MVbTnXy84MmqAExliuCoRxoH2SRbcVMHQmeFmLCtAbU8E0FJH4XxE/MjF2CzI1lWPZ+s+bvpj4p3jILdjGSOQ==}
+  '@module-federation/rsbuild-plugin@0.8.1':
+    resolution: {integrity: sha512-/JU/VDA225U1EbJdn1VLFER8Y/Swg+uU+Jpo2JHDqkCx+tpFONN+mdBOd183kFlChUPnlRpH9ayXsl/t+V2WPg==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      '@module-federation/enhanced': 0.7.5
+      '@module-federation/enhanced': 0.8.1
       '@rsbuild/core': 1.x
 
   '@module-federation/rspack@0.8.0':
@@ -2337,11 +2337,11 @@ packages:
   '@module-federation/sdk@0.5.1':
     resolution: {integrity: sha512-exvchtjNURJJkpqjQ3/opdbfeT2wPKvrbnGnyRkrwW5o3FH1LaST1tkiNviT6OXTexGaVc2DahbdniQHVtQ7pA==}
 
-  '@module-federation/sdk@0.7.5':
-    resolution: {integrity: sha512-01lpIxw5iOQzlQXqe3G6FZUMSQwufYqfj8O8R3dJNDqWhkjy7PFl5cB2S/SdR9dDv61uj/jmijpuAXnCzwNFQQ==}
-
   '@module-federation/sdk@0.8.0':
     resolution: {integrity: sha512-V2cNGO//sWCyHTaQ0iTcoslolqVgdBIBOkZVLyk9AkZ4B3CO49pe/TmIIaVs9jVg3GO+ZmmazBFKRkqdn2PdRg==}
+
+  '@module-federation/sdk@0.8.1':
+    resolution: {integrity: sha512-wFaD/gm83fJEeU90KwkRNxU9+tG0j/2HVRzLY2TLXXxvIo8IqvWZKqetexELaIV0KQmzHOoG5cZSefouActoYw==}
 
   '@module-federation/storybook-addon@3.0.11':
     resolution: {integrity: sha512-0CuaPlExHRw74I+DhwbbjJlv+EhHjKVtNt+iIpv53ZiQcRJ7e5XwuAR6YJgH8VXAPMH2b+yHfw2H8qQDrLOWow==}
@@ -11878,6 +11878,11 @@ snapshots:
       '@types/react': 18.3.12
       react: 18.3.1
 
+  '@mdx-js/react@3.0.1(react@18.3.1)':
+    dependencies:
+      '@types/mdx': 2.0.13
+      react: 18.3.1
+
   '@module-federation/bridge-react-webpack-plugin@0.8.0':
     dependencies:
       '@module-federation/sdk': 0.8.0
@@ -11963,10 +11968,10 @@ snapshots:
       - utf-8-validate
       - vue-tsc
 
-  '@module-federation/rsbuild-plugin@0.7.5(@module-federation/enhanced@0.8.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)(webpack@5.96.1(@swc/core@1.7.26(@swc/helpers@0.5.15))))(@rsbuild/core@1.1.7)':
+  '@module-federation/rsbuild-plugin@0.8.1(@module-federation/enhanced@0.8.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)(webpack@5.96.1(@swc/core@1.7.26(@swc/helpers@0.5.15))))(@rsbuild/core@1.1.7)':
     dependencies:
       '@module-federation/enhanced': 0.8.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.7.2)(webpack@5.96.1(@swc/core@1.7.26(@swc/helpers@0.5.15)))
-      '@module-federation/sdk': 0.7.5
+      '@module-federation/sdk': 0.8.1
       '@rsbuild/core': 1.1.7
 
   '@module-federation/rspack@0.8.0(typescript@5.7.2)':
@@ -12006,11 +12011,11 @@ snapshots:
 
   '@module-federation/sdk@0.5.1': {}
 
-  '@module-federation/sdk@0.7.5':
+  '@module-federation/sdk@0.8.0':
     dependencies:
       isomorphic-rslog: 0.0.6
 
-  '@module-federation/sdk@0.8.0':
+  '@module-federation/sdk@0.8.1':
     dependencies:
       isomorphic-rslog: 0.0.6
 
@@ -13018,7 +13023,7 @@ snapshots:
 
   '@storybook/addon-docs@8.5.0-alpha.15(storybook@8.5.0-alpha.15(prettier@2.8.8))':
     dependencies:
-      '@mdx-js/react': 3.0.1(@types/react@18.3.12)(react@18.3.1)
+      '@mdx-js/react': 3.0.1(react@18.3.1)
       '@storybook/blocks': 8.5.0-alpha.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.5.0-alpha.15(prettier@2.8.8))
       '@storybook/csf-plugin': 8.5.0-alpha.15(storybook@8.5.0-alpha.15(prettier@2.8.8))
       '@storybook/react-dom-shim': 8.5.0-alpha.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.5.0-alpha.15(prettier@2.8.8))
