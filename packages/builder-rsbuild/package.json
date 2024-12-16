@@ -68,7 +68,7 @@
     "constants-browserify": "^1.0.0",
     "es-module-lexer": "^1.5.4",
     "fs-extra": "^11.2.0",
-    "magic-string": "^0.30.14",
+    "magic-string": "^0.30.17",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
     "rsbuild-plugin-html-minifier-terser": "^1.1.1",
