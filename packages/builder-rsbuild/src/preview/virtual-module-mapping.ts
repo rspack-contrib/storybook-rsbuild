@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { join, resolve } from 'node:path'
 import { webpackIncludeRegexp } from '@storybook/core-webpack'
+import findCacheDirectory from 'find-cache-dir'
 import slash from 'slash'
 import {
   getBuilderOptions,
@@ -21,12 +22,12 @@ export const getVirtualModules = async (options: Options) => {
   const virtualModules: Record<string, string> = {}
   const cwd = process.cwd()
   const workingDir = options.cache
-    ? path.resolve(
-        process.cwd(),
-        // TODO: This is a hard code cache dir, as Rspack doesn't support virtual modules now.
-        // Remove this when Rspack supports virtual modules.
-        './node_modules/.cache/storybook/storybook-rsbuild-builder',
-      )
+    ? // TODO: This is a hard code cache dir, as Rspack doesn't support virtual modules now.
+      // Remove this when Rspack supports virtual modules.
+      (findCacheDirectory({
+        name: 'storybook-rsbuild-builder',
+        create: true,
+      }) as string)
     : process.cwd()
 
   if (!fs.existsSync(workingDir)) {
