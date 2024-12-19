@@ -95,6 +95,9 @@ importers:
       es-module-lexer:
         specifier: ^1.5.4
         version: 1.5.4
+      find-cache-dir:
+        specifier: ^5.0.0
+        version: 5.0.0
       fs-extra:
         specifier: ^11.2.0
         version: 11.2.0
@@ -129,6 +132,9 @@ importers:
       '@rsbuild/core':
         specifier: ^1.1.7
         version: 1.1.7
+      '@types/find-cache-dir':
+        specifier: ^5.0.2
+        version: 5.0.2
       '@types/fs-extra':
         specifier: ^11.0.4
         version: 11.0.4
@@ -3639,6 +3645,10 @@ packages:
   '@types/express@4.17.21':
     resolution: {integrity: sha512-ejlPM315qwLpaQlQDTjPdsUFSc6ZsP4AN6AlWnogPjQ7CVi7PYF3YVz+CY3jE2pwYf7E/7HlDAN0rV2GxTG0HQ==}
 
+  '@types/find-cache-dir@5.0.2':
+    resolution: {integrity: sha512-pIpWpRaCpj/TH4XSRlBhbqgEkka/2UGCBQ1+aYX2yMLAnMc4YMvP11YrspgoN9mF4q0+AtWRdbTv4Zda4lpEew==}
+    deprecated: This is a stub types definition. find-cache-dir provides its own type definitions, so you do not need this installed.
+
   '@types/fs-extra@11.0.4':
     resolution: {integrity: sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==}
 
@@ -5670,6 +5680,10 @@ packages:
   find-cache-dir@4.0.0:
     resolution: {integrity: sha512-9ZonPT4ZAK4a+1pUPVPZJapbi7O5qbbJPdYw/NOQWZZbVLdDTYM3A4R9z/DpAM08IDaFGsvPgiGZ82WEwUDWjg==}
     engines: {node: '>=14.16'}
+
+  find-cache-dir@5.0.0:
+    resolution: {integrity: sha512-OuWNfjfP05JcpAP3JPgAKUhWefjMRfI5iAoSsvE24ANYWJaepAtlSgWECSVEuRgSXpyNEc9DJwG/TZpgcOqyig==}
+    engines: {node: '>=16'}
 
   find-file-up@0.1.3:
     resolution: {integrity: sha512-mBxmNbVyjg1LQIIpgO8hN+ybWBgDQK8qjht+EbrTCGmmPV/sc7RF1i9stPTD6bpvXZywBdrwRYxhSdJv867L6A==}
@@ -11954,6 +11968,11 @@ snapshots:
       '@types/react': 18.3.16
       react: 18.3.1
 
+  '@mdx-js/react@3.0.1(react@18.3.1)':
+    dependencies:
+      '@types/mdx': 2.0.13
+      react: 18.3.1
+
   '@module-federation/bridge-react-webpack-plugin@0.8.4':
     dependencies:
       '@module-federation/sdk': 0.8.4
@@ -13148,7 +13167,7 @@ snapshots:
 
   '@storybook/addon-docs@8.5.0-alpha.22(storybook@8.5.0-alpha.22(prettier@2.8.8))':
     dependencies:
-      '@mdx-js/react': 3.0.1(@types/react@18.3.16)(react@18.3.1)
+      '@mdx-js/react': 3.0.1(react@18.3.1)
       '@storybook/blocks': 8.5.0-alpha.22(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.5.0-alpha.22(prettier@2.8.8))
       '@storybook/csf-plugin': 8.5.0-alpha.22(storybook@8.5.0-alpha.22(prettier@2.8.8))
       '@storybook/react-dom-shim': 8.5.0-alpha.22(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.5.0-alpha.22(prettier@2.8.8))
@@ -13995,6 +14014,10 @@ snapshots:
       '@types/qs': 6.9.16
       '@types/serve-static': 1.15.7
     optional: true
+
+  '@types/find-cache-dir@5.0.2':
+    dependencies:
+      find-cache-dir: 5.0.0
 
   '@types/fs-extra@11.0.4':
     dependencies:
@@ -15371,8 +15394,7 @@ snapshots:
   commander@7.2.0:
     optional: true
 
-  common-path-prefix@3.0.0:
-    optional: true
+  common-path-prefix@3.0.0: {}
 
   commondir@1.0.1: {}
 
@@ -16479,6 +16501,11 @@ snapshots:
       pkg-dir: 7.0.0
     optional: true
 
+  find-cache-dir@5.0.0:
+    dependencies:
+      common-path-prefix: 3.0.0
+      pkg-dir: 7.0.0
+
   find-file-up@0.1.3:
     dependencies:
       fs-exists-sync: 0.1.0
@@ -16522,7 +16549,6 @@ snapshots:
     dependencies:
       locate-path: 7.2.0
       path-exists: 5.0.0
-    optional: true
 
   find-value@1.0.12: {}
 
@@ -18151,7 +18177,6 @@ snapshots:
   locate-path@7.2.0:
     dependencies:
       p-locate: 6.0.0
-    optional: true
 
   lockfile@1.0.4:
     dependencies:
@@ -19238,7 +19263,6 @@ snapshots:
   p-limit@4.0.0:
     dependencies:
       yocto-queue: 1.1.1
-    optional: true
 
   p-locate@3.0.0:
     dependencies:
@@ -19255,7 +19279,6 @@ snapshots:
   p-locate@6.0.0:
     dependencies:
       p-limit: 4.0.0
-    optional: true
 
   p-map@2.1.0: {}
 
@@ -19349,8 +19372,7 @@ snapshots:
 
   path-exists@4.0.0: {}
 
-  path-exists@5.0.0:
-    optional: true
+  path-exists@5.0.0: {}
 
   path-is-absolute@1.0.1: {}
 
@@ -19462,7 +19484,6 @@ snapshots:
   pkg-dir@7.0.0:
     dependencies:
       find-up: 6.3.0
-    optional: true
 
   pkginfo@0.4.1:
     optional: true
@@ -22266,8 +22287,7 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  yocto-queue@1.1.1:
-    optional: true
+  yocto-queue@1.1.1: {}
 
   yup@0.32.11:
     dependencies:
