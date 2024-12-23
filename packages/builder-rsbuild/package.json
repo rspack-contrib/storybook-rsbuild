@@ -80,7 +80,7 @@
     "util-deprecate": "^1.0.2"
   },
   "devDependencies": {
-    "@rsbuild/core": "^1.1.10",
+    "@rsbuild/core": "^1.1.12",
     "@types/find-cache-dir": "^5.0.2",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^18.0.0",
