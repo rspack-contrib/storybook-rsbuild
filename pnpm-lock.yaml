@@ -54,8 +54,8 @@ importers:
         specifier: ^1.1.12
         version: 1.1.12
       '@rslib/core':
-        specifier: ^0.1.5
-        version: 0.1.5(typescript@5.7.2)
+        specifier: ^0.2.0
+        version: 0.2.0(typescript@5.7.2)
       '@types/node':
         specifier: ^18.0.0
         version: 18.19.33
@@ -503,8 +503,8 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2(@rsbuild/core@1.1.12)
       '@rslib/core':
-        specifier: ^0.1.5
-        version: 0.1.5(typescript@5.7.2)
+        specifier: ^0.2.0
+        version: 0.2.0(typescript@5.7.2)
       '@storybook/addon-essentials':
         specifier: 8.5.0-alpha.22
         version: 8.5.0-alpha.22(@types/react@18.3.18)(storybook@8.5.0-alpha.22(prettier@2.8.8))
@@ -576,8 +576,8 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2(@rsbuild/core@1.1.12)
       '@rslib/core':
-        specifier: ^0.1.5
-        version: 0.1.5(typescript@5.7.2)
+        specifier: ^0.2.0
+        version: 0.2.0(typescript@5.7.2)
       '@storybook/addon-essentials':
         specifier: 8.5.0-alpha.22
         version: 8.5.0-alpha.22(@types/react@18.3.18)(storybook@8.5.0-alpha.22(prettier@2.8.8))
@@ -2806,8 +2806,8 @@ packages:
     peerDependencies:
       '@rsbuild/core': 1.x
 
-  '@rslib/core@0.1.5':
-    resolution: {integrity: sha512-m0OPJNy5ZZqqKDNWTdiG8GELgg++77Ndx3Op48mHMZ1aUSknqwKm59Rya/nZr/6fc3rvos1YM5FogXQ3/pt1/A==}
+  '@rslib/core@0.2.0':
+    resolution: {integrity: sha512-SuqdKdHdXrdN2FgVzrb+RShl6op608FZ1mOd8NX4H8lGp6E+CAAL9gnH/H4n7ahBQvM1920w1WTmaYZPyhhLUg==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     peerDependencies:
@@ -8545,8 +8545,8 @@ packages:
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
 
-  rsbuild-plugin-dts@0.1.5:
-    resolution: {integrity: sha512-p5xN+Cxv59Pk7dHZJk3ca6ryycPfIbyVPk0KWuanLE0/c2s2A5KNJCB/Qyc/MZTYEXhcJNS8FTKxEMXXJGYwvA==}
+  rsbuild-plugin-dts@0.2.0:
+    resolution: {integrity: sha512-62ioO9WoBeSzaE81Vq+MLJm0ZPdP8osyYnQLdy49pFHw8avhyR58NJdMevrwVC54k4ziaTQrTa4mAJwXN0Z62A==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@microsoft/api-extractor': ^7
@@ -9829,8 +9829,8 @@ packages:
     resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
     engines: {node: '>=0.10.0'}
 
-  vue-component-type-helpers@2.1.10:
-    resolution: {integrity: sha512-lfgdSLQKrUmADiSV6PbBvYgQ33KF3Ztv6gP85MfGaGaSGMTXORVaHT1EHfsqCgzRNBstPKYDmvAV9Do5CmJ07A==}
+  vue-component-type-helpers@2.2.0:
+    resolution: {integrity: sha512-cYrAnv2me7bPDcg9kIcGwjJiSB6Qyi08+jLDo9yuvoFQjzHiPTzML7RnkJB1+3P6KMsX/KbCD4QE3Tv/knEllw==}
 
   vue-docgen-api@4.78.0:
     resolution: {integrity: sha512-RsZf+qzTttCCAN9v7AKmBykc2QWmO8csVk1c2aXeOktomSOu0NA7sgK4ObuRB5lpmtOvTnwuxssyYmxXxABr+A==}
@@ -12767,10 +12767,10 @@ snapshots:
       - vue
       - webpack-cli
 
-  '@rslib/core@0.1.5(typescript@5.7.2)':
+  '@rslib/core@0.2.0(typescript@5.7.2)':
     dependencies:
       '@rsbuild/core': 1.1.12
-      rsbuild-plugin-dts: 0.1.5(@rsbuild/core@1.1.12)(typescript@5.7.2)
+      rsbuild-plugin-dts: 0.2.0(@rsbuild/core@1.1.12)(typescript@5.7.2)
       tinyglobby: 0.2.10
     optionalDependencies:
       typescript: 5.7.2
@@ -13567,7 +13567,7 @@ snapshots:
       ts-dedent: 2.2.0
       type-fest: 2.19.0
       vue: 3.5.13(typescript@5.7.2)
-      vue-component-type-helpers: 2.1.10
+      vue-component-type-helpers: 2.2.0
 
   '@storybook/vue3@8.5.0-alpha.22(storybook@8.5.0-alpha.22(prettier@2.8.8))(vue@3.5.13(typescript@5.7.2))':
     dependencies:
@@ -13581,7 +13581,7 @@ snapshots:
       ts-dedent: 2.2.0
       type-fest: 2.19.0
       vue: 3.5.13(typescript@5.7.2)
-      vue-component-type-helpers: 2.1.10
+      vue-component-type-helpers: 2.2.0
 
   '@svgr/babel-plugin-add-jsx-attribute@8.0.0(@babel/core@7.24.5)':
     dependencies:
@@ -20258,7 +20258,7 @@ snapshots:
       '@rollup/rollup-win32-x64-msvc': 4.17.2
       fsevents: 2.3.3
 
-  rsbuild-plugin-dts@0.1.5(@rsbuild/core@1.1.12)(typescript@5.7.2):
+  rsbuild-plugin-dts@0.2.0(@rsbuild/core@1.1.12)(typescript@5.7.2):
     dependencies:
       '@rsbuild/core': 1.1.12
       magic-string: 0.30.17
@@ -21797,7 +21797,7 @@ snapshots:
 
   void-elements@3.1.0: {}
 
-  vue-component-type-helpers@2.1.10: {}
+  vue-component-type-helpers@2.2.0: {}
 
   vue-docgen-api@4.78.0(vue@3.5.13(typescript@5.7.2)):
     dependencies:
