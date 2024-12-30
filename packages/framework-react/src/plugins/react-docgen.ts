@@ -9,7 +9,7 @@ import findUp from 'find-up'
 import MagicString from 'magic-string'
 import type { Documentation } from 'react-docgen'
 import {
-  ERROR_CODES,
+  // ERROR_CODES,
   builtinHandlers as docgenHandlers,
   builtinResolvers as docgenResolver,
   makeFsImporter,
@@ -101,10 +101,11 @@ export async function reactDocgen({
             }
           } catch (e: any) {
             // Ignore the error when react-docgen cannot find a react component
-            if (e.code === ERROR_CODES.MISSING_DEFINITION) {
-              return src
-            }
-            throw e
+            // if (e.code === ERROR_CODES.MISSING_DEFINITION) {
+
+            // Don't throw in any cases otherwise the watch will hang.
+            return src
+            // }
           }
           // }
         },
