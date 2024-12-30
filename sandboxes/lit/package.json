@@ -1,0 +1,30 @@
+{
+  "name": "@sandboxes/lit",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "rsbuild build",
+    "build:storybook": "storybook build",
+    "dev": "rsbuild dev --open",
+    "preview": "rsbuild preview",
+    "storybook": "storybook dev -p 6007"
+  },
+  "dependencies": {
+    "lit": "^3.2.1"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.3",
+    "@rsbuild/core": "^1.1.12",
+    "@rsbuild/plugin-vue": "1.0.5",
+    "@storybook/addon-essentials": "8.5.0-alpha.22",
+    "@storybook/addon-interactions": "8.5.0-alpha.22",
+    "@storybook/addon-links": "8.5.0-alpha.22",
+    "@storybook/addon-onboarding": "8.5.0-alpha.22",
+    "@storybook/blocks": "8.5.0-alpha.22",
+    "@storybook/test": "8.5.0-alpha.22",
+    "@storybook/web-components": "8.5.0-alpha.22",
+    "storybook": "8.5.0-alpha.22",
+    "storybook-web-components-rsbuild": "workspace:*",
+    "typescript": "^5.7.2"
+  }
+}
