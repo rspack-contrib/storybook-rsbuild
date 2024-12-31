@@ -26,9 +26,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           cache: 'pnpm'
+          node-version: '18.20.5'
 
       - name: Install Dependencies and build
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - uses: actions/github-script@v7
         id: version_to_release

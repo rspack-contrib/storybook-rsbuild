@@ -1,6 +1,6 @@
 {
   "name": "storybook-builder-rsbuild",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Rsbuild builder for Storybook",
   "keywords": ["storybook", "rsbuild", "rspack"],
   "homepage": "https://storybook-rsbuild.netlify.app",

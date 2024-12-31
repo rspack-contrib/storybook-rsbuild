@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-rslib",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Storybook addon for loading configuration of Rslib",
   "keywords": ["storybook", "storybook-addons", "rsbuild", "rspack", "rslib"],
   "homepage": "https://storybook-rsbuild.netlify.app",
