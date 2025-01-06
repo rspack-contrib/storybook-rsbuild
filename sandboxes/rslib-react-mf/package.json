@@ -20,7 +20,7 @@
     "@chromatic-com/storybook": "^3.2.3",
     "@module-federation/rsbuild-plugin": "^0.8.7",
     "@module-federation/storybook-addon": "3.0.18",
-    "@rsbuild/core": "^1.1.12",
+    "@rsbuild/core": "^1.1.13",
     "@rsbuild/plugin-react": "1.1.0",
     "@rsbuild/plugin-sass": "^1.1.2",
     "@rslib/core": "^0.2.2",

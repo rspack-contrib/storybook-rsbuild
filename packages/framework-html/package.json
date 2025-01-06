@@ -47,7 +47,7 @@
     "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
-    "@rsbuild/core": "^1.1.12",
+    "@rsbuild/core": "^1.1.13",
     "@storybook/types": "8.5.0-alpha.22",
     "@types/resolve": "^1.20.6",
     "storybook": "8.5.0-alpha.22",
