@@ -53,7 +53,7 @@
     "storybook-builder-rsbuild": "workspace:*"
   },
   "devDependencies": {
-    "@rsbuild/core": "^1.1.12",
+    "@rsbuild/core": "^1.1.13",
     "@types/node": "^18.0.0",
     "lit": "^3.2.1",
     "storybook": "8.5.0-alpha.22",
