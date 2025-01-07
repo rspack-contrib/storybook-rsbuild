@@ -18,17 +18,17 @@ Use with Vue in a existing Rsbuild project.
 
 ### Installation
 
-To use Vue with Storybook, you need to install the `storybook-vue-rsbuild` package.
+To use Vue with Storybook, you need to install the `storybook-vue3-rsbuild` package.
 
-<PackageManagerTabs command="install storybook-vue-rsbuild -D" />
+<PackageManagerTabs command="install storybook-vue3-rsbuild -D" />
 
 ### Setup `.storybook/main.ts`
 
 ```js
-import { StorybookConfig } from 'storybook-vue-rsbuild'
+import { StorybookConfig } from 'storybook-vue3-rsbuild'
 
 const config: StorybookConfig = {
-  framework: 'storybook-vue-rsbuild',
+  framework: 'storybook-vue3-rsbuild',
   rsbuildFinal: (config) => {
     // Customize the final Rsbuild config here
     return config
