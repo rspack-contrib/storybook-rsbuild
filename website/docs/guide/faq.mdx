@@ -59,3 +59,21 @@ export default {
 ## Why using `getAbsolutePath` to resolve the framework in sandboxes in this repository?
 
 Check out https://storybook.js.org/docs/faq#how-do-i-fix-module-resolution-in-special-environments.
+
+## How to debug the Rsbuild and Rspack config of the Storybook builder?
+
+Based on Rsbuild, you can directly use the [CLI debug capability](https://rsbuild.dev/guide/debug/debug-mode) provided by Rsbuild for debugging. For example:
+
+In development mode:
+
+```bash
+DEBUG=rsbuild storybook dev
+```
+
+In production mode:
+
+```bash
+DEBUG=rsbuild storybook build
+```
+
+Check the output in the CLI, you can see where the Rsbuild and Rspack configuration is dumped on the disk and view it.
