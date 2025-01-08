@@ -183,6 +183,7 @@ export const start: RsbuildBuilder['start'] = async ({
   router.use(rsbuildServer.middlewares)
   rsbuildServer.connectWebSocket({ server: storybookServer })
   const stats = await waitFirstCompileDone
+  await server.afterListen()
 
   return {
     bail,
