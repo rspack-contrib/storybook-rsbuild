@@ -1,11 +1,11 @@
-import { mergeRsbuildConfig } from '@rsbuild/core'
+import { type RsbuildConfig, mergeRsbuildConfig } from '@rsbuild/core'
 import { hasDocsOrControls } from 'storybook/internal/docs-tools'
 import type { StorybookConfig } from './types'
 
-export const rsbuildFinal: StorybookConfig['rsbuildFinal'] = (
+const rsbuildFinalDoc: StorybookConfig['rsbuildFinal'] = (
   config,
   options,
-) => {
+): RsbuildConfig => {
   if (!hasDocsOrControls(options)) return config
 
   let vueDocgenOptions = {}
@@ -20,7 +20,7 @@ export const rsbuildFinal: StorybookConfig['rsbuildFinal'] = (
     }
   }
 
-  const finalConfig = mergeRsbuildConfig(config, {
+  return {
     tools: {
       rspack: (config, { mergeConfig }) => {
         return mergeConfig(config, {
@@ -44,7 +44,31 @@ export const rsbuildFinal: StorybookConfig['rsbuildFinal'] = (
         })
       },
     },
-  })
+  }
+}
 
-  return finalConfig
+const rsbuildFinalBase: StorybookConfig['rsbuildFinal'] = (
+  config,
+  options,
+): RsbuildConfig => {
+  return {
+    resolve: {
+      alias: {
+        // https://github.com/fengyuanchen/vue-feather/issues/8
+        // Port https://github.com/storybookjs/storybook/blob/4224713c21c1f1ada8aca68db1b855dfad7f6975/code/presets/vue3-webpack/src/framework-preset-vue3.ts#L59.
+        vue$: require.resolve('vue/dist/vue.esm-bundler.js'),
+      },
+    },
+  }
+}
+
+export const rsbuildFinal: StorybookConfig['rsbuildFinal'] = (
+  config,
+  options,
+) => {
+  return mergeRsbuildConfig(
+    config,
+    rsbuildFinalBase(config, options),
+    rsbuildFinalDoc(config, options),
+  )
 }

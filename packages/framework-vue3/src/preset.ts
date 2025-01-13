@@ -1,7 +1,7 @@
 import { dirname, join } from 'node:path'
 import type { PresetProperty } from 'storybook/internal/types'
 
-export { rsbuildFinal } from './framework-preset-vue3-docs'
+export { rsbuildFinal } from './framework-preset-vue3'
 
 const getAbsolutePath = <I extends string>(input: I): I =>
   dirname(require.resolve(join(input, 'package.json'))) as any
