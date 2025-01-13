@@ -49,16 +49,13 @@
     "@rsbuild/core": "^1.1.13",
     "@types/node": "^18.0.0",
     "storybook": "8.5.0-beta.8",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vue": "^3.5.13"
   },
   "peerDependencies": {
     "@rsbuild/core": "^1.0.1",
-    "storybook": "^8.2.1"
-  },
-  "peerDependenciesMeta": {
-    "typescript": {
-      "optional": true
-    }
+    "storybook": "^8.2.1",
+    "vue": "^3.0.0"
   },
   "engines": {
     "node": ">=18.0.0"
