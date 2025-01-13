@@ -31,7 +31,7 @@
     "@types/react-dom": "^16.9.25",
     "storybook": "8.5.0-beta.8",
     "storybook-react-rsbuild": "workspace:*",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   },
   "dependenciesMeta": {
     "storybook-react-rsbuild": {
