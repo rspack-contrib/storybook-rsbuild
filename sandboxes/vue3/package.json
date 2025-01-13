@@ -25,6 +25,6 @@
     "@storybook/vue3": "8.5.0-beta.8",
     "storybook": "8.5.0-beta.8",
     "storybook-vue3-rsbuild": "workspace:*",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   }
 }
