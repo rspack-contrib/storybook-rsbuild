@@ -8,7 +8,7 @@
   "scripts": {
     "build": "rslib build",
     "build:storybook": "storybook build",
-    "dev": "rslib mf dev",
+    "dev": "rslib mf-dev",
     "preview": "rsbuild preview",
     "storybook": "storybook dev -p 6006"
   },
@@ -24,7 +24,7 @@
     "@rsbuild/core": "^1.1.13",
     "@rsbuild/plugin-react": "1.1.0",
     "@rsbuild/plugin-sass": "^1.1.2",
-    "@rslib/core": "^0.2.2",
+    "@rslib/core": "^0.3.1",
     "@storybook/addon-essentials": "8.5.0-beta.8",
     "@storybook/addon-interactions": "8.5.0-beta.8",
     "@storybook/addon-links": "8.5.0-beta.8",

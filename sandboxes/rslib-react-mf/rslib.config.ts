@@ -51,10 +51,6 @@ export default defineConfig({
       dev: {
         assetPrefix: 'http://localhost:3001/mf',
       },
-      // just for dev
-      server: {
-        port: 3001,
-      },
       plugins: [
         pluginModuleFederation({
           name: 'rslib_provider',
@@ -73,6 +69,10 @@ export default defineConfig({
       ],
     },
   ],
+  // just for dev
+  server: {
+    port: 3001,
+  },
   plugins: [
     pluginReact({
       swcReactOptions: {
