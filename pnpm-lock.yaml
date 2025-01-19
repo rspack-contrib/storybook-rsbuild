@@ -72,8 +72,8 @@ importers:
   packages/builder-rsbuild:
     dependencies:
       '@rsbuild/plugin-type-check':
-        specifier: ^1.2.0
-        version: 1.2.0(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(typescript@5.7.3)
+        specifier: ^1.2.1
+        version: 1.2.1(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(typescript@5.7.3)
       '@storybook/addon-docs':
         specifier: ^8.2.1
         version: 8.2.1(storybook@8.5.0-beta.8(prettier@2.8.8))
@@ -2906,8 +2906,8 @@ packages:
     peerDependencies:
       '@rsbuild/core': 1.x
 
-  '@rsbuild/plugin-type-check@1.2.0':
-    resolution: {integrity: sha512-bx+WmtK7K5Jc07IQn2cBDqcP/Kt98u16NiW3EyxqJGhQ1OgFvK6ewc70+AJnBvtjE+MMB70NAXEl8MNOtSxz6g==}
+  '@rsbuild/plugin-type-check@1.2.1':
+    resolution: {integrity: sha512-PtbjeMqDQy8IiPDTuaj8ZmvR42b0AsRq6RUF6wxa8dDsOzD0Dl1GcvemVGCto+/Dh8frLUmnlWF+T8riBw5rtA==}
     peerDependencies:
       '@rsbuild/core': 1.x
     peerDependenciesMeta:
@@ -9532,8 +9532,8 @@ packages:
   trough@2.2.0:
     resolution: {integrity: sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw==}
 
-  ts-checker-rspack-plugin@1.1.0:
-    resolution: {integrity: sha512-nhUzSuSjfgVAJjc+vJa9q8uE7MxAbustG9InRp4ylMfIbkqyJjh7gSuEcL//l76ZSwoKcCod+5lv2mNO0Ugh8g==}
+  ts-checker-rspack-plugin@1.1.1:
+    resolution: {integrity: sha512-BlpPqnfAmV0TcDg58H+1qV8Zb57ilv0x+ajjnxrVQ6BWgC8HzAdc+TycqDOJ4sZZYIV+hywQGozZFGklzbCR6A==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@rspack/core': ^1.0.0
@@ -12942,12 +12942,12 @@ snapshots:
       reduce-configs: 1.1.0
       sass-embedded: 1.83.0
 
-  '@rsbuild/plugin-type-check@1.2.0(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(typescript@5.7.3)':
+  '@rsbuild/plugin-type-check@1.2.1(@rsbuild/core@1.1.13)(@rspack/core@1.1.8(@swc/helpers@0.5.15))(typescript@5.7.3)':
     dependencies:
       deepmerge: 4.3.1
       json5: 2.2.3
       reduce-configs: 1.1.0
-      ts-checker-rspack-plugin: 1.1.0(@rspack/core@1.1.8(@swc/helpers@0.5.15))(typescript@5.7.3)
+      ts-checker-rspack-plugin: 1.1.1(@rspack/core@1.1.8(@swc/helpers@0.5.15))(typescript@5.7.3)
     optionalDependencies:
       '@rsbuild/core': 1.1.13
     transitivePeerDependencies:
@@ -21406,7 +21406,7 @@ snapshots:
 
   trough@2.2.0: {}
 
-  ts-checker-rspack-plugin@1.1.0(@rspack/core@1.1.8(@swc/helpers@0.5.15))(typescript@5.7.3):
+  ts-checker-rspack-plugin@1.1.1(@rspack/core@1.1.8(@swc/helpers@0.5.15))(typescript@5.7.3):
     dependencies:
       '@babel/code-frame': 7.26.2
       '@rspack/lite-tapable': 1.0.1
