@@ -13,12 +13,13 @@ export const rsbuildFinalDocs: NonNullable<
   const typescriptOptions = await options.presets.apply('typescript', {} as any)
   const debug = options.loglevel === 'debug'
 
-  const { reactDocgen } = typescriptOptions || {}
+  const { reactDocgen, reactDocgenTypescriptOptions } = typescriptOptions || {}
 
   if (typeof reactDocgen !== 'string') {
     return config
   }
 
+  //#region react-docgen
   if (reactDocgen !== 'react-docgen-typescript') {
     return mergeRsbuildConfig(config, {
       tools: {
@@ -43,27 +44,37 @@ export const rsbuildFinalDocs: NonNullable<
       },
     })
   }
+  //#endregion
 
-  const { reactDocgen: reactDocGenPlugin } = await import(
-    './plugins/react-docgen'
-  )
+  //#region react-docgen-typescript
+  let typescriptPresent: boolean
+  try {
+    require.resolve('typescript')
+    typescriptPresent = true
+  } catch (e) {
+    typescriptPresent = false
+  }
+
+  if (reactDocgen === 'react-docgen-typescript' && typescriptPresent) {
+  }
+
+  const reactDocGenTsPlugin = await import('./plugins/react-docgen-typescript')
 
   // TODO: Rspack doesn't support the hooks `react-docgen-typescript`' required.
   // Currently, using `transform` hook to implement the same behavior.
   return mergeRsbuildConfig(config, {
     plugins: [
-      await reactDocGenPlugin({
-        include:
-          reactDocgen === 'react-docgen-typescript'
-            ? /\.(mjs|tsx?|jsx?)$/
-            : /\.(mjs|jsx?)$/,
+      await reactDocGenTsPlugin.default({
+        ...reactDocgenTypescriptOptions,
+        // We *need* this set so that RDT returns default values in the same format as react-docgen
+        savePropValueAsString: true,
       }),
     ],
   })
+  //#endregion
 
-  // throw new Error(
-  //   "Rspack didn't support the hooks `react-docgen-typescript`' required",
-  // )
+  //#region webpack flavor react-docgen-typescript implementation, lacking support for hooks.
+  // it's now superseded by the `transform` hook implementation of Vite flavor.
 
   // const { ReactDocgenTypeScriptPlugin } = await import(
   //   '@storybook/react-docgen-typescript-plugin'
@@ -100,4 +111,5 @@ export const rsbuildFinalDocs: NonNullable<
   //     },
   //   },
   // })
+  //#endregion
 }

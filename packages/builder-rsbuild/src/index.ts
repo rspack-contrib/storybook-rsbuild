@@ -226,7 +226,9 @@ export const build: ({ options }: BuilderStartOptions) => Promise<Stats> =
       stats = params.stats as Stats
     })
 
-    await Promise.all([rsbuildBuild.build(), previewFiles])
+    const [{ close }] = await Promise.all([rsbuildBuild.build(), previewFiles])
+
+    await close()
     return stats!
   }
 
