@@ -22,7 +22,10 @@ features:
   - title: Multiple frameworks
     details: Support for multiple frameworks, including React, Vue, web components and more.
     icon: 🌈
-  - title: Applicable to all kinds of addons
+  - title: Rspack / webpack5 applicable
+    details: Compatible with webpack5 and Rspack, more than Rsbuild.
+    icon: 🦀
+  - title: Addons applicable
     details: webpack5 builder applicable addons are all supported to be used in Storybook Rsbuild.
     icon: 🧩
 ---

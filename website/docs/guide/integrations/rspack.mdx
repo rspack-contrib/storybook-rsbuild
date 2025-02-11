@@ -1,0 +1,83 @@
+import { PackageManagerTabs } from '@theme'
+
+# Rspack
+
+Rsbuild is a higher-level framework built on Rspack. Within Rsbuild, you can directly apply and modify Rspack's configurations. Therefore, storybook-builder-rsbuild is also capable of accepting and altering Rspack's configurations.
+
+You could check the [example](https://github.com/rspack-contrib/storybook-rsbuild/tree/main/sandboxes/rspack-react-18) of a React project with Storybook.
+
+## Setup
+
+To setup a Rspack project with Storybook, you need to install the following dependencies:
+
+### 1. Install dependencies
+
+As an example of a React project, in addition to installing `storybook-react-rsbuild` as per the [React framework guide](/guide/framework/react), you also need to install the relevant dependencies of Rsbuild for a Rspack project.
+
+<PackageManagerTabs command="install @rsbuild/core @rsbuild/plugin-react -D" />
+
+At this point, please ensure that at least the following dependencies are correctly installed:
+
+- `storybook`
+- `@rsbuild/core`
+- `@rsbuild/plugin-react`
+- `storybook-react-rsbuild`
+
+### 2. Setup `rsbuild.config.ts`
+
+Just like [@storybook/builder-webpack5](https://storybook.js.org/docs/builders/webpack#import-a-custom-webpack-configuration) provides out-of-the-box configurations and supports custom configurations, Storybook Rsbuild will read Rsbuild's config file. Therefore, we need to complete the basic configuration for a React project here.
+
+```ts title=rsbuild.config.ts
+import { defineConfig } from '@rsbuild/core'
+import { pluginReact } from '@rsbuild/plugin-react'
+
+export default defineConfig({
+  plugins: [pluginReact()],
+})
+```
+
+### 3. Setup `.storybook/main.ts`
+
+Same as the configuration in the [React framework guide](/guide/framework/react.html#setup-storybookmaints), setup the framework to `storybook-react-rsbuild`.
+
+```ts title=.storybook/main.ts
+import { StorybookConfig } from 'storybook-react-rsbuild'
+
+const config: StorybookConfig = {
+  framework: 'storybook-react-rsbuild',
+}
+
+export default config
+```
+
+At this point, you can start Storybook using `npx storybook dev`. However, note that the Storybook here uses the basic configuration of `@rsbuild/core` and `@rsbuild/plugin-react`. This means that if the current stories' source code depends on other Rspack build configurations, you can refer to step 4 to add custom Rspack configurations.
+
+### 4. Apply custom webpack configurations (optional)
+
+This step is optional, it's only necessary if you need to apply custom Rspack configurations to the Storybook Rsbuild build.
+
+Now, let's clarify the roles of each config file:
+
+- `rspack.config.ts`: The configuration file for Rspack, used to configure the entry, output, loader, plugin, etc., for the current app build.
+- `rsbuild.config.ts`: The configuration file for Rsbuild, used to configure the entry, output, loader, plugin, etc., for the Storybook Rsbuild build.
+
+If you want to use Rspack's configuration in the Storybook Rsbuild build, you can directly import `rspack.config.ts` in `rsbuild.config.ts` and merge its configuration items into Rsbuild's configuration through `tools.rspack`. For more ways to configure Rspack in Rsbuild, please refer to [tools.rspack](https://rsbuild.dev/config/tools/rspack).
+
+In the following example, we import the `less-loader` configuration from `rspack.config.ts` and re-use it in the Storybook Rsbuild build configuration.
+
+```ts title=rspack.config.ts {3,7-13}
+import { defineConfig } from '@rsbuild/core'
+import { pluginReact } from '@rsbuild/plugin-react'
+import rspackConfig from './rspack.config.cjs'
+
+export default defineConfig({
+  plugins: [pluginReact()],
+  tools: {
+    rspack: (config) => {
+      const lessLoader = rspackConfig.module.rules[2]
+      config.module!.rules!.push(lessLoader)
+      return config
+    },
+  },
+})
+```
