@@ -146,9 +146,6 @@ export const start: RsbuildBuilder['start'] = async ({
         htmlFallback: false,
         printUrls: false,
       },
-      dev: {
-        client: {},
-      },
     },
   })
 
