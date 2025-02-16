@@ -12,8 +12,8 @@
     "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
-    "@rspack/cli": "1.2.2",
-    "@rspack/core": "1.2.2",
+    "@rspack/cli": "1.2.3",
+    "@rspack/core": "1.2.3",
     "@swc/helpers": "^0.5.15",
     "antd": "^5.24.0",
     "less": "4.2.2",
@@ -26,7 +26,7 @@
     "@chromatic-com/storybook": "^3.2.4",
     "@rsbuild/core": "^1.1.13",
     "@rsbuild/plugin-react": "^1.1.0",
-    "@rspack/core": "1.2.2",
+    "@rspack/core": "1.2.3",
     "@rspack/plugin-react-refresh": "^1.0.1",
     "@storybook/addon-essentials": "8.5.0-beta.8",
     "@storybook/addon-interactions": "8.5.0-beta.8",
