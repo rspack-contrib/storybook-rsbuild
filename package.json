@@ -27,7 +27,7 @@
     "check-dependency-version-consistency": "^4.1.1",
     "cross-env": "^7.0.3",
     "nano-staged": "^0.8.0",
-    "nx": "^20.4.3",
+    "nx": "^20.4.4",
     "simple-git-hooks": "^2.11.1",
     "sort-package-json": "^2.12.0",
     "ts-dedent": "^2.2.0",

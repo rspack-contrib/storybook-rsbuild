@@ -18,8 +18,8 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",
-    "@module-federation/enhanced": "^0.8.10",
-    "@module-federation/rsbuild-plugin": "^0.8.10",
+    "@module-federation/enhanced": "^0.8.11",
+    "@module-federation/rsbuild-plugin": "^0.8.11",
     "@module-federation/storybook-addon": "3.0.18",
     "@rsbuild/core": "^1.1.13",
     "@rsbuild/plugin-react": "^1.1.0",
