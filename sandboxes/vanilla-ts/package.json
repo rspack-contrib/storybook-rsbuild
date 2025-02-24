@@ -12,13 +12,13 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",
     "@rsbuild/core": "^1.1.13",
-    "@storybook/addon-essentials": "8.5.0-beta.8",
-    "@storybook/addon-interactions": "8.5.0-beta.8",
-    "@storybook/addon-links": "8.5.0-beta.8",
-    "@storybook/blocks": "8.5.0-beta.8",
-    "@storybook/html": "8.5.0-beta.8",
-    "@storybook/test": "8.5.0-beta.8",
-    "storybook": "8.5.0-beta.8",
+    "@storybook/addon-essentials": "8.5.8",
+    "@storybook/addon-interactions": "8.5.8",
+    "@storybook/addon-links": "8.5.8",
+    "@storybook/blocks": "8.5.8",
+    "@storybook/html": "8.5.8",
+    "@storybook/test": "8.5.8",
+    "storybook": "8.5.8",
     "storybook-html-rsbuild": "workspace:*",
     "typescript": "^5.7.3"
   }
