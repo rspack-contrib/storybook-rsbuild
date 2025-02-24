@@ -2,14 +2,18 @@
   "$schema": "https://unpkg.com/@changesets/config@2.0.0/schema.json",
   "changelog": false,
   "commit": "./commit.js",
+  "privatePackages": { "version": false, "tag": false },
   "linked": [],
-  "access": "restricted",
+  "access": "public",
   "baseBranch": "main",
   "fixed": [
     [
       "storybook-builder-rsbuild",
       "storybook-react-rsbuild",
-      "storybook-vue3-rsbuild"
+      "storybook-vue3-rsbuild",
+      "storybook-html-rsbuild",
+      "storybook-web-components-rsbuild",
+      "storybook-addon-rslib"
     ]
   ],
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
