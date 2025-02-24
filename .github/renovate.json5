@@ -15,10 +15,8 @@
 			"groupName": "storybook",
 			"matchPackageNames": ["storybook", "@storybook/**"],
 			"groupSlug": "storybook",
-			"respectLatest": false,
 			"rangeStrategy": "pin",
-			"matchDepTypes": ["devDependencies"],
-			"followTag": "next",
+			"matchDepTypes": ["devDependencies"]
 		},
 		{
 			"groupName": "rsbuild",
@@ -26,6 +24,12 @@
 			"groupSlug": "rsbuild",
 			"respectLatest": false,
 		},
+		{
+			groupName: 'rspress',
+			matchPackageNames: ['@rspress/**'],
+			groupSlug: 'rspress',
+			extends: ['schedule:daily'],
+    	},
 		{
 			"groupName": "all patch dependencies",
 			"groupSlug": "all-patch",
