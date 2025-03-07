@@ -61,10 +61,12 @@ const rsbuild = async (_: unknown, options: RsbuildBuilderOptions) => {
     await presets.apply<StorybookConfigRaw['addons']>('webpackAddons')
   const resolvedWebpackAddons = (webpackAddons ?? [])
     .map((preset: Preset) => {
-      const options = isObject(preset) ? preset.options || undefined : undefined
+      const addonOptions = isObject(preset)
+        ? preset.options || undefined
+        : undefined
       const name = isObject(preset) ? preset.name : preset
       // Taken fromm https://github.com/storybookjs/storybook/blob/f3b15ce1f28daac195e7698c075be7790f8172f1/code/core/src/common/presets.ts#L198.
-      return resolveAddonName(options.configDir, name, options)
+      return resolveAddonName(options.configDir, name, addonOptions)
     })
     .filter(nonNullables)
   const { apply } = await getPresets(resolvedWebpackAddons, options)
