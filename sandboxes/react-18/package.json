@@ -13,12 +13,12 @@
     "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
-    "antd": "^5.24.3",
+    "antd": "^5.24.4",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^3.2.5",
+    "@chromatic-com/storybook": "^3.2.6",
     "@rsbuild/core": "^1.1.13",
     "@rsbuild/plugin-react": "^1.1.0",
     "@storybook/addon-essentials": "8.6.3",
@@ -28,7 +28,7 @@
     "@storybook/blocks": "8.6.3",
     "@storybook/react": "8.6.3",
     "@storybook/test": "8.6.3",
-    "@types/react": "^18.3.18",
+    "@types/react": "^18.3.19",
     "@types/react-dom": "^18.3.5",
     "storybook": "8.6.3",
     "storybook-react-rsbuild": "workspace:*",
