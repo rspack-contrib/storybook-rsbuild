@@ -29,6 +29,16 @@ const maybeGetAbsolutePath = <I extends string>(input: I): I | false => {
   }
 }
 
+const builtInResolveExtensions = [
+  '.mjs',
+  '.js',
+  '.jsx',
+  '.ts',
+  '.tsx',
+  '.json',
+  '.cjs',
+]
+
 const managerAPIPath = maybeGetAbsolutePath('@storybook/manager-api')
 const componentsPath = maybeGetAbsolutePath('@storybook/components')
 const globalPath = maybeGetAbsolutePath('@storybook/global')
@@ -289,15 +299,12 @@ export default async (
 
         config.resolve ??= {}
         config.resolve.symlinks = !isPreservingSymlinks()
-        config.resolve.extensions = [
-          '.mjs',
-          '.js',
-          '.jsx',
-          '.ts',
-          '.tsx',
-          '.json',
-          '.cjs',
-        ]
+        config.resolve.extensions = Array.from(
+          new Set([
+            ...(config.resolve.extensions ?? []),
+            ...builtInResolveExtensions,
+          ]),
+        )
 
         config.watchOptions = {
           ignored: /node_modules/,
