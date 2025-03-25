@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",
-    "@rsbuild/core": "^1.1.13",
+    "@rsbuild/core": "^1.2.19",
     "@storybook/addon-essentials": "8.6.9",
     "@storybook/addon-interactions": "8.6.9",
     "@storybook/addon-links": "8.6.9",

@@ -20,8 +20,8 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.6",
-    "@rsbuild/core": "^1.1.13",
-    "@rsbuild/plugin-react": "^1.1.0",
+    "@rsbuild/core": "^1.2.19",
+    "@rsbuild/plugin-react": "^1.1.1",
     "@storybook/addon-coverage": "1.0.5",
     "@storybook/addon-essentials": "8.6.9",
     "@storybook/addon-interactions": "8.6.9",
