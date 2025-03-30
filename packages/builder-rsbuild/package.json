@@ -87,7 +87,7 @@
     "@types/pretty-hrtime": "^1.0.3",
     "pretty-hrtime": "^1.0.3",
     "slash": "^5.1.0",
-    "storybook": "8.6.9",
+    "storybook": "8.6.11",
     "typescript": "^5.7.3"
   },
   "peerDependencies": {
