@@ -13,7 +13,7 @@
     "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
-    "antd": "^5.24.4",
+    "antd": "^5.24.5",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
@@ -28,7 +28,7 @@
     "@storybook/blocks": "8.6.11",
     "@storybook/react": "8.6.11",
     "@storybook/test": "8.6.11",
-    "@types/react": "^18.3.19",
+    "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.5",
     "storybook": "8.6.11",
     "storybook-react-rsbuild": "workspace:*",
