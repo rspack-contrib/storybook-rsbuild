@@ -34,7 +34,7 @@
     "@storybook/test": "8.6.11",
     "@types/node": "^18.0.0",
     "@types/react": "^18.3.20",
-    "@types/react-dom": "^18.3.5",
+    "@types/react-dom": "^18.3.6",
     "storybook": "8.6.11",
     "storybook-addon-rslib": "workspace:*",
     "storybook-react-rsbuild": "workspace:*",
