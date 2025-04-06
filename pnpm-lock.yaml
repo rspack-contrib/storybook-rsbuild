@@ -421,8 +421,8 @@ importers:
   sandboxes/react-18:
     dependencies:
       antd:
-        specifier: ^5.24.5
-        version: 5.24.5(luxon@3.5.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^5.24.6
+        version: 5.24.6(luxon@3.5.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
         specifier: 18.3.1
         version: 18.3.1
@@ -464,8 +464,8 @@ importers:
         specifier: ^18.3.20
         version: 18.3.20
       '@types/react-dom':
-        specifier: ^18.3.5
-        version: 18.3.5(@types/react@18.3.20)
+        specifier: ^18.3.6
+        version: 18.3.6(@types/react@18.3.20)
       storybook:
         specifier: 8.6.11
         version: 8.6.11(prettier@2.8.8)
@@ -529,7 +529,7 @@ importers:
         version: 6.6.3
       '@testing-library/react':
         specifier: ^16.0.1
-        version: 16.0.1(@testing-library/dom@10.4.0)(@types/react-dom@18.3.5(@types/react@18.3.20))(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 16.0.1(@testing-library/dom@10.4.0)(@types/react-dom@18.3.6(@types/react@18.3.20))(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@testing-library/user-event':
         specifier: ^14.5.2
         version: 14.5.2(@testing-library/dom@10.4.0)
@@ -543,8 +543,8 @@ importers:
         specifier: ^18.3.20
         version: 18.3.20
       '@types/react-dom':
-        specifier: ^18.3.5
-        version: 18.3.5(@types/react@18.3.20)
+        specifier: ^18.3.6
+        version: 18.3.6(@types/react@18.3.20)
       babel-plugin-istanbul:
         specifier: ^7.0.0
         version: 7.0.0
@@ -616,8 +616,8 @@ importers:
         specifier: ^18.3.20
         version: 18.3.20
       '@types/react-dom':
-        specifier: ^18.3.5
-        version: 18.3.5(@types/react@18.3.20)
+        specifier: ^18.3.6
+        version: 18.3.6(@types/react@18.3.20)
       storybook:
         specifier: 8.6.11
         version: 8.6.11(prettier@2.8.8)
@@ -692,8 +692,8 @@ importers:
         specifier: ^18.3.20
         version: 18.3.20
       '@types/react-dom':
-        specifier: ^18.3.5
-        version: 18.3.5(@types/react@18.3.20)
+        specifier: ^18.3.6
+        version: 18.3.6(@types/react@18.3.20)
       storybook:
         specifier: 8.6.11
         version: 8.6.11(prettier@2.8.8)
@@ -719,8 +719,8 @@ importers:
         specifier: ^0.5.15
         version: 0.5.15
       antd:
-        specifier: ^5.24.5
-        version: 5.24.5(luxon@3.5.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^5.24.6
+        version: 5.24.6(luxon@3.5.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       less:
         specifier: 4.2.2
         version: 4.2.2
@@ -777,8 +777,8 @@ importers:
         specifier: ^18.3.20
         version: 18.3.20
       '@types/react-dom':
-        specifier: ^18.3.5
-        version: 18.3.5(@types/react@18.3.20)
+        specifier: ^18.3.6
+        version: 18.3.6(@types/react@18.3.20)
       autoprefixer:
         specifier: ^10.4.21
         version: 10.4.21(postcss@8.5.3)
@@ -4054,8 +4054,8 @@ packages:
     peerDependencies:
       '@types/react': ^16.0.0
 
-  '@types/react-dom@18.3.5':
-    resolution: {integrity: sha512-P4t6saawp+b/dFrUr2cvkVsfvPguwsxtH6dNIYRllMsefqFzkZk5UIjzyDOv5g1dXIPdG4Sp1yCR4Z6RCUsG/Q==}
+  '@types/react-dom@18.3.6':
+    resolution: {integrity: sha512-nf22//wEbKXusP6E9pfOCDwFdHAX4u172eaJI4YkDRQEZiorm6KfYnSC2SWLDMVWUOWPERmJnN0ujeAfTBLvrw==}
     peerDependencies:
       '@types/react': ^18.0.0
 
@@ -4469,8 +4469,8 @@ packages:
     resolution: {integrity: sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==}
     engines: {node: '>=12'}
 
-  antd@5.24.5:
-    resolution: {integrity: sha512-1lAv/G+9ewQanyoAo3JumQmIlVxwo5QwWGb6QCHYc40Cq0NxC/EzITcjsgq1PSaTUpLkKq8A2l7Fjtu47vqQBg==}
+  antd@5.24.6:
+    resolution: {integrity: sha512-xIlTa/1CTbgkZsdU/dOXkYvJXb9VoiMwsaCzpKFH2zAEY3xqOfwQ57/DdG7lAdrWP7QORtSld4UA6suxzuTHXw==}
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
@@ -13017,22 +13017,6 @@ snapshots:
       - nx
     optional: true
 
-  '@nrwl/js@17.2.8(@babel/traverse@7.26.7)(@swc/core@1.7.26(@swc/helpers@0.5.15))(@types/node@18.19.75)(nx@17.2.8(@swc/core@1.7.26(@swc/helpers@0.5.15)))(typescript@5.2.2)(verdaccio@5.31.0(typanion@3.14.0))':
-    dependencies:
-      '@nx/js': 17.2.8(@babel/traverse@7.26.7)(@swc/core@1.7.26(@swc/helpers@0.5.15))(@types/node@18.19.75)(nx@17.2.8(@swc/core@1.7.26(@swc/helpers@0.5.15)))(typescript@5.2.2)(verdaccio@5.31.0(typanion@3.14.0))
-    transitivePeerDependencies:
-      - '@babel/traverse'
-      - '@swc-node/register'
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - debug
-      - nx
-      - supports-color
-      - typescript
-      - verdaccio
-    optional: true
-
   '@nrwl/js@17.2.8(@babel/traverse@7.26.7)(@swc/core@1.7.26(@swc/helpers@0.5.15))(@types/node@18.19.75)(nx@17.2.8(@swc/core@1.7.26(@swc/helpers@0.5.15)))(typescript@5.7.3)(verdaccio@5.31.0(typanion@3.14.0))':
     dependencies:
       '@nx/js': 17.2.8(@babel/traverse@7.26.7)(@swc/core@1.7.26(@swc/helpers@0.5.15))(@types/node@18.19.75)(nx@17.2.8(@swc/core@1.7.26(@swc/helpers@0.5.15)))(typescript@5.7.3)(verdaccio@5.31.0(typanion@3.14.0))
@@ -13177,7 +13161,7 @@ snapshots:
       '@babel/preset-env': 7.26.7(@babel/core@7.26.7)
       '@babel/preset-typescript': 7.26.0(@babel/core@7.26.7)
       '@babel/runtime': 7.26.7
-      '@nrwl/js': 17.2.8(@babel/traverse@7.26.7)(@swc/core@1.7.26(@swc/helpers@0.5.15))(@types/node@18.19.75)(nx@17.2.8(@swc/core@1.7.26(@swc/helpers@0.5.15)))(typescript@5.2.2)(verdaccio@5.31.0(typanion@3.14.0))
+      '@nrwl/js': 17.2.8(@babel/traverse@7.26.7)(@swc/core@1.7.26(@swc/helpers@0.5.15))(@types/node@18.19.75)(nx@17.2.8(@swc/core@1.7.26(@swc/helpers@0.5.15)))(typescript@5.7.3)(verdaccio@5.31.0(typanion@3.14.0))
       '@nx/devkit': 17.2.8(nx@17.2.8(@swc/core@1.7.26(@swc/helpers@0.5.15)))
       '@nx/workspace': 17.2.8(@swc/core@1.7.26(@swc/helpers@0.5.15))
       '@phenomnomnominal/tsquery': 5.0.1(typescript@5.2.2)
@@ -14794,7 +14778,7 @@ snapshots:
       lodash: 4.17.21
       redent: 3.0.0
 
-  '@testing-library/react@16.0.1(@testing-library/dom@10.4.0)(@types/react-dom@18.3.5(@types/react@18.3.20))(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@testing-library/react@16.0.1(@testing-library/dom@10.4.0)(@types/react-dom@18.3.6(@types/react@18.3.20))(@types/react@18.3.20)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@babel/runtime': 7.26.7
       '@testing-library/dom': 10.4.0
@@ -14802,7 +14786,7 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
       '@types/react': 18.3.20
-      '@types/react-dom': 18.3.5(@types/react@18.3.20)
+      '@types/react-dom': 18.3.6(@types/react@18.3.20)
 
   '@testing-library/user-event@14.5.2(@testing-library/dom@10.4.0)':
     dependencies:
@@ -15018,7 +15002,7 @@ snapshots:
     dependencies:
       '@types/react': 16.14.63
 
-  '@types/react-dom@18.3.5(@types/react@18.3.20)':
+  '@types/react-dom@18.3.6(@types/react@18.3.20)':
     dependencies:
       '@types/react': 18.3.20
 
@@ -15597,7 +15581,7 @@ snapshots:
 
   ansi-styles@6.2.1: {}
 
-  antd@5.24.5(luxon@3.5.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  antd@5.24.6(luxon@3.5.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@ant-design/colors': 7.2.0
       '@ant-design/cssinjs': 1.23.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
