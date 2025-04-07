@@ -39,25 +39,14 @@ const builtInResolveExtensions = [
   '.cjs',
 ]
 
-const managerAPIPath = maybeGetAbsolutePath('@storybook/manager-api')
-const componentsPath = maybeGetAbsolutePath('@storybook/components')
 const globalPath = maybeGetAbsolutePath('@storybook/global')
-const routerPath = maybeGetAbsolutePath('@storybook/router')
-const themingPath = maybeGetAbsolutePath('@storybook/theming')
 
 // these packages are not pre-bundled because of react dependencies.
 // these are not dependencies of the builder anymore, thus resolving them can fail.
 // we should remove the aliases in 8.0, I'm not sure why they are here in the first place.
 const storybookPaths: Record<string, string> = {
-  ...(managerAPIPath
-    ? {
-        '@storybook/manager-api': managerAPIPath,
-      }
-    : {}),
-  ...(componentsPath ? { '@storybook/components': componentsPath } : {}),
-  ...(globalPath ? { '@storybook/global': globalPath } : {}),
-  ...(routerPath ? { '@storybook/router': routerPath } : {}),
-  ...(themingPath ? { '@storybook/theming': themingPath } : {}),
+  // biome-ignore lint/complexity/useLiteralKeys: <explanation>
+  ...(globalPath ? { ['@storybook/global']: globalPath } : {}),
 }
 
 export type RsbuildBuilderOptions = Options & {
