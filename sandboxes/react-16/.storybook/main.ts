@@ -15,6 +15,7 @@ const config: StorybookConfig = {
     '@storybook/addon-onboarding',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
+    '@storybook/addon-docs',
     '@chromatic-com/storybook',
     '@storybook/addon-interactions',
   ],
@@ -29,7 +30,6 @@ const config: StorybookConfig = {
   docs: {
     defaultName: 'Docs',
     docsMode: false,
-    autodocs: false,
   },
   typescript: {
     reactDocgen: 'react-docgen',

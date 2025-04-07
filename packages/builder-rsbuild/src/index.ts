@@ -1,10 +1,10 @@
 import { type AddressInfo, createServer } from 'node:net'
-import { join, parse } from 'node:path'
+import { dirname, join, parse } from 'node:path'
 import * as rsbuildReal from '@rsbuild/core'
 import fs from 'fs-extra'
 import prettyTime from 'pretty-hrtime'
 import sirv from 'sirv'
-import { corePath } from 'storybook/core-path'
+// import { corePath } from 'storybook/core-path'
 import { getPresets, resolveAddonName } from 'storybook/internal/common'
 import { WebpackInvocationError } from 'storybook/internal/server-errors'
 import type {
@@ -20,6 +20,8 @@ import type { RsbuildBuilder } from './types'
 
 export * from './types'
 export * from './preview/virtual-module-mapping'
+
+const corePath = dirname(require.resolve('storybook/package.json'))
 
 type RsbuildDevServer = Awaited<
   ReturnType<rsbuildReal.RsbuildInstance['createDevServer']>

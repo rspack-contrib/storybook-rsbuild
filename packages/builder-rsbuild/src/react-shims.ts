@@ -26,8 +26,27 @@ const getIsReactVersion18or19 = async (options: Options) => {
     'resolvedReact',
     {},
   )
-  const reactDom =
+  let reactDom = ''
+
+  // try {
+  reactDom =
     resolvedReact.reactDom || dirname(require.resolve('react-dom/package.json'))
+  // } catch (e) {}
+
+  // if (!reactDom) {
+  //   try {
+  //     const addonDocs = require.resolve('@storybook/addon-docs/package.json')
+  //     reactDom = dirname(
+  //       require.resolve('react-dom/package.json', {
+  //         paths: [addonDocs],
+  //       }),
+  //     )
+  //   } catch (e) {
+  //     // TODO: warn users
+  //   }
+
+  //   // use react-dom resolved from @storybook/addon-docs
+  // }
 
   if (!isAbsolute(reactDom)) {
     // if react-dom is not resolved to a file we can't be sure if the version in package.json is correct or even if package.json exists

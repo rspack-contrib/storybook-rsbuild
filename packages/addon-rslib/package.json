@@ -28,15 +28,15 @@
   "files": ["dist/**/*", "README.md", "*.js", "*.d.ts", "!src/**/*"],
   "scripts": {
     "build": "pnpm run prep --optimized",
-    "check": "node --loader ../../scripts/node_modules/esbuild-register/loader.js -r ../../scripts/node_modules/esbuild-register/register.js ../../scripts/prepare/check.ts",
-    "prep": "node --loader ../../scripts/node_modules/esbuild-register/loader.js -r ../../scripts/node_modules/esbuild-register/register.js ../../scripts/prepare/bundle.ts",
+    "check": "jiti ../../scripts/prepare/check.ts",
+    "prep": "jiti ../../scripts/prepare/bundle.ts",
     "prepare": "pnpm run build"
   },
   "devDependencies": {
     "@rsbuild/core": "^1.2.19",
     "@rslib/core": "^0.4.1",
     "@types/node": "^18.0.0",
-    "storybook": "8.6.12",
+    "storybook": "9.0.0-alpha.17",
     "storybook-builder-rsbuild": "workspace:*",
     "typescript": "^5.7.3"
   },

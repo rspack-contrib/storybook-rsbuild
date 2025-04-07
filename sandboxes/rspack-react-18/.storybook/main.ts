@@ -18,15 +18,13 @@ const config: StorybookConfig = {
     '@storybook/addon-onboarding',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
+    '@storybook/addon-docs',
     '@storybook/addon-interactions',
     '@chromatic-com/storybook',
   ],
   framework: {
     name: getAbsolutePath('storybook-react-rsbuild'),
     options: {},
-  },
-  docs: {
-    autodocs: 'tag',
   },
   typescript: {
     reactDocgen: 'react-docgen-typescript',

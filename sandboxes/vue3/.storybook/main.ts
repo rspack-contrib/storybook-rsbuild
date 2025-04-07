@@ -15,15 +15,13 @@ const config: StorybookConfig = {
     '@storybook/addon-onboarding',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
+    '@storybook/addon-docs',
     '@chromatic-com/storybook',
     '@storybook/addon-interactions',
   ],
   framework: {
     name: getAbsolutePath('storybook-vue3-rsbuild'),
     options: {},
-  },
-  docs: {
-    autodocs: 'tag',
   },
 }
 
