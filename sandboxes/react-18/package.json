@@ -13,7 +13,7 @@
     "storybook": "storybook dev -p 6006"
   },
   "dependencies": {
-    "antd": "^5.24.6",
+    "antd": "^5.24.8",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
