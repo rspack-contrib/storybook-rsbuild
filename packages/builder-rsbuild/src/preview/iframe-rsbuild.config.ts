@@ -116,9 +116,7 @@ export default async (
 
   // TODO: Rspack doesn't support persistent cache yet
   const builderOptions = await getBuilderOptions<BuilderOptions>(options)
-  // const cacheConfig = builderOptions.fsCache
-  //   ? { cache: { type: 'filesystem' as const } }
-  //   : {}
+  const cacheConfig = builderOptions.fsCache ? true : undefined
 
   const lazyCompilationConfig =
     builderOptions.lazyCompilation && !isProd
@@ -258,6 +256,7 @@ export default async (
           chunks: 'all',
         },
       },
+      buildCache: cacheConfig,
     },
     plugins: [
       shouldCheckTs ? pluginTypeCheck(tsCheckOptions) : null,
