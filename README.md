@@ -29,9 +29,9 @@ Check out the [documentation](https://storybook-rsbuild.netlify.app).
 ### Rspack support
 
 - [x] Support `webpackInclude` magic comment _(supported in [0.0.7](https://github.com/rspack-contrib/storybook-rsbuild/releases/tag/v0.0.7))_
-- [ ] Support persistent cache
+- [x] Support persistent cache
 - [x] Support lazy compilation
-- [ ] Support virtual modules
+- [ ] Support native virtual modules
 - [ ] Support `module.unknownContextCritical`
 - [x] Support `compilation.dependencyTemplates.set` for react-docgen-typescript (supported in a workaround)
 

@@ -44,7 +44,12 @@ export type BuilderOptions = {
   /**
    * Enable Rspack's lazy compilation (experimental).
    */
-  lazyCompilation?: boolean
+  lazyCompilation?: NonNullable<RsbuildConfig['performance']>['buildCache']
+  /**
+   * Enable Rspack's [persistent cache(experimental)](https://rspack.dev/config/experiments#experimentscache).
+   * We continue to use the name `fsCache` here to maintain better compatibility with the webpack builder.
+   */
+  fsCache?: boolean
   /**
    * Which environment to use from the Rsbuild config.
    */
