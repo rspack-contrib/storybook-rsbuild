@@ -32,6 +32,12 @@
       "types": "./dist/loaders/react-docgen-loader.d.ts",
       "require": "./dist/loaders/react-docgen-loader.js"
     },
+    "./node": {
+      "types": "./dist/node/index.d.ts",
+      "node": "./dist/node/index.js",
+      "import": "./dist/node/index.mjs",
+      "require": "./dist/node/index.js"
+    },
     "./package.json": "./package.json"
   },
   "main": "dist/index.js",
@@ -87,6 +93,7 @@
   },
   "bundler": {
     "entries": [
+      "./src/node/index.ts",
       "./src/index.ts",
       "./src/preset.ts",
       "./src/loaders/react-docgen-loader.ts"
