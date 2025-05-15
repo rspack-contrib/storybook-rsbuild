@@ -17,7 +17,7 @@ The repository contains the Storybook Rsbuild builder and UI framework integrati
 
 ## Usage
 
-Check out the [documentation](https://storybook-rsbuild.netlify.app).
+Check out the [documentation](https://storybook.rsbuild.dev).
 
 ## Roadmap
 
