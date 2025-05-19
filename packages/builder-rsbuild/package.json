@@ -66,7 +66,7 @@
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "cjs-module-lexer": "^1.4.3",
     "constants-browserify": "^1.0.0",
-    "es-module-lexer": "^1.6.0",
+    "es-module-lexer": "^1.7.0",
     "find-cache-dir": "^5.0.0",
     "fs-extra": "^11.3.0",
     "magic-string": "^0.30.17",
