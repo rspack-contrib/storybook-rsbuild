@@ -2,7 +2,8 @@ import { dirname, join, resolve } from 'node:path'
 import { loadConfig, mergeRsbuildConfig } from '@rsbuild/core'
 import type { RsbuildConfig, Rspack } from '@rsbuild/core'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
-import { webpack as docsWebpack } from '@storybook/addon-docs/dist/preset'
+// @ts-expect-error forced resolve from `dist/index.d.ts` by typesVersions.
+import { webpack as docsWebpack } from '@storybook/addon-docs/preset'
 // @ts-expect-error (I removed this on purpose, because it's incorrect)
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 import { pluginHtmlMinifierTerser } from 'rsbuild-plugin-html-minifier-terser'
