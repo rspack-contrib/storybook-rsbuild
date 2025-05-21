@@ -21,7 +21,8 @@
     "ignoreUnknown": true
   },
   "formatter": {
-    "indentStyle": "space"
+    "indentStyle": "space",
+    "ignore": ["*.vue"]
   },
   "javascript": {
     "formatter": {

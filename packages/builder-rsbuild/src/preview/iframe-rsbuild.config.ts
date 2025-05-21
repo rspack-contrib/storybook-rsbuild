@@ -2,7 +2,6 @@ import { dirname, join, resolve } from 'node:path'
 import { loadConfig, mergeRsbuildConfig } from '@rsbuild/core'
 import type { RsbuildConfig, Rspack } from '@rsbuild/core'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
-// @ts-expect-error no exports.types provides in exports filed.
 import { webpack as docsWebpack } from '@storybook/addon-docs/preset'
 // @ts-expect-error (I removed this on purpose, because it's incorrect)
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
