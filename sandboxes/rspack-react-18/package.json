@@ -16,7 +16,7 @@
     "@rspack/core": "1.2.8",
     "@swc/helpers": "^0.5.17",
     "antd": "^5.24.8",
-    "less": "4.2.2",
+    "less": "4.3.0",
     "less-loader": "11.1.4",
     "normalize.css": "8.0.1",
     "react": "18.3.1",
