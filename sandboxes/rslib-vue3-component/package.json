@@ -1,0 +1,38 @@
+{
+  "name": "@sandboxes/rslib-vue3-component",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/cjs/index.d.ts",
+  "scripts": {
+    "build": "rslib build",
+    "build:storybook": "storybook build",
+    "dev": "rsbuild dev --open",
+    "preview": "rsbuild preview",
+    "storybook": "storybook dev -p 6006"
+  },
+  "dependencies": {
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.6",
+    "@rsbuild/core": "^1.2.19",
+    "@rsbuild/plugin-sass": "^1.2.2",
+    "@rsbuild/plugin-vue": "1.0.7",
+    "@rslib/core": "^0.7.0",
+    "@storybook/addon-essentials": "8.6.12",
+    "@storybook/addon-interactions": "8.6.12",
+    "@storybook/addon-links": "8.6.12",
+    "@storybook/addon-onboarding": "8.6.12",
+    "@storybook/blocks": "8.6.12",
+    "@storybook/test": "8.6.12",
+    "@storybook/vue3": "8.6.12",
+    "@types/node": "^18.0.0",
+    "rsbuild-plugin-unplugin-vue": "^0.0.5",
+    "storybook": "8.6.12",
+    "storybook-addon-rslib": "workspace:*",
+    "storybook-vue3-rsbuild": "workspace:*",
+    "typescript": "^5.7.3"
+  }
+}
