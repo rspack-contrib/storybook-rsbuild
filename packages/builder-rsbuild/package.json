@@ -59,7 +59,7 @@
     "prepare": "pnpm run build"
   },
   "dependencies": {
-    "@rsbuild/plugin-type-check": "^1.2.1",
+    "@rsbuild/plugin-type-check": "^1.2.2",
     "@storybook/addon-docs": "^8.2.1",
     "@storybook/core-webpack": "^8.2.1",
     "browser-assert": "^1.2.1",
@@ -80,7 +80,7 @@
     "util-deprecate": "^1.0.2"
   },
   "devDependencies": {
-    "@rsbuild/core": "^1.2.19",
+    "@rsbuild/core": "^1.3.22",
     "@types/find-cache-dir": "^5.0.2",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^18.0.0",
