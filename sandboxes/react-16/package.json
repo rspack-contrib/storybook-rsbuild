@@ -27,7 +27,7 @@
     "@storybook/blocks": "8.6.14",
     "@storybook/react": "8.6.14",
     "@storybook/test": "8.6.14",
-    "@types/react": "^16.14.63",
+    "@types/react": "^16.14.65",
     "@types/react-dom": "^16.9.25",
     "storybook": "8.6.14",
     "storybook-react-rsbuild": "workspace:*",
