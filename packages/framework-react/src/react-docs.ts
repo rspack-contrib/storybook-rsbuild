@@ -1,5 +1,4 @@
 import { mergeRsbuildConfig } from '@rsbuild/core'
-import { hasDocsOrControls } from 'storybook/internal/docs-tools'
 
 import type { RsbuildConfig } from '@rsbuild/core'
 import { requirer } from './requirer'
@@ -8,8 +7,6 @@ import type { StorybookConfig } from './types'
 export const rsbuildFinalDocs: NonNullable<
   StorybookConfig['rsbuildFinal']
 > = async (config, options): Promise<RsbuildConfig> => {
-  if (!hasDocsOrControls(options)) return config
-
   const typescriptOptions = await options.presets.apply('typescript', {} as any)
   const debug = options.loglevel === 'debug'
 

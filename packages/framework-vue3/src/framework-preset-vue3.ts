@@ -1,13 +1,10 @@
 import { type RsbuildConfig, mergeRsbuildConfig } from '@rsbuild/core'
-import { hasDocsOrControls } from 'storybook/internal/docs-tools'
 import type { StorybookConfig } from './types'
 
 const rsbuildFinalDoc: StorybookConfig['rsbuildFinal'] = (
   config,
   options,
 ): RsbuildConfig => {
-  if (!hasDocsOrControls(options)) return config
-
   let vueDocgenOptions = {}
 
   for (const preset of options.presetsList || []) {
