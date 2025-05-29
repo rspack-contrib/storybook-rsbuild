@@ -35,6 +35,7 @@ if (dev) {
 // === peerDependencies ===
 const cdvcPeer = new CDVC(__dirname, {
   depType: ['peerDependencies'],
+  ignorePackage: ['storybook-builder-rsbuild'],
 })
 
 // === optionalDependencies & resolutions ===
