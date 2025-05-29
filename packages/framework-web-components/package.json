@@ -49,7 +49,7 @@
     "prepare": "pnpm run build"
   },
   "dependencies": {
-    "@storybook/web-components": "^8.2.1",
+    "@storybook/web-components": "^8.6.14",
     "storybook-builder-rsbuild": "workspace:*"
   },
   "devDependencies": {
