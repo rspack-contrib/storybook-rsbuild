@@ -350,7 +350,7 @@ export default async (
         // as it's a built-in logic for Storybook's official webpack and Vite builder.
         // we should remove this once we merge this into Storybook's repository
         // by defining builder plugin in @storybook/addon-docs/preset's source code
-        return mergeConfig(config, extraWebpackConfig, appliedDocsWebpack)
+        return mergeConfig(config, extraWebpackConfig || {}, appliedDocsWebpack)
       },
       htmlPlugin: {
         filename: 'iframe.html',
