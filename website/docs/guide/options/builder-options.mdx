@@ -147,7 +147,7 @@ const config = {
     // Be sure to return the customized config
     return mergeRsbuildConfig(config, {
       // Customize the Rsbuild config for Storybook
-      source: {
+      resolve: {
         alias: { foo: 'bar' },
       },
     })

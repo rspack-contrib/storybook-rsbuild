@@ -2,6 +2,7 @@ import { dirname, join, resolve } from 'node:path'
 import { loadConfig, mergeRsbuildConfig } from '@rsbuild/core'
 import type { RsbuildConfig, Rspack } from '@rsbuild/core'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
+// @ts-expect-error forced resolve from `dist/index.d.ts` by typesVersions.
 import { webpack as docsWebpack } from '@storybook/addon-docs/preset'
 // @ts-expect-error (I removed this on purpose, because it's incorrect)
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
@@ -232,13 +233,15 @@ export default async (
       assetPrefix: '/',
       progressBar: !quiet,
     },
+    resolve: {
+      alias: {
+        ...storybookPaths,
+      },
+    },
     source: {
       // TODO: Rspack doesn't support virtual modules yet, use cache dir instead
       // we needed to explicitly set the module in `node_modules` to be compiled
       include: [/[\\/]node_modules[\\/].*[\\/]storybook-config-entry\.js/],
-      alias: {
-        ...storybookPaths,
-      },
       entry: {
         // to avoid `It's not allowed to load an initial chunk on demand. The chunk name "main" is already used by an entrypoint` of
         main: [...(entries ?? []), ...dynamicEntries],
