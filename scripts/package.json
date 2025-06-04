@@ -44,22 +44,22 @@
     "@types/fs-extra": "^11.0.4",
     "chalk": "^4.1.2",
     "esbuild-plugin-alias": "^0.2.1",
-    "esbuild-register": "^3.5.0",
+    "esbuild-register": "^3.6.0",
     "execa": "^6.1.0",
-    "fs-extra": "^11.2.0",
+    "fs-extra": "^11.3.0",
     "slash": "^3.0.0",
     "ts-dedent": "^2.2.0",
     "tsup": "^6.7.0",
     "type-fest": "~2.19",
-    "typescript": "^5.6.2"
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
     "rimraf": "^5.0.10"
   },
   "optionalDependencies": {
     "@verdaccio/types": "^10.8.0",
-    "ts-loader": "^9.5.1",
-    "verdaccio": "^5.19.1",
+    "ts-loader": "^9.5.2",
+    "verdaccio": "^5.33.0",
     "verdaccio-auth-memory": "^10.2.2"
   },
   "packageManager": "yarn@4.0.2",
