@@ -2,7 +2,7 @@
 
 ## Deploy Storybook to a subdirectory / subpath
 
-The default Vite and webpack builders in Storybook use relative paths for references, whereas Rsbuild does not recommend using relative paths for deployment (See the [tips](https://rsbuild.dev/config/output/asset-prefix#path-types:~:text=on%20file%20location.-,TIP,-It%27s%20not%20recommended)). Therefore, if you want to deploy Storybook on a sub-path such as `https://example.com/sb-path`, you can achieve this by configuring [`output.assetPrefix`](https://rsbuild.dev/config/output/asset-prefix).
+The default Vite and webpack builders in Storybook use relative paths for references, whereas Rsbuild does not recommend using relative paths for deployment (See the [tips](https://rsbuild.rs/config/output/asset-prefix#path-types:~:text=on%20file%20location.-,TIP,-It%27s%20not%20recommended)). Therefore, if you want to deploy Storybook on a sub-path such as `https://example.com/sb-path`, you can achieve this by configuring [`output.assetPrefix`](https://rsbuild.rs/config/output/asset-prefix).
 
 ```diff
 const config: StorybookConfig = {
@@ -62,7 +62,7 @@ Check out https://storybook.js.org/docs/faq#how-do-i-fix-module-resolution-in-sp
 
 ## How to debug the Rsbuild and Rspack config of the Storybook builder?
 
-Based on Rsbuild, you can directly use the [CLI debug capability](https://rsbuild.dev/guide/debug/debug-mode) provided by Rsbuild for debugging. For example:
+Based on Rsbuild, you can directly use the [CLI debug capability](https://rsbuild.rs/guide/debug/debug-mode) provided by Rsbuild for debugging. For example:
 
 In development mode:
 

@@ -12,14 +12,21 @@ The repository contains the Storybook Rsbuild builder and UI framework integrati
 
 ## Usage
 
-Check out the [documentation](https://storybook.rsbuild.dev).
+Check out the [documentation](https://storybook.rsbuild.rs).
 
 ## Roadmap
 
 ### Features
 
 - [x] Support TS type check (fork-ts-checker-webpack-plugin) _(supported in [0.0.4](https://github.com/rspack-contrib/storybook-rsbuild/releases/tag/v0.0.4))_
-- [ ] Support more frameworks (Preact / Svelte / vanilla html / Lit)
+- [ ] Support more frameworks
+  - [x] React
+  - [x] Vue
+  - [ ] Svelte
+  - [x] Lit
+  - [x] vanilla html
+  - [ ] React Native
+  - [ ] SolidJS
 
 ### Rspack support
 

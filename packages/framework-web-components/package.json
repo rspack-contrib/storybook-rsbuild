@@ -11,7 +11,7 @@
     "lit2",
     "lit3"
   ],
-  "homepage": "https://storybook.rsbuild.dev",
+  "homepage": "https://storybook.rsbuild.rs",
   "bugs": {
     "url": "https://github.com/rspack-contrib/storybook-rsbuild/issues"
   },
