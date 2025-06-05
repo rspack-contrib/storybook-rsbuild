@@ -26,7 +26,7 @@ export class MyElement extends LitElement {
   render() {
     return html`
       <div>
-        <a href="https://rsbuild.dev" target="_blank">
+        <a href="https://rsbuild.rs" target="_blank">
           <img src=${rsbuildLogo} class="logo" alt="Rsbuild logo" />
         </a>
         <a href="https://lit.dev" target="_blank">

@@ -3,7 +3,7 @@
   "version": "2.0.0-alpha.3",
   "description": "Storybook addon for loading configuration of Rslib",
   "keywords": ["storybook", "storybook-addons", "rsbuild", "rspack", "rslib"],
-  "homepage": "https://storybook.rsbuild.dev",
+  "homepage": "https://storybook.rsbuild.rs",
   "bugs": {
     "url": "https://github.com/rspack-contrib/storybook-rsbuild/issues"
   },
