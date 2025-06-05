@@ -31,9 +31,6 @@ const config: StorybookConfig = {
     name: getAbsolutePath('storybook-vue3-rsbuild'),
     options: {},
   },
-  docs: {
-    autodocs: 'tag',
-  },
   rsbuildFinal: (config) => {
     // Since HMR for Rspack is not supported by unplugin-vue as of now (https://github.com/unplugin/unplugin-vue/issues/162),
     // it's better to remove rsbuild-plugin-unplugin-vue and use @rsbuild/plugin-vue to handle all Vue files.
