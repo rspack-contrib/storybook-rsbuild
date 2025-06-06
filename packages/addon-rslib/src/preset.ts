@@ -13,7 +13,13 @@ export const rsbuildFinal: StorybookConfigRsbuild['rsbuildFinal'] = async (
   options: BaseOptions & AddonOptions,
 ) => {
   const { rslib = {} } = options
-  const { cwd, configPath, libIndex = 0 } = rslib
+  const {
+    cwd,
+    configPath,
+    libIndex = 0,
+    modifyLibConfig,
+    modifyLibRsbuildConfig,
+  } = rslib
   const { content } = await loadConfig({
     cwd: cwd,
     path: configPath,
@@ -24,6 +30,10 @@ export const rsbuildFinal: StorybookConfigRsbuild['rsbuildFinal'] = async (
     throw new Error(
       `Lib config not found at index ${libIndex}, expect a lib config but got ${libConfig}`,
     )
+  }
+
+  if (typeof modifyLibConfig === 'function') {
+    modifyLibConfig(libConfig)
   }
 
   const { lib: _lib, ...nonLibConfig } = content
@@ -44,6 +54,10 @@ export const rsbuildFinal: StorybookConfigRsbuild['rsbuildFinal'] = async (
   delete mergedLibConfig.output?.assetPrefix
   delete mergedLibConfig.dev?.assetPrefix
   // #endregion
+
+  if (typeof modifyLibRsbuildConfig === 'function') {
+    modifyLibRsbuildConfig(mergedLibConfig)
+  }
 
   return mergeRsbuildConfig(config, mergedLibConfig)
 }
