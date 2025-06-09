@@ -1,0 +1,43 @@
+{
+  "name": "@sandboxes/modernjs-react-mf-remote",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "modern build",
+    "dev": "modern dev",
+    "lint": "biome check",
+    "new": "modern new",
+    "prepare": "simple-git-hooks",
+    "reset": "npx rimraf node_modules ./**/node_modules",
+    "serve": "modern serve",
+    "start": "modern start",
+    "upgrade": "modern upgrade"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+      "biome check --files-ignore-unknown=true"
+    ]
+  },
+  "dependencies": {
+    "@modern-js/runtime": "2.67.9",
+    "@module-federation/modern-js": "0.14.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@modern-js/app-tools": "2.67.9",
+    "@modern-js/tsconfig": "2.67.9",
+    "@types/node": "^18.19.110",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "rimraf": "^6.0.1",
+    "ts-node": "~10.8.1",
+    "tsconfig-paths": "~3.14.1",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=16.18.1"
+  }
+}

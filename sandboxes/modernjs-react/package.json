@@ -1,0 +1,54 @@
+{
+  "name": "@sandboxes/modernjs-react",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "modern build",
+    "dev": "modern dev",
+    "lint": "biome check",
+    "new": "modern new",
+    "prepare": "simple-git-hooks",
+    "reset": "npx rimraf node_modules ./**/node_modules",
+    "serve": "modern serve",
+    "start": "modern start",
+    "storybook": "storybook dev -p 6006",
+    "upgrade": "modern upgrade"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+      "biome check --files-ignore-unknown=true"
+    ]
+  },
+  "dependencies": {
+    "@modern-js/runtime": "2.67.9",
+    "antd": "^5.25.4",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@modern-js/app-tools": "2.67.9",
+    "@modern-js/tsconfig": "2.67.9",
+    "@rsbuild/core": "^1.3.22",
+    "@storybook/addon-docs": "9.0.11",
+    "@storybook/addon-essentials": "9.0.0-alpha.12",
+    "@storybook/addon-interactions": "9.0.0-alpha.10",
+    "@storybook/addon-links": "9.0.11",
+    "@storybook/addon-onboarding": "9.0.11",
+    "@storybook/blocks": "9.0.0-alpha.17",
+    "@storybook/react": "9.0.11",
+    "@storybook/test": "9.0.0-alpha.2",
+    "@types/node": "^18.19.110",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "lint-staged": "~15.4.0",
+    "rimraf": "^6.0.1",
+    "storybook-addon-modernjs": "workspace:*",
+    "storybook-react-rsbuild": "workspace:*",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=16.18.1"
+  }
+}
