@@ -19,22 +19,16 @@
 			"matchDepTypes": ["devDependencies"]
 		},
 		{
-			"groupName": "rsbuild",
-			"matchPackageNames": ["@rsbuild/**"],
-			"groupSlug": "rsbuild",
-			"respectLatest": false,
-		},
-		{
 			groupName: 'rspress',
 			matchPackageNames: ['@rspress/**'],
 			groupSlug: 'rspress',
 			extends: ['schedule:daily'],
     	},
 		{
-			"groupName": "all patch dependencies",
-			"groupSlug": "all-patch",
-			"matchPackageNames": ["**", "!storybook", "!@storybook/**", "!@rsbuild/**"],
-			"matchUpdateTypes": ["patch"]
+			"groupName": "all non-major dependencies",
+			"groupSlug": "all-non-major",
+			"matchPackageNames": ["**", "!storybook", "!@storybook/**"],
+			"matchUpdateTypes": ["patch", "minor"],
 		},
 		// manually update peer dependencies
 		{
