@@ -1,0 +1,125 @@
+import { PackageManagerTabs } from '@theme'
+
+# Modern.js
+
+This addon will load a reuseable Rsbuild config from Modern.js config file for storybook-builder-rsbuild, which will make Storybook use an coherent configuration with Modern.js.
+
+## Getting started
+
+You could check the [example](https://github.com/rspack-contrib/storybook-rsbuild/tree/main/sandboxes/modernjs-react) of a Modern.js Application.
+
+### Installation
+
+<PackageManagerTabs command="install @rsbuild/core storybook-builder-rsbuild storybook-addon-modernjs -D" />
+
+You need to install `@rsbuild/core` in your project, otherwise the addon may not work as expected. 
+
+We recommend installing the version that is consistent with the version in `@modern-js/app-tools`. When you install a different version, `storybook-addon-modernjs` will give you a warning and recommend the correct version.
+
+### Setup `.storybook/main.ts`
+
+```ts
+import type { StorybookConfig } from 'storybook-react-rsbuild'
+
+const config: StorybookConfig = {
+  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  addons: ['storybook-addon-modernjs'],
+  framework: ['storybook-react-rsbuild'],
+}
+export default config
+```
+
+## With Module Federation
+
+You could check the [example](https://github.com/rspack-contrib/storybook-rsbuild/tree/main/sandboxes/modernjs-react-mf) of a Modern.js Application with Module Federation.
+
+### Installation
+If you are using Module Federation in Modern.js, you need use `@module-federation/storybook-addon`.
+
+<PackageManagerTabs command="install @module-federation/storybook-addon -D" />
+
+### Setup `.storybook/main.ts`
+
+Add the addon, and set the `remotes` option.
+
+Now `@module-federation/storybook-addon` can not read the `remotes` option from the config file in Storybook.
+
+```ts
+import type { StorybookConfig } from 'storybook-react-rsbuild'
+import moduleFederationConfig from '../module-federation.config'
+
+const config: StorybookConfig = {
+  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  addons: ['storybook-addon-modernjs', {
+    name: '@module-federation/storybook-addon',
+    options: {
+      remotes: moduleFederationConfig.remotes,
+    }
+  }],
+  framework: ['storybook-react-rsbuild'],
+}
+```
+
+### Setup `modern.config.ts`
+
+When using `@module-federation/storybook-addon`, you need to disable the `moduleFederationPlugin` in the `modern.config.ts` file.
+
+We can use the environment variable to check if the addon is used in Storybook.
+
+```json title="package.json"
+{
+  "scripts": {
+    "storybook": "STORYBOOK=true storybook dev -p 6006"
+  }
+}
+```
+
+```ts title="modern.config.ts"
+import { appTools, defineConfig } from '@modern-js/app-tools'
+import { moduleFederationPlugin } from '@module-federation/modern-js'
+
+// https://modernjs.dev/en/configure/app/usage
+export default defineConfig({
+  runtime: {
+    router: true,
+  },
+  plugins: [
+    appTools({
+      bundler: 'rspack',
+    }),
+    ...(process.env.STORYBOOK ? [] : [moduleFederationPlugin()]),
+  ],
+})
+```
+
+## Limitations
+
+Modern.js has its own plugin system, which might internally handle the configurations of Modern.js and Rsbuild. 
+
+Modern.js also processes user configurations internally, performing complex transformations before passing them to Rsbuild.
+
+:::tip
+Therefore, the addon has some limitations in Modern.js.
+:::
+
+### 🎗 Supported Usages
+
+- Modern.js Configuration files
+- Modern.js plugins to modify the configuration
+- Rsbuild plugins
+
+### 😪 Unsupported Usages
+
+- Webpack cannot be used, only Rspack is supported.
+- SSR configuration will not work in Storybook
+- Runtime capabilities, such as `<Link>` navigation
+- [Modern.js plugins](https://modernjs.dev/plugin/cli-plugins/api.html) will only call the `config` and `resolveConfig` hooks
+
+### ☎️ Contact Us
+
+We now support Storybook through a Storybook addon, not a Storybook framework. As a result, some features of Modern.js are unavailable in Storybook.
+
+If you have any questions or suggestions with Modern.js & Storybook, feel free to contact us.
+
+- [GitHub](https://github.com/web-infra-dev/modern.js)
+- [Modern.js Discord](https://discord.gg/qPCqYg38De)

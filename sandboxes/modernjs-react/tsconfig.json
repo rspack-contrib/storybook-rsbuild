@@ -1,0 +1,17 @@
+{
+  "extends": "@modern-js/tsconfig/base",
+  "compilerOptions": {
+    "declaration": false,
+    "jsx": "preserve",
+    "types": ["node"],
+    "baseUrl": "./",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@shared/*": ["./shared/*"]
+    }
+  },
+  "include": ["src", "shared", "config", "modern.config.ts", ".storybook/**/*"],
+  "exclude": ["**/node_modules"]
+}
