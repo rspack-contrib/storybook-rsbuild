@@ -1,0 +1,49 @@
+import { PackageManagerTabs } from '@theme'
+
+# Modern.js
+
+This addon will load a reuseable Rsbuild config from Modern.js config file for storybook-builder-rsbuild, which will make Storybook use an coherent configuration with Modern.js.
+
+You could check the [example](https://github.com/rspack-contrib/storybook-rsbuild/tree/main/sandboxes/modernjs-react-18) of a React Application with Modern.js and Storybook.
+
+## Getting started
+
+### Installation
+
+<PackageManagerTabs command="install storybook-builder-rsbuild storybook-addon-modernjs -D" />
+
+### Setup `.storybook/main.ts`
+
+```ts
+import type { StorybookConfig } from 'storybook-react-rsbuild'
+
+const config: StorybookConfig = {
+  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  addons: ['storybook-addon-modernjs'],
+  framework: ['storybook-react-rsbuild'],
+}
+export default config
+```
+
+## Limitations
+
+Modern.js has its own plugin system, which might internally handle the configurations of Modern.js and Rsbuild. 
+
+Modern.js also processes user configurations internally, performing complex transformations before passing them to Rsbuild.
+
+:::tip
+Therefore, the addon has some limitations in Modern.js.
+:::
+
+### 🎗 Supported Usages
+
+- Modern.js Configuration files
+- Modern.js plugins to modify the configuration
+- Rsbuild plugins
+
+### 😪 Unsupported Usages
+
+- Webpack Bundler cannot be used, only Rspack is supported.
+- SSR Configuration will not work in Storybook
+- Runtime capabilities, such as `<Link>` navigation
+- [Modern.js plugins](https://modernjs.dev/plugin/cli-plugins/api.html) only run the `config` and `resolveConfig` hooks
