@@ -25,7 +25,7 @@ if (dep) {
 const cdvcDev = new CDVC(__dirname, {
   depType: ['devDependencies'],
   ignorePackage: ['@sandboxes/react-16'],
-  ignoreDep: ['@module-federation/storybook-addon', "@modern-js/app-tools"],
+  ignoreDep: ['@module-federation/storybook-addon', '@modern-js/app-tools'],
 })
 
 const dev = cdvcDev.hasMismatchingDependencies
