@@ -1,6 +1,7 @@
 {
   "name": "@sandboxes/modernjs-react-mf-host",
   "version": "0.1.0",
+  "private": true,
   "scripts": {
     "build": "modern build",
     "dev": "modern dev",

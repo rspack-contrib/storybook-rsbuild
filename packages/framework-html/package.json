@@ -1,6 +1,6 @@
 {
   "name": "storybook-html-rsbuild",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Storybook for HTML and Rsbuild: View HTML snippets in isolation with Hot Reloading.",
   "keywords": ["storybook", "rsbuild", "rspack", "vanilla", "html"],
   "homepage": "https://storybook.rsbuild.rs",
