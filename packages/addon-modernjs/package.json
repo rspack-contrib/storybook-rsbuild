@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@modern-js/plugin-v2": "^2.67.9",
-    "find-up": "7.0.0",
+    "find-up": "^5.0.0",
     "rslog": "1.2.7"
   },
   "devDependencies": {

@@ -7,7 +7,7 @@ import {
 import { createStorybookOptions } from '@modern-js/plugin-v2/cli'
 // TODO: better import from `@modern-js/app-tools/builder`
 import { mergeRsbuildConfig } from '@rsbuild/core'
-import { findUp } from 'find-up'
+import findUp from 'find-up'
 import { logger } from 'rslog'
 import type {
   RsbuildFinal,
