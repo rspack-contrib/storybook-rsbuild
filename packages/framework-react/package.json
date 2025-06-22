@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "@rollup/pluginutils": "^5.1.4",
-    "@storybook/react": "^9.0.11",
+    "@storybook/react": "^9.0.12",
     "@storybook/react-docgen-typescript-plugin": "^1.0.1",
     "@types/node": "^18.19.110",
     "find-up": "^5.0.0",
