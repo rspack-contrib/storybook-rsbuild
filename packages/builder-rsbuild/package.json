@@ -59,7 +59,7 @@
     "prepare": "pnpm run build"
   },
   "dependencies": {
-    "@rsbuild/plugin-type-check": "^1.2.2",
+    "@rsbuild/plugin-type-check": "^1.2.3",
     "@storybook/addon-docs": "^9.0.12",
     "@storybook/core-webpack": "^9.0.12",
     "browser-assert": "^1.2.1",

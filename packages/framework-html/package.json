@@ -43,7 +43,7 @@
     "prepare": "pnpm run build"
   },
   "dependencies": {
-    "@rollup/pluginutils": "^5.1.4",
+    "@rollup/pluginutils": "^5.2.0",
     "@storybook/html": "^9.0.12",
     "@types/node": "^18.19.110",
     "find-up": "^5.0.0",

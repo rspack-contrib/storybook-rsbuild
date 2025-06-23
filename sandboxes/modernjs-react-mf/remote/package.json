@@ -22,20 +22,20 @@
     ]
   },
   "dependencies": {
-    "@modern-js/runtime": "2.67.9",
-    "@module-federation/modern-js": "0.14.3",
+    "@modern-js/runtime": "2.67.10",
+    "@module-federation/modern-js": "0.15.0",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@modern-js/app-tools": "^2.67.9",
-    "@modern-js/tsconfig": "2.67.9",
+    "@modern-js/app-tools": "^2.67.10",
+    "@modern-js/tsconfig": "2.67.10",
     "@types/node": "^18.19.110",
     "@types/react": "^18.3.23",
     "@types/react-dom": "^18.3.7",
     "rimraf": "^6.0.1",
-    "ts-node": "~10.8.1",
-    "tsconfig-paths": "~3.14.1",
+    "ts-node": "~10.9.2",
+    "tsconfig-paths": "~3.15.0",
     "typescript": "^5.8.3"
   },
   "engines": {
