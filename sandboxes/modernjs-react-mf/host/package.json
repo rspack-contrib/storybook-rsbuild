@@ -23,15 +23,15 @@
     ]
   },
   "dependencies": {
-    "@modern-js/runtime": "2.67.9",
-    "@module-federation/modern-js": "0.14.3",
-    "antd": "^5.25.4",
+    "@modern-js/runtime": "2.67.10",
+    "@module-federation/modern-js": "0.15.0",
+    "antd": "^5.26.1",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@modern-js/app-tools": "^2.67.9",
-    "@modern-js/tsconfig": "2.67.9",
+    "@modern-js/app-tools": "^2.67.10",
+    "@modern-js/tsconfig": "2.67.10",
     "@module-federation/storybook-addon": "^4.0.20",
     "@storybook/addon-docs": "9.0.11",
     "@storybook/addon-essentials": "9.0.0-alpha.12",
@@ -44,7 +44,7 @@
     "@types/node": "^18.19.110",
     "@types/react": "^18.3.23",
     "@types/react-dom": "^18.3.7",
-    "lint-staged": "~15.4.0",
+    "lint-staged": "~15.5.2",
     "rimraf": "^6.0.1",
     "storybook-addon-modernjs": "workspace:*",
     "storybook-react-rsbuild": "workspace:*",
