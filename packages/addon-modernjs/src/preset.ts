@@ -98,6 +98,7 @@ export const rsbuildFinal: StorybookConfigRsbuild['rsbuildFinal'] = async (
     builderPluginAdapterHooks(adapterParams),
   ]
 
+  // @ts-ignore: Rsbuild in Modern.js will mismatch dev dep Rsbuild sometimes.
   const finalConfig = mergeRsbuildConfig(config, rsbuildConfig)
   return finalConfig
 }
