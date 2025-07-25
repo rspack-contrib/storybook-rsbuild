@@ -1,6 +1,6 @@
 import { dirname, join, resolve } from 'node:path'
 import { loadConfig, mergeRsbuildConfig } from '@rsbuild/core'
-import type { RsbuildConfig, Rspack } from '@rsbuild/core'
+import type { RsbuildConfig, RsbuildPlugin, Rspack } from '@rsbuild/core'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
 // @ts-expect-error forced resolve from `dist/index.d.ts` by typesVersions.
 import { webpack as docsWebpack } from '@storybook/addon-docs/preset'
@@ -189,11 +189,6 @@ export default async (
     contentFromConfig = content
   }
 
-  // Reset `config.source.entry` field, do not use provided entry
-  // see https://github.com/rspack-contrib/storybook-rsbuild/issues/43
-  contentFromConfig.source ??= {}
-  contentFromConfig.source.entry = {}
-
   const resourceFilename = isProd
     ? 'static/media/[name].[contenthash:8][ext]'
     : 'static/media/[path][name][ext]'
@@ -242,10 +237,6 @@ export default async (
       // TODO: Rspack doesn't support virtual modules yet, use cache dir instead
       // we needed to explicitly set the module in `node_modules` to be compiled
       include: [/[\\/]node_modules[\\/].*[\\/]storybook-config-entry\.js/],
-      entry: {
-        // to avoid `It's not allowed to load an initial chunk on demand. The chunk name "main" is already used by an entrypoint` of
-        main: [...(entries ?? []), ...dynamicEntries],
-      },
       define: {
         ...stringifyProcessEnvs(envs),
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
@@ -270,6 +261,42 @@ export default async (
         removeStyleLinkTypeAttributes: true,
         useShortDoctype: true,
       })),
+      {
+        name: 'storybook-config-entry',
+        setup: (api) => {
+          // Post Rsbuild config are the fields that are constrained by Storybook and should not be modified by user.
+          api.modifyEnvironmentConfig({
+            handler: (config, { mergeEnvironmentConfig }) => {
+              const baseConfig = { ...config }
+              delete baseConfig.source.entry
+
+              return mergeEnvironmentConfig(config, {
+                // Reset `config.source.entry` field, do not use provided entry
+                // see https://github.com/rspack-contrib/storybook-rsbuild/issues/43
+                source: {
+                  entry: {
+                    main: [...(entries ?? []), ...dynamicEntries],
+                  },
+                },
+                tools: {
+                  rspack: {
+                    experiments: {
+                      outputModule: false,
+                    },
+                    externalsType: 'var',
+                    output: {
+                      module: false,
+                      chunkFormat: 'array-push',
+                      chunkLoading: 'jsonp',
+                    },
+                  },
+                },
+              })
+            },
+            order: 'post',
+          })
+        },
+      } as RsbuildPlugin,
     ].filter(Boolean),
     tools: {
       rspack: (config, { addRules, appendPlugins, rspack, mergeConfig }) => {
