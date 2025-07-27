@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@rollup/pluginutils": "^5.2.0",
-    "@storybook/html": "^9.0.17",
+    "@storybook/html": "^9.0.18",
     "@types/node": "^18.19.110",
     "find-up": "^5.0.0",
     "magic-string": "^0.30.17",
