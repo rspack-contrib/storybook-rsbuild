@@ -23,15 +23,15 @@
     ]
   },
   "dependencies": {
-    "@modern-js/runtime": "2.68.2",
-    "antd": "^5.26.4",
+    "@modern-js/runtime": "2.68.6",
+    "antd": "^5.26.7",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@modern-js/app-tools": "^2.68.2",
-    "@modern-js/tsconfig": "2.68.2",
-    "@rsbuild/core": "^1.4.6",
+    "@modern-js/app-tools": "^2.68.6",
+    "@modern-js/tsconfig": "2.68.6",
+    "@rsbuild/core": "^1.4.11",
     "@storybook/addon-docs": "9.0.18",
     "@storybook/addon-essentials": "9.0.0-alpha.12",
     "@storybook/addon-interactions": "9.0.0-alpha.10",
