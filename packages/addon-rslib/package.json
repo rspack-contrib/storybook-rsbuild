@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-rslib",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Storybook addon for loading configuration of Rslib",
   "keywords": ["storybook", "storybook-addons", "rsbuild", "rspack", "rslib"],
   "homepage": "https://storybook.rsbuild.rs",

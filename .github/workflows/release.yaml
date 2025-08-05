@@ -4,7 +4,7 @@ name: Release
 
 permissions:
   id-token: write # Required for OIDC
-  contents: read
+  contents: write
 
 on: workflow_dispatch
 
@@ -18,6 +18,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
       # Update npm to the latest version to enable OIDC
       # Use corepack to install pnpm
       - name: Setup Package Managers
@@ -26,12 +31,6 @@ jobs:
           npm --version
           npm install -g corepack@latest --force
           corepack enable
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          cache: 'pnpm'
-          node-version: '18.20.5'
 
       - name: Install Dependencies and build
         run: pnpm install --frozen-lockfile
