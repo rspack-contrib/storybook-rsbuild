@@ -23,15 +23,15 @@
     ]
   },
   "dependencies": {
-    "@modern-js/runtime": "2.68.6",
+    "@modern-js/runtime": "2.68.7",
     "antd": "^5.26.7",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@modern-js/app-tools": "^2.68.6",
-    "@modern-js/tsconfig": "2.68.6",
-    "@rsbuild/core": "^1.4.11",
+    "@modern-js/app-tools": "^2.68.7",
+    "@modern-js/tsconfig": "2.68.7",
+    "@rsbuild/core": "^1.4.15",
     "@storybook/addon-docs": "9.0.18",
     "@storybook/addon-essentials": "9.0.0-alpha.12",
     "@storybook/addon-interactions": "9.0.0-alpha.10",
@@ -47,7 +47,7 @@
     "rimraf": "^6.0.1",
     "storybook-addon-modernjs": "workspace:*",
     "storybook-react-rsbuild": "workspace:*",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "engines": {
     "node": ">=16.18.1"
