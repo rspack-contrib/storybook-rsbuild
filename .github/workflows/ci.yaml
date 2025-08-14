@@ -40,11 +40,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
 
       - name: Install Dependencies
         run: |
           pnpm install --frozen-lockfile
+
+      # `pnpm dedupe --check` still find duplications after run `pnpm dedupe`
+      # - name: Check pnpm Dedupe
+      #   run: pnpm dedupe --check
 
       - name: Lint / Type Check / Check Dependency Version
         run: |

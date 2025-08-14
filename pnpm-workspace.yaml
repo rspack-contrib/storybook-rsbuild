@@ -1,5 +1,16 @@
 packages:
-  - 'packages/**'
-  - 'sandboxes/**'
-  - 'scripts/**'
-  - 'website'
+  - packages/**
+  - sandboxes/**
+  - scripts/**
+  - website
+
+ignoredBuiltDependencies:
+  - nx
+
+onlyBuiltDependencies:
+  - '@biomejs/biome'
+  - '@swc/core'
+  - core-js
+  - core-js-pure
+  - esbuild
+  - simple-git-hooks
