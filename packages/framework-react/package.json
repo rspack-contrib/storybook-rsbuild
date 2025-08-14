@@ -54,7 +54,6 @@
     "@rollup/pluginutils": "^5.2.0",
     "@storybook/react": "^9.0.18",
     "@storybook/react-docgen-typescript-plugin": "^1.0.1",
-    "@types/node": "^18.19.110",
     "find-up": "^5.0.0",
     "magic-string": "^0.30.17",
     "react-docgen": "^7.1.1",
@@ -66,6 +65,7 @@
   "devDependencies": {
     "@rsbuild/core": "^1.4.11",
     "@storybook/types": "9.0.0-alpha.1",
+    "@types/node": "^18.19.110",
     "@types/react": "^18.3.23",
     "@types/resolve": "^1.20.6",
     "react": "18.3.1",
