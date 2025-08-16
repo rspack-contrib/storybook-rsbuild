@@ -39,17 +39,17 @@
     "prepare": "pnpm run build"
   },
   "dependencies": {
-    "@modern-js/plugin-v2": "^2.68.6",
+    "@modern-js/plugin-v2": "^2.68.9",
     "find-up": "^5.0.0",
-    "rslog": "1.2.9"
+    "rslog": "1.2.11"
   },
   "devDependencies": {
-    "@modern-js/app-tools": "^2.68.6",
-    "@rsbuild/core": "^1.4.11",
+    "@modern-js/app-tools": "^2.68.9",
+    "@rsbuild/core": "^1.4.15",
     "@types/node": "^18.19.110",
     "storybook": "9.1.2",
     "storybook-builder-rsbuild": "workspace:*",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "peerDependencies": {
     "@modern-js/app-tools": "^2.67.9",

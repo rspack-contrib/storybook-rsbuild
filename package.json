@@ -22,18 +22,18 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@changesets/cli": "^2.29.5",
-    "@testing-library/jest-dom": "^6.6.4",
+    "@changesets/cli": "^2.29.6",
+    "@testing-library/jest-dom": "^6.7.0",
     "check-dependency-version-consistency": "^4.1.1",
     "cross-env": "^7.0.3",
     "jiti": "^2.5.1",
     "nano-staged": "^0.8.0",
     "nx": "^20.8.2",
-    "simple-git-hooks": "^2.13.0",
+    "simple-git-hooks": "^2.13.1",
     "sort-package-json": "^2.15.1",
     "ts-dedent": "^2.2.0",
-    "tsx": "^4.20.3",
-    "typescript": "^5.8.3",
+    "tsx": "^4.20.4",
+    "typescript": "^5.9.2",
     "vitest": "^2.1.9"
   },
   "packageManager": "pnpm@10.14.0"
