@@ -33,7 +33,7 @@ Check out the [documentation](https://storybook.rsbuild.rs).
 - [x] Support `webpackInclude` magic comment _(supported in [0.0.7](https://github.com/rspack-contrib/storybook-rsbuild/releases/tag/v0.0.7))_
 - [x] Support persistent cache
 - [x] Support lazy compilation
-- [ ] Support native virtual modules
+- [x] Support native virtual modules
 - [ ] Support `module.unknownContextCritical`
 - [x] Support `compilation.dependencyTemplates.set` for react-docgen-typescript (supported in a workaround)
 

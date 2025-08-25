@@ -79,7 +79,7 @@
     "util-deprecate": "^1.0.2"
   },
   "devDependencies": {
-    "@rsbuild/core": "^1.4.15",
+    "@rsbuild/core": "^1.5.0",
     "@types/find-cache-dir": "^5.0.2",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^18.19.110",
@@ -91,7 +91,7 @@
     "typescript": "^5.9.2"
   },
   "peerDependencies": {
-    "@rsbuild/core": "^1.0.1",
+    "@rsbuild/core": "^1.5.0",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta",
     "storybook": "^9.0.0"
