@@ -33,7 +33,7 @@
     "prepare": "pnpm run build"
   },
   "devDependencies": {
-    "@rsbuild/core": "^1.4.15",
+    "@rsbuild/core": "^1.5.0",
     "@rslib/core": "^0.12.1",
     "@types/node": "^18.19.110",
     "storybook": "9.1.2",
@@ -41,7 +41,7 @@
     "typescript": "^5.9.2"
   },
   "peerDependencies": {
-    "@rsbuild/core": "^1.0.1",
+    "@rsbuild/core": "^1.5.0",
     "@rslib/core": ">= 0.1.1 || >= 0.2",
     "storybook-builder-rsbuild": "*"
   },

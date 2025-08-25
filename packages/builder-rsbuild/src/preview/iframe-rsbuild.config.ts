@@ -1,5 +1,5 @@
 import { dirname, join, resolve } from 'node:path'
-import { loadConfig, mergeRsbuildConfig } from '@rsbuild/core'
+import { loadConfig, mergeRsbuildConfig, rspack } from '@rsbuild/core'
 import type { RsbuildConfig, RsbuildPlugin, Rspack } from '@rsbuild/core'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
 // @ts-expect-error forced resolve from `dist/index.d.ts` by typesVersions.
@@ -139,8 +139,7 @@ export default async (
     externals['@storybook/blocks'] = '__STORYBOOK_BLOCKS_EMPTY_MODULE__'
   }
 
-  // TODO: Rspack doesn't support virtual modules yet, use cache dir instead
-  const { virtualModules: _virtualModules, entries: dynamicEntries } =
+  const { virtualModules: virtualModuleMapping, entries: dynamicEntries } =
     await getVirtualModules(options)
 
   if (!options.cache) {
@@ -361,8 +360,19 @@ export default async (
         config.module.parser.javascript ??= {}
         config.module.parser.javascript.exportsPresence = false
 
+        if (!rspack.experiments?.VirtualModulesPlugin) {
+          throw new Error(
+            'rspack.experiments.VirtualModulesPlugin requires at least 1.5.0 version of @rsbuild/core, please upgrade or downgrade storybook-rsbuild-builder to lower version.',
+          )
+        }
+
         appendPlugins(
           [
+            Object.keys(virtualModuleMapping).length > 0
+              ? new rspack.experiments.VirtualModulesPlugin(
+                  virtualModuleMapping,
+                )
+              : (null as any),
             new rspack.ProvidePlugin({
               process: require.resolve('process/browser.js'),
             }),
