@@ -44,10 +44,15 @@ export const rsbuildFinal: StorybookConfigRsbuild['rsbuildFinal'] = async (
 
   // TODO: Add more unapplicable fields.
 
-  // #region Remove unapplicable fields that affects `source` / `output`.
+  // #region Remove unapplicable fields.
   delete mergedLibConfig.source?.entry
   delete mergedLibConfig.output?.distPath
   delete mergedLibConfig.output?.filename
+  delete mergedLibConfig.output?.cleanDistPath
+  delete mergedLibConfig.output?.assetPrefix
+  delete mergedLibConfig.output?.externals
+  delete mergedLibConfig.server?.publicDir
+  delete mergedLibConfig.dev?.progressBar
   // #endregion
 
   // #region Critical in the MF library, but it is appropriate to remove it for all library formats.
