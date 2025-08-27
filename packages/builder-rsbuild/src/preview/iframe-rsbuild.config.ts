@@ -314,6 +314,12 @@ export default async (
           ],
         })
 
+        // Disable warning for dynamic requires
+        config.module ??= {}
+        config.module.parser ??= {}
+        config.module.parser.javascript ??= {}
+        config.module.parser.javascript.unknownContextCritical = false
+
         config.resolve ??= {}
         config.resolve.symlinks = !isPreservingSymlinks()
         config.resolve.extensions = Array.from(
