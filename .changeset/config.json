@@ -13,7 +13,8 @@
       "storybook-vue3-rsbuild",
       "storybook-html-rsbuild",
       "storybook-web-components-rsbuild",
-      "storybook-addon-rslib"
+      "storybook-addon-rslib",
+      "storybook-addon-modernjs"
     ]
   ],
   "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
