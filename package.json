@@ -24,7 +24,7 @@
     "@biomejs/biome": "^1.9.4",
     "@changesets/cli": "^2.29.6",
     "@testing-library/jest-dom": "^6.8.0",
-    "check-dependency-version-consistency": "^4.1.1",
+    "check-dependency-version-consistency": "^5.0.1",
     "cross-env": "^7.0.3",
     "jiti": "^2.5.1",
     "nano-staged": "^0.8.0",
