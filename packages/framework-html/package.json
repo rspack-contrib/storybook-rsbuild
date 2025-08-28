@@ -46,13 +46,13 @@
     "@rollup/pluginutils": "^5.2.0",
     "@storybook/html": "^9.1.3",
     "find-up": "^5.0.0",
-    "magic-string": "^0.30.17",
+    "magic-string": "^0.30.18",
     "resolve": "^1.22.10",
     "storybook-builder-rsbuild": "workspace:*",
     "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
-    "@rsbuild/core": "^1.5.0",
+    "@rsbuild/core": "^1.5.1",
     "@storybook/types": "9.0.0-alpha.1",
     "@types/node": "^18.19.110",
     "@types/resolve": "^1.20.6",

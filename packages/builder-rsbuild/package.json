@@ -68,7 +68,7 @@
     "constants-browserify": "^1.0.0",
     "es-module-lexer": "^1.7.0",
     "fs-extra": "^11.3.1",
-    "magic-string": "^0.30.17",
+    "magic-string": "^0.30.18",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
     "rsbuild-plugin-html-minifier-terser": "^1.1.2",
@@ -79,7 +79,7 @@
     "util-deprecate": "^1.0.2"
   },
   "devDependencies": {
-    "@rsbuild/core": "^1.5.0",
+    "@rsbuild/core": "^1.5.1",
     "@types/find-cache-dir": "^5.0.2",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^18.19.110",
