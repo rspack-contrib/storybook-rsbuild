@@ -36,7 +36,7 @@
     "@rsbuild/core": "^1.5.1",
     "@rslib/core": "^0.12.3",
     "@types/node": "^18.19.110",
-    "storybook": "9.1.4",
+    "storybook": "9.1.5",
     "storybook-builder-rsbuild": "workspace:*",
     "typescript": "^5.9.2"
   },
