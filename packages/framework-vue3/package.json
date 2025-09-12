@@ -49,7 +49,7 @@
   "dependencies": {
     "@storybook/vue3": "^9.1.5",
     "storybook-builder-rsbuild": "workspace:*",
-    "vue-docgen-loader": "^1.5.1"
+    "vue-docgen-loader": "^2.0.1"
   },
   "devDependencies": {
     "@rsbuild/core": "^1.5.1",
