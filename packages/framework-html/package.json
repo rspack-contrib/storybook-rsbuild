@@ -43,16 +43,16 @@
     "prepare": "pnpm run build"
   },
   "dependencies": {
-    "@rollup/pluginutils": "^5.2.0",
+    "@rollup/pluginutils": "^5.3.0",
     "@storybook/html": "^9.1.5",
     "find-up": "^5.0.0",
-    "magic-string": "^0.30.18",
+    "magic-string": "^0.30.19",
     "resolve": "^1.22.10",
     "storybook-builder-rsbuild": "workspace:*",
     "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
-    "@rsbuild/core": "^1.5.1",
+    "@rsbuild/core": "^1.5.6",
     "@storybook/types": "9.0.0-alpha.1",
     "@types/node": "^18.19.110",
     "@types/resolve": "^1.20.6",
