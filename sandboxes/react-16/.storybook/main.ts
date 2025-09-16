@@ -36,6 +36,12 @@ const config: StorybookConfig = {
     check: true,
   },
   staticDirs: ['../public'],
+  rsbuildFinal: async (config) => {
+    config.tools!.rspack = (config, { mergeConfig }) => {
+      return mergeConfig(config, {})
+    }
+    return config
+  },
 }
 
 export default config
