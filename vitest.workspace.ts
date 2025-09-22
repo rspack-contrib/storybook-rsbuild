@@ -1,7 +1,10 @@
 import { resolve } from 'node:path'
 import { defineConfig, defineWorkspace } from 'vitest/config'
 
-export default defineWorkspace(['packages/*/vitest.config.ts'])
+export default defineWorkspace([
+  'packages/*/vitest.config.ts',
+  'sandboxes/*/vitest.config.ts',
+])
 
 /**
  * CircleCI reports the wrong number of threads to Node.js, so we need to set it manually.
