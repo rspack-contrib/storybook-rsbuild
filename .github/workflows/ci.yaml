@@ -55,10 +55,10 @@ jobs:
           pnpm check
           pnpm check-dependency-version
 
-      - name: Test
-        run: |
-          pnpm test
-
       - name: Build sandboxes storybooks
         run: |
           pnpm run build:sandboxes
+
+      - name: Test
+        run: |
+          pnpm test
