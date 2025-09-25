@@ -1,5 +1,13 @@
 # Repository Guidelines
 
+## Repository Setup
+
+Get a local environment running:
+
+1. Install Node.js 20 so it matches `.nvmrc`; `nvm use` handles this if you rely on nvm.
+2. Enable Corepack if you don’t have it already: `corepack enable` to use pnpm 10 as package manager.
+3. Install dependencies with `pnpm install`, all packages will be built automatically after installation.
+
 ## Project Structure & Module Organization
 
 This monorepo ships features near their consumers:
