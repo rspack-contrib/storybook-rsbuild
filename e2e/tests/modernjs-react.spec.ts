@@ -40,5 +40,9 @@ test.describe(sandbox.name, () => {
       await expect(title).toHaveText('AntdButton')
       return
     }
+
+    throw new Error(
+      'Could not locate the Storybook docs root for modernjs-react. The sandbox may have rendered the Canvas view or failed to load docs.',
+    )
   })
 })
