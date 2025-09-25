@@ -2,7 +2,7 @@ import { PackageManagerTabs } from '@theme'
 
 # React
 
-Storybook for React & Rsbuild is a framework that makes it easy to develop and test UI components in isolation for React applications built with Rsbuild.
+Storybook for React & Rsbuild lets you develop and test React components in isolation using the Rsbuild toolchain your app already relies on.
 
 :::info{title=Requirements}
 
@@ -14,15 +14,15 @@ Storybook for React & Rsbuild is a framework that makes it easy to develop and t
 
 ## Getting started
 
-Use with React in a existing Rsbuild project.
+Follow these steps inside an existing Rsbuild-powered React project.
 
 ### Installation
 
-To use React with Storybook, you need to install the `storybook-react-rsbuild` package.
+Install the framework package to enable React support.
 
 <PackageManagerTabs command="install storybook-react-rsbuild -D" />
 
-### Setup `.storybook/main.ts`
+### Configure `.storybook/main.ts`
 
 ```js
 import { StorybookConfig } from 'storybook-react-rsbuild'
@@ -38,8 +38,8 @@ const config: StorybookConfig = {
 export default config
 ```
 
-You're all set now. You could also check out the example in [sandboxes/react-16](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/sandboxes/react-16) and [sandboxes/react-18](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/sandboxes/react-18) and use all other features listed in [Storybook site](https://storybook.js.org/docs).
+That's it! Explore the [React 16](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/sandboxes/react-16) and [React 18](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/sandboxes/react-18) sandboxes for full examples, and continue learning from the [Storybook documentation](https://storybook.js.org/docs).
 
 ## Options
 
-Check out [types.ts](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/packages/framework-react/src/types.ts).
+Refer to the framework's [types.ts](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/packages/framework-react/src/types.ts) for the complete option list.

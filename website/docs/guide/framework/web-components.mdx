@@ -2,11 +2,11 @@ import { PackageManagerTabs } from '@theme'
 
 # Web Components
 
-Storybook for Web components & Rsbuild is a framework that makes it easy to develop and test UI components in isolation for Web components applications built with Rsbuild.
+Storybook for Web Components & Rsbuild is tailored for Lit and custom-element projects, giving you fast component previews without leaving your Rsbuild workflow.
 
 :::info{title=Requirements}
 
-- lit: >=2 || ≥ 3
+- lit ≥ 2 (or ≥ 3)
 - @rsbuild/core ≥ 1.0.1
 - storybook ≥ 9.0.0
 
@@ -14,15 +14,15 @@ Storybook for Web components & Rsbuild is a framework that makes it easy to deve
 
 ## Getting started
 
-Use with Web components in a existing Rsbuild project.
+Run through these steps inside an Rsbuild project that renders Web Components.
 
 ### Installation
 
-To use Web components with Storybook, you need to install the `storybook-web-components-rsbuild` package.
+Install the Web Components framework package.
 
 <PackageManagerTabs command="install storybook-web-components-rsbuild -D" />
 
-### Setup `.storybook/main.ts`
+### Configure `.storybook/main.ts`
 
 ```js
 import { StorybookConfig } from 'storybook-web-components-rsbuild'
@@ -38,8 +38,8 @@ const config: StorybookConfig = {
 export default config
 ```
 
-You're all set now. You could also check out the example in [sandboxes/web-components](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/sandboxes/web-components) and use all other features listed in [Storybook site](https://storybook.js.org/docs).
+You're good to go! See the [web components sandbox](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/sandboxes/web-components) for a complete reference and browse the [Storybook docs](https://storybook.js.org/docs) for deeper guidance.
 
 ## Options
 
-Check out [types.ts](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/packages/framework-web-components/src/types.ts).
+Consult [types.ts](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/packages/framework-web-components/src/types.ts) for every configuration option exposed by the framework.

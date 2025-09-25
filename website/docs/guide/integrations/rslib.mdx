@@ -2,11 +2,9 @@ import { PackageManagerTabs } from '@theme'
 
 # Rslib
 
-This addon will load a reuseable Rsbuild config from Rslib config file for storybook-builder-rsbuild, which will make Storybook use an coherent configuration with Rslib.
+`storybook-addon-rslib` loads your Rslib configuration and applies it to Storybook Rsbuild so both builds share the same defaults. It also unlocks an easy workflow for testing Module Federation (`mf`) outputs.
 
-It also provides a way to development `mf` [(Module Federation)](https://rslib.rs/guide/basic/output-format#mf) format output.
-
-You could check the [example](https://github.com/rspack-contrib/storybook-rsbuild/tree/main/sandboxes/rslib-react-component) of a React component library with Rslib and Storybook.
+See the [Rslib React component sandbox](https://github.com/rspack-contrib/storybook-rsbuild/tree/main/sandboxes/rslib-react-component) for a complete example.
 
 ## Getting started
 
@@ -14,7 +12,7 @@ You could check the [example](https://github.com/rspack-contrib/storybook-rsbuil
 
 <PackageManagerTabs command="install storybook-addon-rslib -D" />
 
-### Setup `.storybook/main.ts`
+### Configure `.storybook/main.ts`
 
 ```ts
 export default {
@@ -22,7 +20,7 @@ export default {
 }
 ```
 
-or with config
+Or pass custom options:
 
 ```ts
 export default {
@@ -30,16 +28,16 @@ export default {
     {
       name: 'storybook-addon-rslib',
       options: {
-        // Check options section.
+        // See the Options section below.
       },
     },
   ],
 }
 ```
 
-## Module Federation
+## Module Federation support
 
-[Rslib Module Federation Documentation](https://rslib.rs/guide/advanced/module-federation)
+Follow the [Rslib Module Federation guide](https://rslib.rs/guide/advanced/module-federation) to generate the `mf` output you want to preview.
 
 ## Options
 
@@ -47,32 +45,31 @@ export default {
 export interface AddonOptions {
   rslib?: {
     /**
-     * `cwd` passed to loadConfig of Rslib
+     * Working directory passed to Rslib's loadConfig
      * @default undefined
      */
     cwd?: string
     /**
-     *  `path` passed to loadConfig of Rslib
+     * Path passed to Rslib's loadConfig
      * @default undefined
      */
     configPath?: string
     /**
-     * The lib config index in `lib` field to use, will be merged with the other fields in the config.
-     * Set to a number to use the lib config at that index.
-     * Set to `false` to disable using the lib config.
+     * Select which `lib` entry to reuse. The chosen entry is merged with the rest of the config.
+     * Provide a number to pick that index, or `false` to skip merging any entry.
      * @default 0
      */
     libIndex?: number | false
     /**
-     * Modify the Rslib lib config before transforming it to Rsbuild config which will be merged
-     * with Storybook. You can modify the configuration in the config parameters in place.
+     * Modify the Rslib lib config before it is converted into an Rsbuild config.
+     * Mutate the provided config object in place.
      * @experimental subject to change at any time
      * @default undefined
      */
     modifyLibConfig?: (config: LibConfig) => void
     /**
-     * Modify the Rsbuild config transformed from lib config before merging with Storybook
-     * config. You can modify the configuration in the config parameters in place.
+     * Modify the transformed Rsbuild config before Storybook merges it.
+     * Mutate the provided config object in place.
      * @experimental subject to change at any time
      * @default undefined
      */

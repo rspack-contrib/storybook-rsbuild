@@ -3,8 +3,8 @@ pageType: home
 
 hero:
   name: Storybook Rsbuild
-  text: Storybook powered by Rsbuild
-  tagline: Storybook, powered by Rsbuild.
+  text: Build and run Storybook with Rsbuild at its core
+  tagline: A fast, consistent Storybook experience backed by Rsbuild.
   actions:
     - theme: brand
       text: Quick Start
@@ -17,15 +17,15 @@ hero:
     alt: Storybook Rsbuild Logo
 features:
   - title: Coherent configuration
-    details: Consistent configuration across project and Storybook, with the ability to extend and override as needed.
+    details: Share one Rsbuild setup between your app and Storybook, and extend it only when you need to.
     icon: 🧬
-  - title: Multi-frameworks support
-    details: Support for multiple frameworks, including React, Vue, Lit and more.
+  - title: Multi-framework support
+    details: Work with React, Vue, Lit, and other popular web frameworks out of the box.
     icon: 🌈
-  - title: Rspack / webpack5 applicable
-    details: Not only Rsbuild, compatible with webpack5 and Rspack.
+  - title: Works with Rspack and webpack 5
+    details: Use Rsbuild directly or plug into existing webpack 5 and Rspack projects.
     icon: ⚡️
-  - title: webpack addons applicable
-    details: webpack5 builder applicable addons are all supported to be used in Storybook Rsbuild.
+  - title: Compatible with webpack addons
+    details: Keep using your favorite webpack 5 Storybook addons without extra configuration.
     icon: 🧩
 ---

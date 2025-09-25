@@ -2,7 +2,7 @@ import { PackageManagerTabs } from '@theme'
 
 # Vue
 
-Storybook for Vue & Rsbuild is a framework that makes it easy to develop and test UI components in isolation for Vue applications built with Rsbuild.
+Storybook for Vue & Rsbuild helps you preview and iterate on Vue components with the same Rsbuild configuration you use for your application.
 
 :::info{title=Requirements}
 
@@ -14,15 +14,15 @@ Storybook for Vue & Rsbuild is a framework that makes it easy to develop and tes
 
 ## Getting started
 
-Use with Vue in a existing Rsbuild project.
+Use the steps below in an existing Rsbuild-based Vue project.
 
 ### Installation
 
-To use Vue with Storybook, you need to install the `storybook-vue3-rsbuild` package.
+Install the Vue framework package to enable Storybook support.
 
 <PackageManagerTabs command="install storybook-vue3-rsbuild -D" />
 
-### Setup `.storybook/main.ts`
+### Configure `.storybook/main.ts`
 
 ```js
 import { StorybookConfig } from 'storybook-vue3-rsbuild'
@@ -38,8 +38,8 @@ const config: StorybookConfig = {
 export default config
 ```
 
-You're all set now. You could also check out the example in [sandboxes/vue3](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/sandboxes/vue3) and use all other features listed in [Storybook site](https://storybook.js.org/docs).
+You're ready to go! Check the [Vue 3 sandbox](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/sandboxes/vue3) for a complete reference, and explore the [Storybook docs](https://storybook.js.org/docs) for feature guides.
 
 ## Options
 
-Check out [types.ts](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/packages/framework-vue3/src/types.ts).
+See the framework's [types.ts](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/packages/framework-vue3/src/types.ts) for every supported option.
