@@ -2,9 +2,11 @@ import { PackageManagerTabs } from '@theme'
 
 # Rslib
 
-`storybook-addon-rslib` loads your Rslib configuration and applies it to Storybook Rsbuild so both builds share the same defaults. It also unlocks an easy workflow for testing Module Federation (`mf`) outputs.
+This addon loads a reusable Rsbuild config from your Rslib configuration file so `storybook-builder-rsbuild` mirrors the same setup used by your library build.
 
-See the [Rslib React component sandbox](https://github.com/rspack-contrib/storybook-rsbuild/tree/main/sandboxes/rslib-react-component) for a complete example.
+It also lets you develop the `mf` [(Module Federation)](https://rslib.rs/guide/basic/output-format#mf) format inside Storybook.
+
+See the [React component library example](https://github.com/rspack-contrib/storybook-rsbuild/tree/main/sandboxes/rslib-react-component) for a full reference implementation.
 
 ## Getting started
 
@@ -12,7 +14,7 @@ See the [Rslib React component sandbox](https://github.com/rspack-contrib/storyb
 
 <PackageManagerTabs command="install storybook-addon-rslib -D" />
 
-### Configure `.storybook/main.ts`
+### Setup `.storybook/main.ts`
 
 ```ts
 export default {
@@ -20,7 +22,7 @@ export default {
 }
 ```
 
-Or pass custom options:
+Or configure the addon manually:
 
 ```ts
 export default {
@@ -28,16 +30,16 @@ export default {
     {
       name: 'storybook-addon-rslib',
       options: {
-        // See the Options section below.
+        // Check options section.
       },
     },
   ],
 }
 ```
 
-## Module Federation support
+## Module Federation
 
-Follow the [Rslib Module Federation guide](https://rslib.rs/guide/advanced/module-federation) to generate the `mf` output you want to preview.
+Review the [Rslib Module Federation documentation](https://rslib.rs/guide/advanced/module-federation) to prepare the `mf` output before loading it in Storybook.
 
 ## Options
 
@@ -45,31 +47,32 @@ Follow the [Rslib Module Federation guide](https://rslib.rs/guide/advanced/modul
 export interface AddonOptions {
   rslib?: {
     /**
-     * Working directory passed to Rslib's loadConfig
+     * `cwd` passed to loadConfig of Rslib
      * @default undefined
      */
     cwd?: string
     /**
-     * Path passed to Rslib's loadConfig
+     *  `path` passed to loadConfig of Rslib
      * @default undefined
      */
     configPath?: string
     /**
-     * Select which `lib` entry to reuse. The chosen entry is merged with the rest of the config.
-     * Provide a number to pick that index, or `false` to skip merging any entry.
+     * The lib config index in `lib` field to use, will be merged with the other fields in the config.
+     * Set to a number to use the lib config at that index.
+     * Set to `false` to disable using the lib config.
      * @default 0
      */
     libIndex?: number | false
     /**
-     * Modify the Rslib lib config before it is converted into an Rsbuild config.
-     * Mutate the provided config object in place.
+     * Modify the Rslib lib config before transforming it to Rsbuild config which will be merged
+     * with Storybook. You can modify the configuration in the config parameters in place.
      * @experimental subject to change at any time
      * @default undefined
      */
     modifyLibConfig?: (config: LibConfig) => void
     /**
-     * Modify the transformed Rsbuild config before Storybook merges it.
-     * Mutate the provided config object in place.
+     * Modify the Rsbuild config transformed from lib config before merging with Storybook
+     * config. You can modify the configuration in the config parameters in place.
      * @experimental subject to change at any time
      * @default undefined
      */
@@ -77,3 +80,4 @@ export interface AddonOptions {
   }
 }
 ```
+
