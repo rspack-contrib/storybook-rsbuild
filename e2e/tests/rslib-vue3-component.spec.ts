@@ -41,6 +41,8 @@ test.describe(sandbox.name, () => {
       return
     }
 
-    throw new Error('Could not locate the Storybook root element')
+    throw new Error(
+      'Could not locate the Storybook docs root for rslib-vue3-component. The sandbox may have rendered the Canvas view or failed to load docs.',
+    )
   })
 })

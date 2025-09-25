@@ -42,5 +42,9 @@ test.describe(sandbox.name, () => {
       await expect(title).toHaveText('CounterButton')
       return
     }
+
+    throw new Error(
+      'Could not locate the Storybook docs root for rslib-react-component. The sandbox may have rendered the Canvas view or failed to load docs.',
+    )
   })
 })

@@ -548,6 +548,9 @@ importers:
       rimraf:
         specifier: ^6.0.1
         version: 6.0.1
+      storybook:
+        specifier: 9.1.5
+        version: 9.1.5(@testing-library/dom@10.4.0)(prettier@2.8.8)(vite@6.3.5(@types/node@18.19.122)(jiti@2.6.0)(less@4.4.1)(sass-embedded@1.90.0)(sass@1.90.0)(terser@5.43.1)(tsx@4.20.5)(yaml@2.8.1))
       storybook-addon-modernjs:
         specifier: workspace:*
         version: link:../../../packages/addon-modernjs
