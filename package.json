@@ -8,6 +8,7 @@
     "check": "pnpm --parallel --filter \"./packages/**\" run check",
     "check-dependency-version": "pnpm tsx CDVC.mts",
     "dev": "pnpm --parallel --filter \"./packages/**\" run prep --watch",
+    "e2e": "pnpm exec playwright test --config e2e/playwright.config.ts",
     "lint": "biome check",
     "test": "cross-env NODE_OPTIONS=--max_old_space_size=4096 vitest run",
     "test:watch": "cross-env NODE_OPTIONS=--max_old_space_size=4096 vitest watch"
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@changesets/cli": "^2.29.7",
+    "@playwright/test": "^1.49.1",
     "@testing-library/jest-dom": "^6.8.0",
     "check-dependency-version-consistency": "^5.0.1",
     "cross-env": "^7.0.3",

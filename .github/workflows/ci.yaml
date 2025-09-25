@@ -23,6 +23,8 @@ jobs:
         node-version: [20.x, 22.x]
         os: [ubuntu-latest, macos-14, windows-latest]
     runs-on: ${{ matrix.os }}
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.cache/ms-playwright
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -37,13 +39,33 @@ jobs:
           corepack enable
 
       - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
 
       - name: Install Dependencies
         run: |
           pnpm install --frozen-lockfile
+
+      - name: Prepare Playwright cache directory
+        shell: bash
+        run: mkdir -p "$PLAYWRIGHT_BROWSERS_PATH"
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.PLAYWRIGHT_BROWSERS_PATH }}
+          key: ${{ runner.os }}-playwright-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Playwright system dependencies
+        if: runner.os == 'Linux'
+        run: pnpm exec playwright install-deps
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install chromium
 
       # `pnpm dedupe --check` still find duplications after run `pnpm dedupe`
       # - name: Check pnpm Dedupe
@@ -62,3 +84,7 @@ jobs:
       - name: Test
         run: |
           pnpm test
+
+      - name: E2E
+        run: |
+          pnpm e2e

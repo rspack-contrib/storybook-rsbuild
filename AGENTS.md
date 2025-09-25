@@ -40,6 +40,12 @@ Unit tests still matter, but sandboxes drive acceptance:
 - Update the relevant sandbox (`main.ts`, `preview.ts`, stories) to demonstrate new features, then confirm with `pnpm build:sandboxes`.
 - Commit regenerated snapshots under `__snapshots__/` only when behavior intentionally changes.
 
+### Playwright sandbox debugging
+
+- Use `pnpm e2e <sandbox>.spec.ts` to launch Storybook for that sandbox and reproduce the Playwright run locally.
+- Attach with the Playwright MCP client while the run is active so you can browse the served Storybook instance and inspect the relevant DOM.
+- Keep in mind that Storybook renders its preview inside an iframe—narrow your lookup to the preview frame before collecting selectors, then port those selectors back into the spec.
+
 ## Commit & Pull Request Guidelines
 
 Ship changes with reviewer-friendly context:
