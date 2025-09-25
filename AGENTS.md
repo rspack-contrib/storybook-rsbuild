@@ -4,9 +4,10 @@
 
 Get a local environment running:
 
-1. Install Node.js 20 so it matches `.nvmrc`; `nvm use` handles this if you rely on nvm.
-2. Enable Corepack if you don’t have it already: `corepack enable` to use pnpm 10 as package manager.
-3. Install dependencies with `pnpm install`, all packages will be built automatically after installation.
+1. Install Node.js 20 so it matches `.nvmrc`; install [fnm](https://github.com/Schniz/fnm) then run `fnm install` and `fnm use`.
+2. Enable Corepack once (`corepack enable`) so pnpm 10 is available via `corepack prepare`.
+3. Install dependencies with `pnpm install`; the workspace hoists builds that each package can reuse.
+4. Verify the setup: `pnpm dev` for watch mode, `pnpm check` and `pnpm build` to confirm everything passes, and `pnpm build:sandboxes` to build sandboxes and ensure all build pass.
 
 ## Project Structure & Module Organization
 
