@@ -141,3 +141,6 @@ doc_build
 # mf-types
 **/@mf-types
 **/@mf-types/**
+
+# playwright
+test-results/
