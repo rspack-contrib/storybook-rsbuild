@@ -1,6 +1,6 @@
 import { dirname, join, resolve } from 'node:path'
 import { loadConfig, mergeRsbuildConfig, rspack } from '@rsbuild/core'
-import type { RsbuildConfig, RsbuildPlugin, Rspack } from '@rsbuild/core'
+import type { RsbuildConfig, Rspack } from '@rsbuild/core'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
 // @ts-expect-error forced resolve from `dist/index.d.ts` by typesVersions.
 import { webpack as docsWebpack } from '@storybook/addon-docs/preset'
@@ -232,7 +232,12 @@ export default async (
         ...storybookPaths,
       },
     },
+    // Reset `config.source.entry` field, do not use provided entry
+    // see https://github.com/rspack-contrib/storybook-rsbuild/issues/43
     source: {
+      entry: {
+        main: [...(entries ?? []), ...dynamicEntries],
+      },
       // TODO: Rspack doesn't support virtual modules yet, use cache dir instead
       // we needed to explicitly set the module in `node_modules` to be compiled
       include: [/[\\/]node_modules[\\/].*[\\/]storybook-config-entry\.js/],
@@ -260,42 +265,6 @@ export default async (
         removeStyleLinkTypeAttributes: true,
         useShortDoctype: true,
       })),
-      {
-        name: 'storybook-config-entry',
-        setup: (api) => {
-          // Post Rsbuild config are the fields that are constrained by Storybook and should not be modified by user.
-          api.modifyEnvironmentConfig({
-            handler: (config, { mergeEnvironmentConfig }) => {
-              const baseConfig = { ...config }
-              delete baseConfig.source.entry
-
-              return mergeEnvironmentConfig(config, {
-                // Reset `config.source.entry` field, do not use provided entry
-                // see https://github.com/rspack-contrib/storybook-rsbuild/issues/43
-                source: {
-                  entry: {
-                    main: [...(entries ?? []), ...dynamicEntries],
-                  },
-                },
-                tools: {
-                  rspack: {
-                    experiments: {
-                      outputModule: false,
-                    },
-                    externalsType: 'var',
-                    output: {
-                      module: false,
-                      chunkFormat: 'array-push',
-                      chunkLoading: 'jsonp',
-                    },
-                  },
-                },
-              })
-            },
-            order: 'post',
-          })
-        },
-      } as RsbuildPlugin,
     ].filter(Boolean),
     tools: {
       rspack: (config, { addRules, appendPlugins, rspack, mergeConfig }) => {
@@ -387,6 +356,12 @@ export default async (
         )
 
         config.experiments ??= {}
+        config.experiments.outputModule = false
+        config.externalsType = 'var'
+        config.output ??= {}
+        config.output.module = false
+        config.output.chunkFormat = 'array-push'
+        config.output.chunkLoading = 'jsonp'
         config.experiments = {
           ...config.experiments,
           ...lazyCompilationConfig,
