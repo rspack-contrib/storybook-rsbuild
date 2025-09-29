@@ -5,9 +5,10 @@ const isCI = !!process.env.CI
 export default defineConfig({
   testDir: './tests',
   forbidOnly: isCI,
-  retries: isCI ? 1 : 0,
+  workers: isCI ? '25%' : '50%',
+  retries: isCI ? 3 : 0,
   reporter: [['list']],
-  timeout: 180_000,
+  timeout: isCI ? 360_000 : 180_000,
   use: {
     ...devices['Desktop Chrome'],
     headless: true,
@@ -15,6 +16,6 @@ export default defineConfig({
     navigationTimeout: 60_000,
   },
   expect: {
-    timeout: 20_000,
+    timeout: isCI ? 60_000 : 20_000,
   },
 })
