@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "@rollup/pluginutils": "^5.3.0",
-    "@storybook/react": "^9.1.7",
+    "@storybook/react": "^9.1.8",
     "@storybook/react-docgen-typescript-plugin": "^1.0.1",
     "find-up": "^5.0.0",
     "magic-string": "^0.30.19",
@@ -64,13 +64,12 @@
   },
   "devDependencies": {
     "@rsbuild/core": "^1.5.11",
-    "@storybook/types": "9.0.0-alpha.1",
     "@types/node": "^18.19.110",
     "@types/react": "^18.3.24",
     "@types/resolve": "^1.20.6",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "storybook": "9.1.5",
+    "storybook": "9.1.8",
     "typescript": "^5.9.2"
   },
   "peerDependencies": {

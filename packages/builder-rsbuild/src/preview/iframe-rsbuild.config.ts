@@ -135,6 +135,8 @@ export default async (
   }
 
   const externals: Record<string, string> = globalsNameReferenceMap
+
+  // TODO: remove in v3 (SB10)
   if (build?.test?.disableBlocks) {
     externals['@storybook/blocks'] = '__STORYBOOK_BLOCKS_EMPTY_MODULE__'
   }
