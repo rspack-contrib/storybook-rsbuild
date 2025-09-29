@@ -4,9 +4,6 @@ packages:
   - scripts/**
   - website
 
-ignoredBuiltDependencies:
-  - nx
-
 onlyBuiltDependencies:
   - '@biomejs/biome'
   - '@swc/core'

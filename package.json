@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "cross-env NX_DAEMON=false nx run-many -t build --exclude @sandboxes/* --parallel=10",
-    "build:sandboxes": "cross-env NX_DAEMON=false nx run-many -t build:storybook --projects @sandboxes/* --parallel=10",
+    "build": "pnpm --filter \"./packages/*\" run build",
+    "build:sandboxes": "pnpm --filter \"./sandboxes/*\" run build:storybook",
     "check": "pnpm --parallel --filter \"./packages/**\" run check",
     "check-dependency-version": "pnpm tsx CDVC.mts",
     "dev": "pnpm --parallel --filter \"./packages/**\" run prep --watch",
@@ -30,7 +30,6 @@
     "cross-env": "^7.0.3",
     "jiti": "^2.6.0",
     "nano-staged": "^0.8.0",
-    "nx": "^20.8.2",
     "simple-git-hooks": "^2.13.1",
     "sort-package-json": "^2.15.1",
     "ts-dedent": "^2.2.0",
