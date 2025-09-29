@@ -47,7 +47,7 @@
     "@modern-js/app-tools": "^2.68.14",
     "@rsbuild/core": "^1.5.11",
     "@types/node": "^18.19.110",
-    "storybook": "9.1.5",
+    "storybook": "9.1.8",
     "storybook-builder-rsbuild": "workspace:*",
     "typescript": "^5.9.2"
   },

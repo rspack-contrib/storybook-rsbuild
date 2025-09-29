@@ -12,11 +12,9 @@ function getAbsolutePath(value: string): any {
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
+    '@storybook/addon-onboarding',
     '@storybook/addon-docs',
     '@chromatic-com/storybook',
-    '@storybook/addon-interactions',
   ],
   framework: {
     name: getAbsolutePath('storybook-html-rsbuild'),
