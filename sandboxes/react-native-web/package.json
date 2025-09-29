@@ -1,0 +1,38 @@
+{
+  "name": "@sandboxes/react-native-web",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Storybook sandbox showcasing React Native components rendered via react-native-web.",
+  "author": "",
+  "type": "module",
+  "scripts": {
+    "build": "rsbuild build",
+    "build:storybook": "storybook build --stats-json",
+    "dev": "rsbuild dev --open",
+    "preview": "rsbuild preview",
+    "storybook": "storybook dev -p 6006"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-native-web": "^0.19.13"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-react": "^7.26.3",
+    "@chromatic-com/storybook": "^4.1.1",
+    "@rsbuild/core": "^1.5.11",
+    "@rsbuild/plugin-react": "^1.4.0",
+    "@storybook/addon-docs": "9.1.8",
+    "@storybook/addon-onboarding": "9.1.8",
+    "@storybook/react": "9.1.8",
+    "@types/react": "^18.3.24",
+    "@types/react-dom": "^18.3.7",
+    "@types/react-native": "^0.72.8",
+    "babel-plugin-react-native-web": "^0.19.13",
+    "metro-react-native-babel-preset": "^0.77.0",
+    "storybook": "9.1.8",
+    "storybook-react-native-web-rsbuild": "workspace:*",
+    "typescript": "^5.9.2"
+  }
+}

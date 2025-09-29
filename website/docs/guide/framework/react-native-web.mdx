@@ -1,0 +1,68 @@
+import { PackageManagerTabs } from '@theme'
+
+# React Native Web
+
+`storybook-react-native-web-rsbuild` lets you build and preview React Native components in the browser using Rsbuild while it automatically resolves `react-native` imports to `react-native-web`.
+
+:::info{title=Requirements}
+
+- react ≥ 16.8
+- react-native-web ≥ 0.19
+- @rsbuild/core ≥ 1.0.1
+- storybook ≥ 9.0.0
+- Install at least one React Native Babel preset: `@react-native/babel-preset` or `metro-react-native-babel-preset`
+- Install `babel-plugin-react-native-web`
+
+:::
+
+## Getting started
+
+Follow these steps inside an existing Rsbuild-powered React Native Web project.
+
+### Installation
+
+<PackageManagerTabs command="install storybook-react-native-web-rsbuild metro-react-native-babel-preset babel-plugin-react-native-web -D" />
+
+### Configure `.storybook/main.ts`
+
+```ts
+import type { StorybookConfig } from 'storybook-react-native-web-rsbuild'
+
+const config: StorybookConfig = {
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)', '../src/**/*.mdx'],
+  addons: ['@storybook/addon-docs'],
+  framework: {
+    name: 'storybook-react-native-web-rsbuild',
+    options: {
+      // modulesToTranspile: ['react-native-paper'],
+      // modulesToAlias: { 'react-native-gesture-handler': 'react-native-gesture-handler/web' },
+    },
+  },
+}
+
+export default config
+```
+
+### Optional Babel configuration
+
+Need to tweak Babel? Pass options through the framework configuration:
+
+```ts
+framework: {
+  name: 'storybook-react-native-web-rsbuild',
+  options: {
+    babelPresetReactNativeOptions: {
+      experimentalImportSupport: false,
+    },
+    babelPresetReactOptions: {
+      runtime: 'automatic',
+    },
+  },
+},
+```
+
+## Example
+
+- [React Native Web sandbox](https://github.com/rspack-contrib/storybook-rsbuild/tree/main/sandboxes/react-native-web)
+
+For more options, inspect the framework [types.ts](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/packages/framework-react-native-web/src/types.ts).
