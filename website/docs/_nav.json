@@ -7,5 +7,9 @@
   {
     "text": "Storybook",
     "link": "https://storybook.js.org/docs"
+  },
+  {
+    "text": "Rsbuild",
+    "link": "https://rsbuild.rs"
   }
 ]

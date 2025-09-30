@@ -1,5 +1,9 @@
 import { useLang } from '@rspress/core/runtime'
-import { getCustomMDXComponent as BaseGetCustomMDXComponent } from '@rspress/core/theme'
+import {
+  Layout as BaseLayout,
+  getCustomMDXComponent as BaseGetCustomMDXComponent,
+} from '@rspress/core/theme'
+import { NavIcon } from '@rstack-dev/doc-ui/nav-icon'
 import {
   Search as PluginAlgoliaSearch,
   ZH_LOCALES,
@@ -12,6 +16,10 @@ import {
   LlmsCopyButton,
   LlmsViewOptions,
 } from '@rspress/plugin-llms/runtime'
+
+export const Layout = () => {
+  return <BaseLayout beforeNavTitle={<NavIcon />} />
+}
 
 export function getCustomMDXComponent() {
   const { h1: H1, ...mdxComponents } = BaseGetCustomMDXComponent()

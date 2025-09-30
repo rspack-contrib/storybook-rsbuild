@@ -24,8 +24,14 @@ features:
     icon: 🌈
   - title: Works with Rspack and webpack 5
     details: Use Rsbuild directly or plug into existing webpack 5 and Rspack projects.
-    icon: ⚡️
+    icon: 🦀
   - title: Compatible with webpack addons
     details: Keep using your favorite webpack 5 Storybook addons without extra configuration.
     icon: 🧩
+  - title: Lightning fast build speeds
+    details: Experience significantly faster build times with Rspack's optimized bundling engine.
+    icon: 🚀
+  - title: Modern development experience
+    details: Built-in TypeScript support, CSS modules, and asset handling for a smooth developer workflow.
+    icon: 💎
 ---
