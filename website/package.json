@@ -8,9 +8,18 @@
     "preview": "rspress preview"
   },
   "dependencies": {
-    "rspress": "1.45.6"
+    "@rspress/core": "2.0.0-beta.34",
+    "@rspress/plugin-algolia": "2.0.0-beta.34",
+    "@rspress/plugin-llms": "2.0.0-beta.34",
+    "@rspress/plugin-sitemap": "2.0.0-beta.34",
+    "@rspress/plugin-twoslash": "2.0.0-beta.30",
+    "rspress-plugin-font-open-sans": "1.0.3"
   },
   "devDependencies": {
-    "@types/node": "^18.19.110"
+    "@types/node": "^18.19.110",
+    "@types/react": "^18.3.24",
+    "@types/react-dom": "^18.3.7",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   }
 }

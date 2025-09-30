@@ -14,7 +14,7 @@
     "allowImportingTsExtensions": true,
     "baseUrl": "./",
     "paths": {
-      "@theme": ["./theme"]
+      "@theme": ["./theme/index.tsx"]
     }
   },
   "include": ["docs", "theme", "rspress.config.ts"],

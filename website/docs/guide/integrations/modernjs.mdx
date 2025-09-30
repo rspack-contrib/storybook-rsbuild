@@ -34,6 +34,7 @@ export default config
 Review the [Module Federation example](https://github.com/rspack-contrib/storybook-rsbuild/tree/main/sandboxes/modernjs-react-mf) for a full walkthrough.
 
 ### Installation
+
 If your Modern.js app uses Module Federation, install `@module-federation/storybook-addon`.
 
 <PackageManagerTabs command="install @module-federation/storybook-addon -D" />
@@ -48,12 +49,15 @@ import moduleFederationConfig from '../module-federation.config'
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: ['storybook-addon-modernjs', {
-    name: '@module-federation/storybook-addon',
-    options: {
-      remotes: moduleFederationConfig.remotes,
-    }
-  }],
+  addons: [
+    'storybook-addon-modernjs',
+    {
+      name: '@module-federation/storybook-addon',
+      options: {
+        remotes: moduleFederationConfig.remotes,
+      },
+    },
+  ],
   framework: ['storybook-react-rsbuild'],
 }
 ```
