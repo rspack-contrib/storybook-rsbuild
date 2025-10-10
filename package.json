@@ -24,17 +24,17 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@changesets/cli": "^2.29.7",
-    "@playwright/test": "^1.55.1",
-    "@testing-library/jest-dom": "^6.8.0",
+    "@playwright/test": "^1.56.0",
+    "@testing-library/jest-dom": "^6.9.1",
     "check-dependency-version-consistency": "^5.0.1",
     "cross-env": "^7.0.3",
-    "jiti": "^2.6.0",
+    "jiti": "^2.6.1",
     "nano-staged": "^0.8.0",
     "simple-git-hooks": "^2.13.1",
     "sort-package-json": "^2.15.1",
     "ts-dedent": "^2.2.0",
     "tsx": "^4.20.6",
-    "typescript": "^5.9.2",
+    "typescript": "^5.9.3",
     "vitest": "^2.1.9"
   },
   "packageManager": "pnpm@10.14.0"
