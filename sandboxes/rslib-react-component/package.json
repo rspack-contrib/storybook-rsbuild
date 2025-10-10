@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.1",
-    "@rsbuild/core": "^1.5.13",
+    "@rsbuild/core": "^1.5.16",
     "@rsbuild/plugin-react": "^1.4.1",
     "@rsbuild/plugin-sass": "^1.4.0",
     "@rslib/core": "^0.15.0",
@@ -26,11 +26,11 @@
     "@storybook/addon-onboarding": "9.1.8",
     "@storybook/react": "9.1.8",
     "@types/node": "^18.19.110",
-    "@types/react": "^18.3.24",
+    "@types/react": "^18.3.26",
     "@types/react-dom": "^18.3.7",
     "storybook": "9.1.8",
     "storybook-addon-rslib": "workspace:*",
     "storybook-react-rsbuild": "workspace:*",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   }
 }

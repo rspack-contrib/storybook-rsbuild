@@ -1,13 +1,13 @@
 import { useLang } from '@rspress/core/runtime'
 import {
-  Layout as BaseLayout,
   getCustomMDXComponent as BaseGetCustomMDXComponent,
+  Layout as BaseLayout,
 } from '@rspress/core/theme'
-import { NavIcon } from '@rstack-dev/doc-ui/nav-icon'
 import {
   Search as PluginAlgoliaSearch,
   ZH_LOCALES,
 } from '@rspress/plugin-algolia/runtime'
+import { NavIcon } from '@rstack-dev/doc-ui/nav-icon'
 
 export * from '@rspress/core/theme'
 
