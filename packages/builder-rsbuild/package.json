@@ -60,8 +60,8 @@
   },
   "dependencies": {
     "@rsbuild/plugin-type-check": "^1.2.4",
-    "@storybook/addon-docs": "^9.1.8",
-    "@storybook/core-webpack": "^9.1.8",
+    "@storybook/addon-docs": "^9.1.10",
+    "@storybook/core-webpack": "^9.1.10",
     "browser-assert": "^1.2.1",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "cjs-module-lexer": "^1.4.3",
