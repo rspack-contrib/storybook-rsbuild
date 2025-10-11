@@ -87,7 +87,7 @@
     "find-cache-dir": "^5.0.0",
     "pretty-hrtime": "^1.0.3",
     "slash": "^5.1.0",
-    "storybook": "9.1.8",
+    "storybook": "9.1.10",
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
