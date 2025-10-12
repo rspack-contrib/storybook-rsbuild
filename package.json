@@ -27,7 +27,7 @@
     "@playwright/test": "^1.56.0",
     "@testing-library/jest-dom": "^6.9.1",
     "check-dependency-version-consistency": "^5.0.1",
-    "cross-env": "^7.0.3",
+    "cross-env": "^10.1.0",
     "jiti": "^2.6.1",
     "nano-staged": "^0.8.0",
     "simple-git-hooks": "^2.13.1",
