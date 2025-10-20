@@ -24,7 +24,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@changesets/cli": "^2.29.7",
-    "@playwright/test": "^1.56.0",
+    "@playwright/test": "^1.56.1",
     "@testing-library/jest-dom": "^6.9.1",
     "check-dependency-version-consistency": "^5.0.1",
     "cross-env": "^10.1.0",
