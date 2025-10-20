@@ -15,7 +15,7 @@
     "@rspack/cli": "1.5.8",
     "@rspack/core": "1.5.8",
     "@swc/helpers": "^0.5.17",
-    "antd": "^5.27.4",
+    "antd": "^5.27.6",
     "less": "4.4.2",
     "less-loader": "11.1.4",
     "normalize.css": "8.0.1",

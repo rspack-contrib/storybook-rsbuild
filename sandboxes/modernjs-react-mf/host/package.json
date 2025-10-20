@@ -23,16 +23,16 @@
     ]
   },
   "dependencies": {
-    "@modern-js/runtime": "2.68.17",
-    "@module-federation/modern-js": "0.20.0",
-    "antd": "^5.27.4",
+    "@modern-js/runtime": "2.68.18",
+    "@module-federation/modern-js": "0.21.0",
+    "antd": "^5.27.6",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@modern-js/app-tools": "^2.68.17",
-    "@modern-js/tsconfig": "2.68.17",
-    "@module-federation/storybook-addon": "^4.0.31",
+    "@modern-js/app-tools": "^2.68.18",
+    "@modern-js/tsconfig": "2.68.18",
+    "@module-federation/storybook-addon": "^4.0.32",
     "@storybook/addon-docs": "9.1.10",
     "@storybook/addon-onboarding": "9.1.10",
     "@storybook/react": "9.1.10",

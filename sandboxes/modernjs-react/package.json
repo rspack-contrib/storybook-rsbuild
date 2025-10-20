@@ -23,14 +23,14 @@
     ]
   },
   "dependencies": {
-    "@modern-js/runtime": "2.68.17",
-    "antd": "^5.27.4",
+    "@modern-js/runtime": "2.68.18",
+    "antd": "^5.27.6",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@modern-js/app-tools": "^2.68.17",
-    "@modern-js/tsconfig": "2.68.17",
+    "@modern-js/app-tools": "^2.68.18",
+    "@modern-js/tsconfig": "2.68.18",
     "@rsbuild/core": "^1.5.17",
     "@storybook/addon-docs": "9.1.10",
     "@storybook/addon-onboarding": "9.1.10",
