@@ -234,15 +234,7 @@ export default async (
         ...storybookPaths,
       },
     },
-    // Reset `config.source.entry` field, do not use provided entry
-    // see https://github.com/rspack-contrib/storybook-rsbuild/issues/43
     source: {
-      entry: {
-        main: [...(entries ?? []), ...dynamicEntries],
-      },
-      // TODO: Rspack doesn't support virtual modules yet, use cache dir instead
-      // we needed to explicitly set the module in `node_modules` to be compiled
-      include: [/[\\/]node_modules[\\/].*[\\/]storybook-config-entry\.js/],
       define: {
         ...stringifyProcessEnvs(envs),
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
@@ -408,6 +400,14 @@ export default async (
       },
     },
   })
+
+  // Override `config.source.entry` here, prevent it from merging with user config entries.
+  // see https://github.com/rspack-contrib/storybook-rsbuild/issues/43.
+  // see https://github.com/rspack-contrib/storybook-rsbuild/issues/357.
+  rsbuildConfig.source ??= {}
+  rsbuildConfig.source.entry = {
+    main: [...(entries ?? []), ...dynamicEntries],
+  }
 
   return rsbuildConfig
 }
