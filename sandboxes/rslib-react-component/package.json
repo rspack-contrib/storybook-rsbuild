@@ -21,7 +21,7 @@
     "@rsbuild/core": "^1.5.17",
     "@rsbuild/plugin-react": "^1.4.1",
     "@rsbuild/plugin-sass": "^1.4.0",
-    "@rslib/core": "^0.15.1",
+    "@rslib/core": "^0.16.1",
     "@storybook/addon-docs": "9.1.10",
     "@storybook/addon-onboarding": "9.1.10",
     "@storybook/react": "9.1.10",

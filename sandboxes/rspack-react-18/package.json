@@ -27,7 +27,7 @@
     "@rsbuild/core": "^1.5.17",
     "@rsbuild/plugin-react": "^1.4.1",
     "@rspack/core": "1.5.8",
-    "@rspack/plugin-react-refresh": "^1.5.1",
+    "@rspack/plugin-react-refresh": "^1.5.2",
     "@storybook/addon-docs": "9.1.10",
     "@storybook/addon-onboarding": "9.1.10",
     "@storybook/react": "9.1.10",
