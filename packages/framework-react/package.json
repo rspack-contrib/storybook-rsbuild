@@ -55,7 +55,7 @@
     "@storybook/react": "^9.1.15",
     "@storybook/react-docgen-typescript-plugin": "^1.0.1",
     "find-up": "^5.0.0",
-    "magic-string": "^0.30.19",
+    "magic-string": "^0.30.21",
     "react-docgen": "^7.1.1",
     "react-docgen-typescript": "^2.4.0",
     "resolve": "^1.22.11",
