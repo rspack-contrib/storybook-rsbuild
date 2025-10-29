@@ -70,7 +70,7 @@ export const applyReactShims = async (
 ): Promise<RsbuildConfig | undefined> => {
   const isReactVersion18 = await getIsReactVersion18or19(options)
   if (isReactVersion18) {
-    return undefined
+    return {}
   }
 
   return {
