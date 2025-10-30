@@ -5,6 +5,7 @@
   "scripts": {
     "build": "pnpm --filter \"./packages/*\" run build",
     "build:sandboxes": "pnpm --filter \"./sandboxes/*\" run build:storybook",
+    "bump": "bumpp",
     "check": "pnpm --parallel --filter \"./packages/**\" run check",
     "check-dependency-version": "pnpm tsx CDVC.mts",
     "dev": "pnpm --parallel --filter \"./packages/**\" run prep --watch",
@@ -23,9 +24,9 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@changesets/cli": "^2.29.7",
     "@playwright/test": "^1.56.1",
     "@testing-library/jest-dom": "^6.9.1",
+    "bumpp": "^9.8.1",
     "check-dependency-version-consistency": "^5.0.1",
     "cross-env": "^10.1.0",
     "jiti": "^2.6.1",
