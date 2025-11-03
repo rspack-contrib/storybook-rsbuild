@@ -261,9 +261,7 @@ export default async (
       })),
     ].filter(Boolean),
     tools: {
-      rspack: (config, { addRules, appendPlugins, rspack, mergeConfig }) => {
-        // TODO: Rspack doesn't support `unknownContextCritical` yet
-        // config.module.unknownContextCritical = false
+      rspack: (config, { addRules, rspack, mergeConfig }) => {
         addRules({
           test: /\.stories\.([tj])sx?$|(stories|story)\.mdx$/,
           exclude: /node_modules/,
@@ -335,8 +333,9 @@ export default async (
           )
         }
 
-        appendPlugins(
-          [
+        config.plugins ??= []
+        config.plugins.push(
+          ...[
             Object.keys(virtualModuleMapping).length > 0
               ? new rspack.experiments.VirtualModulesPlugin(
                   virtualModuleMapping,
