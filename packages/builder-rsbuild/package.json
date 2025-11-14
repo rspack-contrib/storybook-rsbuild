@@ -60,7 +60,6 @@
   },
   "dependencies": {
     "@rsbuild/plugin-type-check": "^1.2.4",
-    "@storybook/addon-docs": "^9.1.15 || ^10.0.0",
     "@storybook/core-webpack": "^9.1.15 || ^10.0.0",
     "browser-assert": "^1.2.1",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
