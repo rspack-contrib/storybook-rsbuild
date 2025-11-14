@@ -1,9 +1,9 @@
-import { resolve } from 'node:path'
 import { defineConfig, defineWorkspace } from 'vitest/config'
 
 export default defineWorkspace([
-  'packages/*/vitest.config.ts',
-  'sandboxes/*/vitest.config.ts',
+  './packages/*/vitest.config.ts',
+  './sandboxes/*/vitest.config.ts',
+  './tests/vitest.config.ts',
 ])
 
 /**
@@ -20,7 +20,6 @@ export const vitestCommonConfig = defineConfig({
   test: {
     passWithNoTests: true,
     clearMocks: true,
-    setupFiles: [resolve(__dirname, './vitest-setup.ts')],
     globals: true,
     testTimeout: 10000,
     environment: 'node',

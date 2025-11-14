@@ -2,8 +2,6 @@ import { dirname, join, resolve } from 'node:path'
 import { loadConfig, mergeRsbuildConfig, rspack } from '@rsbuild/core'
 import type { RsbuildConfig, Rspack } from '@rsbuild/core'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
-// @ts-expect-error forced resolve from `dist/index.d.ts` by typesVersions.
-import { webpack as docsWebpack } from '@storybook/addon-docs/preset'
 // @ts-expect-error (I removed this on purpose, because it's incorrect)
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 import { pluginHtmlMinifierTerser } from 'rsbuild-plugin-html-minifier-terser'
@@ -60,7 +58,15 @@ export default async (
 ): Promise<RsbuildConfig> => {
   const { rsbuildConfigPath, addonDocs } =
     await getBuilderOptions<BuilderOptions>(options)
-  const appliedDocsWebpack = await docsWebpack({}, { ...options, ...addonDocs })
+  const webpackConfigFromPresets =
+    await options.presets.apply<Rspack.Configuration>('webpack', {}, options)
+
+  if (addonDocs) {
+    console.warn(
+      '`addonDocs` option is deprecated and will be removed in future versions. Please use `@storybook/addon-docs` option instead.',
+    )
+  }
+
   const {
     outputDir = join('.', 'public'),
     quiet,
@@ -360,11 +366,11 @@ export default async (
           ...lazyCompilationConfig,
         }
 
-        // TODO: manually call and apply `webpack` from @storybook/addon-docs
-        // as it's a built-in logic for Storybook's official webpack and Vite builder.
-        // we should remove this once we merge this into Storybook's repository
-        // by defining builder plugin in @storybook/addon-docs/preset's source code
-        return mergeConfig(config, extraWebpackConfig || {}, appliedDocsWebpack)
+        return mergeConfig(
+          config,
+          extraWebpackConfig || {},
+          webpackConfigFromPresets,
+        )
       },
       htmlPlugin: {
         filename: 'iframe.html',

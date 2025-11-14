@@ -109,8 +109,14 @@ export default config
 
 Storybook Rsbuild bundles `@storybook/addon-docs`. Use `addonDocs` to forward [preset options](https://github.com/storybookjs/storybook/tree/next/code/addons/docs#preset-options) to the addon.
 
+:::note Version compatibility
+- **≤ 2.1.x**: Configure options through `framework.options.builder.addonDocs` (see snippet below).
+- **≥ 2.2.0**: Prefer configuring `@storybook/addon-docs` directly in the `addons` array (see second snippet). This mirrors Storybook's native API and matches the sandboxes.
+- **3.0.0**: The old `addonDocs` builder option will be removed. Migrate to the `addons`-array syntax to stay compatible.
+:::
+
 ```js
-// .storybook/main.mjs
+// .storybook/main.mjs (Storybook Rsbuild ≤ 2.1.x)
 import remarkGfm from 'remark-gfm'
 
 const config = {
@@ -127,6 +133,31 @@ const config = {
         },
       },
     },
+  },
+}
+
+export default config
+```
+
+```ts
+// .storybook/main.ts (Storybook Rsbuild ≥ 2.2.0)
+import remarkGfm from 'remark-gfm'
+
+const config = {
+  addons: [
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        mdxPluginOptions: {
+          mdxCompileOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        },
+      },
+    },
+  ],
+  framework: {
+    name: 'storybook-react-rsbuild',
   },
 }
 
