@@ -2,7 +2,6 @@ import { dirname, join, resolve } from 'node:path'
 import { loadConfig, mergeRsbuildConfig, rspack } from '@rsbuild/core'
 import type { RsbuildConfig, Rspack } from '@rsbuild/core'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
-// import { webpack as docsWebpack } from '@storybook/addon-docs/preset'
 // @ts-expect-error (I removed this on purpose, because it's incorrect)
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin'
 import { pluginHtmlMinifierTerser } from 'rsbuild-plugin-html-minifier-terser'
@@ -61,6 +60,12 @@ export default async (
     await getBuilderOptions<BuilderOptions>(options)
   const webpackConfigFromPresets =
     await options.presets.apply<Rspack.Configuration>('webpack', {}, options)
+
+  if (addonDocs) {
+    console.warn(
+      '`addonDocs` option is deprecated and will be removed in future versions. Please use `@storybook/addon-docs` option instead.',
+    )
+  }
 
   const {
     outputDir = join('.', 'public'),

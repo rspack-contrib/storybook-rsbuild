@@ -35,6 +35,7 @@ async function inspectSandboxOnce(
       CI: 'true',
       FORCE_COLOR: '0',
     },
+    shell: process.platform === 'win32',
     stdio: ['ignore', 'pipe', 'pipe'],
   })
 

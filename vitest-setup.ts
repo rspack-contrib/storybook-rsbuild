@@ -5,6 +5,10 @@ import { expect, vi } from 'vitest'
 import { dedent } from 'ts-dedent'
 
 const ignoreList = [
+  (error: any) =>
+    error.message.includes(
+      '`addonDocs` option is deprecated and will be removed in future versions. Please use `@storybook/addon-docs` option instead.',
+    ),
   (error: any) => error.message.includes('":nth-child" is potentially unsafe'),
   (error: any) =>
     error.message.includes('":first-child" is potentially unsafe'),
