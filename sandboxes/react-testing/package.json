@@ -19,9 +19,9 @@
     "react-dom": "18.3.1"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^4.1.1",
-    "@rsbuild/core": "^1.5.17",
-    "@rsbuild/plugin-react": "^1.4.1",
+    "@chromatic-com/storybook": "^4.1.2",
+    "@rsbuild/core": "^1.6.6",
+    "@rsbuild/plugin-react": "^1.4.2",
     "@storybook/addon-coverage": "2.0.0",
     "@storybook/addon-docs": "9.1.10",
     "@storybook/addon-onboarding": "9.1.10",
