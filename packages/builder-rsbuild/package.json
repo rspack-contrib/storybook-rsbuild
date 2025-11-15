@@ -54,9 +54,9 @@
     "!src/**/*"
   ],
   "scripts": {
-    "build": "prebundle && pnpm run prep --optimized",
+    "build": "pnpm run prep --optimized",
     "check": "jiti ../../scripts/prepare/check.ts",
-    "prep": "jiti ../../scripts/prepare/bundle.ts",
+    "prep": "prebundle && jiti ../../scripts/prepare/bundle.ts",
     "prepare": "pnpm run build"
   },
   "dependencies": {

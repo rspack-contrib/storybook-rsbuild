@@ -7,34 +7,8 @@ import {
   readTemplate,
 } from 'storybook/internal/common'
 import type { Options, PreviewAnnotation } from 'storybook/internal/types'
+import { toImportFn } from '../../compiled/@storybook/core-webpack'
 import type { BuilderOptions } from '../types'
-
-type CoreWebpackModule = typeof import('@storybook/core-webpack')
-
-let coreWebpackModulePromise: Promise<CoreWebpackModule> | undefined
-
-const isModuleNotFoundError = (error: unknown): error is { code?: string } =>
-  !!error && typeof error === 'object' && 'code' in error
-
-const loadCoreWebpackModule = async (): Promise<CoreWebpackModule> => {
-  if (!coreWebpackModulePromise) {
-    coreWebpackModulePromise = import(
-      '../../compiled/@storybook/core-webpack'
-    ).catch((error: unknown) => {
-      if (
-        isModuleNotFoundError(error) &&
-        (error.code === 'ERR_MODULE_NOT_FOUND' ||
-          error.code === 'MODULE_NOT_FOUND')
-      ) {
-        return import('@storybook/core-webpack')
-      }
-
-      throw error
-    })
-  }
-
-  return coreWebpackModulePromise
-}
 
 export const getVirtualModules = async (options: Options) => {
   const virtualModules: Record<string, string> = {}
@@ -49,7 +23,6 @@ export const getVirtualModules = async (options: Options) => {
     workingDir,
   })
 
-  const { toImportFn } = await loadCoreWebpackModule()
   const previewAnnotations = [
     ...(
       await options.presets.apply<PreviewAnnotation[]>(
