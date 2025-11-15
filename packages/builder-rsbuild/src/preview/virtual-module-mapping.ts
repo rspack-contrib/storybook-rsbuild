@@ -1,5 +1,4 @@
 import { join, resolve } from 'node:path'
-import { toImportFn } from '@storybook/core-webpack'
 import slash from 'slash'
 import {
   getBuilderOptions,
@@ -8,6 +7,7 @@ import {
   readTemplate,
 } from 'storybook/internal/common'
 import type { Options, PreviewAnnotation } from 'storybook/internal/types'
+import { toImportFn } from '../../compiled/@storybook/core-webpack'
 import type { BuilderOptions } from '../types'
 
 export const getVirtualModules = async (options: Options) => {
