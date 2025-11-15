@@ -144,3 +144,6 @@ doc_build
 
 # playwright
 test-results/
+
+# pre bundle
+compiled/
