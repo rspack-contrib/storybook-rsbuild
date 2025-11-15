@@ -8,19 +8,21 @@
     "preview": "rspress preview"
   },
   "dependencies": {
-    "@rspress/core": "2.0.0-beta.34",
-    "@rspress/plugin-algolia": "2.0.0-beta.34",
-    "@rspress/plugin-llms": "2.0.0-beta.34",
-    "@rspress/plugin-sitemap": "2.0.0-beta.34",
-    "@rspress/plugin-twoslash": "2.0.0-beta.30",
+    "@rspress/core": "2.0.0-rc.0",
+    "@rspress/plugin-algolia": "2.0.0-rc.0",
+    "@rspress/plugin-llms": "2.0.0-rc.0",
+    "@rspress/plugin-sitemap": "2.0.0-rc.0",
+    "@rspress/plugin-twoslash": "2.0.0-rc.0",
     "rspress-plugin-font-open-sans": "1.0.3"
   },
   "devDependencies": {
-    "@types/node": "^18.19.110",
-    "@types/react": "^18.3.26",
-    "@types/react-dom": "^18.3.7",
     "@rstack-dev/doc-ui": "1.11.0",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "@shikijs/transformers": "^3.15.0",
+    "@types/node": "^18.19.110",
+    "@types/react": "^19.2.4",
+    "@types/react-dom": "^19.2.3",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "rsbuild-plugin-open-graph": "^1.1.0"
   }
 }

@@ -21,19 +21,19 @@ if (dep) {
 }
 
 // === devDependencies ===
-const cdvcDev = new CDVC(__dirname, {
+const cdvcDevDep = new CDVC(__dirname, {
   depType: ['devDependencies'],
-  ignorePackage: ['@sandboxes/react-16'],
+  ignorePackage: ['@sandboxes/react-16', 'website'],
 })
 
-const dev = cdvcDev.hasMismatchingDependencies
+const dev = cdvcDevDep.hasMismatchingDependencies
 if (dev) {
   mismatch = true
-  console.log(cdvcDev.toMismatchSummary())
+  console.log(cdvcDevDep.toMismatchSummary())
 }
 
 // === peerDependencies ===
-const cdvcPeer = new CDVC(__dirname, {
+const cdvcPeerDev = new CDVC(__dirname, {
   depType: ['peerDependencies'],
   ignorePackage: ['storybook-builder-rsbuild'],
 })
@@ -49,10 +49,10 @@ if (optRes) {
   console.log(cdvcOptRes.toMismatchSummary())
 }
 
-const peer = cdvcPeer.hasMismatchingDependencies
+const peer = cdvcPeerDev.hasMismatchingDependencies
 if (peer) {
   mismatch = true
-  console.log(cdvcPeer.toMismatchSummary())
+  console.log(cdvcPeerDev.toMismatchSummary())
 }
 
 if (mismatch) {

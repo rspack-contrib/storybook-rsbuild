@@ -1,3 +1,4 @@
+import './index.css'
 import { useLang } from '@rspress/core/runtime'
 import {
   getCustomMDXComponent as BaseGetCustomMDXComponent,
