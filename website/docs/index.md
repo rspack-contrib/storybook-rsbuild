@@ -3,8 +3,8 @@ pageType: home
 
 hero:
   name: Storybook Rsbuild
-  text: Build and run Storybook with Rsbuild at its core
-  tagline: A fast, consistent Storybook experience backed by Rsbuild.
+  text: The Rsbuild integration for Storybook
+  tagline: The fast, consistent Storybook experience backed by Rsbuild.
   actions:
     - theme: brand
       text: Quick Start

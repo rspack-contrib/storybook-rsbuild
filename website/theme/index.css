@@ -1,0 +1,25 @@
+:root {
+  --rp-c-brand: #ffa500; /* hsl(39deg 100% 50%) */
+  --rp-c-brand-dark: #e69500; /* hsl(39deg 100% 45%) */
+  --rp-c-brand-darker: #cc8400; /* hsl(39deg 100% 40%) */
+  --rp-c-brand-light: #ffb733; /* hsl(39deg 100% 60%) */
+  --rp-c-brand-lighter: #ffc966; /* hsl(39deg 100% 70%) */
+  --rp-c-brand-tint: rgba(255, 165, 0, 0.15);
+
+  /* Storybook icon main color */
+  --rp-storybook-main-color: #e85a85;
+
+  .rp-button--brand {
+    background: linear-gradient(
+      90deg,
+      var(--rp-storybook-main-color) 20%,
+      var(--rp-c-brand-dark) 180%
+    );
+  }
+
+  --rp-home-hero-title-bg: linear-gradient(
+    120deg,
+    var(--rp-storybook-main-color) 30%,
+    var(--rp-c-brand-dark) 120%
+  );
+}
