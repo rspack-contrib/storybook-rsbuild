@@ -8,6 +8,7 @@ const config = {
   dependencies: [
     {
       name: '@storybook/core-webpack',
+      target: 'es2020',
     },
   ],
 }

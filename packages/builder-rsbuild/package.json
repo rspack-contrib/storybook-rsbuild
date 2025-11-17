@@ -13,33 +13,19 @@
     "directory": "packages/builder-rsbuild"
   },
   "license": "MIT",
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "node": "./dist/index.js",
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "default": "./dist/index.js"
     },
-    "./presets/custom-rsbuild-preset": {
-      "types": "./dist/presets/custom-rsbuild-preset.d.ts",
-      "node": "./dist/presets/custom-rsbuild-preset.js",
-      "require": "./dist/presets/custom-rsbuild-preset.js"
-    },
-    "./preview-preset": {
-      "types": "./dist/preview-preset.d.ts",
-      "node": "./dist/preview-preset.js",
-      "require": "./dist/preview-preset.js"
-    },
-    "./loaders/export-order-loader": {
-      "types": "./dist/loaders/export-order-loader.d.ts",
-      "node": "./dist/loaders/export-order-loader.js",
-      "require": "./dist/loaders/export-order-loader.js"
-    },
-    "./templates/virtualModuleModernEntry.js": "./templates/virtualModuleModernEntry.js",
+    "./loaders/export-order-loader": "./dist/loaders/export-order-loader.js",
+    "./package.json": "./package.json",
+    "./presets/preview-preset": "./dist/preview-preset.js",
     "./templates/preview.ejs": "./templates/preview.ejs",
     "./templates/virtualModuleEntry.template.js": "./templates/virtualModuleEntry.template.js",
-    "./templates/virtualModuleStory.template.js": "./templates/virtualModuleStory.template.js",
-    "./package.json": "./package.json"
+    "./templates/virtualModuleModernEntry.js": "./templates/virtualModuleModernEntry.js",
+    "./templates/virtualModuleStory.template.js": "./templates/virtualModuleStory.template.js"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -54,9 +40,9 @@
     "!src/**/*"
   ],
   "scripts": {
-    "build": "pnpm run prep --optimized",
-    "check": "jiti ../../scripts/prepare/check.ts",
-    "prep": "prebundle && jiti ../../scripts/prepare/bundle.ts",
+    "build": "pnpm run prep",
+    "check": "jiti ../../scripts/check/check-package.ts",
+    "prep": "prebundle && jiti ../../scripts/build/build-package.ts",
     "prepare": "pnpm run build"
   },
   "dependencies": {
@@ -79,23 +65,24 @@
   },
   "devDependencies": {
     "@rsbuild/core": "^1.5.17",
-    "@storybook/core-webpack": "^9.1.15 || ^10.0.0",
+    "@storybook/core-webpack": "^10.0.0",
     "@types/find-cache-dir": "^5.0.2",
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^18.19.110",
+    "@types/node": "^22.0.0",
     "@types/pretty-hrtime": "^1.0.3",
     "find-cache-dir": "^5.0.0",
-    "prebundle": "^1.5.0",
+    "jiti": "^2.4.2",
+    "prebundle": "^1.6.0",
     "pretty-hrtime": "^1.0.3",
     "slash": "^5.1.0",
-    "storybook": "9.1.10",
+    "storybook": "10.0.7",
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "@rsbuild/core": "^1.5.0",
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta",
-    "storybook": "^9.0.0 || ^10.0.0"
+    "storybook": "^10.0.0"
   },
   "peerDependenciesMeta": {
     "react": {

@@ -1,10 +1,6 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "strict": true,
-    "resolveJsonModule": true,
-    "outDir": "dist"
-  },
+  "extends": "../tsconfig.json",
+  "compilerOptions": {},
   "include": ["src/**/*"],
-  "exclude": ["**/__tests__/**/*"]
+  "exclude": ["**/__tests__/**"]
 }

@@ -1,12 +1,14 @@
-import { dirname, join } from 'node:path'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import type { StorybookConfig } from 'storybook-react-rsbuild'
 
-/**
- * This function is used to resolve the absolute path of a package.
- * It is needed in projects that use Yarn PnP or are set up within a monorepo.
- */
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, 'package.json')))
+const getAbsolutePath = (value: string): string => {
+  return path.resolve(
+    fileURLToPath(
+      new URL(import.meta.resolve(`${value}/package.json`, import.meta.url)),
+    ),
+    '..',
+  )
 }
 
 const config: StorybookConfig = {
@@ -19,7 +21,7 @@ const config: StorybookConfig = {
     '@storybook/addon-docs',
     '@chromatic-com/storybook',
     {
-      name: getAbsolutePath('storybook-addon-rslib'),
+      name: getAbsolutePath('storybook-addon-rslib') as any,
       options: {
         rslib: {
           include: ['**/stories/**'],
@@ -28,7 +30,7 @@ const config: StorybookConfig = {
     },
   ],
   framework: {
-    name: getAbsolutePath('storybook-react-rsbuild'),
+    name: getAbsolutePath('storybook-react-rsbuild') as any,
     options: {},
   },
   typescript: {

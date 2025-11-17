@@ -16,8 +16,37 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  lint-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 10
+
+      - name: Install Pnpm
+        run: |
+          npm install -g corepack@latest --force
+          corepack enable
+
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: 20.x
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: |
+          pnpm install --frozen-lockfile
+
+      - name: Lint / Type Check / Check Dependency Version
+        run: |
+          pnpm lint
+          pnpm check
+          pnpm check-dependency-version
   # ======== test ========
   test-build:
+    needs: lint-check
     strategy:
       matrix:
         node-version: [20.x, 22.x]
@@ -48,6 +77,12 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
 
+      - name: Lint / Type Check / Check Dependency Version
+        run: |
+          pnpm lint
+          pnpm check
+          pnpm check-dependency-version
+
       - name: Prepare Playwright cache directory
         shell: bash
         run: mkdir -p "$PLAYWRIGHT_BROWSERS_PATH"
@@ -70,12 +105,6 @@ jobs:
       # `pnpm dedupe --check` still find duplications after run `pnpm dedupe`
       # - name: Check pnpm Dedupe
       #   run: pnpm dedupe --check
-
-      - name: Lint / Type Check / Check Dependency Version
-        run: |
-          pnpm lint
-          pnpm check
-          pnpm check-dependency-version
 
       - name: Build sandboxes storybooks
         run: |

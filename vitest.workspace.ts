@@ -23,11 +23,14 @@ export const vitestCommonConfig = defineConfig({
     globals: true,
     testTimeout: 10000,
     environment: 'node',
+    pool: 'threads',
     poolOptions: {
       threads: {
         minThreads: threadCount,
         maxThreads: threadCount,
       },
     },
+    // Explicitly include only .test.{ts,tsx} files, not .spec.ts files (which are for e2e)
+    include: ['**/*.test.{ts,tsx}'],
   },
 })

@@ -7,7 +7,7 @@
     "build:sandboxes": "pnpm --filter \"./sandboxes/*\" run build:storybook",
     "bump": "bumpp",
     "check": "pnpm --parallel --filter \"./packages/**\" run check",
-    "check-dependency-version": "pnpm tsx CDVC.mts",
+    "check-dependency-version": "pnpm tsx ./scripts/check-dependency-version.mts",
     "dev": "pnpm --parallel --filter \"./packages/**\" run prep --watch",
     "e2e": "pnpm exec playwright test --config e2e/playwright.config.ts",
     "lint": "biome check",
@@ -29,7 +29,7 @@
     "bumpp": "^9.8.1",
     "check-dependency-version-consistency": "^5.0.1",
     "cross-env": "^10.1.0",
-    "jiti": "^2.6.1",
+    "jiti": "^2.4.2",
     "nano-staged": "^0.8.0",
     "path-serializer": "^0.5.1",
     "simple-git-hooks": "^2.13.1",
@@ -37,7 +37,7 @@
     "ts-dedent": "^2.2.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
-    "vitest": "^2.1.9"
+    "vitest": "^4.0.10"
   },
   "packageManager": "pnpm@10.14.0"
 }

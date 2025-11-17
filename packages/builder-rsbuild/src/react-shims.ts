@@ -76,7 +76,7 @@ export const applyReactShims = async (
   return {
     resolve: {
       alias: {
-        '@storybook/react-dom-shim': '@storybook/react-dom-shim/dist/react-16',
+        '@storybook/react-dom-shim': '@storybook/react-dom-shim/react-16',
       },
     },
   }

@@ -19,23 +19,22 @@
     "directory": "packages/addon-modernjs"
   },
   "license": "MIT",
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "node": "./dist/index.js",
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "default": "./dist/index.js"
     },
-    "./preset": "./dist/preset.js",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./preset": "./dist/preset.js"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": ["dist/**/*", "README.md", "*.js", "*.d.ts", "!src/**/*"],
   "scripts": {
-    "build": "pnpm run prep --optimized",
-    "check": "jiti ../../scripts/prepare/check.ts",
-    "prep": "jiti ../../scripts/prepare/bundle.ts",
+    "build": "pnpm run prep",
+    "check": "jiti ../../scripts/check/check-package.ts",
+    "prep": "jiti ../../scripts/build/build-package.ts",
     "prepare": "pnpm run build"
   },
   "dependencies": {
@@ -46,8 +45,8 @@
   "devDependencies": {
     "@modern-js/app-tools": "^2.68.18",
     "@rsbuild/core": "^1.5.17",
-    "@types/node": "^18.19.110",
-    "storybook": "9.1.10",
+    "@types/node": "^22.0.0",
+    "storybook": "10.0.7",
     "storybook-builder-rsbuild": "workspace:*",
     "typescript": "^5.9.3"
   },
