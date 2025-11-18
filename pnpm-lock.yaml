@@ -182,8 +182,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3
       find-cache-dir:
-        specifier: ^5.0.0
-        version: 5.0.0
+        specifier: ^6.0.0
+        version: 6.0.0
       prebundle:
         specifier: ^1.5.0
         version: 1.5.0(typescript@5.9.3)
@@ -6998,9 +6998,10 @@ packages:
     resolution: {integrity: sha512-9ZonPT4ZAK4a+1pUPVPZJapbi7O5qbbJPdYw/NOQWZZbVLdDTYM3A4R9z/DpAM08IDaFGsvPgiGZ82WEwUDWjg==}
     engines: {node: '>=14.16'}
 
-  find-cache-dir@5.0.0:
-    resolution: {integrity: sha512-OuWNfjfP05JcpAP3JPgAKUhWefjMRfI5iAoSsvE24ANYWJaepAtlSgWECSVEuRgSXpyNEc9DJwG/TZpgcOqyig==}
+  find-cache-dir@6.0.0:
+    resolution: {integrity: sha512-nZMBQ0IuwcMgW8jsiShHtj2WQS6ReVTOMGiSnriCdWBUN/eVsolBlE0EPXe2R5MfIWtqkpM4grjGuqimbWhUFA==}
     engines: {node: '>=16'}
+    deprecated: Renamed to `find-cache-directory`.
 
   find-file-up@0.1.3:
     resolution: {integrity: sha512-mBxmNbVyjg1LQIIpgO8hN+ybWBgDQK8qjht+EbrTCGmmPV/sc7RF1i9stPTD6bpvXZywBdrwRYxhSdJv867L6A==}
@@ -8142,6 +8143,7 @@ packages:
   keygrip@1.1.0:
     resolution: {integrity: sha512-iYSchDJ+liQ8iwbSI2QqsQOvqv58eJCEanyJPJi+Khyu8smkcKSFUCbPwzFcL7YVtZ6eONjqRX/38caJ7QjRAQ==}
     engines: {node: '>= 0.6'}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
@@ -11590,8 +11592,8 @@ packages:
     resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
     engines: {node: '>=0.10.0'}
 
-  vue-component-type-helpers@3.1.3:
-    resolution: {integrity: sha512-V1dOD8XYfstOKCnXbWyEJIrhTBMwSyNjv271L1Jlx9ExpNlCSuqOs3OdWrGJ0V544zXufKbcYabi/o+gK8lyfQ==}
+  vue-component-type-helpers@3.1.4:
+    resolution: {integrity: sha512-Uws7Ew1OzTTqHW8ZVl/qLl/HB+jf08M0NdFONbVWAx0N4gMLK8yfZDgeB77hDnBmaigWWEn5qP8T9BG59jIeyQ==}
 
   vue-docgen-api@4.79.2:
     resolution: {integrity: sha512-n9ENAcs+40awPZMsas7STqjkZiVlIjxIKgiJr5rSohDP0/JCrD9VtlzNojafsA1MChm/hz2h3PDtUedx3lbgfA==}
@@ -16246,7 +16248,7 @@ snapshots:
       storybook: 9.1.10(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@6.3.5(@types/node@18.19.122)(jiti@2.6.1)(less@4.4.2)(sass-embedded@1.90.0)(sass@1.90.0)(terser@5.44.1)(tsx@4.20.6)(yaml@2.8.1))
       type-fest: 2.19.0
       vue: 3.5.22(typescript@5.9.3)
-      vue-component-type-helpers: 3.1.3
+      vue-component-type-helpers: 3.1.4
 
   '@storybook/vue3@9.1.15(storybook@9.1.10(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@6.3.5(@types/node@18.19.122)(jiti@2.6.1)(less@4.4.2)(sass-embedded@1.90.0)(sass@1.90.0)(terser@5.44.1)(tsx@4.20.6)(yaml@2.8.1)))(vue@3.5.22(typescript@5.9.3))':
     dependencies:
@@ -16254,7 +16256,7 @@ snapshots:
       storybook: 9.1.10(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@6.3.5(@types/node@18.19.122)(jiti@2.6.1)(less@4.4.2)(sass-embedded@1.90.0)(sass@1.90.0)(terser@5.44.1)(tsx@4.20.6)(yaml@2.8.1))
       type-fest: 2.19.0
       vue: 3.5.22(typescript@5.9.3)
-      vue-component-type-helpers: 3.1.3
+      vue-component-type-helpers: 3.1.4
 
   '@storybook/web-components@9.1.10(lit@3.3.1)(storybook@9.1.10(@testing-library/dom@10.4.0)(prettier@3.6.2)(vite@6.3.5(@types/node@18.19.122)(jiti@2.6.1)(less@4.4.2)(sass-embedded@1.90.0)(sass@1.90.0)(terser@5.44.1)(tsx@4.20.6)(yaml@2.8.1)))':
     dependencies:
@@ -16602,7 +16604,7 @@ snapshots:
 
   '@types/find-cache-dir@5.0.2':
     dependencies:
-      find-cache-dir: 5.0.0
+      find-cache-dir: 6.0.0
 
   '@types/fs-extra@11.0.4':
     dependencies:
@@ -19441,7 +19443,7 @@ snapshots:
       common-path-prefix: 3.0.0
       pkg-dir: 7.0.0
 
-  find-cache-dir@5.0.0:
+  find-cache-dir@6.0.0:
     dependencies:
       common-path-prefix: 3.0.0
       pkg-dir: 7.0.0
@@ -25297,7 +25299,7 @@ snapshots:
 
   void-elements@3.1.0: {}
 
-  vue-component-type-helpers@3.1.3: {}
+  vue-component-type-helpers@3.1.4: {}
 
   vue-docgen-api@4.79.2(vue@3.5.22(typescript@5.9.3)):
     dependencies:
