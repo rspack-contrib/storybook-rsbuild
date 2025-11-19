@@ -1,4 +1,6 @@
+// Forked from https://github.com/storybookjs/storybook/blob/a29f6dfaacee67ae7254c2a2b6b62ce1cd26a3d1/code/builders/builder-webpack5/src/loaders/export-order-loader.ts#L56.
 import assert from 'node:assert'
+
 import type { Rspack } from '@rsbuild/core'
 import { init as initCjsParser, parse as parseCjs } from 'cjs-module-lexer'
 import { parse as parseEs } from 'es-module-lexer'
@@ -14,8 +16,9 @@ export default async function loader(
 
   try {
     const magicString = new MagicString(source)
+
+    // Trying to parse as ES module
     if (!source.includes('__namedExportsOrder')) {
-      // Trying to parse as ES module
       try {
         // Do NOT remove await here. The types are wrong! It has to be awaited,
         // otherwise it will return a Promise<Promise<...>> when wasm isn't loaded.
@@ -49,19 +52,9 @@ export default async function loader(
           `;module.exports.__namedExportsOrder = ${JSON.stringify(namedExportsOrder)};`,
         )
       }
-
-      return callback(
-        null,
-        magicString.toString(),
-        map ??
-          magicString.generateMap({
-            hires: true,
-            includeContent: true,
-            source: this.resourcePath,
-          }),
-        meta,
-      )
     }
+
+    return callback(null, magicString.toString(), map, meta)
   } catch (err) {
     return callback(null, source, map, meta)
   }
