@@ -39,6 +39,7 @@
   "dependencies": {
     "@storybook/vue3": "^10.0.0",
     "storybook-builder-rsbuild": "workspace:*",
+    "vue-docgen-api": "^4.79.2",
     "vue-docgen-loader": "^2.0.1"
   },
   "devDependencies": {
