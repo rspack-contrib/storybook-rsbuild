@@ -32,7 +32,7 @@
   "types": "dist/index.d.ts",
   "files": ["dist/**/*", "README.md", "*.js", "*.d.ts", "!src/**/*"],
   "scripts": {
-    "build": "pnpm run prep",
+    "build": "pnpm run prep --production",
     "check": "jiti ../../scripts/check/check-package.ts",
     "prep": "jiti ../../scripts/build/build-package.ts",
     "prepare": "pnpm run build"

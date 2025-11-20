@@ -26,9 +26,6 @@ importers:
       cross-env:
         specifier: ^10.1.0
         version: 10.1.0
-      jiti:
-        specifier: ^2.4.2
-        version: 2.6.1
       nano-staged:
         specifier: ^0.8.0
         version: 0.8.0
@@ -184,9 +181,6 @@ importers:
       find-cache-dir:
         specifier: ^5.0.0
         version: 5.0.0
-      jiti:
-        specifier: ^2.4.2
-        version: 2.6.1
       prebundle:
         specifier: ^1.6.0
         version: 1.6.0(typescript@5.9.3)
@@ -1066,6 +1060,9 @@ importers:
       exsolve:
         specifier: ^1.0.7
         version: 1.0.8
+      jiti:
+        specifier: ^2.4.2
+        version: 2.6.1
       p-limit:
         specifier: ^3.1.0
         version: 3.1.0
@@ -1084,6 +1081,12 @@ importers:
       react-dom:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
+      rollup:
+        specifier: ^4.21.0
+        version: 4.53.2
+      rollup-plugin-dts:
+        specifier: ^6.1.1
+        version: 6.2.3(rollup@4.53.2)(typescript@5.9.3)
       ts-dedent:
         specifier: ^2.2.0
         version: 2.2.0

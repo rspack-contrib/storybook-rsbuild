@@ -40,7 +40,7 @@
     "!src/**/*"
   ],
   "scripts": {
-    "build": "pnpm run prep",
+    "build": "pnpm run prep --production",
     "check": "jiti ../../scripts/check/check-package.ts",
     "prep": "prebundle && jiti ../../scripts/build/build-package.ts",
     "prepare": "pnpm run build"
@@ -71,7 +71,6 @@
     "@types/node": "^22.0.0",
     "@types/pretty-hrtime": "^1.0.3",
     "find-cache-dir": "^5.0.0",
-    "jiti": "^2.4.2",
     "prebundle": "^1.6.0",
     "pretty-hrtime": "^1.0.3",
     "slash": "^5.1.0",
