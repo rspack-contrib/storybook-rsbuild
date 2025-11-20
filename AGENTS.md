@@ -1,64 +1,89 @@
-# Repository Guidelines
+# AGENTS.md
 
-## Repository Setup
+### Do
+- Use **pnpm** for all package management commands.
+- Use **Biome** for formatting and linting (indentation: 2 spaces, single quotes, minimal semicolons).
+- Use **Vitest** for unit testing.
+- Follow the **kebab-case** convention for directories, filenames, and package names.
+- Use explicit `.ts`/`.tsx` extensions.
+- Colocate sandbox helpers with their owning packages.
+- Update relevant `sandboxes/` when adding or modifying features.
 
-Get a local environment running:
+### Don't
+- Do not use `npm` or `yarn`.
+- Do not use `Prettier` or `ESLint` directly; use `Biome`.
+- Do not manually sort imports (Biome handles this).
+- Do not introduce new heavy dependencies without approval.
+- Do not commit code that fails `pnpm lint` or `pnpm test`.
 
-1. Install Node.js 20 so it matches `.nvmrc`; install [fnm](https://github.com/Schniz/fnm) then run `fnm install` and `fnm use`.
-2. Enable Corepack once (`corepack enable`) so pnpm 10 is available via `corepack prepare`.
-3. Install dependencies with `pnpm install`; the workspace hoists builds that each package can reuse.
-4. Verify the setup: `pnpm dev` for watch mode, `pnpm check` and `pnpm build` to confirm everything passes, and `pnpm build:sandboxes` to build sandboxes and ensure all build pass.
+### Commands
 
-## Project Structure & Module Organization
+```bash
+# Format and lint a single file (preferred)
+pnpm exec biome check --write path/to/file.tsx
 
-This monorepo ships features near their consumers:
+# Run tests for a single file (preferred)
+pnpm exec vitest run path/to/file.test.ts
 
-- `packages/builder-rsbuild`: Rsbuild-specific Storybook builder, similar to @storybook/builder-webpack5 but for Rsbuild, that other packages reuse.
-- `packages/addon-rslib` / `packages/addon-modernjs`: adapter add-ons aligning Storybook with Rsbuild or Modern.js defaults.
-- Renderer packages (`framework-html`, `framework-react`, `framework-vue3`, `framework-web-components`): expose renderer presets, preview hooks, and loader utilities; keep runtime logic in `src/`.
-- `sandboxes/`: runnable Storybook apps that act as the primary regression suite, updating configs and stories when validating new behavior.
-- Shared tooling appears in `scripts/`, docs in `website/`, and root configs such as `tsconfig.json`, `vitest-setup.ts`, and `pnpm-workspace.yaml`.
+# Run e2e tests for a specific sandbox
+pnpm e2e <sandbox>.spec.ts
 
-## Build, Test, and Development Commands
+# Run type checks for all packages
+pnpm check
 
-After `pnpm install`, rely on these root scripts:
+# Run full linting
+pnpm lint
 
-- `pnpm dev`: runs each package’s `prep --watch` script for live rebuilds.
-- `pnpm build`: builds every package except sandboxes; run before pushing.
-- `pnpm build:sandboxes`: compiles each sandbox Storybook—treat a passing build as the integration gate.
-- `pnpm check`: triggers per-package type and contract checks.
-- `pnpm lint`: applies Biome formatting and lint rules.
-- `pnpm test` / `pnpm test:watch`: execute Vitest suites.
-- `pnpm check-dependency-version`: verifies dependency consistency after upgrades.
-- `pnpm --filter <package> run <script>`: scope any command to a single workspace (for example `pnpm --filter framework-react run build`).
+# Build all packages (except sandboxes)
+pnpm build
 
-## Coding Style & Naming Conventions
+# Build sandboxes (integration gate)
+pnpm build:sandboxes
+```
 
-Consistent style keeps cross-package reviews quick:
+### Safety and Permissions
 
-- Biome enforces two-space indentation, single quotes, and minimal semicolons—run `pnpm lint` to autofix.
-- Use kebab-case for directories, files, and package names; exported symbols should mirror filenames (e.g., `create-rsbuild-plugin.ts`).
-- Prefer explicit `.ts`/`.tsx` extensions, typed public APIs, and colocated sandbox helpers that mirror their owning package.
-- Imports are auto-organized by Biome; avoid manual sorting unless absolutely necessary.
+**Allowed without prompt:**
+- Read files, list files.
+- Run `biome check` or `vitest` on single files.
+- Create new test files.
+- Update existing non-critical code.
 
-## Testing & Sandbox Workflow
+**Ask first:**
+- `pnpm install` or adding new dependencies.
+- `git push`.
+- Deleting files or large code blocks.
+- Running full project builds (`pnpm build`, `pnpm build:sandboxes`) unless explicitly requested or necessary for validation.
 
-Unit tests still matter, but sandboxes drive acceptance:
+### Project Structure
 
-- Write Vitest coverage beside sources using `.test.ts(x)` or within `__tests__/`; use `@testing-library/jest-dom` for DOM assertions.
-- Update the relevant sandbox (`main.ts`, `preview.ts`, stories) to demonstrate new features, then confirm with `pnpm build:sandboxes`.
-- Commit regenerated snapshots under `__snapshots__/` only when behavior intentionally changes.
+- **`packages/builder-rsbuild`**: Rsbuild-specific Storybook builder.
+- **`packages/addon-rslib`** / **`packages/addon-modernjs`**: Adapter add-ons.
+- **`framework-*`**: Renderer packages (HTML, React, Vue3, Web Components). Runtime logic stays in `src/`.
+- **`sandboxes/`**: Runnable Storybook apps for regression testing.
+- **`website/`**: Documentation (Rspress).
+- **`scripts/`**: Shared tooling.
 
-### Playwright sandbox debugging
+### Testing & Sandbox Workflow
 
-- Use `pnpm e2e <sandbox>.spec.ts` to launch Storybook for that sandbox and reproduce the Playwright run locally.
-- Attach with the Playwright MCP client while the run is active so you can browse the served Storybook instance and inspect the relevant DOM.
-- Keep in mind that Storybook renders its preview inside an iframe—narrow your lookup to the preview frame before collecting selectors, then port those selectors back into the spec.
+- Write Vitest coverage beside sources using `.test.ts(x)` or within `__tests__/`.
+- Use `@testing-library/jest-dom` for DOM assertions.
+- **Playwright Debugging**:
+  - Use `pnpm e2e <sandbox>.spec.ts` to reproduce locally.
+  - Attach Playwright MCP client to inspect the DOM (remember Storybook preview is an iframe).
 
-## Commit & Pull Request Guidelines
+### Commit & Pull Request Guidelines
 
-Ship changes with reviewer-friendly context:
+- Follow **Conventional Commits**: `feat:`, `fix(builder-rsbuild):`, `chore(deps):`.
+- Subject line under 72 characters.
+- **PR Checklist**:
+  - `pnpm lint` passes.
+  - `pnpm build` passes.
+  - `pnpm build:sandboxes` passes.
+  - Snapshots updated only for intentional changes.
 
-- Follow Conventional Commits (`feat:`, `fix(builder-rsbuild):`, `chore(deps):`) and keep subjects under 72 characters.
-- Summarize user-facing impact in PR descriptions, link issues, and attach screenshots or terminal logs for sandbox-visible updates.
-- Run `pnpm lint`, `pnpm build`, and `pnpm build:sandboxes` before requesting review; flag any manual QA needs for downstream packages.
+### When Stuck
+
+- Ask a clarifying question.
+- Propose a short plan before executing complex refactors.
+- Do not push large speculative changes without confirmation.
