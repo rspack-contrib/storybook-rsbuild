@@ -1,7 +1,7 @@
 import { resolve } from 'node:path'
 /* eslint-disable import/no-extraneous-dependencies */
 import { defineConfig, mergeConfig } from 'vitest/config'
-import { vitestCommonConfig } from '../../vitest.workspace'
+import { vitestCommonConfig } from '../../vitest.config'
 
 export default mergeConfig(
   vitestCommonConfig,

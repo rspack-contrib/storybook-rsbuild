@@ -53,13 +53,13 @@
     "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
-    "@rsbuild/core": "^1.5.17",
+    "@rsbuild/core": "^1.6.7",
     "@types/node": "^22.0.0",
     "@types/react": "^18.3.26",
     "@types/resolve": "^1.20.6",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "storybook": "10.0.7",
+    "storybook": "10.0.8",
     "typescript": "^5.9.3"
   },
   "peerDependencies": {

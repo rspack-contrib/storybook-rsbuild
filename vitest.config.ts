@@ -1,10 +1,24 @@
 import { defineConfig } from 'vitest/config'
 
-// Root vitest config to override defaults
-// This ensures e2e/*.spec.ts files are not picked up by vitest
+export const vitestCommonConfig = defineConfig({
+  test: {
+    passWithNoTests: true,
+    clearMocks: true,
+    globals: true,
+    testTimeout: 10000,
+    environment: 'node',
+    pool: 'threads',
+    include: ['**/*.test.{ts,tsx}'],
+  },
+})
+
+// Root vitest config which aggregates all other vitest configs
 export default defineConfig({
   test: {
-    // Only include .test.ts files, exclude .spec.ts (which are for Playwright e2e tests)
-    include: ['**/*.test.{ts,tsx}'],
+    projects: [
+      './packages/*/vitest.config.ts',
+      './sandboxes/*/vitest.config.ts',
+      './tests/vitest.config.ts',
+    ],
   },
 })

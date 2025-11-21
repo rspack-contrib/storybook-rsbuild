@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url'
 import { pluginVue } from '@rsbuild/plugin-vue'
 import type { StorybookConfig } from 'storybook-vue3-rsbuild'
 
-const getAbsolutePath = (value: string): string => {
+const getAbsolutePath = (value: string): any => {
   return path.resolve(
     fileURLToPath(
       new URL(import.meta.resolve(`${value}/package.json`, import.meta.url)),
