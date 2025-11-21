@@ -152,13 +152,6 @@ export const start: RsbuildBuilder['start'] = async ({
         htmlFallback: false,
         printUrls: false,
       },
-      dev: {
-        ...config.dev,
-        client: {
-          ...config.dev?.client,
-          overlay: false,
-        },
-      },
     },
   })
 

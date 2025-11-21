@@ -32,7 +32,7 @@
   "devDependencies": {
     "@modern-js/app-tools": "^2.68.18",
     "@modern-js/tsconfig": "2.68.18",
-    "@module-federation/storybook-addon": "0.0.0-release-v0-21-5-20251120103315",
+    "@module-federation/storybook-addon": "^5.0.0",
     "@storybook/addon-docs": "10.0.7",
     "@storybook/addon-onboarding": "10.0.7",
     "@storybook/react": "10.0.7",
