@@ -147,3 +147,6 @@ test-results/
 
 # pre bundle
 compiled/
+
+# Storybook scripts
+/code/bench

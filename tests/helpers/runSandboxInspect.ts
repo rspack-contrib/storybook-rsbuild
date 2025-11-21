@@ -2,6 +2,7 @@ import { spawn } from 'node:child_process'
 import { once } from 'node:events'
 import { access } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
+import { stripVTControlCharacters as stripAnsi } from 'node:util'
 
 export interface SandboxInspectResult {
   sandboxName: string
@@ -55,7 +56,7 @@ async function inspectSandboxOnce(
   const [code] = (await once(child, 'close')) as [number | null, NodeJS.Signals]
 
   const logs = `${stdout}${stderr}`
-  const sanitizedLogs = stripAnsiSequences(logs)
+  const sanitizedLogs = stripAnsi(logs)
 
   if (code !== 0) {
     throw new Error(
@@ -90,7 +91,8 @@ async function inspectSandboxOnce(
 
 function parseInspectOutput(output: string) {
   const configs: Record<string, string> = {}
-  const configRegex = /^\s*-\s+([^:]+):\s+(.+)$/gm
+  const configRegex =
+    / -\ (Rsbuild config|Rspack Config(?: \([^)]+\))?):\s+(.+)$/gm
   let match: RegExpExecArray | null
   match = configRegex.exec(output)
   while (match) {
@@ -105,9 +107,4 @@ function parseInspectOutput(output: string) {
     configs,
     outputDir: outputDirMatch?.[1].trim(),
   }
-}
-
-function stripAnsiSequences(value: string) {
-  // biome-ignore lint/suspicious/noControlCharactersInRegex: <explanation>
-  return value.replace(/\u001B\[[0-9;]*m/g, '')
 }

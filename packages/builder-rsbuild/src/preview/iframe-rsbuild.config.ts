@@ -267,6 +267,11 @@ export default async (
       })),
     ].filter(Boolean),
     tools: {
+      swc: (config) => {
+        config.env ??= {}
+        // Ensure the deconstruction of the in-play function in parameters.
+        config.env.bugfixes = true
+      },
       rspack: (config, { addRules, rspack, mergeConfig }) => {
         addRules({
           test: /\.stories\.([tj])sx?$|(stories|story)\.mdx$/,

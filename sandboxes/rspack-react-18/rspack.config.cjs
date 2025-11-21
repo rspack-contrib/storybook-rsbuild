@@ -8,7 +8,7 @@ const host = process.env.HOST || 'localhost'
 module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
-  entry: './src/index.tsx',
+  // entry: './src/index.tsx',
   output: {
     filename: 'static/js/bundle.js',
   },

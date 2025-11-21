@@ -3,6 +3,7 @@ import './index.css'
 
 const Index = () => (
   <div className="container-box">
+    {/* @ts-expect-error */}
     <Helmet>
       <link
         rel="icon"

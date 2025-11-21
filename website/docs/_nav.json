@@ -5,11 +5,38 @@
     "activeMatch": "/guide/"
   },
   {
+    "text": "Configuration",
+    "link": "/guide/configuration",
+    "activeMatch": "/guide/configuration"
+  },
+  {
+    "text": "Examples",
+    "link": "/guide/examples",
+    "activeMatch": "/guide/examples"
+  },
+  {
     "text": "Storybook",
     "link": "https://storybook.js.org/docs"
   },
   {
     "text": "Rsbuild",
     "link": "https://rsbuild.rs"
+  },
+  {
+    "text": "Version",
+    "items": [
+      {
+        "text": "Changelog",
+        "link": "https://github.com/rspack-contrib/storybook-rsbuild/releases"
+      },
+      {
+        "text": "v2.x (Storybook 9)",
+        "link": "https://storybook-v2.rsbuild.rs/"
+      },
+      {
+        "text": "v1.x (Storybook 8)",
+        "link": "https://github.com/rspack-contrib/storybook-rsbuild/blob/v1/website/docs/guide/"
+      }
+    ]
   }
 ]

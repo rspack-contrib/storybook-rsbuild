@@ -1,0 +1,175 @@
+# Configuration
+
+Storybook Rsbuild provides several ways to customize the build process and behavior. This guide covers the configuration options available in your `.storybook/main.ts`.
+
+:::tip Storybook Documentation
+This guide focuses on Rsbuild-specific configurations. For general Storybook configuration (stories, addons, refs, etc.), please refer to the [Storybook Configure](https://storybook.js.org/docs/configure) documentation.
+:::
+
+## rsbuildFinal
+
+The `rsbuildFinal` field gives you direct access to the Rsbuild configuration. You can use it to customize the build config, similar to [webpackFinal](https://storybook.js.org/docs/builders/webpack#extending-storybooks-webpack-config) in the Webpack builder.
+
+This function receives the current Rsbuild config and an options object, and should return the modified config.
+
+```ts twoslash title=".storybook/main.ts"
+// @noErrors
+import type { StorybookConfig } from 'storybook-react-rsbuild';
+
+const config: StorybookConfig = {
+  framework: 'storybook-react-rsbuild',
+  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  addons: [],
+  async rsbuildFinal(config, { configType }) {
+    // Customize Rsbuild config here
+    if (configType === 'PRODUCTION') {
+      config.performance = {
+        ...config.performance,
+        removeConsole: true,
+      };
+    }
+
+    // You can modify config.source, config.tools, etc.
+    // config.source = { ...config.source, alias: { ... } };
+
+    return config;
+  },
+};
+
+export default config;
+```
+
+## Builder Options
+
+You can configure the underlying Rsbuild builder through the `core.builder` options.
+
+```ts twoslash title=".storybook/main.ts"
+// @noErrors
+import type { StorybookConfig } from 'storybook-react-rsbuild';
+
+const config: StorybookConfig = {
+  framework: 'storybook-react-rsbuild',
+  stories: [],
+  core: {
+    builder: {
+      name: 'storybook-builder-rsbuild',
+      options: {
+        // Path to your existing rsbuild.config.ts
+        // Defaults to the root rsbuild.config.ts if found
+        rsbuildConfigPath: './custom-rsbuild.config.ts',
+        
+        // Enable filesystem cache for faster rebuilds
+        // Default: false
+        fsCache: true,
+        
+        // Enable lazy compilation (experimental)
+        // lazyCompilation: true,
+
+        // Specify Rsbuild environment to use (for multi-environment configs)
+        // environment: 'web',
+      },
+    },
+  },
+};
+
+export default config;
+```
+
+### Option Reference
+
+| Option | Type | Default | Description |
+| :--- | :--- | :--- | :--- |
+| `rsbuildConfigPath` | `string` | `cwd/rsbuild.config.ts` | Path to an existing Rsbuild config file to merge. |
+| `fsCache` | `boolean` | `false` | Enables Rspack's persistent filesystem cache. |
+| `lazyCompilation` | `boolean` | `false` | Enables lazy compilation for faster dev startup. |
+| `environment` | `string` | `undefined` | Selects a specific [environment](https://rsbuild.rs/config/environments) from Rsbuild config. |
+
+## Webpack Addons Compatibility
+
+Since Rspack is compatible with the webpack loader/plugin API, you can often use Storybook addons designed for Webpack. To do this, use the `webpackAddons` field instead of `addons`.
+
+```ts twoslash title=".storybook/main.ts"
+// @noErrors
+import type { StorybookConfig } from 'storybook-react-rsbuild';
+
+const config: StorybookConfig = {
+  framework: 'storybook-react-rsbuild',
+  stories: [],
+  // Addons that depend on Webpack loaders/plugins
+  webpackAddons: [
+    '@storybook/addon-coverage',
+  ],
+};
+
+export default config;
+```
+
+## Framework Options
+
+Framework-specific options allow you to tailor the behavior for React, Vue, etc.
+
+### React Options
+
+For `storybook-react-rsbuild`, you can configure `reactDocgen` and legacy root API.
+
+```ts twoslash title=".storybook/main.ts"
+// @noErrors
+import type { StorybookConfig } from 'storybook-react-rsbuild';
+
+const config: StorybookConfig = {
+  framework: {
+    name: 'storybook-react-rsbuild',
+    options: {
+      // Configure strict mode
+      strictMode: true,
+      
+      // Use legacy ReactDOM.render instead of createRoot (React 18+)
+      legacyRootApi: false,
+    },
+  },
+  stories: [],
+  typescript: {
+    // Configure docgen for TypeScript
+    // 'react-docgen-typescript' | 'react-docgen' | false
+    reactDocgen: 'react-docgen-typescript',
+    
+    // Pass options to react-docgen-typescript-plugin
+    reactDocgenTypescriptOptions: {
+      propFilter: (prop) => {
+        return prop.parent ? !/node_modules/.test(prop.parent.fileName) : true;
+      },
+    },
+  }
+};
+
+export default config;
+```
+
+## TypeScript Options
+
+Storybook Rsbuild uses `@rsbuild/plugin-type-check` for type checking. You can configure it via the `typescript` field.
+
+```ts twoslash title=".storybook/main.ts"
+// @noErrors
+import type { StorybookConfig } from 'storybook-react-rsbuild';
+
+const config: StorybookConfig = {
+  framework: 'storybook-react-rsbuild',
+  stories: [],
+  typescript: {
+    // Enable/disable fork-ts-checker-webpack-plugin
+    check: true,
+    
+    // Options passed to fork-ts-checker-webpack-plugin
+    checkOptions: {
+      typescript: {
+        memoryLimit: 4096,
+      },
+    },
+  },
+};
+
+export default config;
+```
+
+See [Storybook TypeScript Docs](https://storybook.js.org/docs/configure/typescript) for general TypeScript configuration.

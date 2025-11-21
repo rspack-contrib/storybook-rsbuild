@@ -48,7 +48,14 @@ describe.each(SANDBOX_CASES)(
         const [, filePath] = matchedEntry
         const content = await readFile(filePath, 'utf8')
         const mdxLoaderValue = target.extract(content)
-        expect(mdxLoaderValue).toMatch(/remarkPlugins: \[\n.*remarkGfm/)
+
+        // Check that remarkPlugins is configured with remarkGfm
+        const lines = mdxLoaderValue.split('\n')
+        const remarkPluginsLineIndex = lines.findIndex((line) =>
+          line.includes('remarkPlugins'),
+        )
+        expect(remarkPluginsLineIndex).toBeGreaterThanOrEqual(0)
+        expect(lines[remarkPluginsLineIndex + 1]).toContain('remarkGfm')
       })
     }
   },
@@ -61,78 +68,8 @@ function extractMdxLoaderRule(configText: string): string {
     throw new Error('Unable to locate mdx loader rule in config output')
   }
 
-  const start = findOpeningBrace(configText, markerIndex)
-  const end = findClosingBrace(configText, start)
-  return configText.slice(start, end + 1).trim()
-}
-
-function findOpeningBrace(text: string, fromIndex: number): number {
-  for (let i = fromIndex; i >= 0; i -= 1) {
-    if (text[i] === '{') {
-      return i
-    }
-  }
-  throw new Error('Unable to locate opening brace for MDX rule')
-}
-
-function findClosingBrace(text: string, startIndex: number): number {
-  let depth = 0
-  let inSingle = false
-  let inDouble = false
-  let inTemplate = false
-
-  for (let i = startIndex; i < text.length; i += 1) {
-    const char = text[i]
-    const prevChar = text[i - 1]
-
-    if (inSingle) {
-      if (char === "'" && prevChar !== '\\') {
-        inSingle = false
-      }
-      continue
-    }
-
-    if (inDouble) {
-      if (char === '"' && prevChar !== '\\') {
-        inDouble = false
-      }
-      continue
-    }
-
-    if (inTemplate) {
-      if (char === '`' && prevChar !== '\\') {
-        inTemplate = false
-      }
-      continue
-    }
-
-    if (char === "'") {
-      inSingle = true
-      continue
-    }
-
-    if (char === '"') {
-      inDouble = true
-      continue
-    }
-
-    if (char === '`') {
-      inTemplate = true
-      continue
-    }
-
-    if (char === '{') {
-      depth += 1
-      continue
-    }
-
-    if (char === '}') {
-      depth -= 1
-      if (depth === 0) {
-        return i
-      }
-    }
-  }
-
-  throw new Error('Unable to locate closing brace for MDX rule')
+  // Extract a small window around the marker - just need a few hundred chars for the options
+  const windowStart = Math.max(0, markerIndex - 200)
+  const windowEnd = Math.min(configText.length, markerIndex + 800)
+  return configText.slice(windowStart, windowEnd)
 }

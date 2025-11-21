@@ -7,7 +7,8 @@ export default defineConfig({
   plugins: [pluginReact()],
   tools: {
     rspack: (config) => {
-      // Apply less loader from the Rspack config.
+      // TODO: the ideal way it to directly merge the two configs
+      // not cherry-picking certain fields like now.
       const lessLoader = rspackConfig.module.rules[2]
       config.module!.rules!.push(lessLoader)
       return config

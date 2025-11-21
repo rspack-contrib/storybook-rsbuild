@@ -1,14 +1,11 @@
 [
   "index",
+  "configuration",
+  "examples",
   {
     "type": "dir",
     "name": "framework",
     "label": "Framework"
-  },
-  {
-    "type": "dir",
-    "name": "options",
-    "label": "Options"
   },
   {
     "type": "dir",

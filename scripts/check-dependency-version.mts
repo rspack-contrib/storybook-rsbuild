@@ -1,15 +1,15 @@
 import { CDVC } from 'check-dependency-version-consistency'
 import { fileURLToPath } from 'node:url'
-import { dirname } from 'node:path'
+import path from 'pathe'
 
 // @ts-ignore
 const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const root = path.resolve(path.dirname(__filename), '..')
 
 let mismatch = false
 
 // === dependencies ===
-const cdvcDep = new CDVC(__dirname, {
+const cdvcDep = new CDVC(root, {
   depType: ['dependencies'],
   ignorePackage: ['@sandboxes/react-16'],
 })
@@ -21,7 +21,7 @@ if (dep) {
 }
 
 // === devDependencies ===
-const cdvcDevDep = new CDVC(__dirname, {
+const cdvcDevDep = new CDVC(root, {
   depType: ['devDependencies'],
   ignorePackage: ['@sandboxes/react-16', 'website'],
 })
@@ -33,13 +33,13 @@ if (dev) {
 }
 
 // === peerDependencies ===
-const cdvcPeerDev = new CDVC(__dirname, {
+const cdvcPeerDev = new CDVC(root, {
   depType: ['peerDependencies'],
   ignorePackage: ['storybook-builder-rsbuild'],
 })
 
 // === optionalDependencies & resolutions ===
-const cdvcOptRes = new CDVC(__dirname, {
+const cdvcOptRes = new CDVC(root, {
   depType: ['optionalDependencies', 'resolutions'],
 })
 

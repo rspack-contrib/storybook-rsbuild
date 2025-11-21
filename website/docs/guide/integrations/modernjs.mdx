@@ -18,7 +18,8 @@ Match the version used by `@modern-js/app-tools` when possible. If you install a
 
 ### Setup `.storybook/main.ts`
 
-```ts
+```ts twoslash title=".storybook/main.ts"
+// @noErrors
 import type { StorybookConfig } from 'storybook-react-rsbuild'
 
 const config: StorybookConfig = {
@@ -43,9 +44,11 @@ If your Modern.js app uses Module Federation, install `@module-federation/storyb
 
 Add the addon and pass the `remotes` option manually. Storybook cannot infer it automatically.
 
-```ts
+```ts twoslash title=".storybook/main.ts"
+// @noErrors
 import type { StorybookConfig } from 'storybook-react-rsbuild'
-import moduleFederationConfig from '../module-federation.config'
+// import moduleFederationConfig from '../module-federation.config'
+const moduleFederationConfig = { remotes: {} }
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -60,6 +63,7 @@ const config: StorybookConfig = {
   ],
   framework: ['storybook-react-rsbuild'],
 }
+export default config
 ```
 
 ### Setup `modern.config.ts`

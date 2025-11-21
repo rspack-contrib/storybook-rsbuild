@@ -16,7 +16,8 @@ if (!sandbox) {
 const REMOTE_RELATIVE_DIR = 'sandboxes/modernjs-react-mf/remote'
 const DEV_SERVER_READY_INDICATOR = 'built in'
 
-test.describe(sandbox.name, () => {
+// TODO: @module-federation/modern-js should ship correct ESM build (importing relative request with `.js` extension)
+test.skip(sandbox.name, () => {
   let server: Awaited<ReturnType<typeof launchSandbox>> | null = null
   let remoteDevServer: DevServerHandle | null = null
 
