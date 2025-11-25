@@ -1,4 +1,6 @@
+import { createRequire } from 'node:module'
 import { dirname, join, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { loadConfig, mergeRsbuildConfig, rspack } from '@rsbuild/core'
 import type { RsbuildConfig, Rspack } from '@rsbuild/core'
 import { pluginTypeCheck } from '@rsbuild/plugin-type-check'
@@ -17,9 +19,21 @@ import { dedent } from 'ts-dedent'
 import type { BuilderOptions } from '../types'
 import type { TypescriptOptions } from '../types'
 import { getVirtualModules } from './virtual-module-mapping'
+const require = createRequire(import.meta.url)
 
-const getAbsolutePath = <I extends string>(input: I): I =>
-  dirname(require.resolve(join(input, 'package.json'))) as any
+const getAbsolutePath = <T extends string>(input: T): T => {
+  const storybookPath = fileURLToPath(
+    import.meta.resolve('storybook/package.json'),
+  )
+
+  // Can't directly use `import.meta.resolve` here because `parentURL` parameter is not standardized yet.
+  return dirname(
+    require.resolve(join(input, 'package.json'), {
+      paths: [dirname(storybookPath)],
+    }),
+  ) as any as T
+}
+
 const maybeGetAbsolutePath = <I extends string>(input: I): I | false => {
   try {
     return getAbsolutePath(input)

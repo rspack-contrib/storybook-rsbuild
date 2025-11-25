@@ -1,7 +1,7 @@
 {
   "extends": "@modern-js/tsconfig/base",
   "compilerOptions": {
-    "module": "ESNext",
+    "module": "es2022",
     "moduleResolution": "bundler",
     "declaration": false,
     "jsx": "preserve",

@@ -10,7 +10,7 @@
     "check-dependency-version": "pnpm tsx ./scripts/check-dependency-version.mts",
     "dev": "pnpm --parallel --filter \"./packages/**\" run prep --watch",
     "e2e": "pnpm exec playwright test --config e2e/playwright.config.ts",
-    "format": "biome check --write",
+    "format": "biome check --write --unsafe",
     "lint": "biome check",
     "test": "cross-env NODE_OPTIONS=--max_old_space_size=4096 vitest run",
     "test:watch": "cross-env NODE_OPTIONS=--max_old_space_size=4096 vitest watch"

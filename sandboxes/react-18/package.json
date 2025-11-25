@@ -18,6 +18,7 @@
     "react-dom": "18.3.1"
   },
   "devDependencies": {
+    "@types/node": "^22.0.0",
     "@chromatic-com/storybook": "^4.1.1",
     "@rsbuild/core": "^1.6.7",
     "@rsbuild/plugin-react": "^1.4.1",

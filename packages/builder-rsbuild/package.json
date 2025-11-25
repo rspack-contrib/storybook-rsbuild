@@ -27,9 +27,6 @@
     "./templates/virtualModuleModernEntry.js": "./templates/virtualModuleModernEntry.js",
     "./templates/virtualModuleStory.template.js": "./templates/virtualModuleStory.template.js"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
   "files": [
     "dist/**/*",
     "compiled/**/*",

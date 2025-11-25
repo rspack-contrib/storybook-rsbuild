@@ -4,13 +4,14 @@
  */
 
 import { readFile } from 'node:fs/promises'
-import { dirname, isAbsolute, join } from 'node:path'
+import { isAbsolute, join } from 'node:path'
 import type { RsbuildConfig } from '@rsbuild/core'
+import { resolvePackageDir } from 'storybook/internal/common'
 import type { Options } from 'storybook/internal/types'
 
 /**
- * Get react-dom version from the resolvedReact preset, which points to either
- * a root react-dom dependency or the react-dom dependency shipped with addon-docs
+ * Get react-dom version from the resolvedReact preset, which points to either a root react-dom
+ * dependency or the react-dom dependency shipped with addon-docs
  */
 const getIsReactVersion18or19 = async (options: Options) => {
   const { legacyRootApi } =
@@ -26,27 +27,7 @@ const getIsReactVersion18or19 = async (options: Options) => {
     'resolvedReact',
     {},
   )
-  let reactDom = ''
-
-  // try {
-  reactDom =
-    resolvedReact.reactDom || dirname(require.resolve('react-dom/package.json'))
-  // } catch (e) {}
-
-  // if (!reactDom) {
-  //   try {
-  //     const addonDocs = require.resolve('@storybook/addon-docs/package.json')
-  //     reactDom = dirname(
-  //       require.resolve('react-dom/package.json', {
-  //         paths: [addonDocs],
-  //       }),
-  //     )
-  //   } catch (e) {
-  //     // TODO: warn users
-  //   }
-
-  //   // use react-dom resolved from @storybook/addon-docs
-  // }
+  const reactDom = resolvedReact.reactDom || resolvePackageDir('react-dom')
 
   if (!isAbsolute(reactDom)) {
     // if react-dom is not resolved to a file we can't be sure if the version in package.json is correct or even if package.json exists
