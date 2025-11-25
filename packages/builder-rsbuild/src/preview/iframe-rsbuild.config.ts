@@ -134,16 +134,15 @@ export default async (
     typescriptOptions.check && !typescriptOptions.skipCompiler
   const tsCheckOptions = typescriptOptions.checkOptions || {}
 
-  // TODO: Rspack doesn't support persistent cache yet
   const builderOptions = await getBuilderOptions<BuilderOptions>(options)
   const cacheConfig = builderOptions.fsCache ? true : undefined
 
-  const lazyCompilationConfig =
+  const lazyCompilationConfig: Rspack.LazyCompilationOptions | undefined =
     builderOptions.lazyCompilation && !isProd
       ? {
-          lazyCompilation: { entries: false },
+          entries: false,
         }
-      : {}
+      : undefined
 
   if (!template) {
     throw new Error(dedent`
@@ -380,9 +379,9 @@ export default async (
         config.output.module = false
         config.output.chunkFormat = 'array-push'
         config.output.chunkLoading = 'jsonp'
-        config.experiments = {
-          ...config.experiments,
-          ...lazyCompilationConfig,
+
+        if (lazyCompilationConfig !== undefined) {
+          config.lazyCompilation = lazyCompilationConfig
         }
 
         return mergeConfig(
