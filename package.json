@@ -27,7 +27,7 @@
     "@biomejs/biome": "^1.9.4",
     "@playwright/test": "^1.56.1",
     "@testing-library/jest-dom": "^6.9.1",
-    "bumpp": "^9.8.1",
+    "bumpp": "^10.3.2",
     "check-dependency-version-consistency": "^5.0.1",
     "cross-env": "^10.1.0",
     "jiti": "^2.4.2",
