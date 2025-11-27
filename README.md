@@ -8,10 +8,6 @@
  <a href="https://github.com/rspack-contrib/storybook-rsbuild/blob/main/LICENSE"><img src="https://img.shields.io/npm/l/storybook-builder-rsbuild?style=flat-square&color=%23ff4785" alt="license" /></a>
 </p>
 
-> **✨ Storybook 10 Support Available**  
-> We've released a beta version compatible with Storybook 10. Try it out by installing with the `beta` tag, and check out the [v3 documentation](https://deploy-preview-388--storybook-rsbuild.netlify.app/):  
-> `pnpm add storybook-builder-rsbuild@beta storybook-react-rsbuild@beta`
-
 The repository contains the Storybook Rsbuild builder and UI framework integrations.
 
 ## Usage
