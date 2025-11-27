@@ -55,6 +55,7 @@ export const rsbuildFinal: StorybookConfigRsbuild['rsbuildFinal'] = async (
   // #endregion
 
   // #region Critical in the MF library, but it is appropriate to remove it for all library formats.
+  delete mergedLibConfig.output?.assetPrefix
   delete mergedLibConfig.dev?.assetPrefix
   // #endregion
 
