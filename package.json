@@ -24,7 +24,7 @@
     "**/package.json": ["sort-package-json", "biome check --write"]
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
+    "@biomejs/biome": "^2.3.8",
     "@playwright/test": "^1.56.1",
     "@testing-library/jest-dom": "^6.9.1",
     "bumpp": "^9.8.1",
