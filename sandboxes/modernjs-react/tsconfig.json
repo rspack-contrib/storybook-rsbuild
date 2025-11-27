@@ -1,12 +1,13 @@
 {
   "extends": "@modern-js/tsconfig/base",
   "compilerOptions": {
+    "module": "es2022",
+    "moduleResolution": "bundler",
     "declaration": false,
     "jsx": "preserve",
     "types": ["node"],
     "baseUrl": "./",
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
     "paths": {
       "@/*": ["./src/*"],
       "@shared/*": ["./shared/*"]

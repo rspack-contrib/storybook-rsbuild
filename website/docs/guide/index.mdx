@@ -36,14 +36,43 @@ pnpm add storybook-builder-rsbuild@beta storybook-vue3-rsbuild@beta
 
 :::info Storybook versions
 
-The `main` branch ships the Storybook v9 Rsbuild builder together with each framework integration. Use the table below to match your Storybook version, and review the [official migration guide](https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#from-version-8x-to-900) before moving to v9.
+The `main` branch ships the Storybook v10 Rsbuild builder together with each framework integration. Use the table below to match your Storybook version, and review the [official migration guide](https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#from-version-9x-to-1000) before moving to v10.
 
 | Storybook | Storybook Rsbuild                                                     |
 | --------- | --------------------------------------------------------------------- |
+| v10       | [^3.0.0](https://github.com/rspack-contrib/storybook-rsbuild)         |
 | v9        | [^2.0.0](https://github.com/rspack-contrib/storybook-rsbuild/tree/v2) |
 | v8        | [^1.0.0](https://github.com/rspack-contrib/storybook-rsbuild/tree/v1) |
 
 :::
+
+Storybook Rsbuild allows you to use [Rsbuild](https://rsbuild.rs) as the build engine for Storybook, providing faster startup and build times.
+
+## Quick Start
+
+The fastest way to get started is using the Storybook CLI.
+
+### New Project
+
+If you are setting up a new project, we recommend creating an Rsbuild project first, then adding Storybook.
+
+```bash
+# 1. Create a new Rsbuild project
+npm create rsbuild@latest
+
+# 2. Initialize Storybook (in the project root)
+npx storybook@latest init
+```
+
+Storybook will detect Rsbuild and automatically configure `storybook-builder-rsbuild` for you. It will also add example stories to your project. To understand the generated files, check the [Storybook Project Structure](https://storybook.js.org/docs/configure/sidebar-and-urls).
+
+### Existing Project
+
+If you are migrating an existing Storybook project to Rsbuild, install the relevant framework package and update your `.storybook/main.ts`.
+
+See the **[Frameworks](/guide/framework/react)** section for detailed migration guides.
+
+## Packages
 
 | Package                                                                                                                             | What it provides                                       |
 | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ |
@@ -53,13 +82,14 @@ The `main` branch ships the Storybook v9 Rsbuild builder together with each fram
 | [storybook-html-rsbuild](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/packages/framework-html)                     | Vanilla JavaScript/TypeScript integration              |
 | [storybook-web-components-rsbuild](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/packages/framework-web-components) | Lit and Web Components integration                     |
 | [storybook-addon-rslib](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/packages/addon-rslib)                         | Addon that reuses Rslib configuration inside Storybook |
+| [storybook-addon-modernjs](https://github.com/rspack-contrib/storybook-rsbuild/blob/main/packages/addon-modernjs)                   | Addon that reuses Modern.js configuration inside Storybook |
 
 ## Usage
 
 :::info Peer dependency requirements
 
 - **`@rsbuild/core >= 1.0.1`** — Storybook Rsbuild depends on the stable Rsbuild 1.0 runtime. See the [1.0 release announcement](https://rsbuild.rs/community/releases/v1-0) for background.
-- **`storybook >= 9.0.0`** — The packages are validated against Storybook 9. Upgrade guidance is available in the [Storybook release notes](https://storybook.js.org/blog/storybook-8/).
+- **`storybook >= 10.0.0`** — The packages are validated against Storybook 10. Upgrade guidance is available in the [Storybook release notes](https://storybook.js.org/blog/storybook-10/).
 
 :::
 
@@ -86,6 +116,12 @@ See [integrating with vanilla JavaScript / TypeScript](/guide/framework/vanilla)
 See [integrating with web components (Lit)](/guide/framework/web-components).
 
 ## Integration
+
+### With Modern.js
+
+Use your existing Modern.js configuration inside Storybook.
+
+See [integrating with Modern.js](/guide/integrations/modernjs).
 
 ### With Rslib
 

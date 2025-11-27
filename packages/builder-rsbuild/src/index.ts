@@ -4,7 +4,6 @@ import * as rsbuildReal from '@rsbuild/core'
 import fs from 'fs-extra'
 import prettyTime from 'pretty-hrtime'
 import sirv from 'sirv'
-// import { corePath } from 'storybook/core-path'
 import { getPresets, resolveAddonName } from 'storybook/internal/common'
 import { WebpackInvocationError } from 'storybook/internal/server-errors'
 import type {
@@ -12,6 +11,7 @@ import type {
   Preset,
   StorybookConfigRaw,
 } from 'storybook/internal/types'
+import { overrideRsbuildLogger } from './logger'
 import rsbuildConfig, {
   type RsbuildBuilderOptions,
 } from './preview/iframe-rsbuild.config'
@@ -138,6 +138,7 @@ export const start: RsbuildBuilder['start'] = async ({
   server: storybookServer,
   channel,
 }) => {
+  overrideRsbuildLogger()
   const { createRsbuild } = await executor.get(options)
   const config = await getConfig(options)
   const rsbuildBuild = await createRsbuild({
@@ -198,6 +199,7 @@ export const start: RsbuildBuilder['start'] = async ({
 // see: https://github.com/microsoft/TypeScript/issues/47663#issuecomment-1519138189
 export const build: ({ options }: BuilderStartOptions) => Promise<Stats> =
   async ({ options }) => {
+    overrideRsbuildLogger()
     const { createRsbuild } = await executor.get(options)
     const config = await getConfig(options)
     const rsbuildBuild = await createRsbuild({
@@ -222,10 +224,6 @@ export const build: ({ options }: BuilderStartOptions) => Promise<Stats> =
         }
         return true
       },
-    })
-
-    rsbuildBuild.onAfterBuild((params) => {
-      stats = params.stats as Stats
     })
 
     const [{ close }] = await Promise.all([rsbuildBuild.build(), previewFiles])

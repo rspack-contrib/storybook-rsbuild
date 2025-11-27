@@ -19,9 +19,9 @@ const config: StorybookConfig = {
 ## Build errors from unexpected files
 
 > [!NOTE]
-> Rspack supports the `webpackInclude` magic comment starting in version 0.0.7, which prevents this issue.
+> This issue mostly affects older Rspack versions. Modern Rspack handles `webpackInclude` correctly.
 
-Older Rspack versions bundled every matching file because `webpackInclude` was not yet available. Use `rspack.IgnorePlugin` to exclude files that shouldn't be part of your stories (for example, Markdown).
+If you encounter issues where Rspack bundles files it shouldn't (like Markdown files in unexpected places), you can use `rspack.IgnorePlugin` to exclude them.
 
 ```js
 // .storybook/main.js

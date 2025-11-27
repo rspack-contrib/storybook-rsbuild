@@ -1,6 +1,6 @@
 {
   "name": "storybook-html-rsbuild",
-  "version": "2.1.6",
+  "version": "3.0.0-beta.6",
   "description": "Storybook for HTML and Rsbuild: View HTML snippets in isolation with Hot Reloading.",
   "keywords": ["storybook", "rsbuild", "rspack", "vanilla", "html"],
   "homepage": "https://storybook.rsbuild.rs",
@@ -13,38 +13,29 @@
     "directory": "packages/framework-html"
   },
   "license": "MIT",
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "node": "./dist/index.js",
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
-    },
-    "./preset": {
-      "types": "./dist/preset.d.ts",
-      "require": "./dist/preset.js"
+      "default": "./dist/index.js"
     },
     "./node": {
       "types": "./dist/node/index.d.ts",
-      "node": "./dist/node/index.js",
-      "import": "./dist/node/index.mjs",
-      "require": "./dist/node/index.js"
+      "default": "./dist/node/index.js"
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./preset": "./dist/preset.js"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
   "files": ["dist/**/*", "README.md", "*.js", "*.d.ts", "!src/**/*"],
   "scripts": {
-    "build": "pnpm run prep --optimized",
-    "check": "jiti ../../scripts/prepare/check.ts",
-    "prep": "jiti ../../scripts/prepare/bundle.ts",
+    "build": "pnpm run prep --production",
+    "check": "jiti ../../scripts/check/check-package.ts",
+    "prep": "jiti ../../scripts/build/build-package.ts",
     "prepare": "pnpm run build"
   },
   "dependencies": {
     "@rollup/pluginutils": "^5.3.0",
-    "@storybook/html": "^9.1.15 || ^10.0.0",
+    "@storybook/html": "^10.0.0",
     "find-up": "^5.0.0",
     "magic-string": "^0.30.21",
     "resolve": "^1.22.11",
@@ -52,15 +43,15 @@
     "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
-    "@rsbuild/core": "^1.5.17",
-    "@types/node": "^18.19.110",
+    "@rsbuild/core": "^1.6.7",
+    "@types/node": "^22.0.0",
     "@types/resolve": "^1.20.6",
-    "storybook": "9.1.10",
+    "storybook": "10.0.8",
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "@rsbuild/core": "^1.5.0",
-    "storybook": "^9.0.0 || ^10.0.0",
+    "storybook": "^10.0.0",
     "typescript": ">= 4.2.x"
   },
   "peerDependenciesMeta": {

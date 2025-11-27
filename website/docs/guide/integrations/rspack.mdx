@@ -25,7 +25,7 @@ Ensure the following packages are present:
 
 Storybook Rsbuild reads the project's Rsbuild config in the same way that [`@storybook/builder-webpack5` allows custom webpack configs](https://storybook.js.org/docs/builders/webpack#import-a-custom-webpack-configuration). Configure the basics for your Rspack app here.
 
-```ts title=rsbuild.config.ts
+```ts title="rsbuild.config.ts"
 import { defineConfig } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
 
@@ -38,11 +38,14 @@ export default defineConfig({
 
 Match the setup from the [React framework guide](/guide/framework/react#configure-storybookmaints) so Storybook uses the Rsbuild builder.
 
-```ts title=.storybook/main.ts
+```ts twoslash title=".storybook/main.ts"
+// @noErrors
 import { StorybookConfig } from 'storybook-react-rsbuild'
 
 const config: StorybookConfig = {
   framework: 'storybook-react-rsbuild',
+  stories: [],
+  addons: []
 }
 
 export default config
@@ -56,10 +59,11 @@ Projects often maintain both `rspack.config.ts` (for the application build) and 
 
 The example below reuses a `less-loader` rule defined in `rspack.config.cjs`:
 
-```ts title=rsbuild.config.ts {3,7-13}
+```ts title="rsbuild.config.ts" {3,7-13}
 import { defineConfig } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
-import rspackConfig from './rspack.config.cjs'
+// import rspackConfig from './rspack.config.cjs'
+const rspackConfig = { module: { rules: [{}, {}, { loader: 'less-loader' }] } } as any
 
 export default defineConfig({
   plugins: [pluginReact()],

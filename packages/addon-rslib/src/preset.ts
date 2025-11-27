@@ -49,7 +49,6 @@ export const rsbuildFinal: StorybookConfigRsbuild['rsbuildFinal'] = async (
   delete mergedLibConfig.output?.distPath
   delete mergedLibConfig.output?.filename
   delete mergedLibConfig.output?.cleanDistPath
-  delete mergedLibConfig.output?.assetPrefix
   delete mergedLibConfig.output?.externals
   delete mergedLibConfig.server?.publicDir
   delete mergedLibConfig.dev?.progressBar

@@ -1,13 +1,15 @@
-import { dirname, join } from 'node:path'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import type { StorybookConfig } from 'storybook-react-rsbuild'
-import moduleFederationConfig from '../module-federation.config'
+import moduleFederationConfig from '../module-federation.config.ts'
 
-/**
- * This function is used to resolve the absolute path of a package.
- * It is needed in projects that use Yarn PnP or are set up within a monorepo.
- */
-function getAbsolutePath(value: string): any {
-  return dirname(require.resolve(join(value, 'package.json')))
+const getAbsolutePath = (value: string): any => {
+  return path.resolve(
+    fileURLToPath(
+      new URL(import.meta.resolve(`${value}/package.json`, import.meta.url)),
+    ),
+    '..',
+  )
 }
 
 const config: StorybookConfig = {
@@ -30,7 +32,7 @@ const config: StorybookConfig = {
   ],
   framework: {
     // For this repo, you can use `storybook-react-rsbuild` directly.
-    name: getAbsolutePath('storybook-react-rsbuild'),
+    name: getAbsolutePath('storybook-react-rsbuild') as any,
     options: {},
   },
   typescript: {

@@ -1,10 +1,7 @@
-import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import type { PresetProperty } from 'storybook/internal/types'
 import { rsbuildFinalDocs } from './react-docs'
 import type { StorybookConfig } from './types'
-
-const getAbsolutePath = <I extends string>(input: I): I =>
-  dirname(require.resolve(join(input, 'package.json'))) as any
 
 export const rsbuildFinal: StorybookConfig['rsbuildFinal'] = async (
   config,
@@ -19,10 +16,10 @@ export const core: PresetProperty<'core'> = async (config, options) => {
   return {
     ...config,
     builder: {
-      name: getAbsolutePath('storybook-builder-rsbuild'),
+      name: fileURLToPath(import.meta.resolve('storybook-builder-rsbuild')),
       options:
         typeof framework === 'string' ? {} : framework.options.builder || {},
     },
-    renderer: getAbsolutePath('@storybook/react'),
+    renderer: fileURLToPath(import.meta.resolve('@storybook/react/preset')),
   }
 }
