@@ -13,10 +13,10 @@
     "@types/node": "^22.0.0",
     "@chromatic-com/storybook": "^4.1.1",
     "@rsbuild/core": "^1.6.7",
-    "@storybook/addon-docs": "10.0.8",
-    "@storybook/addon-onboarding": "10.0.8",
-    "@storybook/html": "10.0.8",
-    "storybook": "10.0.8",
+    "@storybook/addon-docs": "10.1.0",
+    "@storybook/addon-onboarding": "10.1.0",
+    "@storybook/html": "10.1.0",
+    "storybook": "10.1.0",
     "storybook-html-rsbuild": "workspace:*",
     "typescript": "^5.9.3"
   }
