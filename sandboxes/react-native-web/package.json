@@ -1,0 +1,50 @@
+{
+  "name": "@sandboxes/react-native-web",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "build": "rsbuild build",
+    "build:storybook": "storybook build --stats-json",
+    "dev": "rsbuild dev --open",
+    "preview": "rsbuild preview",
+    "storybook": "storybook dev -p 6006"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.28.2",
+    "nativewind": "4.1.23",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-native": "0.73.9",
+    "react-native-css-interop": "^0.1.22",
+    "react-native-reanimated": "3.17.1",
+    "react-native-svg": "14.2.0",
+    "react-native-worklets": "0.6.1",
+    "react-native-web": "0.19.13"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-react": "^7.26.3",
+    "@babel/types": "^7.28.4",
+    "@chromatic-com/storybook": "^4.1.1",
+    "@react-native/babel-preset": "0.73.9",
+    "@rsbuild/core": "^1.6.7",
+    "@rsbuild/plugin-react": "^1.4.1",
+    "@storybook/addon-docs": "10.1.0",
+    "@storybook/addon-onboarding": "10.1.0",
+    "@storybook/react": "10.1.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.3.26",
+    "@types/react-dom": "^18.3.7",
+    "autoprefixer": "^10.4.20",
+    "babel-loader": "^9.2.1",
+    "babel-plugin-react-native-web": "^0.19.13",
+    "postcss": "^8.4.47",
+    "postcss-import": "^16.0.0",
+    "storybook": "10.1.0",
+    "storybook-react-native-web-rsbuild": "workspace:*",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.9.3"
+  }
+}

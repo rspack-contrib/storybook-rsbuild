@@ -11,3 +11,8 @@ onlyBuiltDependencies:
   - core-js-pure
   - esbuild
   - simple-git-hooks
+
+overrides:
+  # https://github.com/software-mansion/react-native-reanimated/issues/8242#issuecomment-3299082721
+  'nativewind>react-native-css-interop': '0.1.22'
+  'react-native-is-edge-to-edge': '1.2.1'

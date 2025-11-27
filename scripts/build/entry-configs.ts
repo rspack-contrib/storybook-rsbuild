@@ -9,6 +9,8 @@ import htmlFrameworkConfig from '../../packages/framework-html/build-config'
 // @ts-ignore
 import reactFrameworkConfig from '../../packages/framework-react/build-config'
 // @ts-ignore
+import reactNativeWebFrameworkConfig from '../../packages/framework-react-native-web/build-config'
+// @ts-ignore
 import vue3FrameworkConfig from '../../packages/framework-vue3/build-config'
 // @ts-ignore
 import webComponentsFrameworkConfig from '../../packages/framework-web-components/build-config'
@@ -21,6 +23,7 @@ export const buildEntries = {
   // frameworks
   'storybook-html-rsbuild': htmlFrameworkConfig,
   'storybook-react-rsbuild': reactFrameworkConfig,
+  'storybook-react-native-web-rsbuild': reactNativeWebFrameworkConfig,
   'storybook-vue3-rsbuild': vue3FrameworkConfig,
   'storybook-web-components-rsbuild': webComponentsFrameworkConfig,
 

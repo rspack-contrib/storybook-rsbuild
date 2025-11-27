@@ -24,6 +24,22 @@
     "**/package.json": ["sort-package-json", "biome check --write"]
   },
   "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/plugin-transform-arrow-functions": "7.27.1",
+    "@babel/plugin-transform-class-properties": "7.27.1",
+    "@babel/plugin-transform-classes": "7.28.0",
+    "@babel/plugin-transform-nullish-coalescing-operator": "7.27.1",
+    "@babel/plugin-transform-optional-chaining": "7.27.1",
+    "@babel/plugin-transform-react-jsx": "7.27.1",
+    "@babel/plugin-transform-shorthand-properties": "7.27.1",
+    "@babel/plugin-transform-template-literals": "7.27.1",
+    "@babel/plugin-transform-unicode-regex": "7.27.1",
+    "@babel/preset-typescript": "7.27.1",
+    "@babel/generator": "^7.28.4",
+    "@babel/template": "^7.27.2",
+    "@babel/traverse": "^7.28.0",
+    "@babel/runtime": "^7.28.0",
+    "@babel/types": "^7.28.4",
     "@biomejs/biome": "^1.9.4",
     "@playwright/test": "^1.56.1",
     "@testing-library/jest-dom": "^6.9.1",
@@ -33,12 +49,14 @@
     "jiti": "^2.4.2",
     "nano-staged": "^0.8.0",
     "path-serializer": "^0.5.1",
+    "react-native-web": "0.19.13",
     "simple-git-hooks": "^2.13.1",
     "sort-package-json": "^2.15.1",
     "ts-dedent": "^2.2.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.10"
+    "vitest": "^4.0.10",
+    "react-native-css-interop": "^0.1.22"
   },
   "packageManager": "pnpm@10.14.0"
 }
