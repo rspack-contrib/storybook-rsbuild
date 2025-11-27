@@ -91,14 +91,19 @@ async function inspectSandboxOnce(
 
 function parseInspectOutput(output: string) {
   const configs: Record<string, string> = {}
-  const configRegex =
-    / -\ (Rsbuild config|Rspack Config(?: \([^)]+\))?):\s+(.+)$/gm
-  let match: RegExpExecArray | null
-  match = configRegex.exec(output)
-  while (match) {
-    const [, label, filePath] = match
-    configs[label.trim()] = filePath.trim()
-    match = configRegex.exec(output)
+
+  for (const line of output.split('\n')) {
+    if (line.includes('- Rsbuild config:')) {
+      const nextLine = output.split(line)[1]?.split('\n')[1]
+      const path = nextLine?.split('│')[1]?.trim()
+      if (path) configs['Rsbuild config'] = path
+    }
+    if (line.includes('- Rspack Config')) {
+      const nextLine = output.split(line)[1]?.split('\n')[1]
+      const path = nextLine?.split('│')[1]?.trim()
+      if (path)
+        configs[line.split(':')[0].replace('│', '').trim().slice(2)] = path
+    }
   }
 
   const outputDirMatch = /Output directory:\s*(.+)$/m.exec(output)
