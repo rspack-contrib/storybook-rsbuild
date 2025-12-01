@@ -17,6 +17,16 @@ const config: BuildEntries = {
         entryPoint: './src/loaders/export-order-loader.ts',
         dts: false,
       },
+      {
+        exportEntries: ['./loaders/storybook-mock-transform-loader'],
+        entryPoint: './src/loaders/storybook-mock-transform-loader.ts',
+        dts: false,
+      },
+      {
+        exportEntries: ['./loaders/rsbuild-automock-loader'],
+        entryPoint: './src/loaders/rsbuild-automock-loader.ts',
+        dts: false,
+      },
     ],
   },
   extraOutputs: {
