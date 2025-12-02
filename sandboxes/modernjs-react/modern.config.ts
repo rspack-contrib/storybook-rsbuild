@@ -1,8 +1,8 @@
 import path from 'node:path'
 import {
   type AppTools,
-  type CliPluginFuture,
   appTools,
+  type CliPluginFuture,
   defineConfig,
 } from '@modern-js/app-tools'
 
@@ -23,7 +23,7 @@ export default defineConfig({
     {
       name: 'modern-js-rsbuild-plugin',
       setup(api) {
-        api.modifyRsbuildConfig((config) => {
+        api.modifyRsbuildConfig((_config) => {
           console.log('run builder hook')
         })
       },

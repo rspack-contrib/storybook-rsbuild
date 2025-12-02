@@ -1,6 +1,5 @@
-import { mergeRsbuildConfig } from '@rsbuild/core'
-
 import type { RsbuildConfig } from '@rsbuild/core'
+import { mergeRsbuildConfig } from '@rsbuild/core'
 import { requirer } from './requirer'
 import type { StorybookConfig } from './types'
 
@@ -48,7 +47,7 @@ export const rsbuildFinalDocs: NonNullable<
   try {
     require.resolve('typescript')
     typescriptPresent = true
-  } catch (e) {
+  } catch (_e) {
     typescriptPresent = false
   }
 

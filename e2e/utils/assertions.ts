@@ -1,4 +1,4 @@
-import { type FrameLocator, type Page, expect } from '@playwright/test'
+import { expect, type FrameLocator, type Page } from '@playwright/test'
 
 const previewFrameSelector = 'iframe[title="storybook-preview-iframe"]'
 

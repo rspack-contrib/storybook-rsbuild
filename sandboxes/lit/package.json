@@ -14,13 +14,13 @@
     "lit": "^3.3.1"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0",
     "@chromatic-com/storybook": "^4.1.1",
     "@rsbuild/core": "^1.6.7",
     "@rsbuild/plugin-vue": "1.2.0",
     "@storybook/addon-docs": "10.1.2",
     "@storybook/addon-onboarding": "10.1.2",
     "@storybook/web-components": "10.1.2",
+    "@types/node": "^22.0.0",
     "storybook": "10.1.2",
     "storybook-web-components-rsbuild": "workspace:*",
     "typescript": "^5.9.3"

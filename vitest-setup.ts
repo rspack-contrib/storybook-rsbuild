@@ -1,8 +1,8 @@
 // Code taken from https://github.com/storybookjs/storybook/blob/next/code/vitest-setup.ts.
 import '@testing-library/jest-dom/vitest'
-import { expect, vi } from 'vitest'
 
 import { dedent } from 'ts-dedent'
+import { expect, vi } from 'vitest'
 
 const ignoreList = [
   (error: any) =>

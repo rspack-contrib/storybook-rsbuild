@@ -1,4 +1,4 @@
-import { type RsbuildConfig, mergeRsbuildConfig } from '@rsbuild/core'
+import { mergeRsbuildConfig, type RsbuildConfig } from '@rsbuild/core'
 import { loadConfig } from '@rslib/core'
 import type {
   RsbuildFinal,

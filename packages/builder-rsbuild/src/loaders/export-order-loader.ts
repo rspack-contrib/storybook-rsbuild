@@ -55,7 +55,7 @@ export default async function loader(
     }
 
     return callback(null, magicString.toString(), map, meta)
-  } catch (err) {
+  } catch (_err) {
     return callback(null, source, map, meta)
   }
 }

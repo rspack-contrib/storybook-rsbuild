@@ -145,7 +145,7 @@ export default (config: Options = {}): RsbuildPlugin => {
             })
 
             return res
-          } catch (e) {
+          } catch (_e) {
             return src
           }
         },

@@ -1,6 +1,5 @@
-import { babelParser, getAutomockCode } from 'storybook/internal/mocking-utils'
-
 import type { Rspack } from '@rsbuild/core'
+import { babelParser, getAutomockCode } from 'storybook/internal/mocking-utils'
 
 interface AutomockLoaderOptions {
   spy?: string

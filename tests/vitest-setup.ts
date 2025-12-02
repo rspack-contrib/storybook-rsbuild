@@ -2,9 +2,10 @@
 import { dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import '@testing-library/jest-dom/vitest'
-import { expect, vi } from 'vitest'
 
 import { createSnapshotSerializer } from 'path-serializer'
+import { expect } from 'vitest'
+
 const workspaceRoot = dirname(fileURLToPath(new URL('./', import.meta.url)))
 
 expect.addSnapshotSerializer(

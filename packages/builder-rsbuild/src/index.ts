@@ -18,8 +18,8 @@ import rsbuildConfig, {
 import { applyReactShims } from './react-shims'
 import type { RsbuildBuilder } from './types'
 
-export * from './types'
 export * from './preview/virtual-module-mapping'
+export * from './types'
 
 const corePath = dirname(require.resolve('storybook/package.json'))
 
@@ -136,7 +136,6 @@ export const start: RsbuildBuilder['start'] = async ({
   options,
   router,
   server: storybookServer,
-  channel,
 }) => {
   overrideRsbuildLogger()
   const { createRsbuild } = await executor.get(options)

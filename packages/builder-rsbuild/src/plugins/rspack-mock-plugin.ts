@@ -1,6 +1,8 @@
 import { dirname, isAbsolute } from 'node:path'
 import { fileURLToPath } from 'node:url'
-
+import type { Rspack } from '@rsbuild/core'
+import { rspack } from '@rsbuild/core'
+import { findMockRedirect } from '@vitest/mocker/redirect'
 import {
   babelParser,
   extractMockCalls,
@@ -8,10 +10,6 @@ import {
   resolveExternalModule,
   resolveWithExtensions,
 } from 'storybook/internal/mocking-utils'
-
-import type { Rspack } from '@rsbuild/core'
-import { rspack } from '@rsbuild/core'
-import { findMockRedirect } from '@vitest/mocker/redirect'
 
 const PLUGIN_NAME = 'RspackMockPlugin'
 
@@ -141,7 +139,7 @@ export class RspackMockPlugin {
           ...mock,
           replacementResource,
         })
-      } catch (error) {
+      } catch (_error) {
         logger.warn(
           `Could not resolve mock for "${mock.path}". It will be ignored.`,
         )

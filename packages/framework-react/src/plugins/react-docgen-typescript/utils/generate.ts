@@ -36,7 +36,7 @@ function createLiteral(
  * to assign to nonexistent components, which can happen due to incorrect
  * detection of component names when using the parser.
  * ```
- * // @ts-ignore
+ * // @ts-expect-error
  * ```
  * @param statement
  */

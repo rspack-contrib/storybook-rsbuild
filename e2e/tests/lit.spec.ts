@@ -1,6 +1,6 @@
-import { expect, test } from '@playwright/test'
+import { test } from '@playwright/test'
 import { sandboxes } from '../sandboxes'
-import { expectDocsStorybookTitle, previewFrame } from '../utils/assertions'
+import { expectDocsStorybookTitle } from '../utils/assertions'
 import { launchSandbox } from '../utils/sandboxProcess'
 
 const sandbox = sandboxes.find((entry) => entry.name === 'lit')

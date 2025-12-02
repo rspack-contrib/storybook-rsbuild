@@ -70,7 +70,7 @@ export async function importModule(
     isTypescriptLoaderRegistered = true
   }
 
-  let mod = undefined
+  let mod
   try {
     const resolvedPath = win32.isAbsolute(path)
       ? pathToFileURL(path).href
@@ -87,7 +87,7 @@ export async function importModule(
         delete require.cache[require.resolve(path)]
       }
       mod = require(path)
-    } catch (requireError) {
+    } catch (_requireError) {
       /*
         If everything fails, throw the original import error, as the require error won't be helpful
         in Node 20 requireError will always be "Error [ERR_REQUIRE_CYCLE_MODULE]: Cannot require() ES Module"
@@ -140,5 +140,5 @@ export const safeResolveModule = ({
     if (statSync(resolvedPath).isFile()) {
       return resolvedPath
     }
-  } catch (e: any) {}
+  } catch (_e: any) {}
 }

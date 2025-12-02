@@ -4,19 +4,19 @@
 
 import findUp from 'find-up'
 import MagicString from 'magic-string'
-import {
-  ERROR_CODES,
-  builtinHandlers as docgenHandlers,
-  builtinResolvers as docgenResolver,
-  makeFsImporter,
-  parse,
-  utils,
-} from 'react-docgen'
 import type {
   Documentation,
   Handler,
   NodePath,
   babelTypes as t,
+} from 'react-docgen'
+import {
+  builtinHandlers as docgenHandlers,
+  builtinResolvers as docgenResolver,
+  ERROR_CODES,
+  makeFsImporter,
+  parse,
+  utils,
 } from 'react-docgen'
 import { logger } from 'storybook/internal/node-logger'
 import * as TsconfigPaths from 'tsconfig-paths'
@@ -24,9 +24,9 @@ import * as TsconfigPaths from 'tsconfig-paths'
 import type { LoaderContext } from 'webpack'
 
 import {
+  defaultLookupModule,
   RESOLVE_EXTENSIONS,
   ReactDocgenResolveError,
-  defaultLookupModule,
 } from './docgen-resolver'
 
 const { getNameOrValue, isReactForwardRefCall } = utils

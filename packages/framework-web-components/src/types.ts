@@ -1,12 +1,12 @@
 import type {
+  StorybookConfig as StorybookConfigBase,
+  TypescriptOptions as TypescriptOptionsWebComponents,
+} from 'storybook/internal/types'
+import type {
   BuilderOptions,
   StorybookConfigRsbuild,
   TypescriptOptions as TypescriptOptionsBuilder,
 } from 'storybook-builder-rsbuild'
-import type {
-  StorybookConfig as StorybookConfigBase,
-  TypescriptOptions as TypescriptOptionsWebComponents,
-} from 'storybook/internal/types'
 
 type FrameworkName = 'storybook-web-components-rsbuild'
 type BuilderName = 'storybook-builder-rsbuild'

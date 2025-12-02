@@ -1,11 +1,8 @@
+import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
-
+import type { RsbuildConfig } from '@rsbuild/core'
 import { findConfigFile } from 'storybook/internal/common'
 import type { Options } from 'storybook/internal/types'
-
-import type { RsbuildConfig } from '@rsbuild/core'
-
-import { createRequire } from 'node:module'
 import { RspackInjectMockerRuntimePlugin } from './plugins/rspack-inject-mocker-runtime-plugin'
 import { RspackMockPlugin } from './plugins/rspack-mock-plugin'
 
@@ -53,9 +50,11 @@ export async function rsbuildFinal(
     ...config,
     tools: {
       ...config.tools,
-      rspack: Array.isArray(config.tools?.rspack!)
-        ? [...config.tools?.rspack!, applyMocking]
-        : [config.tools?.rspack!, applyMocking],
+      rspack: Array.isArray(config.tools?.rspack)
+        ? [...config.tools.rspack, applyMocking]
+        : [config.tools?.rspack, applyMocking].filter(
+            <T>(v: T): v is NonNullable<T> => Boolean(v),
+          ),
     },
   }
 }

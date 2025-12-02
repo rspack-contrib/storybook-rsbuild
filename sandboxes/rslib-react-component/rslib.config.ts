@@ -1,6 +1,6 @@
 import { pluginReact } from '@rsbuild/plugin-react'
 import { pluginSass } from '@rsbuild/plugin-sass'
-import { type LibConfig, defineConfig } from '@rslib/core'
+import { defineConfig, type LibConfig } from '@rslib/core'
 
 const shared: LibConfig = {
   bundle: false,
