@@ -1,16 +1,16 @@
-// @ts-ignore
+// @ts-expect-error
 import addonModernjsConfig from '../../packages/addon-modernjs/build-config'
-// @ts-ignore
+// @ts-expect-error
 import addonRslibConfig from '../../packages/addon-rslib/build-config'
-// @ts-ignore
+// @ts-expect-error
 import builderConfig from '../../packages/builder-rsbuild/build-config'
-// @ts-ignore
+// @ts-expect-error
 import htmlFrameworkConfig from '../../packages/framework-html/build-config'
-// @ts-ignore
+// @ts-expect-error
 import reactFrameworkConfig from '../../packages/framework-react/build-config'
-// @ts-ignore
+// @ts-expect-error
 import vue3FrameworkConfig from '../../packages/framework-vue3/build-config'
-// @ts-ignore
+// @ts-expect-error
 import webComponentsFrameworkConfig from '../../packages/framework-web-components/build-config'
 import type { BuildEntriesByPackageName } from './utils/entry-utils'
 

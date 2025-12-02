@@ -17,7 +17,7 @@ export function getTSConfigFile(
       {},
       tsconfigPath,
     )
-  } catch (error) {
+  } catch (_error) {
     return {}
   }
 }

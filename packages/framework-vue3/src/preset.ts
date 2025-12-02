@@ -3,7 +3,7 @@ import type { PresetProperty } from 'storybook/internal/types'
 
 export { rsbuildFinal } from './framework-preset-vue3'
 
-export const core: PresetProperty<'core'> = async (config, options) => {
+export const core: PresetProperty<'core'> = async (_config, options) => {
   const framework = await options.presets.apply('framework')
 
   return {

@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { test } from '@playwright/test'
 import { sandboxes } from '../sandboxes'
 import { expectDocsStorybookTitle } from '../utils/assertions'
 import { launchSandbox } from '../utils/sandboxProcess'

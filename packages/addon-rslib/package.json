@@ -2,7 +2,13 @@
   "name": "storybook-addon-rslib",
   "version": "3.0.0",
   "description": "Storybook addon for loading configuration of Rslib",
-  "keywords": ["storybook", "storybook-addons", "rsbuild", "rspack", "rslib"],
+  "keywords": [
+    "storybook",
+    "storybook-addons",
+    "rsbuild",
+    "rspack",
+    "rslib"
+  ],
   "homepage": "https://storybook.rsbuild.rs",
   "bugs": {
     "url": "https://github.com/rspack-contrib/storybook-rsbuild/issues"
@@ -22,7 +28,13 @@
     "./package.json": "./package.json",
     "./preset": "./dist/preset.js"
   },
-  "files": ["dist/**/*", "README.md", "*.js", "*.d.ts", "!src/**/*"],
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts",
+    "!src/**/*"
+  ],
   "scripts": {
     "build": "pnpm run prep --production",
     "check": "jiti ../../scripts/check/check-package.ts",
@@ -51,7 +63,10 @@
     "access": "public"
   },
   "bundler": {
-    "entries": ["./src/index.ts", "./src/preset.ts"],
+    "entries": [
+      "./src/index.ts",
+      "./src/preset.ts"
+    ],
     "platform": "node"
   }
 }

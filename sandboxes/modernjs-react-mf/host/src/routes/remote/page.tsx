@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from 'react'
+import React from 'react'
 import { Button } from 'remote/Button'
 
 const Index = (): JSX.Element => {

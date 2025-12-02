@@ -1,8 +1,8 @@
-import { type RsbuildConfig, mergeRsbuildConfig } from '@rsbuild/core'
+import { mergeRsbuildConfig, type RsbuildConfig } from '@rsbuild/core'
 import type { StorybookConfig } from './types'
 
 const rsbuildFinalDoc: StorybookConfig['rsbuildFinal'] = (
-  config,
+  _config,
   options,
 ): RsbuildConfig => {
   let vueDocgenOptions = {}
@@ -45,8 +45,8 @@ const rsbuildFinalDoc: StorybookConfig['rsbuildFinal'] = (
 }
 
 const rsbuildFinalBase: StorybookConfig['rsbuildFinal'] = (
-  config,
-  options,
+  _config,
+  _options,
 ): RsbuildConfig => {
   return {
     resolve: {

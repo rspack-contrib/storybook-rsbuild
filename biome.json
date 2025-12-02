@@ -1,15 +1,8 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
-  "organizeImports": {
-    "enabled": true,
-    "include": [
-      "./**/*.js",
-      "./**/*.jsx",
-      "./**/*.ts",
-      "./**/*.tsx",
-      "./**/*.mjs",
-      "./**/*.cjs"
-    ]
+  "$schema": "https://biomejs.dev/schemas/2.3.8/schema.json",
+  "assist": {
+    "includes": ["**", "!**/*.vue"],
+    "actions": { "source": { "organizeImports": "on" } }
   },
   "vcs": {
     "enabled": true,
@@ -22,7 +15,7 @@
   },
   "formatter": {
     "indentStyle": "space",
-    "ignore": ["*.vue"]
+    "includes": ["**", "!**/*.vue"]
   },
   "javascript": {
     "formatter": {
@@ -38,18 +31,37 @@
   },
   "linter": {
     "enabled": true,
-    "ignore": ["./scripts/"],
+    "includes": ["**", "!scripts/**", "!**/*.vue"],
     "rules": {
       "recommended": true,
       "a11y": {
-        "all": false
+        "recommended": false
+      },
+      "correctness": {
+        "noUnusedImports": "warn",
+        "noUnusedFunctionParameters": "warn",
+        "noUndeclaredDependencies": "off",
+        "noUnusedVariables": {
+          "level": "warn",
+          "options": {
+            "ignoreRestSiblings": true
+          }
+        }
       },
       "style": {
         "noNonNullAssertion": "off"
       },
       "suspicious": {
         "noExplicitAny": "off",
-        "noConfusingVoidType": "off"
+        "noConfusingVoidType": "off",
+        "noAssignInExpressions": "off",
+        "noImplicitAnyLet": "off"
+      },
+      "complexity": {
+        "useOptionalChain": "off",
+        "useLiteralKeys": "warn",
+        "noUselessUndefinedInitialization": "warn",
+        "noUselessFragments": "warn"
       },
       "performance": {
         "noDelete": "off"

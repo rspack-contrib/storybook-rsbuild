@@ -1,7 +1,6 @@
+import type { Rspack } from '@rsbuild/core'
 import { rewriteSbMockImportCalls } from 'storybook/internal/mocking-utils'
 import { logger } from 'storybook/internal/node-logger'
-
-import type { Rspack } from '@rsbuild/core'
 
 const storybookMockTransformLoader = function (
   this: Rspack.LoaderContext<any>,

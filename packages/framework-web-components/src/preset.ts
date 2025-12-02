@@ -2,7 +2,7 @@ import { fileURLToPath } from 'node:url'
 import type { PresetProperty } from 'storybook/internal/types'
 import type { StorybookConfig } from './types'
 
-export const core: PresetProperty<'core'> = async (config, options) => {
+export const core: PresetProperty<'core'> = async (_config, options) => {
   const framework = await options.presets.apply('framework')
 
   return {
@@ -19,7 +19,7 @@ export const core: PresetProperty<'core'> = async (config, options) => {
 
 export const rsbuildFinal: StorybookConfig['rsbuildFinal'] = (
   config,
-  options,
+  _options,
 ) => {
   delete config.html
   return config

@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs'
+import { readdirSync, readFileSync } from 'node:fs'
 import { basename, join, resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import reactDocgenTypescript from '../index'
@@ -26,7 +26,7 @@ const createMockApi = (fixture: any) => {
     modifyRsbuildConfig: async (fn: any) => {
       preHandlers.push(fn)
     },
-    transform: async (filter: any, handler: any) => {
+    transform: async (_filter: any, handler: any) => {
       resultHandler = handler
     },
     onCloseBuild: () => {},
