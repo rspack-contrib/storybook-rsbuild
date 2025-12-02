@@ -15,6 +15,17 @@ import { findMockRedirect } from '@vitest/mocker/redirect'
 
 const PLUGIN_NAME = 'RspackMockPlugin'
 
+/**
+ * Normalize file paths to use forward slashes consistently across all platforms.
+ * This is necessary because:
+ * - `extractMockCalls` uses `pathe` which always returns forward slashes
+ * - `resolveWithExtensions` uses Node's `require.resolve` which returns backslashes on Windows
+ * Without this normalization, path comparison would fail on Windows.
+ */
+function normalizePath(filePath: string): string {
+  return filePath.replace(/\\/g, '/')
+}
+
 export interface RspackMockPluginOptions {
   previewConfigPath: string
   configDir?: string
@@ -47,8 +58,8 @@ export class RspackMockPlugin {
     const updateMocks = () => {
       this.mockMap = new Map(
         this.extractAndResolveMocks(compiler).flatMap((mock) => [
-          [mock.absolutePath, mock],
-          [mock.absolutePath.replace(/\.[^.]+$/, ''), mock],
+          [normalizePath(mock.absolutePath), mock],
+          [normalizePath(mock.absolutePath.replace(/\.[^.]+$/, '')), mock],
         ]),
       )
       logger.info(`Mock map updated with ${this.mockMap.size / 2} mocks.`)
@@ -67,8 +78,12 @@ export class RspackMockPlugin {
           ? resolveExternalModule(path, importer)
           : resolveWithExtensions(path, importer)
 
-        if (this.mockMap.has(absolutePath)) {
-          resource.request = this.mockMap.get(absolutePath)!.replacementResource
+        const normalizedAbsolutePath = normalizePath(absolutePath)
+
+        if (this.mockMap.has(normalizedAbsolutePath)) {
+          resource.request = this.mockMap.get(
+            normalizedAbsolutePath,
+          )!.replacementResource
         }
       } catch {
         logger.debug(`Could not resolve mock for "${resource.request}".`)
