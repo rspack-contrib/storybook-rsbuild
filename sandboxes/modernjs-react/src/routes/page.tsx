@@ -3,6 +3,7 @@ import './index.css'
 
 const Index = () => (
   <div className="container-box">
+    {/* @ts-ignore */}
     <Helmet>
       <link
         rel="icon"
