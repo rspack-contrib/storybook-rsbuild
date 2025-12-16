@@ -1,9 +1,29 @@
+import { createRequire } from 'node:module'
+import { dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { mergeRsbuildConfig } from '@rsbuild/core'
 import { pluginReactNativeWeb } from 'rsbuild-plugin-react-native-web'
 import type { PresetProperty } from 'storybook/internal/types'
 import { rsbuildFinal as reactRsbuildFinal } from 'storybook-react-rsbuild/preset'
 import type { FrameworkOptions, StorybookConfig } from './types'
+
+/**
+ * Resolve the absolute path to react-native-web from the user's project.
+ * This is needed for pnpm/monorepo setups where the alias 'react-native' -> 'react-native-web'
+ * may not resolve correctly from deep within node_modules.
+ */
+function resolveReactNativeWeb(configDir: string): string {
+  try {
+    // Create require from the config directory (user's project context)
+    const require = createRequire(`${configDir}/package.json`)
+    const resolved = require.resolve('react-native-web')
+    // Return the package directory, not the entry file
+    return dirname(resolved)
+  } catch {
+    // Fallback to package name if resolution fails
+    return 'react-native-web'
+  }
+}
 
 export const rsbuildFinal: StorybookConfig['rsbuildFinal'] = async (
   config,
@@ -17,6 +37,9 @@ export const rsbuildFinal: StorybookConfig['rsbuildFinal'] = async (
   const frameworkOptions: FrameworkOptions =
     typeof framework === 'string' ? {} : framework.options || {}
 
+  // Resolve react-native-web to absolute path for proper alias resolution in monorepos
+  const reactNativeWebPath = resolveReactNativeWeb(options.configDir)
+
   // Apply React Native Web plugin
   return mergeRsbuildConfig(reactConfig, {
     plugins: [
@@ -25,6 +48,12 @@ export const rsbuildFinal: StorybookConfig['rsbuildFinal'] = async (
         ...frameworkOptions.pluginOptions,
       }),
     ],
+    resolve: {
+      alias: {
+        // Use absolute path to ensure proper resolution in pnpm/monorepo setups
+        'react-native': reactNativeWebPath,
+      },
+    },
   })
 }
 

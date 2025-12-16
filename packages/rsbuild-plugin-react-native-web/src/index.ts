@@ -26,6 +26,13 @@ const DEFAULT_MODULES_TO_TRANSPILE = [
   '@expo',
 ]
 
+// Default modules that should not be tree-shaken (they have side effects)
+const DEFAULT_NO_TREESHAKE_MODULES = [
+  'react-native-css-interop',
+  'react-native-css',
+  'expo-modules-core',
+]
+
 export interface PluginReactNativeWebOptions {
   /**
    * Additional node_modules that need to be transpiled.
@@ -35,6 +42,28 @@ export interface PluginReactNativeWebOptions {
    * @example ['my-react-native-library']
    */
   modulesToTranspile?: string[]
+
+  /**
+   * The JSX runtime to use.
+   * - 'automatic': Uses the new JSX transform (React 17+)
+   * - 'classic': Uses React.createElement
+   * @default 'automatic'
+   */
+  jsxRuntime?: 'automatic' | 'classic'
+
+  /**
+   * The source for JSX imports when using the automatic runtime.
+   * @default 'react'
+   * @example 'nativewind' for NativeWind v4+
+   */
+  jsxImportSource?: string
+
+  /**
+   * Modules that should not be tree-shaken.
+   * Some React Native packages have side effects that may be incorrectly removed.
+   * @default ['react-native-css-interop', 'expo-modules-core']
+   */
+  noTreeshakeModules?: string[]
 }
 
 /**
@@ -63,6 +92,15 @@ export function pluginReactNativeWeb(
   ]
 
   const includePattern = createTranspileIncludePattern(modulesToTranspile)
+  const jsxRuntime = options.jsxRuntime ?? 'automatic'
+  const jsxImportSource = options.jsxImportSource
+  const noTreeshakeModules = [
+    ...new Set([
+      ...DEFAULT_NO_TREESHAKE_MODULES,
+      ...(options.noTreeshakeModules || []),
+    ]),
+  ]
+  const noTreeshakePattern = createTranspileIncludePattern(noTreeshakeModules)
 
   return {
     name: 'rsbuild:react-native-web',
@@ -87,14 +125,10 @@ export function pluginReactNativeWeb(
           'global.__x': '{}',
         }
 
-        // 2. Alias react-native to react-native-web
+        // 2. Add web-specific extensions with higher priority
+        // Note: The alias 'react-native' -> 'react-native-web' should be configured
+        // by the framework/user with an absolute path for pnpm/monorepo compatibility
         config.resolve ??= {}
-        config.resolve.alias = {
-          ...config.resolve.alias,
-          'react-native': 'react-native-web',
-        }
-
-        // 3. Add web-specific extensions with higher priority
         config.resolve.extensions = webExtensions
 
         // 4. Include RN modules in transpilation
@@ -123,6 +157,14 @@ export function pluginReactNativeWeb(
           jsRule.include.add(includePattern)
         }
 
+        // Build JSX config based on options
+        const reactConfig: Record<string, unknown> = {
+          runtime: jsxRuntime,
+        }
+        if (jsxImportSource && jsxRuntime === 'automatic') {
+          reactConfig.importSource = jsxImportSource
+        }
+
         // Add a specific rule for React Native packages that may use Flow
         chain.module
           .rule('react-native-flow')
@@ -138,12 +180,18 @@ export function pluginReactNativeWeb(
                 jsx: true,
               },
               transform: {
-                react: {
-                  runtime: 'automatic',
-                },
+                react: reactConfig,
               },
             },
           })
+
+        // Mark certain modules as having side effects to prevent tree-shaking issues
+        chain.module
+          .rule('react-native-no-treeshake')
+          .test(/\.(js|mjs|jsx|ts|tsx)$/)
+          .include.add(noTreeshakePattern)
+          .end()
+          .set('sideEffects', true)
       })
 
       // Apply code transformations for compatibility fixes
