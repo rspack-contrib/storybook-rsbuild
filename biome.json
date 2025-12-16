@@ -15,6 +15,7 @@
   },
   "formatter": {
     "indentStyle": "space",
+    "lineEnding": "lf",
     "includes": ["**", "!**/*.vue"]
   },
   "javascript": {
@@ -55,7 +56,13 @@
         "noExplicitAny": "off",
         "noConfusingVoidType": "off",
         "noAssignInExpressions": "off",
-        "noImplicitAnyLet": "off"
+        "noImplicitAnyLet": "off",
+        "noUnknownAtRules": {
+          "level": "error",
+          "options": {
+            "ignore": ["tailwind"]
+          }
+        }
       },
       "complexity": {
         "useOptionalChain": "off",

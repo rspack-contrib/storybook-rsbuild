@@ -1,0 +1,40 @@
+{
+  "name": "@sandboxes/react-native-web",
+  "version": "0.0.0",
+  "private": true,
+  "description": "React Native Web Storybook Sandbox with TailwindCSS and Reanimated",
+  "author": "",
+  "type": "module",
+  "scripts": {
+    "build:storybook": "storybook build --stats-json",
+    "storybook": "storybook dev -p 6006"
+  },
+  "dependencies": {
+    "nativewind": "^4.1.23",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-native-css-interop": "^0.1.22",
+    "react-native-reanimated": "^3.16.7",
+    "react-native-safe-area-context": "^5.6.2",
+    "react-native-web": "^0.19.13",
+    "react-native-worklets": "^0.6.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "@babel/preset-typescript": "^7.27.1",
+    "@rsbuild/core": "^1.6.13",
+    "@rsbuild/plugin-babel": "^1.0.4",
+    "@rsbuild/plugin-react": "^1.4.2",
+    "@storybook/addon-docs": "10.1.2",
+    "@storybook/react": "10.1.2",
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.3.27",
+    "@types/react-dom": "^18.3.7",
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "storybook": "10.1.2",
+    "storybook-react-native-web-rsbuild": "workspace:*",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.9.3"
+  }
+}

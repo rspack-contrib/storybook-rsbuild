@@ -12,14 +12,11 @@ const config: BuildEntries = {
       {
         exportEntries: ['./preset'],
         entryPoint: './src/preset.ts',
+        dts: false,
       },
       {
         exportEntries: ['./node'],
         entryPoint: './src/node/index.ts',
-      },
-      {
-        exportEntries: ['./loaders/react-docgen-loader'],
-        entryPoint: './src/loaders/react-docgen-loader.ts',
       },
     ],
   },

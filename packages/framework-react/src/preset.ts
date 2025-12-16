@@ -3,10 +3,9 @@ import type { PresetProperty } from 'storybook/internal/types'
 import { rsbuildFinalDocs } from './react-docs'
 import type { StorybookConfig } from './types'
 
-export const rsbuildFinal: StorybookConfig['rsbuildFinal'] = async (
-  config,
-  options,
-) => {
+export const rsbuildFinal: NonNullable<
+  StorybookConfig['rsbuildFinal']
+> = async (config, options) => {
   const finalConfig = rsbuildFinalDocs(config, options)
   return finalConfig
 }
