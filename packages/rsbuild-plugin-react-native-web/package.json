@@ -1,0 +1,66 @@
+{
+  "name": "rsbuild-plugin-react-native-web",
+  "version": "0.1.0",
+  "description": "Rsbuild plugin for React Native Web support",
+  "keywords": [
+    "rsbuild",
+    "rspack",
+    "react-native",
+    "react-native-web",
+    "expo"
+  ],
+  "homepage": "https://github.com/rspack-contrib/storybook-rsbuild",
+  "bugs": {
+    "url": "https://github.com/rspack-contrib/storybook-rsbuild/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rspack-contrib/storybook-rsbuild",
+    "directory": "packages/rsbuild-plugin-react-native-web"
+  },
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "*.js",
+    "*.d.ts",
+    "!src/**/*"
+  ],
+  "scripts": {
+    "build": "pnpm run prep --production",
+    "check": "jiti ../../scripts/check/check-package.ts",
+    "prep": "jiti ../../scripts/build/build-package.ts",
+    "prepare": "pnpm run build"
+  },
+  "dependencies": {
+    "magic-string": "^0.30.21"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "^1.6.13",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "@rsbuild/core": "^1.5.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bundler": {
+    "entries": [
+      "./src/index.ts"
+    ],
+    "platform": "node"
+  }
+}

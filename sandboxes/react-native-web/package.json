@@ -1,0 +1,29 @@
+{
+  "name": "@sandboxes/react-native-web",
+  "version": "0.0.0",
+  "private": true,
+  "description": "React Native Web Storybook Sandbox",
+  "author": "",
+  "type": "module",
+  "scripts": {
+    "build:storybook": "storybook build --stats-json",
+    "storybook": "storybook dev -p 6006"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-native-web": "^0.19.13"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "^1.6.13",
+    "@rsbuild/plugin-react": "^1.4.2",
+    "@storybook/addon-docs": "10.1.2",
+    "@storybook/react": "10.1.2",
+    "@types/node": "^22.0.0",
+    "@types/react": "^18.3.27",
+    "@types/react-dom": "^18.3.7",
+    "storybook": "10.1.2",
+    "storybook-react-native-web-rsbuild": "workspace:*",
+    "typescript": "^5.9.3"
+  }
+}

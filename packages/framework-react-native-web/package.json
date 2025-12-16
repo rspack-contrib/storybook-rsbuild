@@ -1,12 +1,14 @@
 {
-  "name": "storybook-react-rsbuild",
-  "version": "3.1.0",
-  "description": "Storybook for React and Rsbuild: Develop React components in isolation with Hot Reloading.",
+  "name": "storybook-react-native-web-rsbuild",
+  "version": "0.1.0",
+  "description": "Storybook for React Native Web and Rsbuild: Develop React Native components for web in isolation with Hot Reloading.",
   "keywords": [
     "storybook",
     "rsbuild",
     "rspack",
-    "react"
+    "react-native",
+    "react-native-web",
+    "expo"
   ],
   "homepage": "https://storybook.rsbuild.rs",
   "bugs": {
@@ -15,7 +17,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/rspack-contrib/storybook-rsbuild",
-    "directory": "packages/framework-react"
+    "directory": "packages/framework-react-native-web"
   },
   "license": "MIT",
   "type": "module",
@@ -24,19 +26,12 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
-    "./loaders/react-docgen-loader": {
-      "types": "./dist/loaders/react-docgen-loader.d.ts",
-      "default": "./dist/loaders/react-docgen-loader.js"
-    },
     "./node": {
       "types": "./dist/node/index.d.ts",
       "default": "./dist/node/index.js"
     },
     "./package.json": "./package.json",
-    "./preset": {
-      "types": "./dist/preset.d.ts",
-      "default": "./dist/preset.js"
-    }
+    "./preset": "./dist/preset.js"
   },
   "files": [
     "dist/**/*",
@@ -52,38 +47,27 @@
     "prepare": "pnpm run build"
   },
   "dependencies": {
-    "@rollup/pluginutils": "^5.3.0",
-    "@storybook/react": "^10.1.9",
-    "@storybook/react-docgen-typescript-plugin": "^1.0.1",
-    "find-up": "^5.0.0",
-    "magic-string": "^0.30.21",
-    "react-docgen": "^8.0.2",
-    "react-docgen-typescript": "^2.4.0",
-    "resolve": "^1.22.11",
+    "@storybook/react": "^10.0.0",
+    "rsbuild-plugin-react-native-web": "workspace:*",
     "storybook-builder-rsbuild": "workspace:*",
-    "tsconfig-paths": "^4.2.0"
+    "storybook-react-rsbuild": "workspace:*"
   },
   "devDependencies": {
     "@rsbuild/core": "^1.6.13",
     "@types/node": "^22.0.0",
     "@types/react": "^18.3.27",
-    "@types/resolve": "^1.20.6",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "react-native-web": "^0.19.13",
     "storybook": "10.1.2",
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "@rsbuild/core": "^1.5.0",
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta",
-    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0-beta",
-    "storybook": "^10.1.0",
-    "typescript": ">= 4.2.x"
-  },
-  "peerDependenciesMeta": {
-    "typescript": {
-      "optional": true
-    }
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-native-web": "^0.19.0 || ^0.20.0 || ^0.21.0",
+    "storybook": "^10.1.0"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -95,8 +79,7 @@
     "entries": [
       "./src/node/index.ts",
       "./src/index.ts",
-      "./src/preset.ts",
-      "./src/loaders/react-docgen-loader.ts"
+      "./src/preset.ts"
     ],
     "platform": "node"
   }
