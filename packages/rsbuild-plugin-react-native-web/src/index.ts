@@ -64,6 +64,18 @@ export interface PluginReactNativeWebOptions {
    * @default ['react-native-css-interop', 'expo-modules-core']
    */
   noTreeshakeModules?: string[]
+
+  /**
+   * Absolute path to the react-native-web package directory.
+   * This is needed for pnpm/monorepo setups where react-native-reanimated
+   * cannot resolve react-native-web internal modules.
+   *
+   * If provided, the plugin will rewrite import paths in transformed code
+   * to use absolute paths, ensuring proper module resolution.
+   *
+   * @example '/path/to/node_modules/react-native-web'
+   */
+  reactNativeWebPath?: string
 }
 
 /**
@@ -101,6 +113,29 @@ export function pluginReactNativeWeb(
     ]),
   ]
   const noTreeshakePattern = createTranspileIncludePattern(noTreeshakeModules)
+  const reactNativeWebPath = options.reactNativeWebPath
+
+  /**
+   * Creates a module resolver function that rewrites react-native-web
+   * module paths to absolute paths when reactNativeWebPath is provided.
+   */
+  function createModuleResolver():
+    | ((modulePath: string) => string)
+    | undefined {
+    if (!reactNativeWebPath) {
+      return undefined
+    }
+
+    return (modulePath: string) => {
+      // Only rewrite react-native-web paths
+      if (modulePath.startsWith('react-native-web/')) {
+        // Replace 'react-native-web/' with the absolute path
+        const relativePart = modulePath.slice('react-native-web/'.length)
+        return `${reactNativeWebPath}/${relativePart}`
+      }
+      return modulePath
+    }
+  }
 
   return {
     name: 'rsbuild:react-native-web',
@@ -147,7 +182,7 @@ export function pluginReactNativeWeb(
             : false
       })
 
-      // Configure SWC to handle Flow syntax and JSX in .js files
+      // Configure SWC to handle JSX in React Native packages
       api.modifyBundlerChain((chain: RspackChain) => {
         // Get the existing JS rule and modify it to handle RN packages
         const jsRule = chain.module.rule('js')
@@ -165,9 +200,10 @@ export function pluginReactNativeWeb(
           reactConfig.importSource = jsxImportSource
         }
 
-        // Add a specific rule for React Native packages that may use Flow
+        // Add a rule for React Native packages to handle JSX in .js files
+        // This ensures RN packages that ship JSX in .js files are properly transpiled
         chain.module
-          .rule('react-native-flow')
+          .rule('react-native-jsx')
           .test(/\.(js|mjs|jsx)$/)
           .include.add(includePattern)
           .end()
@@ -195,6 +231,8 @@ export function pluginReactNativeWeb(
       })
 
       // Apply code transformations for compatibility fixes
+      const moduleResolver = createModuleResolver()
+
       api.transform(
         {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
@@ -220,7 +258,10 @@ export function pluginReactNativeWeb(
             code,
             resource,
             isProduction,
-            { source: resource },
+            {
+              source: resource,
+              resolveModule: moduleResolver,
+            },
           )
           if (reanimatedResult.changed) {
             return {

@@ -83,6 +83,33 @@ interface FrameworkOptions {
    */
   pluginOptions?: PluginReactNativeWebOptions
 }
+
+interface PluginReactNativeWebOptions {
+  /**
+   * Additional node_modules that need to be transpiled.
+   * @example ['my-react-native-library']
+   */
+  modulesToTranspile?: string[]
+
+  /**
+   * The JSX runtime to use.
+   * @default 'automatic'
+   */
+  jsxRuntime?: 'automatic' | 'classic'
+
+  /**
+   * The source for JSX imports when using the automatic runtime.
+   * @default 'react'
+   * @example 'nativewind' for NativeWind v4+
+   */
+  jsxImportSource?: string
+
+  /**
+   * Modules that should not be tree-shaken.
+   * @default ['react-native-css-interop', 'expo-modules-core']
+   */
+  noTreeshakeModules?: string[]
+}
 ```
 
 ### Example: Transpiling additional packages
@@ -156,6 +183,114 @@ const styles = StyleSheet.create({
 })
 ```
 
+## NativeWind Support
+
+This framework supports [NativeWind](https://www.nativewind.dev/) for using Tailwind CSS with React Native components.
+
+### Installation
+
+<PackageManagerTabs command="install nativewind react-native-css-interop react-native-safe-area-context tailwindcss postcss autoprefixer -D" />
+
+:::tip
+Installing `react-native-safe-area-context` is recommended to avoid build warnings from `react-native-css-interop`.
+:::
+
+### Configuration
+
+1. **Configure Tailwind CSS** - Create `tailwind.config.js`:
+
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  presets: [require('nativewind/preset')],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+2. **Create global CSS** - Create `src/global.css`:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+3. **Import CSS in preview** - Update `.storybook/preview.tsx`:
+
+```tsx
+import '../src/global.css'
+
+const preview = {
+  // your preview config
+}
+
+export default preview
+```
+
+4. **Configure JSX import source** - Update `.storybook/main.ts`:
+
+```ts
+const config: StorybookConfig = {
+  framework: {
+    name: 'storybook-react-native-web-rsbuild',
+    options: {
+      pluginOptions: {
+        jsxImportSource: 'nativewind',
+      },
+    },
+  },
+}
+```
+
+### Usage
+
+```tsx
+import { View, Text } from 'react-native'
+
+export function Card({ title, children }) {
+  return (
+    <View className="p-4 bg-white rounded-lg shadow-md">
+      <Text className="text-xl font-bold text-gray-800">{title}</Text>
+      {children}
+    </View>
+  )
+}
+```
+
+## React Native Reanimated
+
+This framework provides built-in support for [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/) on web.
+
+### Installation
+
+<PackageManagerTabs command="install react-native-reanimated react-native-worklets" />
+
+### What the framework handles
+
+The framework automatically:
+
+- Defines `_WORKLET` and `_frameTimestamp` globals required by Reanimated
+- Transforms Reanimated's webUtils for ESM compatibility
+- Handles module resolution in pnpm/monorepo environments
+
+### Usage
+
+```tsx
+import Animated, { FadeIn, FadeOut } from 'react-native-reanimated'
+
+export function FadeInView({ children }) {
+  return (
+    <Animated.View entering={FadeIn.duration(500)} exiting={FadeOut}>
+      {children}
+    </Animated.View>
+  )
+}
+```
+
 ## Expo Support
 
 This framework works with Expo projects. Ensure your `metro.config.js` or bundler configuration is not conflicting with Rsbuild.
@@ -190,3 +325,43 @@ declare module 'react-native' {
   export * from 'react-native-web'
 }
 ```
+
+### Flow syntax errors in React Native packages
+
+Some older React Native packages may contain [Flow](https://flow.org/) type annotations that are not stripped before publishing. If you encounter syntax errors related to Flow types (e.g., `Unexpected token :` in type annotations), you can use Babel to strip Flow types.
+
+1. Install the required packages:
+
+```bash
+pnpm add -D @babel/core babel-loader @babel/preset-flow @babel/preset-react
+```
+
+2. Add a custom Rsbuild configuration in `.storybook/main.ts`:
+
+```ts
+const config: StorybookConfig = {
+  framework: {
+    name: 'storybook-react-native-web-rsbuild',
+    options: {},
+  },
+  rsbuildFinal: async (config) => {
+    config.tools ??= {}
+    config.tools.bundlerChain = (chain) => {
+      // Add babel-loader for packages with Flow syntax
+      chain.module
+        .rule('flow')
+        .test(/\.jsx?$/)
+        .include.add(/node_modules\/(react-native|@react-native)/)
+        .end()
+        .use('babel')
+        .loader('babel-loader')
+        .options({
+          presets: ['@babel/preset-flow', '@babel/preset-react'],
+        })
+    }
+    return config
+  },
+}
+```
+
+This configuration uses Babel to process React Native packages and strip Flow type annotations before they are handled by SWC.

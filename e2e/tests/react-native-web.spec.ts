@@ -114,4 +114,114 @@ test.describe(sandbox.name, () => {
     const variantProp = docsRoot.getByText('Visual variant of the button')
     await expect(variantProp).toBeVisible()
   })
+
+  test('should render Nativewind styled components', async ({ page }) => {
+    const currentServer = server
+    if (!currentServer) {
+      throw new Error('Storybook server failed to start')
+    }
+
+    // Navigate to Nativewind Showcase story
+    await page.goto(
+      `${currentServer.url}?path=/story/nativewind-showcase--showcase`,
+      {
+        waitUntil: 'networkidle',
+      },
+    )
+
+    const frame = previewFrame(page)
+
+    // Check that the Nativewind container is rendered
+    const container = frame.locator('[data-testid="nativewind-container"]')
+    await expect(container).toBeVisible()
+
+    // Check that the title is rendered
+    const title = frame.locator('[data-testid="nativewind-title"]')
+    await expect(title).toBeVisible()
+    await expect(title).toHaveText('Nativewind v4')
+
+    // Verify Tailwind CSS styles are applied (background color from purple-500)
+    // The gradient starts with purple-500 (#a855f7) which gets applied as background
+    const containerStyles = await container.evaluate((el) => {
+      const styles = window.getComputedStyle(el)
+      return {
+        padding: styles.padding,
+        borderRadius: styles.borderRadius,
+      }
+    })
+
+    // Check that Tailwind utilities are applied (p-8 = 32px padding, rounded-3xl = 24px border-radius)
+    expect(containerStyles.padding).toBe('32px')
+    expect(containerStyles.borderRadius).toBe('24px')
+  })
+
+  test('should render Reanimated animated components', async ({ page }) => {
+    const currentServer = server
+    if (!currentServer) {
+      throw new Error('Storybook server failed to start')
+    }
+
+    // Navigate to Reanimated Showcase story
+    await page.goto(
+      `${currentServer.url}?path=/story/reanimated-animations--showcase`,
+      {
+        waitUntil: 'networkidle',
+      },
+    )
+
+    const frame = previewFrame(page)
+
+    // Check that the showcase container is rendered
+    const showcase = frame.locator('[data-testid="reanimated-showcase"]')
+    await expect(showcase).toBeVisible()
+
+    // Check that the FadeInBox component is rendered
+    const fadeInBox = frame.locator('[data-testid="reanimated-fade-in"]')
+    await expect(fadeInBox).toBeVisible()
+
+    // Verify the FadeInBox has expected text
+    const fadeInText = fadeInBox.getByText('Fade In')
+    await expect(fadeInText).toBeVisible()
+
+    // Wait for animation to complete and verify opacity is applied
+    await page.waitForTimeout(1500) // Wait for 1000ms animation + buffer
+
+    const opacity = await fadeInBox.evaluate((el) => {
+      return window.getComputedStyle(el).opacity
+    })
+
+    // After animation completes, opacity should be 1
+    expect(Number.parseFloat(opacity)).toBeCloseTo(1, 1)
+  })
+
+  test('should render Reanimated FadeIn story individually', async ({
+    page,
+  }) => {
+    const currentServer = server
+    if (!currentServer) {
+      throw new Error('Storybook server failed to start')
+    }
+
+    // Navigate to FadeIn story
+    await page.goto(
+      `${currentServer.url}?path=/story/reanimated-animations--fade-in`,
+      {
+        waitUntil: 'networkidle',
+      },
+    )
+
+    const frame = previewFrame(page)
+
+    // Check that the FadeInBox component is rendered
+    const fadeInBox = frame.locator('[data-testid="reanimated-fade-in"]')
+    await expect(fadeInBox).toBeVisible()
+
+    // Verify the component has the correct background color (#6366f1 = indigo-500)
+    const bgColor = await fadeInBox.evaluate((el) => {
+      return window.getComputedStyle(el).backgroundColor
+    })
+
+    // #6366f1 in RGB is rgb(99, 102, 241)
+    expect(bgColor).toBe('rgb(99, 102, 241)')
+  })
 })

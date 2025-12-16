@@ -9,19 +9,12 @@ describe('transformReanimatedWebUtils', () => {
     'node_modules/react-native-reanimated/lib/module/ReanimatedModule/js-reanimated/webUtils.web.js'
 
   describe('when conditions are not met', () => {
-    it('returns original code when not in production', () => {
-      const code = 'export let foo;'
-      const result = transformReanimatedWebUtils(code, 'test.js', false)
-      expect(result.changed).toBe(false)
-      expect(result.code).toBe(code)
-    })
-
     it('returns original code when not a reanimated file', () => {
       const code = 'export let foo;'
       const result = transformReanimatedWebUtils(
         code,
         'some/other/file.js',
-        true,
+        false,
       )
       expect(result.changed).toBe(false)
       expect(result.code).toBe(code)
@@ -32,7 +25,7 @@ describe('transformReanimatedWebUtils', () => {
       const result = transformReanimatedWebUtils(
         code,
         'node_modules/react-native-reanimated/some/other/file.js',
-        true,
+        false,
       )
       expect(result.changed).toBe(false)
       expect(result.code).toBe(code)
@@ -40,21 +33,21 @@ describe('transformReanimatedWebUtils', () => {
 
     it('returns original code when no export let pattern', () => {
       const code = 'export const foo = "bar";'
-      const result = transformReanimatedWebUtils(code, webUtilsPath, true)
+      const result = transformReanimatedWebUtils(code, webUtilsPath, false)
       expect(result.changed).toBe(false)
       expect(result.code).toBe(code)
     })
 
     it('returns original code when no try/catch pattern', () => {
       const code = 'export let foo;'
-      const result = transformReanimatedWebUtils(code, webUtilsPath, true)
+      const result = transformReanimatedWebUtils(code, webUtilsPath, false)
       expect(result.changed).toBe(false)
       expect(result.code).toBe(code)
     })
 
     it('returns original code when no require pattern', () => {
       const code = 'export let foo;\ntry { foo = "bar"; } catch (e) {}'
-      const result = transformReanimatedWebUtils(code, webUtilsPath, true)
+      const result = transformReanimatedWebUtils(code, webUtilsPath, false)
       expect(result.changed).toBe(false)
       expect(result.code).toBe(code)
     })
@@ -199,6 +192,59 @@ try {
 
       expect(result.changed).toBe(false)
       expect(result.map).toBeNull()
+    })
+
+    it('uses resolveModule to rewrite import paths when provided', () => {
+      const originalCode = `'use strict';
+export let createReactDOMStyle;
+export let createTransformValue;
+try {
+  createReactDOMStyle = require('react-native-web/dist/exports/StyleSheet/compiler/createReactDOMStyle').default;
+} catch (e) {}
+try {
+  createTransformValue = require('react-native-web/dist/exports/StyleSheet/preprocess').createTransformValue;
+} catch (e) {}`
+
+      const resolveModule = (modulePath: string) => {
+        if (modulePath.startsWith('react-native-web/')) {
+          return `/absolute/path/to/node_modules/${modulePath}`
+        }
+        return modulePath
+      }
+
+      const result = transformReanimatedWebUtils(
+        originalCode,
+        webUtilsPath,
+        true,
+        { resolveModule },
+      )
+
+      expect(result.changed).toBe(true)
+      expect(result.code).toContain(
+        "export { default as createReactDOMStyle } from '/absolute/path/to/node_modules/react-native-web/dist/exports/StyleSheet/compiler/createReactDOMStyle'",
+      )
+      expect(result.code).toContain(
+        "export { createTransformValue as createTransformValue } from '/absolute/path/to/node_modules/react-native-web/dist/exports/StyleSheet/preprocess'",
+      )
+    })
+
+    it('does not rewrite paths when resolveModule is not provided', () => {
+      const originalCode = `export let createReactDOMStyle;
+try {
+  createReactDOMStyle = require('react-native-web/dist/exports/StyleSheet/compiler/createReactDOMStyle').default;
+} catch (e) {}`
+
+      const result = transformReanimatedWebUtils(
+        originalCode,
+        webUtilsPath,
+        true,
+        { source: webUtilsPath },
+      )
+
+      expect(result.changed).toBe(true)
+      expect(result.code).toContain(
+        "export { default as createReactDOMStyle } from 'react-native-web/dist/exports/StyleSheet/compiler/createReactDOMStyle'",
+      )
     })
   })
 })

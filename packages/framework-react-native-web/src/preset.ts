@@ -8,7 +8,7 @@ import { rsbuildFinal as reactRsbuildFinal } from 'storybook-react-rsbuild/prese
 import type { FrameworkOptions, StorybookConfig } from './types'
 
 /**
- * Resolve the absolute path to react-native-web from the user's project.
+ * Resolve the absolute path to react-native-web package root from the user's project.
  * This is needed for pnpm/monorepo setups where the alias 'react-native' -> 'react-native-web'
  * may not resolve correctly from deep within node_modules.
  */
@@ -16,9 +16,10 @@ function resolveReactNativeWeb(configDir: string): string {
   try {
     // Create require from the config directory (user's project context)
     const require = createRequire(`${configDir}/package.json`)
-    const resolved = require.resolve('react-native-web')
-    // Return the package directory, not the entry file
-    return dirname(resolved)
+    // Resolve package.json to get the package root directory
+    // This avoids issues where the entry file is in a subdirectory (e.g., dist/cjs/)
+    const packageJsonPath = require.resolve('react-native-web/package.json')
+    return dirname(packageJsonPath)
   } catch {
     // Fallback to package name if resolution fails
     return 'react-native-web'
@@ -45,6 +46,8 @@ export const rsbuildFinal: StorybookConfig['rsbuildFinal'] = async (
     plugins: [
       pluginReactNativeWeb({
         modulesToTranspile: frameworkOptions.modulesToTranspile,
+        // Pass the resolved path to enable absolute imports in transformed code
+        reactNativeWebPath,
         ...frameworkOptions.pluginOptions,
       }),
     ],

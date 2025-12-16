@@ -40,22 +40,30 @@ function analyzeRequireStatements(
 /**
  * Generates direct export statements from the import map.
  * Creates modern ESM exports like: export { default as varName } from 'module';
+ *
+ * @param importMap - Map of module:property to variable names
+ * @param resolveModule - Optional function to resolve module paths to absolute paths
  */
-function generateDirectExports(importMap: Map<string, string[]>): string {
+function generateDirectExports(
+  importMap: Map<string, string[]>,
+  resolveModule?: (modulePath: string) => string,
+): string {
   let exports = ''
 
   for (const [key, vars] of importMap) {
     const [modulePath, prop] = key.split(':')
+    // Use resolved path if resolver is provided, otherwise use original path
+    const resolvedPath = resolveModule ? resolveModule(modulePath) : modulePath
 
     if (prop === 'default') {
       // Default exports: export { default as varName } from 'module';
       for (const varName of vars) {
-        exports += `export { default as ${varName} } from '${modulePath}';\n`
+        exports += `export { default as ${varName} } from '${resolvedPath}';\n`
       }
     } else {
       // Named exports: export { propName as varName } from 'module';
       for (const varName of vars) {
-        exports += `export { ${prop} as ${varName} } from '${modulePath}';\n`
+        exports += `export { ${prop} as ${varName} } from '${resolvedPath}';\n`
       }
     }
   }
@@ -69,6 +77,16 @@ export interface TransformResult {
   changed: boolean
 }
 
+export interface TransformReanimatedOptions {
+  source?: string
+  /**
+   * Function to resolve module paths to absolute paths.
+   * This is needed for pnpm/monorepo setups where react-native-reanimated
+   * cannot resolve react-native-web internal modules.
+   */
+  resolveModule?: (modulePath: string) => string
+}
+
 /**
  * Transforms React Native Reanimated webUtils files to fix problematic
  * export let + try/catch + require patterns by converting them to proper ESM.
@@ -79,13 +97,17 @@ export interface TransformResult {
 export function transformReanimatedWebUtils(
   code: string,
   id: string,
-  isProduction: boolean,
-  opts?: { source?: string },
+  _isProduction: boolean,
+  opts?: TransformReanimatedOptions,
 ): TransformResult {
-  // Only apply transformation to React Native Reanimated webUtils files in production
+  const reanimatedInNodeModules =
+    id.includes('react-native-reanimated') && id.includes('node_modules')
+  // Apply transformation to React Native Reanimated webUtils files
+  // This fixes the dynamic require() calls that fail in pnpm/monorepo environments
+  // where react-native-reanimated cannot resolve react-native-web internal modules
+  // Note: In pnpm, the path may be like node_modules/.pnpm/.../node_modules/react-native-reanimated
   if (
-    !isProduction ||
-    !id.includes('node_modules/react-native-reanimated') ||
+    !reanimatedInNodeModules ||
     !id.includes('ReanimatedModule/js-reanimated/webUtils') ||
     !code.includes('export let') ||
     !code.includes('try') ||
@@ -126,8 +148,8 @@ export function transformReanimatedWebUtils(
     changed = true
   }
 
-  // Generate clean direct export statements
-  const exports = generateDirectExports(importMap)
+  // Generate clean direct export statements with resolved paths
+  const exports = generateDirectExports(importMap, opts?.resolveModule)
 
   if (exports) {
     ms.append(`\n${exports}`)

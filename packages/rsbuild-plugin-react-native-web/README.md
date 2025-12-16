@@ -40,6 +40,10 @@ pluginReactNativeWeb({
 - Handles Flow syntax in React Native packages
 - Transforms problematic code patterns for web compatibility
 
+## Credits
+
+This plugin is inspired by [vite-plugin-rnw](https://github.com/dannyhw/vite-plugin-rnw) by [@dannyhw](https://github.com/dannyhw). Many of the core transformation techniques and React Native Web compatibility patterns were adapted from that project. Thanks for the great work.
+
 ## License
 
 MIT
