@@ -1,6 +1,13 @@
 # AGENTS.md
 
+## Sub-package Instructions
+
+When working on code in some specific package, use the Read tool to load that package's AGENTS.md file for package-specific guidelines:
+
+- For website: @website/AGENTS.md
+
 ### Do
+
 - Use **pnpm** for all package management commands.
 - Use **Biome** for formatting and linting (indentation: 2 spaces, single quotes, minimal semicolons).
 - Use **Vitest** for unit testing.
@@ -10,6 +17,7 @@
 - Update relevant `sandboxes/` when adding or modifying features.
 
 ### Don't
+
 - Do not use `npm` or `yarn`.
 - Do not use `Prettier` or `ESLint` directly; use `Biome`.
 - Do not manually sort imports (Biome handles this).
@@ -44,12 +52,14 @@ pnpm build:sandboxes
 ### Safety and Permissions
 
 **Allowed without prompt:**
+
 - Read files, list files.
 - Run `biome check` or `vitest` on single files.
 - Create new test files.
 - Update existing non-critical code.
 
 **Ask first:**
+
 - `pnpm install` or adding new dependencies.
 - `git push`.
 - Deleting files or large code blocks.
