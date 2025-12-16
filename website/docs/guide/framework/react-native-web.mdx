@@ -1,0 +1,192 @@
+import { PackageManagerTabs } from '@theme'
+
+# React Native Web
+
+Storybook for React Native Web & Rsbuild enables you to develop and document React Native components that run on the web using [react-native-web](https://necolas.github.io/react-native-web/).
+
+This framework extends `storybook-react-rsbuild` to provide full React Native Web compatibility, including alias resolution, web-specific extensions, and transpilation of React Native packages.
+
+## Requirements
+
+<div style={{ width: '100%', maxWidth: '400px' }}>
+
+| Package | Version |
+| :--- | :--- |
+| `react` | ≥ 16.8 |
+| `react-native-web` | ≥ 0.19.0 |
+| `@rsbuild/core` | ≥ 1.5.0 |
+| `@rsbuild/plugin-react` | ≥ 1.0.0 |
+| `storybook` | ≥ 10.1.0 |
+
+</div>
+
+## Getting started
+
+### Installation
+
+Install the framework package and its peer dependencies:
+
+<PackageManagerTabs command="install storybook-react-native-web-rsbuild react-native-web @rsbuild/plugin-react -D" />
+
+### Configure `rsbuild.config.ts`
+
+Create or update your Rsbuild configuration to include the React plugin:
+
+```ts
+import { defineConfig } from '@rsbuild/core'
+import { pluginReact } from '@rsbuild/plugin-react'
+
+export default defineConfig({
+  plugins: [pluginReact()],
+})
+```
+
+### Configure `.storybook/main.ts`
+
+```ts
+import type { StorybookConfig } from 'storybook-react-native-web-rsbuild'
+
+const config: StorybookConfig = {
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  framework: {
+    name: 'storybook-react-native-web-rsbuild',
+    options: {},
+  },
+}
+
+export default config
+```
+
+## Features
+
+The framework automatically handles:
+
+- **Alias resolution**: `react-native` → `react-native-web`
+- **Web extensions**: Prioritizes `.web.tsx`, `.web.ts`, `.web.js` files
+- **Global definitions**: Sets up `__DEV__`, `EXPO_OS`, and other React Native globals
+- **Package transpilation**: Transpiles `react-native`, `@react-native`, `expo`, and `@expo` packages
+- **React docgen**: Full support for props documentation via react-docgen
+
+## Framework Options
+
+```ts
+interface FrameworkOptions {
+  /**
+   * Additional node_modules that need to be transpiled.
+   * Packages starting with `react-native`, `@react-native`, `expo`, and `@expo`
+   * are included by default.
+   */
+  modulesToTranspile?: string[]
+
+  /**
+   * Options passed to the underlying rsbuild-plugin-react-native-web plugin.
+   */
+  pluginOptions?: PluginReactNativeWebOptions
+}
+```
+
+### Example: Transpiling additional packages
+
+Some React Native libraries ship untranspiled code. Add them to `modulesToTranspile`:
+
+```ts
+const config: StorybookConfig = {
+  framework: {
+    name: 'storybook-react-native-web-rsbuild',
+    options: {
+      modulesToTranspile: [
+        'react-native-reanimated',
+        '@react-navigation/native',
+      ],
+    },
+  },
+}
+```
+
+## Writing Stories
+
+Write stories using standard React Native components:
+
+```tsx
+// Button.stories.tsx
+import type { Meta, StoryObj } from '@storybook/react'
+import { Button } from './Button'
+
+const meta: Meta<typeof Button> = {
+  title: 'Components/Button',
+  component: Button,
+}
+
+export default meta
+type Story = StoryObj<typeof Button>
+
+export const Primary: Story = {
+  args: {
+    label: 'Press me',
+    variant: 'primary',
+  },
+}
+```
+
+```tsx
+// Button.tsx
+import { Text, TouchableOpacity, StyleSheet } from 'react-native'
+
+export function Button({ label, onPress, variant = 'primary' }) {
+  return (
+    <TouchableOpacity onPress={onPress} style={[styles.button, styles[variant]]}>
+      <Text style={styles.text}>{label}</Text>
+    </TouchableOpacity>
+  )
+}
+
+const styles = StyleSheet.create({
+  button: {
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+  },
+  primary: {
+    backgroundColor: '#007AFF',
+  },
+  text: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
+})
+```
+
+## Expo Support
+
+This framework works with Expo projects. Ensure your `metro.config.js` or bundler configuration is not conflicting with Rsbuild.
+
+For Expo-specific globals, the plugin automatically defines:
+
+- `EXPO_OS` → `'web'`
+- `process.env.EXPO_OS` → `'web'`
+
+## Next Steps
+
+- **[React Native Web Documentation](https://necolas.github.io/react-native-web/)**: Learn about supported APIs
+- **[Writing Stories](https://storybook.js.org/docs/writing-stories)**: Learn the basics of Component Story Format (CSF)
+- **[Example Sandbox](https://github.com/rspack-contrib/storybook-rsbuild/tree/main/sandboxes/react-native-web)**: See a working example
+
+## Troubleshooting
+
+### "React is not defined" error
+
+Make sure you have `@rsbuild/plugin-react` installed and configured in `rsbuild.config.ts`. This plugin enables the automatic JSX runtime.
+
+### Module not found errors for React Native packages
+
+Add the problematic package to `modulesToTranspile` in your framework options.
+
+### TypeScript errors for `react-native` imports
+
+Install `@types/react-native` as a dev dependency, or create a `react-native.d.ts` file:
+
+```ts
+declare module 'react-native' {
+  export * from 'react-native-web'
+}
+```
