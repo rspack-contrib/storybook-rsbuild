@@ -7,6 +7,9 @@ import {
 describe('transformReanimatedWebUtils', () => {
   const webUtilsPath =
     'node_modules/react-native-reanimated/lib/module/ReanimatedModule/js-reanimated/webUtils.web.js'
+  // Windows-style path with backslashes
+  const webUtilsPathWindows =
+    'node_modules\\react-native-reanimated\\lib\\module\\ReanimatedModule\\js-reanimated\\webUtils.web.js'
 
   describe('when conditions are not met', () => {
     it('returns original code when not a reanimated file', () => {
@@ -228,6 +231,39 @@ try {
       )
     })
 
+    it('uses resolveModule with Windows-style base path (normalized to forward slashes)', () => {
+      const originalCode = `'use strict';
+export let createReactDOMStyle;
+try {
+  createReactDOMStyle = require('react-native-web/dist/exports/StyleSheet/compiler/createReactDOMStyle').default;
+} catch (e) {}`
+
+      // Simulates a Windows path that has been normalized to use forward slashes
+      // This is what pathe.normalize() does on Windows paths
+      const resolveModule = (modulePath: string) => {
+        if (modulePath.startsWith('react-native-web/')) {
+          const relativePart = modulePath.slice('react-native-web/'.length)
+          // Windows path normalized with forward slashes
+          return `D:/a/storybook-rsbuild/node_modules/react-native-web/${relativePart}`
+        }
+        return modulePath
+      }
+
+      const result = transformReanimatedWebUtils(
+        originalCode,
+        webUtilsPath,
+        true,
+        { resolveModule },
+      )
+
+      expect(result.changed).toBe(true)
+      expect(result.code).toContain(
+        "export { default as createReactDOMStyle } from 'D:/a/storybook-rsbuild/node_modules/react-native-web/dist/exports/StyleSheet/compiler/createReactDOMStyle'",
+      )
+      // Ensure no backslashes in the output
+      expect(result.code).not.toContain('\\')
+    })
+
     it('does not rewrite paths when resolveModule is not provided', () => {
       const originalCode = `export let createReactDOMStyle;
 try {
@@ -246,11 +282,35 @@ try {
         "export { default as createReactDOMStyle } from 'react-native-web/dist/exports/StyleSheet/compiler/createReactDOMStyle'",
       )
     })
+
+    it('transforms correctly with Windows-style paths (backslashes)', () => {
+      const originalCode = `'use strict';
+export let createReactDOMStyle;
+try {
+  createReactDOMStyle = require('react-native-web/dist/exports/StyleSheet/compiler/createReactDOMStyle').default;
+} catch (e) {}`
+
+      const result = transformReanimatedWebUtils(
+        originalCode,
+        webUtilsPathWindows,
+        true,
+      )
+
+      expect(result.changed).toBe(true)
+      expect(result.code).toContain(
+        "export { default as createReactDOMStyle } from 'react-native-web/dist/exports/StyleSheet/compiler/createReactDOMStyle'",
+      )
+      expect(result.code).not.toContain('export let createReactDOMStyle')
+      expect(result.code).not.toContain('try')
+    })
   })
 })
 
 describe('transformCssInteropDoctorCheck', () => {
   const doctorPath = 'node_modules/react-native-css-interop/dist/doctor.js'
+  // Windows-style path with backslashes
+  const doctorPathWindows =
+    'node_modules\\react-native-css-interop\\dist\\doctor.js'
 
   it('returns original code when not the target file', () => {
     const code =
@@ -308,5 +368,22 @@ function check2() {
     // Should replace all occurrences
     const matches = result.code.match(/return true;/g)
     expect(matches?.length).toBe(2)
+  })
+
+  it('transforms correctly with Windows-style paths (backslashes)', () => {
+    const originalCode = `function checkJsxPragma() {
+  return <react-native-css-interop-jsx-pragma-check /> === true;
+}`
+
+    const result = transformCssInteropDoctorCheck(
+      originalCode,
+      doctorPathWindows,
+    )
+
+    expect(result.changed).toBe(true)
+    expect(result.code).toContain('return true;')
+    expect(result.code).not.toContain(
+      '<react-native-css-interop-jsx-pragma-check />',
+    )
   })
 })

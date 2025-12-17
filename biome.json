@@ -15,6 +15,7 @@
   },
   "formatter": {
     "indentStyle": "space",
+    "lineEnding": "lf",
     "includes": ["**", "!**/*.vue"]
   },
   "javascript": {

@@ -1,4 +1,5 @@
 import type { RsbuildPlugin, RspackChain } from '@rsbuild/core'
+import { normalize } from 'pathe'
 import {
   transformCssInteropDoctorCheck,
   transformReanimatedWebUtils,
@@ -126,12 +127,16 @@ export function pluginReactNativeWeb(
       return undefined
     }
 
+    // Normalize path to use forward slashes for ESM compatibility
+    // This is important for Windows where paths use backslashes
+    const normalizedReactNativeWebPath = normalize(reactNativeWebPath)
+
     return (modulePath: string) => {
       // Only rewrite react-native-web paths
       if (modulePath.startsWith('react-native-web/')) {
         // Replace 'react-native-web/' with the absolute path
         const relativePart = modulePath.slice('react-native-web/'.length)
-        return `${reactNativeWebPath}/${relativePart}`
+        return `${normalizedReactNativeWebPath}/${relativePart}`
       }
       return modulePath
     }

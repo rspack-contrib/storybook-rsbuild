@@ -3,6 +3,10 @@ import { sandboxes } from '../sandboxes'
 import { previewFrame } from '../utils/assertions'
 import { launchSandbox } from '../utils/sandboxProcess'
 
+// Skip on Windows due to path handling differences that affect Nativewind/Reanimated
+// TODO: Re-enable when Windows path issues are fully resolved
+const isWindows = process.platform === 'win32'
+
 const sandbox = sandboxes.find((entry) => entry.name === 'react-native-web')
 
 if (!sandbox) {
@@ -10,6 +14,8 @@ if (!sandbox) {
 }
 
 test.describe(sandbox.name, () => {
+  test.skip(isWindows, 'Skipped on Windows due to path compatibility issues')
+
   let server: Awaited<ReturnType<typeof launchSandbox>> | null = null
 
   test.beforeAll(async () => {

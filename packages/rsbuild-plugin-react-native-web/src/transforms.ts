@@ -4,6 +4,7 @@
  */
 
 import MagicString from 'magic-string'
+import { normalize } from 'pathe'
 
 /**
  * Analyzes require statements in code and maps them to module imports.
@@ -100,15 +101,18 @@ export function transformReanimatedWebUtils(
   _isProduction: boolean,
   opts?: TransformReanimatedOptions,
 ): TransformResult {
+  // Normalize path separators to forward slashes for cross-platform compatibility
+  const normalizedId = normalize(id)
   const reanimatedInNodeModules =
-    id.includes('react-native-reanimated') && id.includes('node_modules')
+    normalizedId.includes('react-native-reanimated') &&
+    normalizedId.includes('node_modules')
   // Apply transformation to React Native Reanimated webUtils files
   // This fixes the dynamic require() calls that fail in pnpm/monorepo environments
   // where react-native-reanimated cannot resolve react-native-web internal modules
   // Note: In pnpm, the path may be like node_modules/.pnpm/.../node_modules/react-native-reanimated
   if (
     !reanimatedInNodeModules ||
-    !id.includes('ReanimatedModule/js-reanimated/webUtils') ||
+    !normalizedId.includes('ReanimatedModule/js-reanimated/webUtils') ||
     !code.includes('export let') ||
     !code.includes('try') ||
     !code.includes('require')
@@ -182,7 +186,9 @@ export function transformCssInteropDoctorCheck(
   id: string,
   opts?: { source?: string },
 ): TransformResult {
-  const isTargetFile = id.includes(
+  // Normalize path separators to forward slashes for cross-platform compatibility
+  const normalizedId = normalize(id)
+  const isTargetFile = normalizedId.includes(
     'node_modules/react-native-css-interop/dist/doctor.js',
   )
 

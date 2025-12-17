@@ -2,7 +2,6 @@ import { fileURLToPath } from 'node:url'
 import { CDVC } from 'check-dependency-version-consistency'
 import path from 'pathe'
 
-// @ts-expect-error
 const __filename = fileURLToPath(import.meta.url)
 const root = path.resolve(path.dirname(__filename), '..')
 

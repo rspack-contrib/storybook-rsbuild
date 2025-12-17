@@ -49,7 +49,8 @@ const config: StorybookConfig = {
     config.plugins?.push(
       pluginBabel({
         // KEY: Only transform src files to avoid transforming Rsbuild internals
-        include: /\/src\//,
+        // Use [\\/] to match both Unix (/) and Windows (\) path separators
+        include: /[\\/]src[\\/]/,
         babelLoaderOptions: {
           presets: ['@babel/preset-typescript', 'nativewind/babel'],
           plugins: ['@babel/plugin-proposal-export-namespace-from'],

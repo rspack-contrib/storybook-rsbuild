@@ -41,7 +41,8 @@
     "prepare": "pnpm run build"
   },
   "dependencies": {
-    "magic-string": "^0.30.21"
+    "magic-string": "^0.30.21",
+    "pathe": "^2.0.3"
   },
   "devDependencies": {
     "@rsbuild/core": "^1.6.13",
