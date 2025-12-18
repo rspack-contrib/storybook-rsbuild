@@ -77,7 +77,7 @@
     "prebundle": "^1.6.0",
     "pretty-hrtime": "^1.0.3",
     "slash": "^5.1.0",
-    "storybook": "10.1.2",
+    "storybook": "10.1.10",
     "typescript": "^5.9.3"
   },
   "peerDependencies": {

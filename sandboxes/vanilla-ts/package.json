@@ -16,7 +16,7 @@
     "@storybook/addon-onboarding": "10.1.2",
     "@storybook/html": "10.1.2",
     "@types/node": "^22.0.0",
-    "storybook": "10.1.2",
+    "storybook": "10.1.10",
     "storybook-html-rsbuild": "workspace:*",
     "typescript": "^5.9.3"
   }
