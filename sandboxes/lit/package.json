@@ -21,7 +21,7 @@
     "@storybook/addon-onboarding": "10.1.2",
     "@storybook/web-components": "10.1.2",
     "@types/node": "^22.0.0",
-    "storybook": "10.1.2",
+    "storybook": "10.1.10",
     "storybook-web-components-rsbuild": "workspace:*",
     "typescript": "^5.9.3"
   }
