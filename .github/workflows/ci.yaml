@@ -88,7 +88,7 @@ jobs:
         run: mkdir -p "$PLAYWRIGHT_BROWSERS_PATH"
 
       - name: Cache Playwright browsers
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ${{ env.PLAYWRIGHT_BROWSERS_PATH }}
           key: ${{ runner.os }}-playwright-${{ hashFiles('pnpm-lock.yaml') }}
