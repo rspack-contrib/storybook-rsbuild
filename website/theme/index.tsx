@@ -3,20 +3,19 @@ import { useLang } from '@rspress/core/runtime'
 import {
   getCustomMDXComponent as BaseGetCustomMDXComponent,
   Layout as BaseLayout,
-} from '@rspress/core/theme'
+} from '@rspress/core/theme-original'
 import {
   Search as PluginAlgoliaSearch,
   ZH_LOCALES,
 } from '@rspress/plugin-algolia/runtime'
-import { NavIcon } from '@rstack-dev/doc-ui/nav-icon'
-
-export * from '@rspress/core/theme'
-
 import {
   LlmsContainer,
   LlmsCopyButton,
   LlmsViewOptions,
 } from '@rspress/plugin-llms/runtime'
+import { NavIcon } from '@rstack-dev/doc-ui/nav-icon'
+
+export * from '@rspress/core/theme-original'
 
 export const Layout = () => {
   return <BaseLayout beforeNavTitle={<NavIcon />} />
