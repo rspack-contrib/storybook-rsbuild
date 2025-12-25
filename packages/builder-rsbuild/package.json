@@ -70,7 +70,7 @@
   },
   "devDependencies": {
     "@rsbuild/core": "^1.6.13",
-    "@storybook/core-webpack": "10.1.2",
+    "@storybook/core-webpack": "10.1.10",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^22.0.0",
     "@types/pretty-hrtime": "^1.0.3",
