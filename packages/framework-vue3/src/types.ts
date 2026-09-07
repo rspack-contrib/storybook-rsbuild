@@ -1,3 +1,4 @@
+import type { VueDocgenPlugin } from '@storybook/vue3'
 import type {
   BuilderOptions,
   StorybookConfigRsbuild,
@@ -8,27 +9,15 @@ import type {
   StorybookConfig as StorybookConfigBase,
   TypescriptOptions as TypescriptOptionsBaseAndVue,
 } from 'storybook/internal/types'
-import type { ComponentDoc } from 'vue-docgen-api'
+
+export type {
+  VueDocgenInfo,
+  VueDocgenInfoEntry,
+  VueDocgenPlugin,
+} from '@storybook/vue3'
 
 type FrameworkName = CompatibleString<'storybook-vue3-rsbuild'>
 type BuilderName = CompatibleString<'storybook-builder-rsbuild'>
-
-export type VueDocgenPlugin = 'vue-docgen-api' | 'vue-component-meta'
-
-type ArrayElement<T> = T extends readonly (infer TElement)[] ? TElement : never
-
-export type VueDocgenInfo<T extends VueDocgenPlugin> =
-  T extends 'vue-docgen-api' ? ComponentDoc : never
-
-export type VueDocgenInfoEntry<
-  T extends VueDocgenPlugin,
-  TKey extends 'props' | 'events' | 'slots' | 'exposed' | 'expose' =
-    'props' | 'events' | 'slots' | 'exposed' | 'expose',
-> = ArrayElement<
-  T extends 'vue-docgen-api'
-    ? VueDocgenInfo<'vue-docgen-api'>[Exclude<TKey, 'exposed'>]
-    : never
->
 
 export type FrameworkOptions = {
   builder?: BuilderOptions

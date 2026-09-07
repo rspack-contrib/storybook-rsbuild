@@ -13,6 +13,8 @@ type Equal<TLeft, TRight> =
     ? true
     : false
 
+type IsNever<T> = [T] extends [never] ? true : false
+
 const portableDocgenOptions = [
   false,
   true,
@@ -26,7 +28,9 @@ const portableDocgenOptions = [
 
 const publicDocgenTypeAssertions: [
   Equal<VueDocgenInfo<'vue-docgen-api'>, ComponentDoc>,
-  Equal<VueDocgenInfo<'vue-component-meta'>, never>,
+  // `vue-component-meta` is an optional peer of `@storybook/vue3`; only assert
+  // the type is resolved (not `never`) without depending on the package here.
+  IsNever<VueDocgenInfo<'vue-component-meta'>>,
   Equal<
     VueDocgenInfoEntry<'vue-docgen-api', 'props'>,
     ArrayElement<ComponentDoc['props']>
@@ -43,7 +47,7 @@ const publicDocgenTypeAssertions: [
     VueDocgenInfoEntry<'vue-docgen-api', 'expose'>,
     ArrayElement<ComponentDoc['expose']>
   >,
-] = [true, true, true, true, true, true]
+] = [true, false, true, true, true, true]
 
 describe('FrameworkOptions', () => {
   it('accepts portable Vue docgen options', () => {
@@ -53,7 +57,7 @@ describe('FrameworkOptions', () => {
   it('exports vue-docgen-api metadata types', () => {
     expect(publicDocgenTypeAssertions).toEqual([
       true,
-      true,
+      false,
       true,
       true,
       true,
