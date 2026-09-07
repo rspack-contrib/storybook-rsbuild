@@ -8,6 +8,7 @@ import { NavIcon } from '@rstack-dev/doc-ui/nav-icon'
 import './index.css'
 
 export * from '@rspress/core/theme-original'
+export { PeerRange } from './peer-range'
 
 export const Layout = () => {
   return <BaseLayout beforeNavTitle={<NavIcon />} />

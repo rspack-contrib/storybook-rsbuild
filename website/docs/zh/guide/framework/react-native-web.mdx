@@ -1,4 +1,4 @@
-import { PackageManagerTabs } from '@theme'
+import { PackageManagerTabs, PeerRange } from '@theme'
 
 # React Native Web
 
@@ -8,17 +8,42 @@ Storybook for React Native Web & Rsbuild 让你能够开发并记录借助 [reac
 
 ## 环境要求
 
-<div style={{ width: '100%', maxWidth: '400px' }}>
-
-| Package                 | Version                               |
-| :---------------------- | :------------------------------------ |
-| `react`                 | ≥ 16.8                                |
-| `react-native-web`      | <PeerRange name="react-native-web" /> |
-| `@rsbuild/core`         | <PeerRange name="@rsbuild/core" />    |
-| `@rsbuild/plugin-react` | ≥ 1.0.0                               |
-| `storybook`             | <PeerRange name="storybook" />        |
-
-</div>
+<table style={{ maxWidth: '400px' }}>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`react`</td>
+      <td>≥ 16.8</td>
+    </tr>
+    <tr>
+      <td>`react-native-web`</td>
+      <td>
+        <PeerRange name="react-native-web" />
+      </td>
+    </tr>
+    <tr>
+      <td>`@rsbuild/core`</td>
+      <td>
+        <PeerRange name="@rsbuild/core" />
+      </td>
+    </tr>
+    <tr>
+      <td>`@rsbuild/plugin-react`</td>
+      <td>≥ 1.0.0</td>
+    </tr>
+    <tr>
+      <td>`storybook`</td>
+      <td>
+        <PeerRange name="storybook" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## 快速开始
 

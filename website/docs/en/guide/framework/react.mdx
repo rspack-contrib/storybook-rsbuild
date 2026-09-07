@@ -1,4 +1,4 @@
-import { PackageManagerTabs } from '@theme'
+import { PackageManagerTabs, PeerRange } from '@theme'
 
 # React
 
@@ -6,15 +6,32 @@ Storybook for React & Rsbuild lets you develop and test React components in isol
 
 ## Requirements
 
-<div style={{ width: '100%', maxWidth: '400px' }}>
-
-| Package         | Version                            |
-| :-------------- | :--------------------------------- |
-| `react`         | ≥ 16.8                             |
-| `@rsbuild/core` | <PeerRange name="@rsbuild/core" /> |
-| `storybook`     | <PeerRange name="storybook" />     |
-
-</div>
+<table style={{ maxWidth: '400px' }}>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`react`</td>
+      <td>≥ 16.8</td>
+    </tr>
+    <tr>
+      <td>`@rsbuild/core`</td>
+      <td>
+        <PeerRange name="@rsbuild/core" />
+      </td>
+    </tr>
+    <tr>
+      <td>`storybook`</td>
+      <td>
+        <PeerRange name="storybook" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## Getting started
 

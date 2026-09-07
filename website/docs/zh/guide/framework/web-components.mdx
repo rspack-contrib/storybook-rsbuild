@@ -1,4 +1,4 @@
-import { PackageManagerTabs } from '@theme'
+import { PackageManagerTabs, PeerRange } from '@theme'
 
 # Web Components
 
@@ -6,15 +6,32 @@ Storybook for Web Components & Rsbuild 专为 Lit 和 custom-element 项目打�
 
 ## 环境要求
 
-<div style={{ width: '100%', maxWidth: '400px' }}>
-
-| Package         | Version                            |
-| :-------------- | :--------------------------------- |
-| `lit`           | ≥ 2 (or ≥ 3)                       |
-| `@rsbuild/core` | <PeerRange name="@rsbuild/core" /> |
-| `storybook`     | <PeerRange name="storybook" />     |
-
-</div>
+<table style={{ maxWidth: '400px' }}>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`lit`</td>
+      <td>≥ 2 (or ≥ 3)</td>
+    </tr>
+    <tr>
+      <td>`@rsbuild/core`</td>
+      <td>
+        <PeerRange name="@rsbuild/core" />
+      </td>
+    </tr>
+    <tr>
+      <td>`storybook`</td>
+      <td>
+        <PeerRange name="storybook" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## 快速开始
 

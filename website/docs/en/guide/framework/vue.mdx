@@ -1,4 +1,4 @@
-import { PackageManagerTabs } from '@theme'
+import { PackageManagerTabs, PeerRange } from '@theme'
 
 # Vue
 
@@ -6,15 +6,32 @@ Storybook for Vue & Rsbuild helps you preview and iterate on Vue components with
 
 ## Requirements
 
-<div style={{ width: '100%', maxWidth: '400px' }}>
-
-| Package         | Version                            |
-| :-------------- | :--------------------------------- |
-| `vue`           | ≥ 3                                |
-| `@rsbuild/core` | <PeerRange name="@rsbuild/core" /> |
-| `storybook`     | <PeerRange name="storybook" />     |
-
-</div>
+<table style={{ maxWidth: '400px' }}>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`vue`</td>
+      <td>≥ 3</td>
+    </tr>
+    <tr>
+      <td>`@rsbuild/core`</td>
+      <td>
+        <PeerRange name="@rsbuild/core" />
+      </td>
+    </tr>
+    <tr>
+      <td>`storybook`</td>
+      <td>
+        <PeerRange name="storybook" />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## Getting started
 

@@ -29,12 +29,11 @@ const peerRange = (pkg: string, name: string): string => {
   return range
 }
 
-// `<PeerRange name="<dep>" />` in docs expands to the peer range declared in
-// `packages/*/package.json`, so docs never drift from the published manifests.
-// `framework-react` stands in for every framework package: `pnpm
-// check-dependency-version` keeps their peer ranges identical. An unknown name
-// is left untouched and fails the MDX compile as an undefined component.
-const peerRanges: Record<string, string> = {
+// Injected as `__PEER_RANGES__` for the `<PeerRange />` theme component (see
+// `theme/peer-range.tsx` and `theme/env.d.ts`), so docs never drift from the
+// published manifests. `framework-react` stands in for every framework
+// package: `pnpm check-dependency-version` keeps their peer ranges identical.
+const peerRanges: typeof __PEER_RANGES__ = {
   storybook: peerRange('framework-react', 'storybook'),
   '@rsbuild/core': peerRange('framework-react', '@rsbuild/core'),
   'react-native-web': peerRange(
@@ -42,21 +41,6 @@ const peerRanges: Record<string, string> = {
     'react-native-web',
   ),
 }
-// `replaceRules` runs on the raw source before MDX compiles, for the HTML,
-// `.md` and llms.txt outputs alike. GFM table cells must escape `|`
-// (`^1.5.0 || ^2.0.0-0`), even inside code spans, while outside tables the
-// backslash would be literal, so table rows get their own rule first.
-const peerRangeRules = Object.entries(peerRanges).flatMap(([name, range]) => {
-  const marker = `<PeerRange name="${name}" />`
-  return [
-    {
-      search: new RegExp(`^(\\|.*)${marker}`, 'gm'),
-      replace: `$1\`${range.split('|').join('\\|')}\``,
-    },
-    { search: new RegExp(marker, 'g'), replace: `\`${range}\`` },
-  ]
-})
-
 define.doc({
   plugins: [
     pluginAlgolia({
@@ -69,7 +53,6 @@ define.doc({
     }),
   ],
   root: 'docs',
-  replaceRules: peerRangeRules,
   lang: 'en',
   title: 'Storybook Rsbuild',
   description: siteDescription,
@@ -127,6 +110,11 @@ define.doc({
     ],
   },
   builderConfig: {
+    source: {
+      define: {
+        __PEER_RANGES__: JSON.stringify(peerRanges),
+      },
+    },
     plugins: [
       pluginOpenGraph({
         title: 'Storybook Rsbuild',
