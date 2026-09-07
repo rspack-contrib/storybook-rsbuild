@@ -9,6 +9,7 @@ import {
 import { pluginOpenGraph } from 'rsbuild-plugin-open-graph'
 import { pluginFontOpenSans } from 'rspress-plugin-font-open-sans'
 import { define } from 'rstack'
+import { pluginPeerRange } from './plugins/peer-range.ts'
 
 const siteUrl = 'https://storybook.rsbuild.rs'
 const siteDescription = 'Storybook builder and frameworks powered by Rsbuild.'
@@ -85,6 +86,7 @@ define.doc({
   },
   builderConfig: {
     plugins: [
+      pluginPeerRange(),
       pluginOpenGraph({
         title: 'Storybook Rsbuild',
         url: siteUrl,
