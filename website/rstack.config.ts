@@ -51,7 +51,7 @@ const peerRangeRules = Object.entries(peerRanges).flatMap(([name, range]) => {
   return [
     {
       search: new RegExp(`^(\\|.*)${marker}`, 'gm'),
-      replace: `$1\`${range.replace(/\|/g, '\\|')}\``,
+      replace: `$1\`${range.split('|').join('\\|')}\``,
     },
     { search: new RegExp(marker, 'g'), replace: `\`${range}\`` },
   ]
