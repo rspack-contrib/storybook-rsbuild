@@ -47,7 +47,7 @@
     "type-check": "jiti ../../scripts/check/check-package.ts"
   },
   "dependencies": {
-    "@storybook/react": "^10.5.10",
+    "@storybook/react": "^10.6.0",
     "rsbuild-plugin-react-native-web": "workspace:*",
     "storybook-builder-rsbuild": "workspace:*",
     "storybook-react-rsbuild": "workspace:*"
@@ -60,7 +60,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-native-web": "^0.21.2",
-    "storybook": "10.5.10",
+    "storybook": "10.6.0",
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
@@ -68,7 +68,7 @@
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
     "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
     "react-native-web": "^0.19.0 || ^0.20.0 || ^0.21.0",
-    "storybook": "^10.5.10"
+    "storybook": "^10.6.0"
   },
   "engines": {
     "node": ">=18.0.0"
