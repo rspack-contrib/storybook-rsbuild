@@ -1,4 +1,4 @@
-import { PackageManagerTabs } from '@theme'
+import { PackageManagerTabs, PeerRange } from '@theme'
 
 # Vanilla JS / TS
 
@@ -6,14 +6,28 @@ Use Storybook for vanilla JavaScript or TypeScript projects to preview UI compon
 
 ## Requirements
 
-<div style={{ width: '100%', maxWidth: '400px' }}>
-
-| Package         | Version  |
-| :-------------- | :------- |
-| `@rsbuild/core` | ≥ 1.0.1  |
-| `storybook`     | ≥ 10.0.0 |
-
-</div>
+<table style={{ maxWidth: '400px' }}>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`@rsbuild/core`</td>
+      <td>
+        <PeerRange name="@rsbuild/core" cell />
+      </td>
+    </tr>
+    <tr>
+      <td>`storybook`</td>
+      <td>
+        <PeerRange name="storybook" cell />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## Getting started
 

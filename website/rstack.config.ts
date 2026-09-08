@@ -6,6 +6,7 @@ import {
   transformerNotationFocus,
   transformerNotationHighlight,
 } from '@shikijs/transformers'
+import { readFileSync } from 'node:fs'
 import { pluginOpenGraph } from 'rsbuild-plugin-open-graph'
 import { pluginFontOpenSans } from 'rspress-plugin-font-open-sans'
 import { define } from 'rstack'
@@ -15,6 +16,31 @@ const siteDescription = 'Storybook builder and frameworks powered by Rsbuild.'
 const siteDescriptionZh = '由 Rsbuild 驱动的 Storybook builder 与 frameworks。'
 const heroImage = `${siteUrl}/storybook-rsbuild.svg`
 
+const peerRange = (pkg: string, name: string): string => {
+  const manifest = JSON.parse(
+    readFileSync(
+      new URL(`../packages/${pkg}/package.json`, import.meta.url),
+      'utf8',
+    ),
+  ) as { peerDependencies?: Record<string, string> }
+  const range = manifest.peerDependencies?.[name]
+  if (!range)
+    throw new Error(`"${name}" is not a peerDependency of packages/${pkg}`)
+  return range
+}
+
+// Injected as `__PEER_RANGES__` for the `<PeerRange />` theme component (see
+// `theme/peer-range.tsx` and `theme/env.d.ts`), so docs never drift from the
+// published manifests. `framework-react` stands in for every framework
+// package: `pnpm check-dependency-version` keeps their peer ranges identical.
+const peerRanges: typeof __PEER_RANGES__ = {
+  storybook: peerRange('framework-react', 'storybook'),
+  '@rsbuild/core': peerRange('framework-react', '@rsbuild/core'),
+  'react-native-web': peerRange(
+    'framework-react-native-web',
+    'react-native-web',
+  ),
+}
 define.doc({
   plugins: [
     pluginAlgolia({
@@ -84,6 +110,11 @@ define.doc({
     ],
   },
   builderConfig: {
+    source: {
+      define: {
+        __PEER_RANGES__: JSON.stringify(peerRanges),
+      },
+    },
     plugins: [
       pluginOpenGraph({
         title: 'Storybook Rsbuild',

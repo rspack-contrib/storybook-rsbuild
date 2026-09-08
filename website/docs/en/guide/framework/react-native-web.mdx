@@ -1,4 +1,4 @@
-import { PackageManagerTabs } from '@theme'
+import { PackageManagerTabs, PeerRange } from '@theme'
 
 # React Native Web
 
@@ -8,17 +8,42 @@ This framework extends `storybook-react-rsbuild` to provide full React Native We
 
 ## Requirements
 
-<div style={{ width: '100%', maxWidth: '400px' }}>
-
-| Package                 | Version  |
-| :---------------------- | :------- |
-| `react`                 | ≥ 16.8   |
-| `react-native-web`      | ≥ 0.19.0 |
-| `@rsbuild/core`         | ≥ 1.5.0  |
-| `@rsbuild/plugin-react` | ≥ 1.0.0  |
-| `storybook`             | ≥ 10.1.0 |
-
-</div>
+<table style={{ maxWidth: '400px' }}>
+  <thead>
+    <tr>
+      <th>Package</th>
+      <th>Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`react`</td>
+      <td>≥ 16.8</td>
+    </tr>
+    <tr>
+      <td>`react-native-web`</td>
+      <td>
+        <PeerRange name="react-native-web" cell />
+      </td>
+    </tr>
+    <tr>
+      <td>`@rsbuild/core`</td>
+      <td>
+        <PeerRange name="@rsbuild/core" cell />
+      </td>
+    </tr>
+    <tr>
+      <td>`@rsbuild/plugin-react`</td>
+      <td>≥ 1.0.0</td>
+    </tr>
+    <tr>
+      <td>`storybook`</td>
+      <td>
+        <PeerRange name="storybook" cell />
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## Getting started
 
